@@ -5,28 +5,37 @@ Dicionário conversacional PT-PT, sem backend e sem dependências JavaScript. Us
 ## Executar
 
 ```sh
-cd lexi-pwa
+cd lexi
 python3 -m http.server 8009
 ```
 
-Abrir `http://localhost:8009/`. O service worker funciona em localhost ou HTTPS. Em Definições, usar **Preparar dicionário para uso offline** para colocar todos os blocos na cache do service worker. A permanência da cache depende do browser e do espaço disponível.
+Abrir `http://localhost:8009/`. O service worker funciona em localhost ou HTTPS. Em Definições, usar **Preparar dicionário para uso offline** para colocar as definições, formas e sílabas na cache (cerca de 26 MB). A permanência da cache depende do browser e do espaço disponível.
 
 ## Implementado
 
-- Definições por palavra, com preferência para 14 entradas editoriais PT-PT.
+- Definições por palavra, com preferência para 114 entradas editoriais PT-PT (117 aceções).
 - Listagens por letra inicial, final, número de letras e combinações.
 - Continuação «mais» e manutenção parcial do contexto.
 - Link opcional para Priberam.
-- Interface PT-PT; sem API, sem servidor PHP.
+- Interface em português europeu e inglês, com seletor de idioma no cabeçalho e em Definições.
+- Definições com seletor de idioma, cópia de segurança das preferências, instalação e verificação explícita de atualizações.
+- Sem API, sem servidor PHP e sem dependências de runtime.
 
 ## Limitações conhecidas
 
 - A segmentação de sentidos e identificação regional é heurística; as definições não foram todas revistas.
-- As 25 preferências regionais são associações de sentido, não equivalências universais.
+- As 57 equivalências regionais são associações dependentes do sentido, não equivalências universais; 7 remetem para formas que não têm entrada própria no dicionário.
+- As substituições automáticas PT-PT não ajustam concordância nem distinguem todos os contextos. Exemplos por rever: «no casa de banho», «na ecrã», «sumo gástrico», «auto-autocarro» e «aplicação, aplicação». O texto original é preservado e a interface assinala estas adaptações.
+- A camada editorial tem 117 aceções para 114 entradas, incluindo aceções duplicadas para «ecrã», «frigorífico» e «gelado» e variantes de maiúscula com o mesmo texto.
+- As 9 819 entradas com várias palavras (por exemplo, «casa de banho») não são alcançáveis pela pesquisa conversacional atual, que interpreta uma palavra por vez.
+- Algumas entradas usam a coluna gramatical para exemplos entre aspas, incluindo o artefacto de conversão «Títulos não suportados/reticências entre colchetes».
+- Os dados silábicos cobrem 67 527 das 81 068 entradas (83,3%); a pesquisa por sílabas só encontra formas cobertas.
+- 2 598 grafias normalizadas agrupam mais de uma entrada por diferenças de maiúsculas ou acentos; a aplicação prefere agora a correspondência exata.
+- `meta.curated` (14) e `meta.preferences` (25) estão desatualizados face aos dados reais; a aplicação usa as entradas e `regional.json`.
 - Divisão silábica, sinónimos, antónimos e categorias semânticas ainda não estão validados.
-- A lista de formas flexionadas `.syn` ainda não está incorporada.
+- As formas flexionadas vêm de `pt-pt.syn` (`data/forms/`); a cobertura e a desambiguação continuam limitadas.
 - A pesquisa por palavra é feita por lema e não corrige automaticamente flexões.
-- Para produção: testar Safari iOS antigo, adicionar ícones PNG, validar acessibilidade e rever a cache offline.
+- Para produção: testar iPhone 6 / Safari 12 em dispositivo real, validar acessibilidade com leitor de ecrã e rever a cache/preparação offline. A compatibilidade de sintaxe, o substituto de `<dialog>` e os ícones PNG já foram tratados, mas não há verificação em dispositivo neste repositório.
 
 ## PT-PT filtering — v2
 
@@ -65,7 +74,22 @@ Rebuilt 133646 source senses for 81068 headwords from the uploaded StarDict-deri
 
 ## Publicação DreamHost
 
-Colocar o conteúdo desta pasta na raiz do document root de `lexi.basecentral.link` (não a pasta envolvente). Configurar HTTPS no painel DreamHost. É uma aplicação estática: não requer PHP nem npm no servidor.
+O site é estático. No host, a partir do checkout `~/lexi`, com o document root em `~/lexi.basecentral.link`:
+
+```sh
+bash scripts/deploy.sh --dry-run "$HOME/lexi.basecentral.link"
+bash scripts/deploy.sh "$HOME/lexi.basecentral.link"
+bash scripts/deploy.sh --verify "$HOME/lexi.basecentral.link"
+```
+
+O destino predefinido é `~/lexi.basecentral.link`, pelo que o argumento pode ser omitido. O script usa o motor comum BaseCentral (`scripts/deploy-core.sh`) e a lista de publicação em `scripts/deploy-profile.sh`:
+
+- exige um checkout limpo, num ramo com upstream, e faz `git pull --ff-only`;
+- publica apenas a lista revista de 104 ficheiros (HTML, scripts, manifest, ícones, `data/`, auditorias, licenças);
+- não publica `README.md`, `AGENTS.md` nem testes, não corre builds, não apaga ficheiros alheios e não publica nada implicitamente;
+- publica `sw.js` depois dos restantes ficheiros.
+
+Antes de correr no host, fazer commit e push. O destino tem de existir, ser gravável e não ser um symlink. HTTPS é obrigatório para o service worker. `--dry-run` não faz fetch nem escreve; `--no-http` desativa a verificação HTTP final. Se os ficheiros públicos mudarem, atualizar `scripts/deploy-profile.sh` e `version.js`.
 
 
 ## v2: formas flexionadas
@@ -102,3 +126,14 @@ A advertência sobre adaptações automáticas deixou de aparecer em cada respos
 ## v8 — Explorar palavras na conversa
 
 As palavras nas definições são botões que abrem a respetiva entrada sem reescrever a pergunta. O texto da definição não é alterado. O convite «Podes pedir «mais»» contém agora um botão «mais» para continuar a pesquisa.
+
+
+## v9 — idiomas, atualizações e compatibilidade
+
+- `version.js` é a fonte única da versão da aplicação e do service worker. A cache chama-se `lexi-<versão>`; incrementar a versão é obrigatório em cada release que altere ficheiros em cache, para não sobrepor a cache ativa.
+- O service worker já não ativa imediatamente uma versão nova. Em Definições, **Verificar atualizações** distingue a versão instalada de uma atualização pendente e **Atualizar aplicação** pede confirmação antes de recarregar.
+- A interface está em português europeu e inglês. O seletor nativo de idioma aparece depois das Definições no cabeçalho e também dentro das Definições; a escolha explícita é guardada.
+- A cópia de segurança é um JSON `lexi-backup` (schema 1) com as preferências de idioma e da ligação ao Priberam. A Lexi não guarda registos pessoais. A importação valida o ficheiro, mostra uma pré-visualização e permite cancelar.
+- **Preparar dicionário para uso offline** transfere definições, formas e sílabas (cerca de 26 MB), verifica a escrita na cache, permite cancelar e distingue o shell offline do dicionário preparado.
+- O `<dialog>` foi substituído por um painel compatível, foram removidos `?.`, `??` e `||=`, e foram adicionados ícones PNG, `apple-touch-icon` e fallbacks CSS para o alvo iPhone 6 / Safari 12.
+- Continua a faltar validação em iPhone 6/Safari 12 e revisão de acessibilidade em dispositivo. `node test-conversation.cjs` cobre agora 40 asserções do interpretador, incluindo comandos em inglês.

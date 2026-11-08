@@ -1,1 +1,131 @@
-<!doctype html><html lang="pt-PT"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#153d52"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"><title>Lexi — Dicionário Conversacional</title></head><body><header><div><strong>Lexi</strong><small>Dicionário conversacional · português europeu</small></div><button id="settings" aria-label="Definições">⚙</button></header><main><section id="chat" role="log" aria-live="polite"><div class="bubble bot">Olá! Podes perguntar-me o significado de uma palavra ou pedir, por exemplo, «Diz-me palavras começadas por C».</div></section></main><form id="form"><input id="question" aria-label="Escreve a tua pergunta" placeholder="Pergunta-me uma palavra…" autocomplete="off" required><button aria-label="Enviar">➤</button></form><dialog id="options"><h2>Definições</h2><label><input type="checkbox" id="external"> Mostrar ligação para o Priberam</label><p>As definições provêm de um dicionário aberto baseado no Wiktionary. Algumas entradas podem conter expressões do português do Brasil. As definições editoriais PT-PT são assinaladas. Algumas aceções incluem adaptações automáticas não revistas; podes consultar o texto original escrevendo «texto original» durante a conversa.</p><p>As pesquisas por letras e comprimento funcionam offline. A divisão silábica ainda não está validada e não é apresentada como resultado certo.</p><button id="offline" type="button">Preparar dicionário para uso offline</button><p id="progress"></p><button id="close" type="button">Fechar</button><hr><small>Fontes: KOReader Portuguese dictionary / Wiktionary. CC BY-SA 4.0; consultar <a href="ATTRIBUTION" target="_blank">atribuições</a> e <a href="LICENSE" target="_blank">licença</a>. As entradas originais são preservadas; as 14 definições editoriais são adaptações, não citações.</small></dialog><script src="conversation.js" defer></script><script src="app.js" defer></script></body></html>
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#153d52">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Lexi">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
+<link rel="stylesheet" href="style.css">
+<title>Lexi — Dicionário Conversacional</title>
+</head>
+<body>
+<header>
+ <div class="brand">
+  <strong>Lexi</strong>
+  <small id="subtitle">Dicionário conversacional · português europeu</small>
+ </div>
+ <div class="header-actions">
+  <button id="settings" class="icon-button" type="button" aria-label="Definições">
+   <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 8.9 19.4a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.6 8.9a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 8.9 4.6 1.7 1.7 0 0 0 9.93 3.04V3a2 2 0 1 1 4 0v.09A1.7 1.7 0 0 0 15 4.6a1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 8.9c.14.6.65 1.03 1.56 1.03H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1.07Z"/></svg>
+  </button>
+  <select id="language" aria-label="Idioma: Português europeu">
+   <option value="en">🇬🇧</option>
+   <option value="pt-PT">🇵🇹</option>
+  </select>
+ </div>
+</header>
+
+<main id="main">
+ <section id="chat" role="log" aria-live="polite" aria-relevant="additions text">
+  <div class="bubble bot" id="intro">Olá! Podes perguntar-me o significado de uma palavra ou pedir, por exemplo, «Diz-me palavras começadas por C».</div>
+ </section>
+</main>
+
+<form id="form" novalidate>
+ <input id="question" maxlength="200" aria-label="Escreve a tua pergunta" placeholder="Pergunta-me uma palavra…" autocomplete="off" required>
+ <button id="send" type="submit" class="icon-button send" aria-label="Enviar">
+  <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7Z"/></svg>
+ </button>
+</form>
+
+<div id="options" class="panel" role="dialog" aria-modal="true" aria-labelledby="options-title" hidden>
+ <div class="panel-card">
+  <div class="panel-head">
+   <h2 id="options-title">Definições</h2>
+   <button id="close" class="icon-button" type="button" aria-label="Fechar">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg>
+   </button>
+  </div>
+
+  <section>
+   <h3 id="language-title">Idioma</h3>
+   <select id="languageSettings" aria-label="Idioma: Português europeu">
+    <option value="en">🇬🇧</option>
+    <option value="pt-PT">🇵🇹</option>
+   </select>
+  </section>
+
+  <section>
+   <h3 id="data-title">Dados e cópias de segurança</h3>
+   <p id="data-description" class="helper">A Lexi guarda apenas preferências neste dispositivo; não guarda registos pessoais.</p>
+   <p id="backup-status" class="helper" role="status" aria-live="polite"></p>
+   <div class="button-row">
+    <button id="exportBackup" type="button">Exportar cópia de segurança</button>
+    <button id="importBackup" type="button">Importar cópia de segurança</button>
+    <input id="importFile" type="file" accept=".json,application/json" hidden>
+   </div>
+   <div id="import-panel" hidden>
+    <p id="import-preview" class="helper"></p>
+    <label class="check"><input type="checkbox" id="restorePrefs" checked> <span id="restore-prefs-label">Restaurar preferências</span></label>
+    <div class="button-row">
+     <button id="applyImport" type="button">Aplicar importação</button>
+     <button id="cancelImport" type="button">Cancelar</button>
+    </div>
+   </div>
+   <p id="data-status" class="helper" role="status" aria-live="polite"></p>
+  </section>
+
+  <section>
+   <h3 id="install-title">Instalação e utilização offline</h3>
+   <p id="offline-intro" class="helper">Prepara o dicionário (cerca de 26 MB) para utilização offline.</p>
+   <p id="storage-note" class="helper">O idioma, as preferências e a cache offline pertencem a este dispositivo, browser e endereço.</p>
+   <div class="button-row">
+    <button id="install" type="button" hidden>Instalar</button>
+    <button id="offline" type="button">Preparar dicionário para uso offline</button>
+    <button id="offlineCancel" type="button" hidden>Cancelar preparação</button>
+   </div>
+   <p id="install-text" class="helper">No iPhone ou iPad: Partilhar → Adicionar ao ecrã principal. Noutros browsers: menu do browser → Instalar aplicação ou Adicionar ao ecrã principal.</p>
+   <p id="install-status" class="helper" role="status" aria-live="polite"></p>
+   <p id="progress" class="helper" role="status" aria-live="polite"></p>
+  </section>
+
+  <section>
+   <h3 id="updates-title">Atualizações</h3>
+   <p id="version-line" class="helper">Versão instalada: …</p>
+   <div class="button-row">
+    <button id="checkUpdates" type="button">Verificar atualizações</button>
+    <button id="updateApp" type="button" hidden>Atualizar aplicação</button>
+   </div>
+   <p id="update-status" class="helper" role="status" aria-live="polite"></p>
+  </section>
+
+  <section>
+   <h3 id="help-title">Ajuda e privacidade</h3>
+   <p id="definitions-note" class="helper">As definições provêm de um dicionário aberto baseado no Wiktionary.</p>
+   <p id="help-text" class="helper">Podes pedir o significado de uma palavra e pesquisar palavras por letras ou sílabas.</p>
+   <p id="privacy-text" class="helper">A Lexi funciona localmente, sem contas, análises ou envios de dados.</p>
+   <label class="check"><input type="checkbox" id="external"> <span id="external-label">Mostrar ligação para o Priberam</span></label>
+   <p id="preference-status" class="helper" role="status" aria-live="polite"></p>
+  </section>
+
+  <section class="sources">
+   <p id="sources-text" class="helper">As definições provêm do dicionário português KOReader / Wiktionary (CC BY-SA 4.0).</p>
+   <p class="helper"><a id="attribution-link" href="ATTRIBUTION" target="_blank" rel="noopener noreferrer">Atribuições</a> · <a id="license-link" href="LICENSE" target="_blank" rel="noopener noreferrer">Licença</a></p>
+  </section>
+
+  <p id="version-footer" class="version">Versão instalada: …</p>
+ </div>
+</div>
+
+<script src="version.js" defer></script>
+<script src="i18n.js" defer></script>
+<script src="conversation.js" defer></script>
+<script src="app.js" defer></script>
+</body>
+</html>
