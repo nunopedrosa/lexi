@@ -136,7 +136,7 @@ prebuilt dictionary corpus and no backend.
 
 - Run `node --check app.js`, `node --check conversation.js`, `node --check sw.js`,
   `node --check i18n.js`, `node --check version.js` and `node test-conversation.cjs`.
-  The parser test currently passes 40 assertions, including English commands.
+  The parser test currently passes 52 assertions, including English commands.
 - Serve locally with `python3 -m http.server 8009` and exercise installation, offline
   shell, prepared dictionary, cancellation, service-worker update, Settings, backup
   export/import, narrow and short viewports, keyboard focus, and both languages.
@@ -180,5 +180,5 @@ verified on Safari 12, iOS or a physical device.
 | Visual controls | Partial | Shared-style SVG gear/send/close, 2 px control and 4 px panel radii, flat bubbles, 44 px standalone targets and shared spacing are in place. The controls are not yet vendored from `shared/controls/`, the shared narrow helper font asset is still unspecified, and inline word buttons remain text-level targets. |
 | Accessibility | Partial | Focus trap/return, labels, live status regions, reduced-motion CSS and overflow-safe text are present. Screen-reader and zoom testing remain. |
 | Robustness and bounds | Partial | Input, chat, result and shard caches are bounded and repeat operations are guarded. Broad searches still collect/sort the full match set before capping stored results; runtime caching is version-scoped but not size-capped. |
-| Tests | Partial | 40 parser assertions pass; headless Chromium checks covered language, Settings, search, backup, update, cancellation and 320 px layout. No Safari 12/iOS/device test suite. |
+| Tests | Partial | 52 parser assertions pass; headless Chromium checks covered language, Settings, search, backup, update, cancellation, the inline more-senses action and 320 px layout. No Safari 12/iOS/device test suite. |
 | Documentation and deployment | Partial | README, AGENTS and deployment notes are updated; real host cache behaviour and production deployment remain unverified. |

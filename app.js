@@ -421,6 +421,16 @@ async function openLinkedWord(word){
  }
 }
 
+async function openLinkedCommand(command){
+ add(command,'user');
+ try{
+  await handleQuestion(command);
+ }catch(err){
+  console.error(err);
+  add(t('message.defaultReply'));
+ }
+}
+
 function appendLinkedText(parent,text){
  var parts=String(text).split(/([\p{L}]+(?:[’'-][\p{L}]+)*)/u);
  for(var i=0;i<parts.length;i++){
@@ -442,14 +452,32 @@ function appendLinkedText(parent,text){
  }
 }
 
-function addDefinitionText(message,headword){
+function addDefinitionText(message,headword,moreSenses){
  var d=document.createElement('div');
  d.className='bubble bot';
  appendLinkedText(d,message);
+ if(moreSenses)appendMoreSensesHint(d);
  if(headword)appendPriberam(d,headword);
  chat.appendChild(d);
  trimChat();
  scrollChat();
+}
+
+function appendMoreSensesHint(parent){
+ var command=t('message.moreSensesCommand');
+ var parts=t('message.moreSensesHint',{command:'\u0000'}).split('\u0000');
+ var row=document.createElement('div');
+ row.className='links';
+ if(parts[0])row.appendChild(document.createTextNode(parts[0]));
+ var b=document.createElement('button');
+ b.type='button';
+ b.className='inline-action';
+ b.textContent=command;
+ b.setAttribute('aria-label',t('message.moreSensesAria'));
+ b.addEventListener('click',function(){openLinkedCommand(command);});
+ row.appendChild(b);
+ if(parts[1])row.appendChild(document.createTextNode(parts[1]));
+ parent.appendChild(row);
 }
 
 function appendMoreResultsButton(parent){
@@ -585,8 +613,8 @@ function displaySenses(offset){
  });
  var regional=offset===0?regionExplanation(row[0]):null;
  if(regional)lines.push(regional);
- if(offset+3<all.length)lines.push(t('message.moreSensesHint'));
- addDefinitionText('«'+row[0]+'»'+(row[1]?' ('+row[1]+')':'')+'\n'+lines.join('\n'),row[0]);
+ var hasMore=offset+3<all.length;
+ addDefinitionText('«'+row[0]+'»'+(row[1]?' ('+row[1]+')':'')+'\n'+lines.join('\n'),row[0],hasMore);
  lastSenseOffset=offset+page.length;
 }
 

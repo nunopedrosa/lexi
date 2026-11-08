@@ -103,7 +103,7 @@ Foram pré-calculadas sugestões de divisão com os padrões de translineação 
 
 ## v4 — motor de conversação
 
-O módulo `conversation.js` reconhece intenções de forma determinística e sem dependências: saudações, ajuda, definições, equivalências regionais, pesquisas combinadas, continuação de resultados, outros significados, texto original e reinício de contexto. Mantém filtros entre perguntas como «Agora com quatro sílabas».
+O módulo `conversation.js` reconhece intenções de forma determinística e sem dependências: saudações, ajuda, definições, equivalências regionais, pesquisas combinadas, continuação de resultados, outros significados, texto original e reinício de contexto. Mantém filtros entre perguntas como «Agora com quatro sílabas». Aceita perguntas plurais («O que são batatas?»), artigos plurais («as», «os»), texto sem acentos («o que sao batatas») e uma saudação antes da pergunta («Olá, o que são batatas?»); se o resto da frase não for reconhecido, a saudação mantém-se como resposta.
 
 Teste rápido do interpretador: `node test-conversation.cjs`. O teste verifica o reconhecimento de intenções; não substitui testes completos de interface ou auditoria linguística. As limitações de definições e divisão silábica da v3 mantêm-se.
 
@@ -125,7 +125,7 @@ A advertência sobre adaptações automáticas deixou de aparecer em cada respos
 
 ## v8 — Explorar palavras na conversa
 
-As palavras nas definições são botões que abrem a respetiva entrada sem reescrever a pergunta. O texto da definição não é alterado. O convite «Podes pedir «mais»» contém agora um botão «mais» para continuar a pesquisa.
+As palavras nas definições são botões que abrem a respetiva entrada sem reescrever a pergunta. O texto da definição não é alterado. O convite «Podes pedir «mais»» contém agora um botão «mais» para continuar a pesquisa. O aviso de que existem mais aceções apresenta «outros significados» como uma única ação que abre a página seguinte, em vez de dividir a expressão em duas ligações de palavras.
 
 
 ## v9 — idiomas, atualizações e compatibilidade
@@ -136,7 +136,7 @@ As palavras nas definições são botões que abrem a respetiva entrada sem rees
 - A cópia de segurança é um JSON `lexi-backup` (schema 1) com as preferências de idioma e da ligação ao Priberam. A Lexi não guarda registos pessoais. A importação valida o ficheiro, mostra uma pré-visualização e permite cancelar.
 - **Preparar dicionário para uso offline** transfere definições, formas e sílabas (cerca de 26 MB), verifica a escrita na cache, permite cancelar e distingue o shell offline do dicionário preparado.
 - O `<dialog>` foi substituído por um painel compatível, foram removidos `?.`, `??` e `||=`, e foram adicionados ícones PNG, `apple-touch-icon` e fallbacks CSS para o alvo iPhone 6 / Safari 12.
-- Continua a faltar validação em iPhone 6/Safari 12 e revisão de acessibilidade em dispositivo. `node test-conversation.cjs` cobre agora 40 asserções no interpretador, incluindo comandos em inglês.
+- Continua a faltar validação em iPhone 6/Safari 12 e revisão de acessibilidade em dispositivo. `node test-conversation.cjs` cobre agora 52 asserções no interpretador, incluindo comandos em inglês.
 
 
 ## v10 — identidade visual
