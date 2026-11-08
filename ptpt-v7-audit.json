@@ -1,0 +1,1833 @@
+{
+  "version": 7,
+  "headwords": 81068,
+  "full_source_senses": 133646,
+  "automatic_substitutions": 339,
+  "by_rule": {
+    "eletrônico": 121,
+    "aplicativo": 20,
+    "usuário": 50,
+    "suco": 46,
+    "tela informática": 24,
+    "ônibus": 34,
+    "banheiro": 10,
+    "xícara": 5,
+    "planejado": 17,
+    "telefone celular": 9,
+    "geladeira": 3
+  },
+  "samples": [
+    {
+      "word": "-e",
+      "sense": 1,
+      "original": "sufixo formador de palavras com sentido de eletrônico ou eletrônica",
+      "adapted": "sufixo formador de palavras com sentido de eletrónico ou eletrónica",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "C",
+      "sense": 2,
+      "original": "linguagem de programação de alto nível para computadores, voltada para o desenvolvimento de sistemas e aplicativos",
+      "adapted": "linguagem de programação de alto nível para computadores, voltada para o desenvolvimento de sistemas e aplicações",
+      "rules": [
+        "aplicativo"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "DANFE",
+      "sense": 1,
+      "original": "documento auxiliar de nota fiscal eletrônica",
+      "adapted": "documento auxiliar de nota fiscal eletrónica",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "Internet",
+      "sense": 1,
+      "original": "rede de computadores dispersos por todo o planeta que trocam dados e mensagens utilizando um protocolo comum, unindo usuários particulares, entidades de pesquisa, órgãos culturais, institutos militares, bibliotecas e empresas de toda envergadura",
+      "adapted": "rede de computadores dispersos por todo o planeta que trocam dados e mensagens utilizando um protocolo comum, unindo utilizadores particulares, entidades de pesquisa, órgãos culturais, institutos militares, bibliotecas e empresas de toda envergadura",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "Nintendinho",
+      "sense": 1,
+      "original": "(Brazil, colloquial) refere-se ao vídeo game Nintendo Entertainment System, responsável pelo lançamento de franquias de jogos eletrônicos como Super Mario, Donkey Kong ou Zelda, de grande popularidade",
+      "adapted": "(Brazil, colloquial) refere-se ao vídeo game Nintendo Entertainment System, responsável pelo lançamento de franquias de jogos eletrónicos como Super Mario, Donkey Kong ou Zelda, de grande popularidade",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "agraço",
+      "sense": 2,
+      "original": "suco de uva verde sem fermentar adj.",
+      "adapted": "sumo de uva verde sem fermentar adj.",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "aloés",
+      "sense": 2,
+      "original": "o suco desta planta",
+      "adapted": "o sumo desta planta",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "amojar",
+      "sense": 2,
+      "original": "inchar-se, entumescer-se, encher-se de leite ou suco",
+      "adapted": "inchar-se, entumescer-se, encher-se de leite ou sumo",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "antimónio",
+      "sense": 1,
+      "original": "elemento químico de símbolo Sb, possui o número atômico 51 e massa atômica relativa 121,760 u; é um metaloide quebradiço, cinza prateado; é utilizado em ligas com o estanho, o chumbo e o zinco; é utilizado na indústria eletrônica em semicondutores, detectores de infravermelho e dispositivos de efeito Hall",
+      "adapted": "elemento químico de símbolo Sb, possui o número atômico 51 e massa atômica relativa 121,760 u; é um metaloide quebradiço, cinza prateado; é utilizado em ligas com o estanho, o chumbo e o zinco; é utilizado na indústria eletrónica em semicondutores, detectores de infravermelho e dispositivos de efeito Hall",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "antimônio",
+      "sense": 1,
+      "original": "elemento químico de símbolo Sb, possui o número atômico 51 e massa atômica relativa 121,760 u; é um metaloide quebradiço, cinza prateado; é utilizado em ligas com o estanho, o chumbo e o zinco; é utilizado na indústria eletrônica em semicondutores, detectores de infravermelho e dispositivos de efeito Hall",
+      "adapted": "elemento químico de símbolo Sb, possui o número atômico 51 e massa atômica relativa 121,760 u; é um metaloide quebradiço, cinza prateado; é utilizado em ligas com o estanho, o chumbo e o zinco; é utilizado na indústria eletrónica em semicondutores, detectores de infravermelho e dispositivos de efeito Hall",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "aplicação",
+      "sense": 6,
+      "original": "programa que roda num computador; aplicativo, app",
+      "adapted": "programa que roda num computador; aplicação, app",
+      "rules": [
+        "aplicativo"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "apontador",
+      "sense": 1,
+      "original": "cursor, ponteiro — ícone indicador virtual movimentado pelo mouse ou teclado na tela de um computador",
+      "adapted": "cursor, ponteiro — ícone indicador virtual movimentado pelo mouse ou teclado na ecrã de um computador",
+      "rules": [
+        "tela informática"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "app",
+      "sense": 1,
+      "original": "aplicativo, aplicação",
+      "adapted": "aplicação, aplicação",
+      "rules": [
+        "aplicativo"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "aprendizagem mista",
+      "sense": 1,
+      "original": "misto de um ensino presencial, dito tradicional e de um ensino à distância (aprendizagem eletrônica) utilizando plataformas educativas",
+      "adapted": "misto de um ensino presencial, dito tradicional e de um ensino à distância (aprendizagem eletrónica) utilizando plataformas educativas",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "aquelar",
+      "sense": 1,
+      "original": "(Portugal, colloquial) palavra-ônibus; exprime qualquer ação, substituindo a outro verbo, por tabuísmo, por comodidade, por entendimento do que quer ser dito; fazer, arranjar",
+      "adapted": "(Portugal, colloquial) palavra-autocarro; exprime qualquer ação, substituindo a outro verbo, por tabuísmo, por comodidade, por entendimento do que quer ser dito; fazer, arranjar",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "arquipirata",
+      "sense": 3,
+      "original": "Agiota; usuário.",
+      "adapted": "Agiota; utilizador.",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "artefato",
+      "sense": 4,
+      "original": "objeto fabricado pelo homem que dá informações sobre a cultura do seu criador e usuários",
+      "adapted": "objeto fabricado pelo homem que dá informações sobre a cultura do seu criador e utilizadores",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "articulado",
+      "sense": 1,
+      "original": "ônibus articulado, principalmente coletivo adj.",
+      "adapted": "autocarro articulado, principalmente coletivo adj.",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "assoalhada",
+      "sense": 1,
+      "original": "cômodo de uma casa (exceto cozinha, banheiro, despensa e hall)",
+      "adapted": "cômodo de uma casa (exceto cozinha, casa de banho, despensa e hall)",
+      "rules": [
+        "banheiro"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "ativação",
+      "sense": 2,
+      "original": "na manufatura de tubos eletrônicos, tratamento químico do catodo para que possa emitir elétrons",
+      "adapted": "na manufatura de tubos eletrónicos, tratamento químico do catodo para que possa emitir elétrons",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "auto-ônibus",
+      "sense": 1,
+      "original": "ônibus",
+      "adapted": "autocarro",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "autobus",
+      "sense": 1,
+      "original": "auto-ônibus",
+      "adapted": "auto-autocarro",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "aviônica",
+      "sense": 1,
+      "original": "ramo de estudo e desenvolvimento de sistemas eletrônicos para veículos aeronáuticos",
+      "adapted": "ramo de estudo e desenvolvimento de sistemas eletrónicos para veículos aeronáuticos",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "aviônica",
+      "sense": 2,
+      "original": "todo quadro de dispositivos componentes de aeronave baseados em eletrônica usado para operação de aeronave",
+      "adapted": "todo quadro de dispositivos componentes de aeronave baseados em eletrónica usado para operação de aeronave",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "bacurau",
+      "sense": 3,
+      "original": "ônibus que trafega na madrugada e antes da primeira viagem do dia",
+      "adapted": "autocarro que trafega na madrugada e antes da primeira viagem do dia",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "bagaço",
+      "sense": 1,
+      "original": "o que sobra dos frutos, ervas ou de qualquer outro vegetal depois de se lhe tirar o suco",
+      "adapted": "o que sobra dos frutos, ervas ou de qualquer outro vegetal depois de se lhe tirar o sumo",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "baldear",
+      "sense": 4,
+      "original": "trocar de um transporte (trem, metrô, ônibus) para outro",
+      "adapted": "trocar de um transporte (trem, metrô, autocarro) para outro",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "balsameia",
+      "sense": 1,
+      "original": "balsaméia — suco que se extrai da planta bálsamo",
+      "adapted": "balsaméia — sumo que se extrai da planta bálsamo",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "bandeja de sistema",
+      "sense": 1,
+      "original": "pequena área normalmente de formato retangular na qual fica definido um quadro de ícones ligados a funções essencias de controle, indicação e notificação de aplicativos e de funções básicas do sistema operacional em operação",
+      "adapted": "pequena área normalmente de formato retangular na qual fica definido um quadro de ícones ligados a funções essencias de controle, indicação e notificação de aplicações e de funções básicas do sistema operacional em operação",
+      "rules": [
+        "aplicativo"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "banheira",
+      "sense": 1,
+      "original": "reservatório encontrado em banheiros para banho de imersão",
+      "adapted": "reservatório encontrado em casas de banho para banho de imersão",
+      "rules": [
+        "banheiro"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "barra de deslocamento",
+      "sense": 1,
+      "original": "barra de rolagem — controle gráfico em uma interface gráfica do utilizador que permite que texto contínuo, imagens ou qualquer outro elemento possam ser rolados em uma tela de computador, janela ou viewport",
+      "adapted": "barra de rolagem — controle gráfico em uma interface gráfica do utilizador que permite que texto contínuo, imagens ou qualquer outro elemento possam ser rolados em uma ecrã de computador, janela ou viewport",
+      "rules": [
+        "tela informática"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "barra de estado",
+      "sense": 1,
+      "original": "barra de status — elemento gráfico de uma interface de usuário que exibe informação relacionada ao andamento de algum processo",
+      "adapted": "barra de status — elemento gráfico de uma interface de utilizador que exibe informação relacionada ao andamento de algum processo",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "barra de rolagem",
+      "sense": 1,
+      "original": "barra de deslocamento — controle gráfico em uma interface gráfica do utilizador que permite que texto contínuo, imagens ou qualquer outro elemento possam ser rolados em uma tela de computador, janela ou viewport",
+      "adapted": "barra de deslocamento — controle gráfico em uma interface gráfica do utilizador que permite que texto contínuo, imagens ou qualquer outro elemento possam ser rolados em uma ecrã de computador, janela ou viewport",
+      "rules": [
+        "tela informática"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "barra de status",
+      "sense": 1,
+      "original": "barra de estado — elemento gráfico de uma interface de usuário que exibe informação relacionada ao andamento de algum processo",
+      "adapted": "barra de estado — elemento gráfico de uma interface de utilizador que exibe informação relacionada ao andamento de algum processo",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "barra de tarefas",
+      "sense": 1,
+      "original": "área comumente em formato retangular longilíneo que estende-se por toda uma lateral de uma área de trabalho, na qual há ícone de menu de aplicativos, há ou pode haver ícones de atalhos, há área para caixa de janelas de programas abertos e uma bandeja de sistema",
+      "adapted": "área comumente em formato retangular longilíneo que estende-se por toda uma lateral de uma área de trabalho, na qual há ícone de menu de aplicações, há ou pode haver ícones de atalhos, há área para caixa de janelas de programas abertos e uma bandeja de sistema",
+      "rules": [
+        "aplicativo"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "baú",
+      "sense": 5,
+      "original": "(informal) ônibus (veículo automotor de carroceria fechada dotado de bancos para o transporte de passageiros)",
+      "adapted": "(informal) autocarro (veículo automotor de carroceria fechada dotado de bancos para o transporte de passageiros)",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "belão",
+      "sense": 1,
+      "original": "a parte elevada do suco, lombada entre dois sucos",
+      "adapted": "a parte elevada do sumo, lombada entre dois sumos",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "biarticulado",
+      "sense": 1,
+      "original": "ônibus biarticulado adj.",
+      "adapted": "autocarro biarticulado adj.",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "bipe",
+      "sense": 1,
+      "original": "bip — som emitido por dispositivos eletrônicos com finalidades múltiplas como as de alertar, chamar a atenção para si, ou fazer comunicar o usuário quanto ao andamento do seu funcionamento",
+      "adapted": "bip — som emitido por dispositivos eletrónicos com finalidades múltiplas como as de alertar, chamar a atenção para si, ou fazer comunicar o utilizador quanto ao andamento do seu funcionamento",
+      "rules": [
+        "usuário",
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "bipe",
+      "sense": 2,
+      "original": "dispositivo eletrônico pequeno e portável com finalidade de comunicar ao usuário através da exibição em um visor, texto gerado por outro usuário",
+      "adapted": "dispositivo eletrónico pequeno e portável com finalidade de comunicar ao utilizador através da exibição em um visor, texto gerado por outro utilizador",
+      "rules": [
+        "usuário",
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "biônico",
+      "sense": 1,
+      "original": "qualidade daquilo que, por meio da eletrônica ou da cibernética, tem seu desempenho biológico reforçado",
+      "adapted": "qualidade daquilo que, por meio da eletrónica ou da cibernética, tem seu desempenho biológico reforçado",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "blogue",
+      "sense": 1,
+      "original": "página pessoal, atualizada periodicamente, em que os usuários podem trocar experiências, comentários etc, geralmente relacionados com uma determinada área de interesse",
+      "adapted": "página pessoal, atualizada periodicamente, em que os utilizadores podem trocar experiências, comentários etc, geralmente relacionados com uma determinada área de interesse",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "borboleta",
+      "sense": 2,
+      "original": "torniquete — aparelho giratório para contagem de pessoas, instalados em ônibus, porta de cinemas, etc.; roleta",
+      "adapted": "torniquete — aparelho giratório para contagem de pessoas, instalados em autocarro, porta de cinemas, etc.; roleta",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "botão",
+      "sense": 4,
+      "original": "elemento gráfico associável a acionamento por interação por parte do usuário ao disparo de uma rotina dentro de um programa de computador",
+      "adapted": "elemento gráfico associável a acionamento por interação por parte do utilizador ao disparo de uma rotina dentro de um programa de computador",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "boxe",
+      "sense": 3,
+      "original": "compartimento de cavalariça, mercado, garagem, central telefônica, etc., ou em banheiro, para o chuveiro",
+      "adapted": "compartimento de cavalariça, mercado, garagem, central telefônica, etc., ou em casa de banho, para o chuveiro",
+      "rules": [
+        "banheiro"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "bus",
+      "sense": 1,
+      "original": "ônibus",
+      "adapted": "autocarro",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "busu",
+      "sense": 1,
+      "original": "(Brazil, colloquial) ônibus (veículo automotor de carroceria fechada dotado de bancos para o transporte de passageiros)",
+      "adapted": "(Brazil, colloquial) autocarro (veículo automotor de carroceria fechada dotado de bancos para o transporte de passageiros)",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "busão",
+      "sense": 1,
+      "original": "(Brazil, informal) ônibus (veículo automotor de carroceria fechada dotado de bancos para o transporte de passageiros)",
+      "adapted": "(Brazil, informal) autocarro (veículo automotor de carroceria fechada dotado de bancos para o transporte de passageiros)",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "cabeceiro",
+      "sense": 1,
+      "original": "peça de mobiliário que fica na parte superior da cama, geralmente atrás da cabeça do usuário",
+      "adapted": "peça de mobiliário que fica na parte superior da cama, geralmente atrás da cabeça do utilizador",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "cadastrar",
+      "sense": 2,
+      "original": "registrar — criar uma conta ou um perfil de usuário em uma base de dados de sistema com controle de acesso, que permite fazer-se uso da mesma",
+      "adapted": "registrar — criar uma conta ou um perfil de utilizador em uma base de dados de sistema com controle de acesso, que permite fazer-se uso da mesma",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "caixa registradora",
+      "sense": 1,
+      "original": "dispositivo mecânico ou eletrônico que serve para calcular e registrar transações de venda, e possui uma gaveta para armazenar o dinheiro",
+      "adapted": "dispositivo mecânico ou eletrónico que serve para calcular e registrar transações de venda, e possui uma gaveta para armazenar o dinheiro",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "caldeirão",
+      "sense": 5,
+      "original": "rego, suco feito pelas águas correntes das chuvas, ou pelo trânsito de animais",
+      "adapted": "rego, sumo feito pelas águas correntes das chuvas, ou pelo trânsito de animais",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "calibrador",
+      "sense": 1,
+      "original": "nome dado a diversos aparelhos mecânicos, elétricos ou eletrônicos us. para realizar medições e, com base nelas, testar ou ajustar a precisão do funcionamento de outros aparelhos e dispositivos, (p.ex., de instrumentos de medição)",
+      "adapted": "nome dado a diversos aparelhos mecânicos, elétricos ou eletrónicos us. para realizar medições e, com base nelas, testar ou ajustar a precisão do funcionamento de outros aparelhos e dispositivos, (p.ex., de instrumentos de medição)",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "caneca",
+      "sense": 1,
+      "original": "copo com asa, porém, ao contrário da xícara, geralmente maior e não necessita de pires",
+      "adapted": "copo com asa, porém, ao contrário da chávena, geralmente maior e não necessita de pires",
+      "rules": [
+        "xícara"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "capa",
+      "sense": 1,
+      "original": "manto, poncho, cobertura, manta, fachada, abrigo — peça de roupa, ampla e sem mangas, usada por cima das outras roupas, a fim de protegê-las e ao usuário da chuva, comum nos séculos XVI ao XIX, quando começou a cair em desuso",
+      "adapted": "manto, poncho, cobertura, manta, fachada, abrigo — peça de roupa, ampla e sem mangas, usada por cima das outras roupas, a fim de protegê-las e ao utilizador da chuva, comum nos séculos XVI ao XIX, quando começou a cair em desuso",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "carbono",
+      "sense": 1,
+      "original": "C, carbo-, antracite, diamante, diamondeno, fulereno — mais leve elemento do grupo 14 da tabela periódica, de símbolo C, possui número atômico 6 e massa atômica relativa de 12,0107 u; é um não-metal, sólido na temperatura ambiente, com três formas alotrópicas mais comuns (diamante, grafite e carbono amorfo), é o quarto elemento mais abundante do universo enquanto na crosta terrestre ocupa a décima quinta posição em ocorrência, presente em vários compostos inorgânicos e orgânicos (é o elemento básico de todas as formas de vida conhecidas), possui identificados quinze isótopos (três dos quais naturais: ¹²C, ¹³C e ¹⁴C), teve várias estruturas criadas artificialmente (como carvão ativado, fulereno, grafeno, nanocarbono, etc.) e sua presença e uso na história da humanidade remonta à descoberta do fogo até a fabricação de eletrônicos, uso na escrita e em joalheria, controle da poluição, síntese do alumínio e muitos outros",
+      "adapted": "C, carbo-, antracite, diamante, diamondeno, fulereno — mais leve elemento do grupo 14 da tabela periódica, de símbolo C, possui número atômico 6 e massa atômica relativa de 12,0107 u; é um não-metal, sólido na temperatura ambiente, com três formas alotrópicas mais comuns (diamante, grafite e carbono amorfo), é o quarto elemento mais abundante do universo enquanto na crosta terrestre ocupa a décima quinta posição em ocorrência, presente em vários compostos inorgânicos e orgânicos (é o elemento básico de todas as formas de vida conhecidas), possui identificados quinze isótopos (três dos quais naturais: ¹²C, ¹³C e ¹⁴C), teve várias estruturas criadas artificialmente (como carvão ativado, fulereno, grafeno, nanocarbono, etc.) e sua presença e uso na história da humanidade remonta à descoberta do fogo até a fabricação de eletrónicos, uso na escrita e em joalheria, controle da poluição, síntese do alumínio e muitos outros",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "carregador",
+      "sense": 2,
+      "original": "equipamento eletrônico que tem a finalidade de carregar baterias",
+      "adapted": "equipamento eletrónico que tem a finalidade de carregar baterias",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "cartucho",
+      "sense": 5,
+      "original": "peça dotada de circuito eletrônico que se encaixa em um aparelho de vídeo game",
+      "adapted": "peça dotada de circuito eletrónico que se encaixa em um aparelho de vídeo game",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "cartucho de jogo",
+      "sense": 1,
+      "original": "objeto feito de uma carcaça plástica que encerra um circuito com memória onde está gravado um jogo eletrônico e que tem uma saída com um bocal de encaixe a um eslote de leitura de console",
+      "adapted": "objeto feito de uma carcaça plástica que encerra um circuito com memória onde está gravado um jogo eletrónico e que tem uma saída com um bocal de encaixe a um eslote de leitura de console",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "cartão de memória",
+      "sense": 1,
+      "original": "dispositivo eletrônico portátil de armazenamento de dados digitais, utilizável via eslote, feito de chipe, controlador e uma carcaça protetiva, de pequena espessura, regravável, que dispensa fonte de eletricidade constante para manter informações",
+      "adapted": "dispositivo eletrónico portátil de armazenamento de dados digitais, utilizável via eslote, feito de chipe, controlador e uma carcaça protetiva, de pequena espessura, regravável, que dispensa fonte de eletricidade constante para manter informações",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "casinha",
+      "sense": 1,
+      "original": "banheiro fora da área principal da casa",
+      "adapted": "casa de banho fora da área principal da casa",
+      "rules": [
+        "banheiro"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "cava",
+      "sense": 2,
+      "original": "o que se produz ao cavar, rego, suco, vala",
+      "adapted": "o que se produz ao cavar, rego, sumo, vala",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "celme",
+      "sense": 1,
+      "original": "(Galicia) substância, gosto, suco, néctar",
+      "adapted": "(Galicia) substância, gosto, sumo, néctar",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "central de chamadas",
+      "sense": 1,
+      "original": "estrutura telefônica para receber ou fazer ligação telefônica em grande quantidade com a finalidade de suprir a demanda do usuário ou para fornecer a comercialização de produto",
+      "adapted": "estrutura telefônica para receber ou fazer ligação telefônica em grande quantidade com a finalidade de suprir a demanda do utilizador ou para fornecer a comercialização de produto",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "chapéu de alumínio",
+      "sense": 1,
+      "original": "espécie de gorro feito de papel de alumínio que supostamente protegeria o usuário contra a influência de campos eletromagnéticos ou contra tentativas de controle mental, efetuadas por meio de satélites",
+      "adapted": "espécie de gorro feito de papel de alumínio que supostamente protegeria o utilizador contra a influência de campos eletromagnéticos ou contra tentativas de controle mental, efetuadas por meio de satélites",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "cherume",
+      "sense": 1,
+      "original": "suco, substância, sumo",
+      "adapted": "sumo, substância, sumo",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "chifrudo",
+      "sense": 3,
+      "original": "(Brazil, colloquial, figuratively) ônibus elétrico",
+      "adapted": "(Brazil, colloquial, figuratively) autocarro elétrico",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "chip",
+      "sense": 1,
+      "original": "chipe, chipe de silício, circuito integrado, microchip — chipe: circuito eletrônico miniaturizado (composto principalmente por dispositivos semicondutores) sobre um substrato fino de material semicondutor",
+      "adapted": "chipe, chipe de silício, circuito integrado, microchip — chipe: circuito eletrónico miniaturizado (composto principalmente por dispositivos semicondutores) sobre um substrato fino de material semicondutor",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "chipe",
+      "sense": 1,
+      "original": "chipe de silício, circuito integrado, microchipe — circuito eletrônico miniaturizado (composto principalmente por dispositivos semicondutores) sobre um substrato fino de material semicondutor",
+      "adapted": "chipe de silício, circuito integrado, microchipe — circuito eletrónico miniaturizado (composto principalmente por dispositivos semicondutores) sobre um substrato fino de material semicondutor",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "chupar",
+      "sense": 2,
+      "original": "extrair com a boca o suco de",
+      "adapted": "extrair com a boca o sumo de",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "chuveiro",
+      "sense": 2,
+      "original": "aparato instalado via de regra no banheiro pelo qual sai água e serve para se tomar banho",
+      "adapted": "aparato instalado via de regra no casa de banho pelo qual sai água e serve para se tomar banho",
+      "rules": [
+        "banheiro"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "chá perolado",
+      "sense": 1,
+      "original": "chá com bobá, chá de bolhas — bebida refrescante à base de chá misturado com leite ou suco de frutas, servida com \"pérolas\" de tapioca mastigáveis ou esferas gelatinosas na base do copo",
+      "adapted": "chá com bobá, chá de bolhas — bebida refrescante à base de chá misturado com leite ou sumo de frutas, servida com \"pérolas\" de tapioca mastigáveis ou esferas gelatinosas na base do copo",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "chávena",
+      "sense": 2,
+      "original": "xícara",
+      "adapted": "chávena",
+      "rules": [
+        "xícara"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "cicuta",
+      "sense": 3,
+      "original": "suco extremamente venenoso extraído de qualquer uma dessas plantas",
+      "adapted": "sumo extremamente venenoso extraído de qualquer uma dessas plantas",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "cidadão-usuário",
+      "sense": 1,
+      "original": "cidadão que é usuário de um determinado serviço público",
+      "adapted": "cidadão que é utilizador de um determinado serviço público",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "cigarro eletrônico",
+      "sense": 1,
+      "original": "vape — dispositivo eletrônico que libera vapor de, entre outras substâncias, nicotina, simulando o uso de um cigarro convencional",
+      "adapted": "vape — dispositivo eletrónico que libera vapor de, entre outras substâncias, nicotina, simulando o uso de um cigarro convencional",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "circuito integrado",
+      "sense": 1,
+      "original": "chip, microchip — circuito eletrônico encapsulado com componentes miniaturizados",
+      "adapted": "chip, microchip — circuito eletrónico encapsulado com componentes miniaturizados",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "clickbait",
+      "sense": 1,
+      "original": "caça-cliques — conteúdo on-line apresentado de forma mentirosa ou sensacionalista, via miniatura de vídeos ou frases de chamadas, visando atrair o clique (acesso) de usuários",
+      "adapted": "caça-cliques — conteúdo on-line apresentado de forma mentirosa ou sensacionalista, via miniatura de vídeos ou frases de chamadas, visando atrair o clique (acesso) de utilizadores",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "clonador",
+      "sense": 2,
+      "original": "indivíduo que copia ilegalmente dados ou dispositivos eletrônicos",
+      "adapted": "indivíduo que copia ilegalmente dados ou dispositivos eletrónicos",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "cobrador de ônibus",
+      "sense": 1,
+      "original": "pessoa que, no transporte público feito a ônibus, recebe o valor da passagem e devolve o troco",
+      "adapted": "pessoa que, no transporte público feito a autocarro, recebe o valor da passagem e devolve o troco",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "comboio",
+      "sense": 1,
+      "original": "trem, combói — meio de transporte composto por um ou vários veículos ligados entre si, com a função de transportar pessoas ou carga sobre uma linha ou trilho, segundo uma rota previamente planejada",
+      "adapted": "trem, combói — meio de transporte composto por um ou vários veículos ligados entre si, com a função de transportar pessoas ou carga sobre uma linha ou trilho, segundo uma rota previamente planeada",
+      "rules": [
+        "planejado"
+      ],
+      "region": "PT"
+    },
+    {
+      "word": "computador",
+      "sense": 3,
+      "original": "aparelho eletrônico capaz de calcular e realizar manipulações ordenadas (mediante programa) de dados adj.",
+      "adapted": "aparelho eletrónico capaz de calcular e realizar manipulações ordenadas (mediante programa) de dados adj.",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "conectividade",
+      "sense": 2,
+      "original": "a habilidade de se ligar e comunicar com outros computadores, equipamentos eletrônicos, software, ou com a Internet",
+      "adapted": "a habilidade de se ligar e comunicar com outros computadores, equipamentos eletrónicos, software, ou com a Internet",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "configurar",
+      "sense": 4,
+      "original": "estabelecer, em um programa, as opções que definem a preferência do usuário e atendem às exigências do computador e do sistema operacional em que ele está instalado",
+      "adapted": "estabelecer, em um programa, as opções que definem a preferência do utilizador e atendem às exigências do computador e do sistema operacional em que ele está instalado",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "conservação",
+      "sense": 2,
+      "original": "conjunto de diretrizes planejadas para o manejo e utilização sustentada dos recursos naturais, a um nível ótimo de rendimento e preservação da diversidade biológica",
+      "adapted": "conjunto de diretrizes planeadas para o manejo e utilização sustentada dos recursos naturais, a um nível ótimo de rendimento e preservação da diversidade biológica",
+      "rules": [
+        "planejado"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "correio eletrônico",
+      "sense": 1,
+      "original": "e-mail — sistema que comporta intercâmbio de mensagens através de meios de comunicação eletrônicos, especialmente de computadores ligados em rede",
+      "adapted": "e-mail — sistema que comporta intercâmbio de mensagens através de meios de comunicação eletrónicos, especialmente de computadores ligados em rede",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "corujão",
+      "sense": 1,
+      "original": "ônibus que viaja durante a noite",
+      "adapted": "autocarro que viaja durante a noite",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "crache",
+      "sense": 2,
+      "original": "encerramento súbito de um aplicativo ou aplicação, ou mesmo de um sistema operativo ou operacional devido a uma falha em sua rotina de execução",
+      "adapted": "encerramento súbito de um aplicação ou aplicação, ou mesmo de um sistema operativo ou operacional devido a uma falha em sua rotina de execução",
+      "rules": [
+        "aplicativo"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "cracolândia",
+      "sense": 1,
+      "original": "local onde ocorre grande aglomeração de usuários de entorpecentes para o consumo de drogas ilícitas, em especial o consumo de craque",
+      "adapted": "local onde ocorre grande aglomeração de utilizadores de entorpecentes para o consumo de drogas ilícitas, em especial o consumo de craque",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "cracudo",
+      "sense": 1,
+      "original": "(informal, pejorative) usuário de craque adj.",
+      "adapted": "(informal, pejorative) utilizador de craque adj.",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "crash",
+      "sense": 2,
+      "original": "ver crache (encerramento súbito de um aplicativo ou aplicação, ou mesmo de um sistema operativo ou operacional devido a uma falha em sua rotina de execução)",
+      "adapted": "ver crache (encerramento súbito de um aplicação ou aplicação, ou mesmo de um sistema operativo ou operacional devido a uma falha em sua rotina de execução)",
+      "rules": [
+        "aplicativo"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "cremor",
+      "sense": 1,
+      "original": "creme — cozimento do suco de uma planta",
+      "adapted": "creme — cozimento do sumo de uma planta",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "crossover",
+      "sense": 3,
+      "original": "filtro eletrônico",
+      "adapted": "filtro eletrónico",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "cursor",
+      "sense": 1,
+      "original": "ponteiro, apontador — ícone indicador virtual movimentado pelo mouse ou teclado na tela de um computador",
+      "adapted": "ponteiro, apontador — ícone indicador virtual movimentado pelo mouse ou teclado na ecrã de um computador",
+      "rules": [
+        "tela informática"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "código QR",
+      "sense": 1,
+      "original": "código de barras, ou barrametrico, bidimensional, que pode ser facilmente escaneado usando a maioria dos telefones celulares equipados com câmera",
+      "adapted": "código de barras, ou barrametrico, bidimensional, que pode ser facilmente escaneado usando a maioria dos telemóveis equipados com câmera",
+      "rules": [
+        "telefone celular"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "depuração",
+      "sense": 2,
+      "original": "processo de encontrar e reduzir defeitos num aplicativo de software ou mesmo em hardware",
+      "adapted": "processo de encontrar e reduzir defeitos num aplicação de software ou mesmo em hardware",
+      "rules": [
+        "aplicativo"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "descanso de tela",
+      "sense": 1,
+      "original": "proteção de ecrã, proteção de tela, protetor de ecrã, protetor de tela — programa de computador originalmente desenvolvido para prevenir a danificação do visor de monitor proveniente da exibição de imagem estática por prolongado tempo, a escurecendo ou preenchendo-a com animações",
+      "adapted": "proteção de ecrã, proteção de ecrã, protetor de ecrã, protetor de ecrã — programa de computador originalmente desenvolvido para prevenir a danificação do visor de monitor proveniente da exibição de imagem estática por prolongado tempo, a escurecendo ou preenchendo-a com animações",
+      "rules": [
+        "tela informática"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "desenvolvimento web",
+      "sense": 1,
+      "original": "área da tecnologia focada na criação, manutenção e otimização de sites, aplicativos e sistemas acessados pela internet ou redes internas",
+      "adapted": "área da tecnologia focada na criação, manutenção e otimização de sites, aplicações e sistemas acessados pela internet ou redes internas",
+      "rules": [
+        "aplicativo"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "dicionário reverso",
+      "sense": 1,
+      "original": "dicionário organizado fora dos padrões usuais e que fornece ao usuário informações que seriam difíceis de se obter em um dicionário tradicional",
+      "adapted": "dicionário organizado fora dos padrões usuais e que fornece ao utilizador informações que seriam difíceis de se obter em um dicionário tradicional",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "dirigido",
+      "sense": 1,
+      "original": "administrado, governado, orientado, planejado — orientado; que obedece a um caminho ou que o segue",
+      "adapted": "administrado, governado, orientado, planeado — orientado; que obedece a um caminho ou que o segue",
+      "rules": [
+        "planejado"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "dirigido",
+      "sense": 2,
+      "original": "planejado; que respeita uma planificação ou um plano",
+      "adapted": "planeado; que respeita uma planificação ou um plano",
+      "rules": [
+        "planejado"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "display",
+      "sense": 1,
+      "original": "peça física de equipamento conhecido como: ecrã, pantalha, tela, visor, mostrador (de equipamento eletrônico)",
+      "adapted": "peça física de equipamento conhecido como: ecrã, pantalha, tela, visor, mostrador (de equipamento eletrónico)",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "doca",
+      "sense": 3,
+      "original": "elemento gráfico que se posiciona à extremidade lateral de ambiente de área de trabalho e que comporta ícones servintes para lançamento de aplicativos, alternação entre estes ou para exibição de informação de notificação ou de estado de tais quando em execução",
+      "adapted": "elemento gráfico que se posiciona à extremidade lateral de ambiente de área de trabalho e que comporta ícones servintes para lançamento de aplicações, alternação entre estes ou para exibição de informação de notificação ou de estado de tais quando em execução",
+      "rules": [
+        "aplicativo"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "e-dicionário",
+      "sense": 1,
+      "original": "dicionário-e, edicionário, e dicionário — dicionário em formato digital que pode ser lido em equipamentos eletrônicos tais como computadores, PDAs, etc",
+      "adapted": "dicionário-e, edicionário, e dicionário — dicionário em formato digital que pode ser lido em equipamentos eletrónicos tais como computadores, PDAs, etc",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "e-livro",
+      "sense": 1,
+      "original": "livro em formato digital que pode ser lido em equipamentos eletrônicos tais como computadores, assistentes pessoais digitais, etc.",
+      "adapted": "livro em formato digital que pode ser lido em equipamentos eletrónicos tais como computadores, assistentes pessoais digitais, etc.",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "e-líquido",
+      "sense": 1,
+      "original": "composto de substâncias contida em cartucho de cigarro eletrônico",
+      "adapted": "composto de substâncias contida em cartucho de cigarro eletrónico",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "e-mail",
+      "sense": 1,
+      "original": "correio eletrônico, correio eletrónico, e-correio — mensagem enviada e recebida através da Internet",
+      "adapted": "correio eletrónico, correio eletrónico, e-correio — mensagem enviada e recebida através da Internet",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "eletroquímica",
+      "sense": 1,
+      "original": "ramo da química que estuda os aspectos eletrônicos e elétricos das reações químicas",
+      "adapted": "ramo da química que estuda os aspectos eletrónicos e elétricos das reações químicas",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "eletrosfera",
+      "sense": 1,
+      "original": "densidade eletrônica, nuvem eletrônica — região externa do núcleo do átomo onde se localizam os elétrons",
+      "adapted": "densidade eletrónica, nuvem eletrónica — região externa do núcleo do átomo onde se localizam os elétrons",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "eletrotécnica",
+      "sense": 2,
+      "original": "oficina para conserto de aparelhos eletrônicos e elétricos",
+      "adapted": "oficina para conserto de aparelhos eletrónicos e elétricos",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "eletrónica",
+      "sense": 1,
+      "original": "eletrônica, electrónica — ciência que estuda a ação e a aplicação do comportamento dos eletrões sujeitos a campos elétricos e/ou magnéticos",
+      "adapted": "eletrónica, electrónica — ciência que estuda a ação e a aplicação do comportamento dos eletrões sujeitos a campos elétricos e/ou magnéticos",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "eletrônico",
+      "sense": 1,
+      "original": "electrónico — relativo à eletrônica",
+      "adapted": "electrónico — relativo à eletrónica",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "enrolamento",
+      "sense": 2,
+      "original": "bobina de equipamentos elétrico/eletrônicos com a finalidade de produzir campo magnético para diversos fins",
+      "adapted": "bobina de equipamentos elétrico/eletrónicos com a finalidade de produzir campo magnético para diversos fins",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "entrar",
+      "sense": 3,
+      "original": "obter acesso a um sistema mediante identificação por meio de entrada de um nome de usuário e senha vinculada a um perfil ou conta",
+      "adapted": "obter acesso a um sistema mediante identificação por meio de entrada de um nome de utilizador e senha vinculada a um perfil ou conta",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "ervar",
+      "sense": 2,
+      "original": "envenenar com ervas, impregnar com suco de plantas venenosas um objeto com o que ferir",
+      "adapted": "envenenar com ervas, impregnar com sumo de plantas venenosas um objeto com o que ferir",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "esboçado",
+      "sense": 1,
+      "original": "delineado, ilustrado, planejado, preconcebido — que se esboçou",
+      "adapted": "delineado, ilustrado, planeado, preconcebido — que se esboçou",
+      "rules": [
+        "planejado"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "escaneador",
+      "sense": 1,
+      "original": "digitalizador, escâner — equipamento eletrônico que cria uma versão digital de fotos, imagens e textos num computador por meio da captura da luz reflexa da superfície por leitor",
+      "adapted": "digitalizador, escâner — equipamento eletrónico que cria uma versão digital de fotos, imagens e textos num computador por meio da captura da luz reflexa da superfície por leitor",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "espertofone",
+      "sense": 1,
+      "original": "telefone inteligente, telemóvel inteligente — telefone celular (telemóvel em Portugal) que combina recursos de computador pessoal, com funcionalidades avançadas que podem ser estendidas por meio de programas aplicativos executados pelo seu sistema operacional",
+      "adapted": "telefone inteligente, telemóvel inteligente — telemóvel (telemóvel em Portugal) que combina recursos de computador pessoal, com funcionalidades avançadas que podem ser estendidas por meio de programas aplicações executados pelo seu sistema operacional",
+      "rules": [
+        "aplicativo",
+        "telefone celular"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "espremer",
+      "sense": 2,
+      "original": "aplicar pressão para extrair o suco, a seiva etc",
+      "adapted": "aplicar pressão para extrair o sumo, a seiva etc",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "estanho",
+      "sense": 1,
+      "original": "elemento químico de símbolo Sn, possui o número atômico 50 e massa atômica relativa 118,71 u; é um metal maleável, cinza prateado brilhante, obtido comercialmente da cassiterita; é utilizado principalmente como revestimento de folhas de aço (folha de flanders) para fabricação de embalagens metálicas para alimentos; é muito utilizado, também, para soldar juntas de tubulações e circuitos eletrônicos",
+      "adapted": "elemento químico de símbolo Sn, possui o número atômico 50 e massa atômica relativa 118,71 u; é um metal maleável, cinza prateado brilhante, obtido comercialmente da cassiterita; é utilizado principalmente como revestimento de folhas de aço (folha de flanders) para fabricação de embalagens metálicas para alimentos; é muito utilizado, também, para soldar juntas de tubulações e circuitos eletrónicos",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "estação",
+      "sense": 2,
+      "original": "local onde param trens e ônibus",
+      "adapted": "local onde param trens e autocarro",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "expressão",
+      "sense": 5,
+      "original": "ação pela qual se espreme o suco de uma planta, fruta, etc",
+      "adapted": "ação pela qual se espreme o sumo de uma planta, fruta, etc",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "fita isolante",
+      "sense": 1,
+      "original": "fita adesiva que serve de isolante elétrico para conexões e componentes eletrônicos",
+      "adapted": "fita adesiva que serve de isolante elétrico para conexões e componentes eletrónicos",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "freeware",
+      "sense": 1,
+      "original": "programa de computador posto gratuitamente à disposição dos usuários",
+      "adapted": "programa de computador posto gratuitamente à disposição dos utilizadores",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "frigorífico",
+      "sense": 1,
+      "original": "geladeira, geleira, matadouro, abatedouro, açougue — eletrodoméstico usado para manter alimentos frescos por refrigeração",
+      "adapted": "frigorífico, geleira, matadouro, abatedouro, açougue — eletrodoméstico usado para manter alimentos frescos por refrigeração",
+      "rules": [
+        "geladeira"
+      ],
+      "region": "PT"
+    },
+    {
+      "word": "frízer",
+      "sense": 2,
+      "original": "congelador — compartimento de geladeira onde a temperatura é inferior a zero, destinado a fabricar gelo e/ou conservar alimentos",
+      "adapted": "congelador — compartimento de frigorífico onde a temperatura é inferior a zero, destinado a fabricar gelo e/ou conservar alimentos",
+      "rules": [
+        "geladeira"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "fórmula molecular",
+      "sense": 1,
+      "original": "fórmula que indica apenas número de átomos em uma molécula sem indicar as ligações entre estes átomos e a distribuição eletrônica em tais ligações",
+      "adapted": "fórmula que indica apenas número de átomos em uma molécula sem indicar as ligações entre estes átomos e a distribuição eletrónica em tais ligações",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "fúcsia",
+      "sense": 2,
+      "original": "tom de cor rosado muito forte e vivo, um pouco mais rosa ou violeta que o magenta (por razões técnicas, é impossível exibir a diferença entre essas duas cores em meios eletrônicos.)",
+      "adapted": "tom de cor rosado muito forte e vivo, um pouco mais rosa ou violeta que o magenta (por razões técnicas, é impossível exibir a diferença entre essas duas cores em meios eletrónicos.)",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "geleia",
+      "sense": 1,
+      "original": "geléia, marmelada, doce, gosma, meleca, angu — conserva feita de sumos ou sucos de frutas ou vegetais e cozida;",
+      "adapted": "geléia, marmelada, doce, gosma, meleca, angu — conserva feita de sumos ou sumos de frutas ou vegetais e cozida;",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "glossário",
+      "sense": 5,
+      "original": "utilitário de editores de texto que permitem a inclusão semi-automática de palavras, expressões, datas e até frases mais frequentemente repetidas pelo usuário",
+      "adapted": "utilitário de editores de texto que permitem a inclusão semi-automática de palavras, expressões, datas e até frases mais frequentemente repetidas pelo utilizador",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "goiaba",
+      "sense": 1,
+      "original": "fruto gerado pela goiabeira, rico em vitamina C e comumente usado em doces como a goiabada, suco, geleia e em aromas e sabores adj.",
+      "adapted": "fruto gerado pela goiabeira, rico em vitamina C e comumente usado em doces como a goiabada, sumo, geleia e em aromas e sabores adj.",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "grogue",
+      "sense": 1,
+      "original": "aguardente, cachaça, pinga — bebida alcoólica composta de suco e casca de limão, açúcar e água quente;",
+      "adapted": "aguardente, cachaça, pinga — bebida alcoólica composta de sumo e casca de limão, açúcar e água quente;",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "hemialbumose",
+      "sense": 1,
+      "original": "produto que se forma durante a transformação das matérias albuminoides em peptonas pela ação dos sucos gástrico e pancreático",
+      "adapted": "produto que se forma durante a transformação das matérias albuminoides em peptonas pela ação dos sumos gástrico e pancreático",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "homose",
+      "sense": 2,
+      "original": "assimilação e cocção de suco nutritivo",
+      "adapted": "assimilação e cocção de sumo nutritivo",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "iniciar",
+      "sense": 5,
+      "original": "executar ou abrir um aplicativo ou outros tipos de programa de computador",
+      "adapted": "executar ou abrir um aplicação ou outros tipos de programa de computador",
+      "rules": [
+        "aplicativo"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "instalar",
+      "sense": 6,
+      "original": "inserir em equipamento eletrônico",
+      "adapted": "inserir em equipamento eletrónico",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "interatividade",
+      "sense": 2,
+      "original": "capacidade que tem um usuário de agir ativamente junto a um programa de computador, tanto por meio da inserção de novos dados quanto por comandos",
+      "adapted": "capacidade que tem um utilizador de agir ativamente junto a um programa de computador, tanto por meio da inserção de novos dados quanto por comandos",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "interativo",
+      "sense": 3,
+      "original": "referente a sistemas ou procedimentos computacionais que funcionam mediante interação com o usuário",
+      "adapted": "referente a sistemas ou procedimentos computacionais que funcionam mediante interação com o utilizador",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "interfone",
+      "sense": 1,
+      "original": "derivado do telefone que objetiva um usuário de fora de um prédio se comunicar com o porteiro ou com um morador que está dentro do apartamento",
+      "adapted": "derivado do telefone que objetiva um utilizador de fora de um prédio se comunicar com o porteiro ou com um morador que está dentro do apartamento",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "internauta",
+      "sense": 1,
+      "original": "usuário que navega a internet",
+      "adapted": "utilizador que navega a internet",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "internet",
+      "sense": 1,
+      "original": "rede de computadores dispersos por todo o planeta que trocam dados e mensagens utilizando um protocolo comum, unindo usuários particulares, entidades de pesquisa, órgãos culturais, institutos militares, bibliotecas e empresas de toda envergadura",
+      "adapted": "rede de computadores dispersos por todo o planeta que trocam dados e mensagens utilizando um protocolo comum, unindo utilizadores particulares, entidades de pesquisa, órgãos culturais, institutos militares, bibliotecas e empresas de toda envergadura",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "internete",
+      "sense": 1,
+      "original": "rede de computadores dispersos por todo o planeta que trocam dados e mensagens utilizando um protocolo comum, unindo usuários particulares, entidades de pesquisa, órgãos culturais, institutos militares, bibliotecas e empresas de toda envergadura",
+      "adapted": "rede de computadores dispersos por todo o planeta que trocam dados e mensagens utilizando um protocolo comum, unindo utilizadores particulares, entidades de pesquisa, órgãos culturais, institutos militares, bibliotecas e empresas de toda envergadura",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "ironia do destino",
+      "sense": 1,
+      "original": "situação em que os eventos ocorrem de maneira contrária ao planejado",
+      "adapted": "situação em que os eventos ocorrem de maneira contrária ao planeado",
+      "rules": [
+        "planejado"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "itajé",
+      "sense": 1,
+      "original": "móvel de cozinha, para xícaras, copos, pratos, etc",
+      "adapted": "móvel de cozinha, para chávenas, copos, pratos, etc",
+      "rules": [
+        "xícara"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "janela",
+      "sense": 3,
+      "original": "área na tela de um computador, de apresentação componível de diversos elementos gráficos, e que se destina ao uso de um aplicativo",
+      "adapted": "área na ecrã de um computador, de apresentação componível de diversos elementos gráficos, e que se destina ao uso de um aplicação",
+      "rules": [
+        "aplicativo",
+        "tela informática"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "jiga",
+      "sense": 3,
+      "original": "procedimento de testes de circuitos eletrônicos.",
+      "adapted": "procedimento de testes de circuitos eletrónicos.",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "jiga",
+      "sense": 4,
+      "original": "equipamento que realiza testes automatizados de circuitos eletrônicos.",
+      "adapted": "equipamento que realiza testes automatizados de circuitos eletrónicos.",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "jogo eletrônico",
+      "sense": 1,
+      "original": "jogo que se joga em equipamento eletrônico",
+      "adapted": "jogo que se joga em equipamento eletrónico",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "jogo salvo",
+      "sense": 1,
+      "original": "parte de informação digitalmente armazenada sobre o progresso de um jogador em um jogo eletrônico",
+      "adapted": "parte de informação digitalmente armazenada sobre o progresso de um jogador em um jogo eletrónico",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "lagar",
+      "sense": 1,
+      "original": "lagariça — local onde se prensam as uvas, as maçãs ou as azeitonas, para a obtenção do seus sucos",
+      "adapted": "lagariça — local onde se prensam as uvas, as maçãs ou as azeitonas, para a obtenção do seus sumos",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "leitar",
+      "sense": 1,
+      "original": "produzir leite ou suco leitoso",
+      "adapted": "produzir leite ou sumo leitoso",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "leitar",
+      "sense": 2,
+      "original": "dar a sentir sabor de leite ou suco leitoso adj.",
+      "adapted": "dar a sentir sabor de leite ou sumo leitoso adj.",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "lotação",
+      "sense": 4,
+      "original": "micro-ônibus ou van que integra-se ao, e realiza o, transporte público",
+      "adapted": "micro-autocarro ou van que integra-se ao, e realiza o, transporte público",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "lotação",
+      "sense": 6,
+      "original": "ônibus de transporte público",
+      "adapted": "autocarro de transporte público",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "malicioso",
+      "sense": 2,
+      "original": "que traz malefício ao usuário",
+      "adapted": "que traz malefício ao utilizador",
+      "rules": [
+        "usuário"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "manete",
+      "sense": 1,
+      "original": "(Minas Gerais) controle usado para comandar o movimento de um objeto ou personagem em um jogo eletrônico",
+      "adapted": "(Minas Gerais) controle usado para comandar o movimento de um objeto ou personagem em um jogo eletrónico",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "marca-passo",
+      "sense": 1,
+      "original": "aparelho eletrônico que, implantado por procedimento cirúrgico num paciente, serve como estimulador cardíaco",
+      "adapted": "aparelho eletrónico que, implantado por procedimento cirúrgico num paciente, serve como estimulador cardíaco",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "marinete",
+      "sense": 1,
+      "original": "ônibus",
+      "adapted": "autocarro",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "mause",
+      "sense": 1,
+      "original": "rato — periférico de computador usado para controlar a posição de um cursor numa tela de computador",
+      "adapted": "rato — periférico de computador usado para controlar a posição de um cursor numa ecrã de computador",
+      "rules": [
+        "tela informática"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "maximizar",
+      "sense": 3,
+      "original": "fazer uma janela ocupar o maior espaço possível da tela do computador",
+      "adapted": "fazer uma janela ocupar o maior espaço possível da ecrã do computador",
+      "rules": [
+        "tela informática"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "mecatrônica",
+      "sense": 1,
+      "original": "engenharia que combina a mecânica e a eletrônica",
+      "adapted": "engenharia que combina a mecânica e a eletrónica",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "mecônio",
+      "sense": 2,
+      "original": "suco das papoulas",
+      "adapted": "sumo das papoulas",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "meia de leite",
+      "sense": 1,
+      "original": "café com leite servido em xícara pequena",
+      "adapted": "café com leite servido em chávena pequena",
+      "rules": [
+        "xícara"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "mercúrio",
+      "sense": 1,
+      "original": "hidrargiro — elemento químico de símbolo Hg, possui o número atômico 80 e massa atômica relativa 200,59 u; é um metal de transição, branco prateado; encontra-se em estado líquido à temperatura ambiente; é utilizado pela indústria eletro-eletrônica (sensores, baterias e lâmpadas), na agricultura (como fungicida e bactericida), em medicamentos, detonadores e corantes",
+      "adapted": "hidrargiro — elemento químico de símbolo Hg, possui o número atômico 80 e massa atômica relativa 200,59 u; é um metal de transição, branco prateado; encontra-se em estado líquido à temperatura ambiente; é utilizado pela indústria eletro-eletrónica (sensores, baterias e lâmpadas), na agricultura (como fungicida e bactericida), em medicamentos, detonadores e corantes",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "microchipe",
+      "sense": 1,
+      "original": "chipe, circuito integrado, nanochipe — um chipe eletrônico miniaturizado, especialmente um de modelo inventado em 2003, que começou a ser usado em aparelhos de telefone celular a partir de 2010, e que mede 1,5 centímetro de comprimento e 1,2 centímetro de largura",
+      "adapted": "chipe, circuito integrado, nanochipe — um chipe eletrónico miniaturizado, especialmente um de modelo inventado em 2003, que começou a ser usado em aparelhos de telemóvel a partir de 2010, e que mede 1,5 centímetro de comprimento e 1,2 centímetro de largura",
+      "rules": [
+        "eletrônico",
+        "telefone celular"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "microfone",
+      "sense": 1,
+      "original": "objeto usado para captar sons e transmitir a algum aparelho eletrônico capaz de gravar ou reproduzir o áudio",
+      "adapted": "objeto usado para captar sons e transmitir a algum aparelho eletrónico capaz de gravar ou reproduzir o áudio",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "mimosa",
+      "sense": 5,
+      "original": "drinque feito a base de champanhe mais adição comumente de suco de laranja",
+      "adapted": "drinque feito a base de champanhe mais adição comumente de sumo de laranja",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "minhoca de metal",
+      "sense": 1,
+      "original": "ônibus.",
+      "adapted": "autocarro.",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "miniaturizar",
+      "sense": 3,
+      "original": "reduzir (circuito eletrônico) a dimensões mínimas",
+      "adapted": "reduzir (circuito eletrónico) a dimensões mínimas",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "minijogo",
+      "sense": 1,
+      "original": "jogo eletrônico contidos dentro de um pequeno console portátil que traz vários jogos em um só aparelho",
+      "adapted": "jogo eletrónico contidos dentro de um pequeno console portátil que traz vários jogos em um só aparelho",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "miniônibus",
+      "sense": 1,
+      "original": "ônibus de proporções reduzidas",
+      "adapted": "autocarro de proporções reduzidas",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "molibdênio",
+      "sense": 1,
+      "original": "elemento químico de símbolo Mo, possui o número atômico 42 e massa atômica relativa 95,94 u; é um metal de transição, obtido através dos minerais molibdenita, wulfenita e powellita; é utilizado para fabricação de ligas metálicas de alta resistência, na indústria de isótopos nucleares e na eletrônica em telas de cristal líquido",
+      "adapted": "elemento químico de símbolo Mo, possui o número atômico 42 e massa atômica relativa 95,94 u; é um metal de transição, obtido através dos minerais molibdenita, wulfenita e powellita; é utilizado para fabricação de ligas metálicas de alta resistência, na indústria de isótopos nucleares e na eletrónica em telas de cristal líquido",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "montagem",
+      "sense": 2,
+      "original": "trabalho de pós-produção que consiste em unir os planos filmados pela equipe de produção de modo a alcançar o resultado planejado na pré-produção",
+      "adapted": "trabalho de pós-produção que consiste em unir os planos filmados pela equipe de produção de modo a alcançar o resultado planeado na pré-produção",
+      "rules": [
+        "planejado"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "morcegar",
+      "sense": 3,
+      "original": "(Brazil, uncommon) agarrar-se na lateral ou traseira de grandes veículos (como ônibus, caminhões) de forma a conseguir carona clandestina",
+      "adapted": "(Brazil, uncommon) agarrar-se na lateral ou traseira de grandes veículos (como autocarro, caminhões) de forma a conseguir carona clandestina",
+      "rules": [
+        "ônibus"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "mosto",
+      "sense": 2,
+      "original": "suco, em fermentação, de qualquer fruta que contenha açúcar",
+      "adapted": "sumo, em fermentação, de qualquer fruta que contenha açúcar",
+      "rules": [
+        "suco"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "motocasa",
+      "sense": 1,
+      "original": "veículo automotivo equipado com espaço de convivência e amenidades encontradas em uma residência, normalmente inclui cozinha, banheiro e acomodações de repouso",
+      "adapted": "veículo automotivo equipado com espaço de convivência e amenidades encontradas em uma residência, normalmente inclui cozinha, casa de banho e acomodações de repouso",
+      "rules": [
+        "banheiro"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "multibanco",
+      "sense": 1,
+      "original": "caixa eletrônica que permite aos clientes dos bancos aderentes levantar numerário e efetuar outras operações como débitos, consultas de saldo e pagamentos mediante o uso de um cartão pessoal emitido pela entidade bancária",
+      "adapted": "caixa eletrónica que permite aos clientes dos bancos aderentes levantar numerário e efetuar outras operações como débitos, consultas de saldo e pagamentos mediante o uso de um cartão pessoal emitido pela entidade bancária",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "multibanco",
+      "sense": 2,
+      "original": "terminal eletrônico nos estabelecimentos comerciais e repartições públicas que permite efetuar pagamentos com o cartão pessoal desde que o saldo da conta o permita",
+      "adapted": "terminal eletrónico nos estabelecimentos comerciais e repartições públicas que permite efetuar pagamentos com o cartão pessoal desde que o saldo da conta o permita",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "música ambiente",
+      "sense": 1,
+      "original": "gênero de música eletrônica em que é dada mais atenção às texturas sonoras e aos timbres do que ao ritmo",
+      "adapted": "gênero de música eletrónica em que é dada mais atenção às texturas sonoras e aos timbres do que ao ritmo",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    },
+    {
+      "word": "música concreta",
+      "sense": 1,
+      "original": "música eletrônica produzida a partir de edição de áudio unida à fragmentos de sons naturais e/ou industriais",
+      "adapted": "música eletrónica produzida a partir de edição de áudio unida à fragmentos de sons naturais e/ou industriais",
+      "rules": [
+        "eletrônico"
+      ],
+      "region": "unmarked"
+    }
+  ],
+  "notes": [
+    "All source senses are exported from the SQLite extraction, not truncated to the previous PWA subset.",
+    "Original text retained for each automatically adapted sense.",
+    "Automatic substitutions are not lexicographically validated.",
+    "Explicitly BR-labelled senses are left unchanged.",
+    "Some original senses may still have Brazilian constructions."
+  ]
+}

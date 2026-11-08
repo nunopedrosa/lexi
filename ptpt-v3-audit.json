@@ -1,0 +1,246 @@
+{
+  "corrected_senses_by_rule": {
+    "tela de computador": 9,
+    "aplicativo": 18,
+    "ônibus": 31,
+    "usuário": 49,
+    "planejado": 17,
+    "celular telefone": 7
+  },
+  "distinct_entries_affected": 120,
+  "examples": {
+    "tela de computador": [
+      {
+        "word": "apontador",
+        "before": "cursor, ponteiro — ícone indicador virtual movimentado pelo mouse ou teclado na tela de um computador",
+        "after": "cursor, ponteiro — ícone indicador virtual movimentado pelo mouse ou teclado na ecrã de um computador"
+      },
+      {
+        "word": "ícone",
+        "before": "imagem representativa de ficheiro/arquivo na ecrã/tela do computador; pequena imagem ou símbolo representativo de um tipo de programa ou de um objeto",
+        "after": "imagem representativa de ficheiro/arquivo na ecrã/ecrã do computador; pequena imagem ou símbolo representativo de um tipo de programa ou de um objeto"
+      },
+      {
+        "word": "cursor",
+        "before": "ponteiro, apontador — ícone indicador virtual movimentado pelo mouse ou teclado na tela de um computador",
+        "after": "ponteiro, apontador — ícone indicador virtual movimentado pelo mouse ou teclado na ecrã de um computador"
+      },
+      {
+        "word": "mause",
+        "before": "rato — periférico de computador usado para controlar a posição de um cursor numa tela de computador",
+        "after": "rato — periférico de computador usado para controlar a posição de um cursor numa ecrã de computador"
+      },
+      {
+        "word": "maximizar",
+        "before": "fazer uma janela ocupar o maior espaço possível da tela do computador",
+        "after": "fazer uma janela ocupar o maior espaço possível da ecrã do computador"
+      },
+      {
+        "word": "barra de deslocamento",
+        "before": "barra de rolagem — controle gráfico em uma interface gráfica do utilizador que permite que texto contínuo, imagens ou qualquer outro elemento possam ser rolados em uma tela de computador, janela ou viewport",
+        "after": "barra de rolagem — controle gráfico em uma interface gráfica do utilizador que permite que texto contínuo, imagens ou qualquer outro elemento possam ser rolados em uma ecrã de computador, janela ou viewport"
+      },
+      {
+        "word": "barra de rolagem",
+        "before": "barra de deslocamento — controle gráfico em uma interface gráfica do utilizador que permite que texto contínuo, imagens ou qualquer outro elemento possam ser rolados em uma tela de computador, janela ou viewport",
+        "after": "barra de deslocamento — controle gráfico em uma interface gráfica do utilizador que permite que texto contínuo, imagens ou qualquer outro elemento possam ser rolados em uma ecrã de computador, janela ou viewport"
+      },
+      {
+        "word": "papel de parede",
+        "before": "fundo de tela — imagem de fundo de tela de computador",
+        "after": "fundo de tela — imagem de fundo de ecrã de computador"
+      }
+    ],
+    "aplicativo": [
+      {
+        "word": "app",
+        "before": "aplicativo, aplicação",
+        "after": "aplicação, aplicação"
+      },
+      {
+        "word": "depuração",
+        "before": "processo de encontrar e reduzir defeitos num aplicativo de software ou mesmo em hardware",
+        "after": "processo de encontrar e reduzir defeitos num aplicação de software ou mesmo em hardware"
+      },
+      {
+        "word": "desenvolvimento web",
+        "before": "área da tecnologia focada na criação, manutenção e otimização de sites, aplicativos e sistemas acessados pela internet ou redes internas",
+        "after": "área da tecnologia focada na criação, manutenção e otimização de sites, aplicações e sistemas acessados pela internet ou redes internas"
+      },
+      {
+        "word": "doca",
+        "before": "elemento gráfico que se posiciona à extremidade lateral de ambiente de área de trabalho e que comporta ícones servintes para lançamento de aplicativos, alternação entre estes ou para exibição de informação de notificação ou de estado de tai",
+        "after": "elemento gráfico que se posiciona à extremidade lateral de ambiente de área de trabalho e que comporta ícones servintes para lançamento de aplicações, alternação entre estes ou para exibição de informação de notificação ou de estado de tais"
+      },
+      {
+        "word": "C",
+        "before": "linguagem de programação de alto nível para computadores, voltada para o desenvolvimento de sistemas e aplicativos",
+        "after": "linguagem de programação de alto nível para computadores, voltada para o desenvolvimento de sistemas e aplicações"
+      },
+      {
+        "word": "crache",
+        "before": "encerramento súbito de um aplicativo ou aplicação, ou mesmo de um sistema operativo ou operacional devido a uma falha em sua rotina de execução",
+        "after": "encerramento súbito de um aplicação ou aplicação, ou mesmo de um sistema operativo ou operacional devido a uma falha em sua rotina de execução"
+      },
+      {
+        "word": "crash",
+        "before": "ver crache (encerramento súbito de um aplicativo ou aplicação, ou mesmo de um sistema operativo ou operacional devido a uma falha em sua rotina de execução)",
+        "after": "ver crache (encerramento súbito de um aplicação ou aplicação, ou mesmo de um sistema operativo ou operacional devido a uma falha em sua rotina de execução)"
+      },
+      {
+        "word": "bandeja de sistema",
+        "before": "pequena área normalmente de formato retangular na qual fica definido um quadro de ícones ligados a funções essencias de controle, indicação e notificação de aplicativos e de funções básicas do sistema operacional em operação",
+        "after": "pequena área normalmente de formato retangular na qual fica definido um quadro de ícones ligados a funções essencias de controle, indicação e notificação de aplicações e de funções básicas do sistema operacional em operação"
+      }
+    ],
+    "ônibus": [
+      {
+        "word": "aquelar",
+        "before": "(Portugal, colloquial) palavra-ônibus; exprime qualquer ação, substituindo a outro verbo, por tabuísmo, por comodidade, por entendimento do que quer ser dito; fazer, arranjar",
+        "after": "(Portugal, colloquial) palavra-autocarro; exprime qualquer ação, substituindo a outro verbo, por tabuísmo, por comodidade, por entendimento do que quer ser dito; fazer, arranjar"
+      },
+      {
+        "word": "articulado",
+        "before": "ônibus articulado, principalmente coletivo adj.",
+        "after": "autocarro articulado, principalmente coletivo adj."
+      },
+      {
+        "word": "auto-ônibus",
+        "before": "ônibus",
+        "after": "autocarro"
+      },
+      {
+        "word": "autobus",
+        "before": "auto-ônibus",
+        "after": "auto-autocarro"
+      },
+      {
+        "word": "chifrudo",
+        "before": "(Brazil, colloquial, figuratively) ônibus elétrico",
+        "after": "(Brazil, colloquial, figuratively) autocarro elétrico"
+      },
+      {
+        "word": "cobrador de ônibus",
+        "before": "pessoa que, no transporte público feito a ônibus, recebe o valor da passagem e devolve o troco",
+        "after": "pessoa que, no transporte público feito a autocarro, recebe o valor da passagem e devolve o troco"
+      },
+      {
+        "word": "corujão",
+        "before": "ônibus que viaja durante a noite",
+        "after": "autocarro que viaja durante a noite"
+      },
+      {
+        "word": "marinete",
+        "before": "ônibus",
+        "after": "autocarro"
+      }
+    ],
+    "usuário": [
+      {
+        "word": "arquipirata",
+        "before": "Agiota; usuário.",
+        "after": "Agiota; utilizador."
+      },
+      {
+        "word": "artefato",
+        "before": "objeto fabricado pelo homem que dá informações sobre a cultura do seu criador e usuários",
+        "after": "objeto fabricado pelo homem que dá informações sobre a cultura do seu criador e utilizadores"
+      },
+      {
+        "word": "área de trabalho",
+        "before": "a soma visual dos elementos em tela exibidos conjuntamente que compõe a interface inicial utilizável para múltiplas propostas com a qual o usuário se depara após o carregamento do ambiente gráfico",
+        "after": "a soma visual dos elementos em tela exibidos conjuntamente que compõe a interface inicial utilizável para múltiplas propostas com a qual o utilizador se depara após o carregamento do ambiente gráfico"
+      },
+      {
+        "word": "dicionário reverso",
+        "before": "dicionário organizado fora dos padrões usuais e que fornece ao usuário informações que seriam difíceis de se obter em um dicionário tradicional",
+        "after": "dicionário organizado fora dos padrões usuais e que fornece ao utilizador informações que seriam difíceis de se obter em um dicionário tradicional"
+      },
+      {
+        "word": "interatividade",
+        "before": "capacidade que tem um usuário de agir ativamente junto a um programa de computador, tanto por meio da inserção de novos dados quanto por comandos",
+        "after": "capacidade que tem um utilizador de agir ativamente junto a um programa de computador, tanto por meio da inserção de novos dados quanto por comandos"
+      },
+      {
+        "word": "interativo",
+        "before": "referente a sistemas ou procedimentos computacionais que funcionam mediante interação com o usuário",
+        "after": "referente a sistemas ou procedimentos computacionais que funcionam mediante interação com o utilizador"
+      },
+      {
+        "word": "interfone",
+        "before": "derivado do telefone que objetiva um usuário de fora de um prédio se comunicar com o porteiro ou com um morador que está dentro do apartamento",
+        "after": "derivado do telefone que objetiva um utilizador de fora de um prédio se comunicar com o porteiro ou com um morador que está dentro do apartamento"
+      },
+      {
+        "word": "internauta",
+        "before": "usuário que navega a internet",
+        "after": "utilizador que navega a internet"
+      }
+    ],
+    "planejado": [
+      {
+        "word": "dirigido",
+        "before": "administrado, governado, orientado, planejado — orientado; que obedece a um caminho ou que o segue",
+        "after": "administrado, governado, orientado, planeado — orientado; que obedece a um caminho ou que o segue"
+      },
+      {
+        "word": "dirigido",
+        "before": "planejado; que respeita uma planificação ou um plano",
+        "after": "planeado; que respeita uma planificação ou um plano"
+      },
+      {
+        "word": "ironia do destino",
+        "before": "situação em que os eventos ocorrem de maneira contrária ao planejado",
+        "after": "situação em que os eventos ocorrem de maneira contrária ao planeado"
+      },
+      {
+        "word": "comboio",
+        "before": "trem, combói — meio de transporte composto por um ou vários veículos ligados entre si, com a função de transportar pessoas ou carga sobre uma linha ou trilho, segundo uma rota previamente planejada",
+        "after": "trem, combói — meio de transporte composto por um ou vários veículos ligados entre si, com a função de transportar pessoas ou carga sobre uma linha ou trilho, segundo uma rota previamente planeada"
+      },
+      {
+        "word": "conservação",
+        "before": "conjunto de diretrizes planejadas para o manejo e utilização sustentada dos recursos naturais, a um nível ótimo de rendimento e preservação da diversidade biológica",
+        "after": "conjunto de diretrizes planeadas para o manejo e utilização sustentada dos recursos naturais, a um nível ótimo de rendimento e preservação da diversidade biológica"
+      },
+      {
+        "word": "montagem",
+        "before": "trabalho de pós-produção que consiste em unir os planos filmados pela equipe de produção de modo a alcançar o resultado planejado na pré-produção",
+        "after": "trabalho de pós-produção que consiste em unir os planos filmados pela equipe de produção de modo a alcançar o resultado planeado na pré-produção"
+      },
+      {
+        "word": "planificado",
+        "before": "que obedece a uma planificação; planejado",
+        "after": "que obedece a uma planificação; planeado"
+      },
+      {
+        "word": "preconcebido",
+        "before": "esboçado, planejado — que foi projetado ou concebido com antecedência; premeditado",
+        "after": "esboçado, planeado — que foi projetado ou concebido com antecedência; premeditado"
+      }
+    ],
+    "celular telefone": [
+      {
+        "word": "nanochipe",
+        "before": "especialmente um dos chipes que começaram a ser usados em aparelhos de telefone celular a partir de 2012, em substituição aos microchipes, e cujas dimensões são de 1,23 centímetro de comprimento e 0,88 centímetro de largura",
+        "after": "especialmente um dos chipes que começaram a ser usados em aparelhos de telemóvel a partir de 2012, em substituição aos microchipes, e cujas dimensões são de 1,23 centímetro de comprimento e 0,88 centímetro de largura"
+      },
+      {
+        "word": "microchipe",
+        "before": "chipe, circuito integrado, nanochipe — um chipe eletrônico miniaturizado, especialmente um de modelo inventado em 2003, que começou a ser usado em aparelhos de telefone celular a partir de 2010, e que mede 1,5 centímetro de comprimento e 1,",
+        "after": "chipe, circuito integrado, nanochipe — um chipe eletrônico miniaturizado, especialmente um de modelo inventado em 2003, que começou a ser usado em aparelhos de telemóvel a partir de 2010, e que mede 1,5 centímetro de comprimento e 1,2 centí"
+      },
+      {
+        "word": "pau de sélfie",
+        "before": "(Anglicism) bastão de selfie — aparelho eletrônico, em formato de vara ou bastão, que, segurado por uma das extremidades por uma pessoa, tendo um telefone celular ou câmera fotográfica digital acoplado à outra extremidade, permite à pessoa ",
+        "after": "(Anglicism) bastão de selfie — aparelho eletrônico, em formato de vara ou bastão, que, segurado por uma das extremidades por uma pessoa, tendo um telemóvel ou câmera fotográfica digital acoplado à outra extremidade, permite à pessoa tirar u"
+      },
+      {
+        "word": "tijolo",
+        "before": "(figuratively) livro muito volumoso, telefone celular muito antigo e pesado",
+        "after": "(figuratively) livro muito volumoso, telemóvel muito antigo e pesado"
+      }
+    ]
+  },
+  "note": "Automatic proposals, not independently verified. Original definitions preserved. No corrections to BR-labelled senses."
+}
