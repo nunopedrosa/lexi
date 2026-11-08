@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="92 92 328 328" width="328" height="328" role="img" aria-label="Lexi">
+ <title>Lexi</title>
+ <!-- Bare mark for the brand background. Same geometry as icons/icon.svg, cropped to the artwork. -->
+ <g transform="translate(256 256) scale(1.2) translate(-256 -256)">
+  <g>
+   <path d="M190 317 L190 137 A180 180 0 0 1 267.02 154.31 Z" fill="#167e88"/>
+   <path d="M190 317 L275.43 158.56 A180 180 0 0 1 335.01 210.35 Z" fill="#188691"/>
+   <path d="M190 317 L340.39 218.09 A180 180 0 0 1 368.25 291.95 Z" fill="#1a8f9a"/>
+  </g>
+  <path d="M142 377 H366 A12 12 0 0 0 378 365 V325 A12 12 0 0 0 366 313 H200 A10 10 0 0 0 190 303 V151 A16 16 0 0 0 174 135 H150 A16 16 0 0 0 134 151 V369 A8 8 0 0 0 142 377 Z" fill="#fff"/>
+ </g>
+</svg>

@@ -85,7 +85,7 @@ bash scripts/deploy.sh --verify "$HOME/lexi.basecentral.link"
 O destino predefinido é `~/lexi.basecentral.link`, pelo que o argumento pode ser omitido. O script usa o motor comum BaseCentral (`scripts/deploy-core.sh`) e a lista de publicação em `scripts/deploy-profile.sh`:
 
 - exige um checkout limpo, num ramo com upstream, e faz `git pull --ff-only`;
-- publica apenas a lista revista de 104 ficheiros (HTML, scripts, manifest, ícones, `data/`, auditorias, licenças);
+- publica apenas a lista revista de 105 ficheiros (HTML, scripts, manifest, ícones, `data/`, auditorias, licenças);
 - não publica `README.md`, `AGENTS.md` nem testes, não corre builds, não apaga ficheiros alheios e não publica nada implicitamente;
 - publica `sw.js` depois dos restantes ficheiros.
 
@@ -136,4 +136,13 @@ As palavras nas definições são botões que abrem a respetiva entrada sem rees
 - A cópia de segurança é um JSON `lexi-backup` (schema 1) com as preferências de idioma e da ligação ao Priberam. A Lexi não guarda registos pessoais. A importação valida o ficheiro, mostra uma pré-visualização e permite cancelar.
 - **Preparar dicionário para uso offline** transfere definições, formas e sílabas (cerca de 26 MB), verifica a escrita na cache, permite cancelar e distingue o shell offline do dicionário preparado.
 - O `<dialog>` foi substituído por um painel compatível, foram removidos `?.`, `??` e `||=`, e foram adicionados ícones PNG, `apple-touch-icon` e fallbacks CSS para o alvo iPhone 6 / Safari 12.
-- Continua a faltar validação em iPhone 6/Safari 12 e revisão de acessibilidade em dispositivo. `node test-conversation.cjs` cobre agora 40 asserções do interpretador, incluindo comandos em inglês.
+- Continua a faltar validação em iPhone 6/Safari 12 e revisão de acessibilidade em dispositivo. `node test-conversation.cjs` cobre agora 40 asserções no interpretador, incluindo comandos em inglês.
+
+
+## v10 — identidade visual
+
+- Novo símbolo: um **L** branco (a lombada e a capa inferior do livro aberto) com três folhas em tons de turquesa a abrir a partir da lombada. Desenhado em `icons/icon.svg`, que continua a ser o ícone da aplicação, do manifest e do favicon.
+- `icons/mark.svg` é o mesmo desenho sem a placa de fundo, usado no cabeçalho à esquerda de «Lexi». Está na pré-cache do service worker e na lista de publicação.
+- `icons/icon-180.png` (apple-touch-icon) passou a ser de sangria total: o iOS aplica a sua própria máscara e os cantos transparentes apareciam a preto.
+- Versão atualizada para `2026.11.08.1` porque a arte e o cabeçalho são ficheiros em cache.
+

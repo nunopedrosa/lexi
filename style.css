@@ -45,7 +45,9 @@ header{
  justify-content:space-between;
  align-items:center;
 }
-.brand{min-width:0}
+.brand{min-width:0;display:flex;align-items:center}
+.brand-mark{width:40px;height:40px;margin-right:var(--space-5);flex:0 0 auto}
+.brand-text{min-width:0}
 .brand strong{font-size:1.5rem;display:block;line-height:1.1}
 .brand small{display:block;color:#c4e4e9;font-size:.75rem;margin-top:var(--space-1)}
 .header-actions{display:flex;align-items:stretch}
@@ -232,6 +234,7 @@ input#question{
 .version{font-size:.75rem;color:#5c737d;margin-top:var(--space-7)}
 .sources a{color:var(--accent-ink)}
 @media (max-width:420px){
+ .brand-mark{width:34px;height:34px}
  .brand small{display:none}
  .brand strong{font-size:1.3rem}
  .panel{padding:var(--space-2)}

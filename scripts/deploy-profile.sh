@@ -22,6 +22,7 @@ icons/icon-180.png
 icons/icon-192.png
 icons/icon-512.png
 icons/icon.svg
+icons/mark.svg
 data/_.json
 data/a.json
 data/b.json

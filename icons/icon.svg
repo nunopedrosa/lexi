@@ -1,5 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
- <rect width="192" height="192" rx="36" fill="#153d52"/>
- <rect x="42" y="48" width="108" height="100" rx="12" fill="#fff"/>
- <text x="96" y="126" text-anchor="middle" font-size="85" font-family="sans-serif" font-weight="bold" fill="#167e88">L</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Lexi">
+ <title>Lexi</title>
+ <!-- Plate -->
+ <rect width="512" height="512" rx="96" fill="#153d52"/>
+ <g transform="translate(256 256) scale(1.2) translate(-256 -256)">
+  <!-- Three pages fanning out of the spine, tucked behind the L -->
+  <g>
+   <path d="M190 317 L190 137 A180 180 0 0 1 267.02 154.31 Z" fill="#167e88"/>
+   <path d="M190 317 L275.43 158.56 A180 180 0 0 1 335.01 210.35 Z" fill="#188691"/>
+   <path d="M190 317 L340.39 218.09 A180 180 0 0 1 368.25 291.95 Z" fill="#1a8f9a"/>
+  </g>
+  <!-- The L: spine and bottom cover of the open book -->
+  <path d="M142 377 H366 A12 12 0 0 0 378 365 V325 A12 12 0 0 0 366 313 H200 A10 10 0 0 0 190 303 V151 A16 16 0 0 0 174 135 H150 A16 16 0 0 0 134 151 V369 A8 8 0 0 0 142 377 Z" fill="#fff"/>
+ </g>
 </svg>

@@ -11,6 +11,7 @@ const CORE=[
  './version.js',
  './manifest.webmanifest',
  './icons/icon.svg',
+ './icons/mark.svg',
  './icons/icon-180.png',
  './icons/icon-192.png',
  './icons/icon-512.png',
