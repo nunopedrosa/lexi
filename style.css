@@ -250,6 +250,32 @@ input#question{
 .figure-caption{display:block;font-weight:700}
 .figure-credit{display:block;margin-top:var(--space-1);font-family:var(--helper-font);font-size:.75rem;color:#3f5963}
 .figure-credit a{color:var(--accent-ink)}
+.figure-search-link{
+ display:inline-flex;
+ align-items:center;
+ min-height:44px;
+ padding:var(--space-1) 0;
+ color:var(--accent-ink);
+ font-weight:700;
+}
+.figure-search-status{display:block;font-family:var(--helper-font);font-size:.75rem;line-height:1.4;color:#3f5963}
+.figure-search-status:empty{display:none}
+.figure-search-clear{
+ display:inline-flex;
+ align-items:center;
+ min-height:44px;
+ margin-top:var(--space-1);
+ padding:0;
+ background:transparent;
+ border:0;
+ color:var(--accent-ink);
+ font-family:var(--helper-font);
+ font-size:.75rem;
+ text-decoration:underline;
+ text-underline-offset:3px;
+ cursor:pointer;
+}
+.figure-search-clear[hidden]{display:none}
 
 /* Personal definitions */
 .user-definition{border-left:4px solid var(--accent)}

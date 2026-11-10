@@ -100,6 +100,15 @@ in `docs/IMAGES.md`. The set is deliberately not exhaustive:
 only concrete words with a clear sense are illustrated, and an image never
 replaces or supports a definition.
 
+When a lemma has no bundled illustration, the entry shows a user-initiated
+Google Images link whose query combines the lemma with the current sense and
+prefers Wikimedia Commons or public-domain results. Opening the link stores a
+local `wanted` tag with the query and search URL. Like the replacement tags, it
+stays on the device and leaves it only in an exported backup; it is not merged
+into the dictionary. `scripts/apply_image_tags.py` reports these requests and,
+with `--refetch`, prints Commons candidates for review. Adding a new
+illustration still needs a human-written caption and alt text in both languages.
+
 Each file is a local copy (there is no hotlinking), resized to 640 px and
 re-encoded as JPEG; the set is about 50.4 MB. Sources are Wikimedia Commons and
 the Metropolitan Museum of Art Open Access collection; licences are public

@@ -92,7 +92,7 @@ var USER_DEF_MAX=600;
 var USER_DEF_LIMIT=2000;
 var IMAGE_TAG_KEY='lexi2.imageTags';
 var IMAGE_TAG_LIMIT=200;
-var IMAGE_TAG_ACTIONS={wrong:true,better:true,remove:true};
+var IMAGE_TAG_ACTIONS={wrong:true,better:true,remove:true,wanted:true};
 var userDefinitions={};
 var userDefViews={};
 var imageTags={};
@@ -688,7 +688,110 @@ function imageText(record,field){
  return value[currentLanguage]||value['pt-PT']||'';
 }
 
-function buildIllustration(record){
+function imageSearchDescription(text){
+ var value=String(text||'').replace(/\s+/g,' ');
+ value=value.replace(/^[\s«»"“”'.,;:!?()\[\]–—-]+/,'');
+ value=value.replace(/[\s«»"“”'.,;:!?()\[\]–—-]+$/,'');
+ if(!value)return '';
+ var words=value.split(' ');
+ if(words.length>18)words=words.slice(0,18);
+ value=words.join(' ');
+ if(value.length>180)value=value.slice(0,180).replace(/\s+\S*$/,'');
+ return value;
+}
+
+function imageSearchQuery(lemma,context){
+ var base=imageSearchDescription(lemma);
+ var detail=imageSearchDescription(context);
+ if(detail&&norm(detail)!==norm(base)){
+  base=(base+' '+detail).slice(0,220);
+ }
+ return base;
+}
+
+function imageSearchUrl(query){
+ return 'https://www.google.com/search?tbm=isch&hl='+encodeURIComponent(currentLanguage)+
+  '&q='+encodeURIComponent(query+' fotografia OR ilustração Wikimedia Commons');
+}
+
+function preferredImageContext(row){
+ if(!row||!row[2]||!row[2].length)return '';
+ var list=senseList(row,false);
+ if(!list.length)return '';
+ return list[0].modernized||list[0].text||'';
+}
+
+function updateImageSearchState(figure,lemma){
+ if(!figure)return;
+ var stored=getImageTag(lemma);
+ var flagged=!!(stored&&stored.action==='wanted');
+ var status=figure.querySelector('.figure-search-status');
+ var clear=figure.querySelector('.figure-search-clear');
+ if(status)status.textContent=flagged?t('message.imageSearchFlagged'):'';
+ if(clear)clear.hidden=!flagged;
+}
+
+function buildIllustrationSearch(lemma,context){
+ var query=imageSearchQuery(lemma,context);
+ var figure=document.createElement('figure');
+ figure.className='entry-figure figure-search';
+ figure.setAttribute('data-lemma',lemma);
+ var caption=document.createElement('figcaption');
+ caption.setAttribute('data-lemma',lemma);
+ var text=document.createElement('span');
+ text.className='figure-caption';
+ text.textContent=t('message.imageMissing',{word:lemma});
+ caption.appendChild(text);
+ var hint=document.createElement('span');
+ hint.className='figure-credit';
+ hint.textContent=t('message.imageSearchHint',{query:query});
+ caption.appendChild(hint);
+ var link=document.createElement('a');
+ link.className='figure-search-link';
+ link.href=imageSearchUrl(query);
+ link.target='_blank';
+ link.rel='noopener noreferrer';
+ link.textContent=t('message.imageSearchLink',{word:lemma});
+ link.addEventListener('click',function(){
+  var ok=setImageTag(lemma,'','wanted',query,link.href);
+  if(!ok){
+   var status=figure.querySelector('.figure-search-status');
+   if(status)status.textContent=t('message.imageSearchFlagFailed');
+   return;
+  }
+  updateImageSearchState(figure,lemma);
+ });
+ caption.appendChild(link);
+ var status=document.createElement('span');
+ status.className='figure-search-status';
+ status.setAttribute('role','status');
+ status.setAttribute('aria-live','polite');
+ caption.appendChild(status);
+ var clear=document.createElement('button');
+ clear.type='button';
+ clear.className='figure-search-clear';
+ clear.textContent=t('message.imageSearchClear');
+ clear.addEventListener('click',function(){
+  if(clearImageTag(lemma))updateImageSearchState(figure,lemma);
+ });
+ caption.appendChild(clear);
+ figure.appendChild(caption);
+ updateImageSearchState(figure,lemma);
+ return figure;
+}
+
+function insertIllustrationNode(node,anchor){
+ if(anchor&&anchor.parentNode===chat){
+  chat.insertBefore(node,anchor.nextSibling);
+  revealNode(anchor);
+ }else{
+  chat.appendChild(node);
+  revealNode(node);
+ }
+ trimChat();
+}
+
+function buildIllustration(record,context){
  var figure=document.createElement('figure');
  figure.className='entry-figure';
  var img=document.createElement('img');
@@ -699,7 +802,8 @@ function buildIllustration(record){
  img.decoding='async';
  img.alt=imageText(record,'alt')||record.lemma;
  img.addEventListener('error',function(){
-  if(figure.parentNode)figure.parentNode.removeChild(figure);
+  if(!figure.parentNode)return;
+  figure.parentNode.replaceChild(buildIllustrationSearch(record.lemma,imageText(record,'caption')||context),figure);
  });
  figure.appendChild(img);
  var caption=document.createElement('figcaption');
@@ -732,6 +836,7 @@ function buildIllustration(record){
  var tagButton=document.createElement('button');
  tagButton.type='button';
  var tagStored=getImageTag(record.lemma);
+ if(tagStored&&tagStored.action==='wanted')tagStored=null;
  tagButton.className=tagStored?'figure-tag tagged':'figure-tag';
  tagButton.textContent=t(tagStored?'imagetag.openTagged':'imagetag.open');
  tagButton.addEventListener('click',function(){
@@ -742,23 +847,24 @@ function buildIllustration(record){
  return figure;
 }
 
-function showIllustration(lemma,anchor){
+function showIllustration(lemma,anchor,context){
  if(!lemma)return;
  getImagesManifest().then(function(manifest){
   var record=manifest.map[lemma];
-  if(!record)return;
-  var figure=buildIllustration(record);
-  if(anchor&&anchor.parentNode===chat){
-   chat.insertBefore(figure,anchor.nextSibling);
-   // The figure changes the scrollable height, so re-anchor on the entry:
-   // the newly consulted meaning should stay at the top of the screen.
-   revealNode(anchor);
-  }else{
-   chat.appendChild(figure);
-   revealNode(figure);
+  if(!record){
+   insertIllustrationNode(buildIllustrationSearch(lemma,context),anchor);
+   return;
   }
-  trimChat();
- }).catch(function(){});
+  var figure=buildIllustration(record,context);
+  insertIllustrationNode(figure,anchor);
+ }).catch(function(){
+  insertIllustrationNode(buildIllustrationSearch(lemma,context),anchor);
+ });
+}
+
+function showIllustrationSearch(lemma,context,anchor){
+ if(!lemma)return;
+ insertIllustrationNode(buildIllustrationSearch(lemma,context),anchor);
 }
 
 function refreshOfflineSize(){
@@ -1345,6 +1451,7 @@ function showMissing(missing){
  var bubble=add(t('message.missing',{word:missing[0],pos:missing[1]||''}));
  if(bubble)appendPersonalDefinitionAction(bubble,missing[0]);
  showPersonalDefinition(missing[0],bubble);
+ showIllustrationSearch(missing[0],'',bubble);
  var regional=regionExplanation(missing[0]);
  if(regional)add(regional);
  if(missing[3])add(t('message.missingNear',{word:missing[0],headword:missing[3]}));
@@ -1394,7 +1501,7 @@ async function definition(word){
   add(t('message.formAlias',{word:word,entry:lastWord}));
   var aliasView=displaySenses(0);
   showPersonalDefinition(lastWord,aliasView);
-  showIllustration(lastWord,aliasView);
+  showIllustration(lastWord,aliasView,preferredImageContext(lastEntry));
   return;
  }
  lastWord=row[0];
@@ -1403,7 +1510,7 @@ async function definition(word){
  lastSenseView='preferred';
  var entryView=displaySenses(0);
  showPersonalDefinition(lastWord,entryView);
- showIllustration(lastWord,entryView);
+ showIllustration(lastWord,entryView,preferredImageContext(lastEntry));
 }
 
 async function searchWithParams(p){
@@ -1670,6 +1777,7 @@ function renderTagPanelText(){
 function openImageTagPanel(record,anchorButton){
  if(!tagPanel||!record||!safeWordKey(record.lemma))return;
  var stored=getImageTag(record.lemma);
+ if(stored&&stored.action==='wanted')stored=null;
  tagState={lemma:record.lemma,file:record.file||'',button:anchorButton||null};
  tagLastFocus=document.activeElement;
  renderTagPanelText();
@@ -1755,6 +1863,7 @@ function refreshTagButtonStates(){
   if(!captionText)continue;
   var lemma=captionText.getAttribute('data-lemma')||'';
   var stored=getImageTag(lemma);
+  if(stored&&stored.action==='wanted')stored=null;
   button.textContent=t(stored?'imagetag.openTagged':'imagetag.open');
   button.className=stored?'figure-tag tagged':'figure-tag';
  }

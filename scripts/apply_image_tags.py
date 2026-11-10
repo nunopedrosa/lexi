@@ -17,6 +17,14 @@ script reads that backup and makes the tags permanent in the repository:
                             (or the tag's note text with --query-from-note).
                        Without any replacement source the tag is reported as
                        pending and left in place.
+  wanted            -> the reader asked for an illustration where none is
+                       bundled. The tag's note is the sense-specific search
+                       description and its URL is the Google Images search that
+                       was opened. With --refetch the script searches Commons
+                       and prints candidates for human review. It does not add
+                       a manifest entry automatically: captions, alt text and
+                       licence acceptance are still editorial decisions.
+                       Without --refetch the request is reported as pending.
 
 After applying, credits.html and docs/IMAGES.md are regenerated through
 scripts/check_images.py and the release identifier in version.js is bumped
@@ -78,7 +86,7 @@ def load_backup(path):
             continue
         lemma = (item.get("lemma") or "").strip()
         action = (item.get("action") or "").strip()
-        if not lemma or action not in ("wrong", "better", "remove"):
+        if not lemma or action not in ("wrong", "better", "remove", "wanted"):
             continue
         out.append({
             "lemma": lemma,
@@ -267,6 +275,25 @@ def main():
     for tag in tags:
         lemma = tag["lemma"]
         entry = by_lemma.get(lemma)
+        if tag["action"] == "wanted":
+            query = tag["note"] or lemma
+            print("wanted  %-16s %s" % (lemma, query[:60]))
+            if entry:
+                print("  -> already illustrated; request satisfied")
+                continue
+            if args.refetch:
+                cands = refetch_candidates(lemma, query)
+                if not cands:
+                    print("  -> no acceptable Commons candidate for this query")
+                else:
+                    print("  candidates for %s (review before adding; captions "
+                          "are not automatic):" % lemma)
+                    for i, c in enumerate(cands[:8], 1):
+                        print("    %d. %s | %s" % (i, c["title"][:70], c["licence"]))
+            else:
+                print("  -> pending: open Google Images or rerun with --refetch")
+            pending += 1
+            continue
         if not entry:
             print("skip    %-16s not illustrated (already removed?)" % lemma)
             continue
