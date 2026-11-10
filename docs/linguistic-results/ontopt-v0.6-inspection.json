@@ -1,0 +1,184 @@
+{
+  "schema": 1,
+  "linguistically_validated": false,
+  "source": {
+    "id": "ontopt",
+    "version": "0.6",
+    "license": "CC-BY-3.0",
+    "attribution": "Onto.PT, Universidade de Coimbra; Hugo Gonçalo Oliveira and Paulo Gomes",
+    "url": "https://ontopt.dei.uc.pt/index.php?sec=downloads",
+    "archive_sha256": "f89e7486b883c1a95166bb24874b18a581efc1c0187e88619659f4ff6b61f5a3"
+  },
+  "method": "Explicit N3 triples only; exact case-sensitive overlap; no inference or sense alignment.",
+  "rdflib_version": "7.6.0",
+  "triples": 871849,
+  "synset_classes": {
+    "NomeSynset": 67873,
+    "VerboSynset": 26451,
+    "AdjectivoSynset": 20760,
+    "AdverbioSynset": 2366
+  },
+  "lexical_forms": 156623,
+  "lexi_headwords": 81068,
+  "exact_lexi_overlap": 46029,
+  "explicit_relations_between_synsets": {
+    "accaoNaoDaManeira": 20,
+    "accaoPara": 10,
+    "accaoQueCausa": 8168,
+    "accaoResultadoDe": 84,
+    "antonimoAdjDe": 3096,
+    "antonimoAdvDe": 134,
+    "antonimoNDe": 2560,
+    "antonimoVDe": 1934,
+    "causadorDaAccao": 84,
+    "causadorDe": 1396,
+    "causadorDeAlgoComPropriedade": 30,
+    "contem": 365,
+    "contidoEm": 365,
+    "contidoEmAlgoComPropriedade": 272,
+    "devidoAEstado": 197,
+    "devidoAQualidade": 1118,
+    "dizSeDoQue": 24131,
+    "dizSeSobre": 9769,
+    "estadoDe": 334,
+    "estadoDoQueÉ": 197,
+    "fazSeCom": 6787,
+    "fazSeComAlgoComPropriedade": 77,
+    "feitoDe": 879,
+    "feitoPeloQueÉ": 24131,
+    "finalidadeDaAccao": 10,
+    "finalidadeDe": 8507,
+    "finalidadeDeAlgoComPropriedade": 338,
+    "hiperonimoDe": 79425,
+    "hiponimoDe": 79425,
+    "inclui": 5957,
+    "incluiAlgoComPropriedade": 922,
+    "localOrigemDe": 1458,
+    "maneiraComPropriedade": 1675,
+    "maneiraPorMeioDe": 1976,
+    "maneiraSem": 231,
+    "maneiraSemAccao": 20,
+    "materialDe": 879,
+    "meioParaManeira": 1976,
+    "membroDe": 5957,
+    "membroDeAlgoComPropriedade": 111,
+    "naoHaNaManeira": 231,
+    "originarioDe": 1458,
+    "parteDe": 3782,
+    "parteDeAlgoComPropriedade": 4922,
+    "produtorDe": 1662,
+    "produtorDeAlgoComPropriedade": 80,
+    "produzidoPor": 1662,
+    "produzidoPorAlgoComPropriedade": 463,
+    "propriedadeDaManeira": 1675,
+    "propriedadeDeAlgoMembroDe": 922,
+    "propriedadeDeAlgoParteDe": 101,
+    "propriedadeDeAlgoProdutorDe": 463,
+    "propriedadeDeAlgoProduzidoPor": 80,
+    "propriedadeDeAlgoQueCausa": 667,
+    "propriedadeDeAlgoQueContem": 272,
+    "propriedadeDeAlgoQueInclui": 111,
+    "propriedadeDeAlgoQueTemParte": 4922,
+    "propriedadeDeAlgoResultadoDe": 30,
+    "propriedadeDoQueServePara": 77,
+    "propriedadeDoQueServeParaAccao": 338,
+    "qualidadeDe": 977,
+    "qualidadeDoQueÉ": 1118,
+    "referidoPeloQueÉ": 9769,
+    "resultadoDaAccao": 8168,
+    "resultadoDe": 1396,
+    "resultadoDeAlgoComPropriedade": 667,
+    "servePara": 6787,
+    "serveParaAccao": 8507,
+    "temComoParteAlgoComPropriedade": 101,
+    "temEstado": 334,
+    "temParte": 3782,
+    "temQualidade": 977
+  },
+  "queries": [
+    {
+      "word": "casa",
+      "synset_ids": [
+        "http://ontopt.dei.uc.pt/OntoPT.owl#20780",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#20861",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#20877",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#20992",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#21011",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#21016",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#21017",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#21088",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#21166",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#21227",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#21967",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#22832"
+      ]
+    },
+    {
+      "word": "casa de banho",
+      "synset_ids": []
+    },
+    {
+      "word": "feliz",
+      "synset_ids": [
+        "http://ontopt.dei.uc.pt/OntoPT.owl#1067",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#1636",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#1931",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#195",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#39133",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#400",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#453"
+      ]
+    },
+    {
+      "word": "bom",
+      "synset_ids": [
+        "http://ontopt.dei.uc.pt/OntoPT.owl#105",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#136",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#19",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#212",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#254",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#32",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#4",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#41",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#441",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#45",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#48829",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#76",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#87"
+      ]
+    },
+    {
+      "word": "banco",
+      "synset_ids": [
+        "http://ontopt.dei.uc.pt/OntoPT.owl#21245",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#21317",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#21631",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#23362",
+        "http://ontopt.dei.uc.pt/OntoPT.owl#23722"
+      ]
+    },
+    {
+      "word": "autocarro",
+      "synset_ids": [
+        "http://ontopt.dei.uc.pt/OntoPT.owl#26593"
+      ]
+    }
+  ],
+  "unreviewed_source_example": {
+    "synset_id": "http://ontopt.dei.uc.pt/OntoPT.owl#26593",
+    "forms": [
+      "auto-ônibus",
+      "autobus",
+      "autocarro",
+      "autocarros",
+      "bus",
+      "busão",
+      "camioneta",
+      "machimbombo",
+      "possível",
+      "ónibus",
+      "ônibus"
+    ],
+    "note": "Source membership only; do not present as interchangeable PT-PT synonyms."
+  }
+}

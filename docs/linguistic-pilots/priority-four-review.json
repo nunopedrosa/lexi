@@ -1,0 +1,476 @@
+{
+  "schema": 1,
+  "prepared_on": "2026-11-08",
+  "status": "four_priority_cases_for_evaluation",
+  "language": "pt-PT",
+  "integration_approved": false,
+  "publication_approved": false,
+  "baseline_version": "2026.11.08.4",
+  "scope": "Aprofundamento dos quatro casos de adaptação automática da auditoria dirigida. Propõe primeiras respostas únicas, em camada editorial separada; não altera os originais, a conversa, as seis respostas aprovadas ou o terceiro lote pendente.",
+  "summary": {
+    "cases": 4,
+    "retain_existing_initial_wording": 2,
+    "scope_initial_wording": 2,
+    "shipped_senses_preserved": 17,
+    "source_senses_preserved": 12,
+    "curated_senses_preserved": 5,
+    "automatic_adaptations_traced": 4
+  },
+  "provenance_limits": [
+    "Os campos original documentam o texto anterior às adaptações, não necessariamente o bloco completo anterior à extração e segmentação.",
+    "Não foi encontrado SQLite/StarDict no repositório nem em /private/tmp/lexi-linguistic-review ao procurar ficheiros .sqlite, .sqlite3, .db, .ifo, .dict e .idx no nível superior dessas duas pastas. Isto não afirma ausência noutras localizações.",
+    "Não se regenerou o corpus nem se procurou atribuir ao gerador uma causa que estes artefactos não demonstram.",
+    "As fontes institucionais sustentam comparações contextuais; os dicionários privados complementam a distinção de sentidos. Redação própria, sem importação de verbetes."
+  ],
+  "future_behavior_for_evaluation": [
+    "Primeira consulta: apresentar apenas o texto inicial aprovado para aquele contexto; sem notas técnicas na resposta normal.",
+    "Outros significados: continuar a dar acesso a todas as aceções e redações já exportadas, incluindo variantes, duplicados históricos e trechos por rever. Não declarar a sequência toda revista por causa da nova primeira resposta.",
+    "Texto original: mostrar todas as aceções não curated, usando original quando exista, sem alterar a ordem ou suprimir variantes.",
+    "Os contextos adicionais deste documento são propostas de texto, não novas intenções do interpretador nem desambiguação automática.",
+    "A primeira resposta isolada evita uma apresentação inicial misturada, mas não resolve os defeitos das aceções adicionais. A origem e a revisão desses defeitos permanecem uma tarefa própria."
+  ],
+  "sources": [
+    {
+      "id": "a-cib-fridge",
+      "url": "https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/o-navio-afundou-se--o-frigorifico-avariou-se/10102",
+      "title": "O navio afundou-se / o frigorífico avariou-se",
+      "publisher": "Ciberdúvidas da Língua Portuguesa / Iscte",
+      "type": "institutional_linguistic_guidance",
+      "locator": "Final footnote, extracted line 40; Susana Cabeleira, 2003-01-10",
+      "observation": "The appliance in the example is named frigorífico in Portugal and geladeira in Brazil.",
+      "limits": "Contextual appliance comparison; no claim that either headword has only that sense.",
+      "checked_on": "2026-11-08",
+      "reuse": "consultation_only_not_redistribution",
+      "rechecked_on": "2026-11-08"
+    },
+    {
+      "id": "a-pri-fridge",
+      "url": "https://dicionario.priberam.org/frigorífico",
+      "title": "frigorífico",
+      "publisher": "Priberam Informática, S.A.",
+      "type": "private_dictionary",
+      "locator": "Adjective senses 1–2 and noun senses 3–4, extracted lines 103–112",
+      "observation": "Distinguishes cooling-related adjectives, household appliance, and cold-storage compartment; appliance links to Brazilian geladeira.",
+      "limits": "Private dictionary fallback; does not by itself validate every industrial term in Lexi’s mixed source text.",
+      "checked_on": "2026-11-08",
+      "reuse": "consultation_only_not_redistribution",
+      "rechecked_on": "2026-11-08"
+    },
+    {
+      "id": "a-cib-juice",
+      "url": "https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/sobre-adjectivos-derivados-de-suco/18344",
+      "title": "Sobre adjectivos derivados de suco",
+      "publisher": "Ciberdúvidas da Língua Portuguesa / Iscte",
+      "type": "institutional_linguistic_guidance",
+      "locator": "Resposta paragraph, extracted line 30; Carlos Rocha, 2006-09-07",
+      "observation": "Explicitly contrasts de suco in Brazil and de sumo in Portugal.",
+      "limits": "Adjective-derivation question; no evidence that physiological suco should become sumo or that the words are exclusive to a country.",
+      "checked_on": "2026-11-08",
+      "reuse": "consultation_only_not_redistribution",
+      "rechecked_on": "2026-11-08"
+    },
+    {
+      "id": "a-pri-sumo",
+      "url": "https://dicionario.priberam.org/sumo",
+      "title": "sumo",
+      "publisher": "Priberam Informática, S.A.",
+      "type": "private_dictionary",
+      "locator": "sumo 1, lines 103–116; sumo 2, lines 119–139",
+      "observation": "Separates high/maximum adjective and noun senses from liquid-extract sense.",
+      "limits": "Private dictionary; used to diagnose Lexi segmentation and circular adaptation, not to add an unlicensed sense inventory.",
+      "checked_on": "2026-11-08",
+      "reuse": "consultation_only_not_redistribution",
+      "rechecked_on": "2026-11-08"
+    },
+    {
+      "id": "c-app",
+      "url": "https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/application-feedback/3788",
+      "title": "«Application feedback»",
+      "publisher": "Ciberdúvidas / Iscte",
+      "type": "institutional_linguistic_guidance",
+      "author": "Carlos Rocha",
+      "published_on": "1999-06-28",
+      "locator": "Resposta, nota sobre aplicação e aplicativo",
+      "observation": "Relaciona aplicação em PT-PT com aplicativo informático no Brasil.",
+      "limits": "Âmbito informático, não todos os sentidos de aplicação ou do adjetivo aplicativo.",
+      "checked_on": "2026-11-08",
+      "reuse": "consultation_only_not_redistribution",
+      "rechecked_on": "2026-11-08"
+    },
+    {
+      "id": "c-usuario",
+      "url": "https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/usuario-vs-estereotipagem/34693",
+      "title": "Usuário e estereotipagem",
+      "publisher": "Ciberdúvidas / Iscte",
+      "type": "institutional_linguistic_guidance",
+      "author": "Aura Figueira",
+      "published_on": "2018-02-21",
+      "locator": "Primeiro parágrafo da resposta",
+      "observation": "Distingue o direito de uso em português europeu do utilizador de computador/serviço no Brasil.",
+      "limits": "Não autoriza substituir toda a ocorrência de usuário nem classificar a palavra como exclusivamente brasileira.",
+      "checked_on": "2026-11-08",
+      "reuse": "consultation_only_not_redistribution",
+      "rechecked_on": "2026-11-08"
+    },
+    {
+      "id": "c-utilizador",
+      "url": "https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/a-expressao-na-otica-do-utilizador/37347",
+      "title": "A expressão «na ótica do utilizador»",
+      "publisher": "Ciberdúvidas / Iscte",
+      "type": "institutional_linguistic_guidance",
+      "author": "Carlos Rocha",
+      "published_on": "2023-02-17",
+      "locator": "Resposta sobre anúncios de emprego em Portugal",
+      "observation": "Atesta utilizador em contexto informático português.",
+      "limits": "Não valida todos os usos técnicos nem equivalência jurídica com usuário.",
+      "checked_on": "2026-11-08",
+      "reuse": "consultation_only_not_redistribution",
+      "rechecked_on": "2026-11-08"
+    },
+    {
+      "id": "four-priberam-aplicação",
+      "url": "https://dicionario.priberam.org/aplicação",
+      "title": "aplicação",
+      "publisher": "Priberam",
+      "type": "private_lexicographic_reference",
+      "locator": "Aceções 1–4; informática na aceção 4",
+      "observation": "Distingue ato/efeito, uso e sentido informático; este último associa-se a aplicativo no Brasil.",
+      "limits": "Complemento lexicográfico privado. Não valida integralmente a entrada da Lexi, nem autoriza copiar o verbete.",
+      "checked_on": "2026-11-08",
+      "reuse": "consultation_only_not_redistribution"
+    },
+    {
+      "id": "four-priberam-utilizador",
+      "url": "https://dicionario.priberam.org/utilizador",
+      "title": "utilizador",
+      "publisher": "Priberam",
+      "type": "private_lexicographic_reference",
+      "locator": "Classe adjetivo/nome e aceção informática",
+      "observation": "Atesta quem utiliza e a pessoa que usa computador, programas, sistemas ou serviços informáticos.",
+      "limits": "Complemento lexicográfico privado. Não valida integralmente a entrada da Lexi, nem autoriza copiar o verbete.",
+      "checked_on": "2026-11-08",
+      "reuse": "consultation_only_not_redistribution"
+    }
+  ],
+  "cases": [
+    {
+      "word": "frigorífico",
+      "status": "proposal_pending_user_evaluation",
+      "integration_approved": false,
+      "decision": "retain_existing_wording_as_single_initial_response",
+      "proposed_initial_text": "Eletrodoméstico que mantém alimentos e bebidas a baixa temperatura para ajudar à sua conservação.",
+      "initial_scope": "Sentido doméstico do aparelho. A prioridade inicial não esgota o lema.",
+      "same_as_existing_curated": true,
+      "source": {
+        "path": "data/f.json",
+        "shard_sha256": "f811553cccab57f82de18b5940fae1e4f1a1fcfbbc53fc68115b3fda1bab6f78",
+        "row_index_zero_based": 2815,
+        "row": [
+          "frigorífico",
+          "n.",
+          [
+            [
+              "Eletrodoméstico que mantém alimentos e bebidas a baixa temperatura para ajudar à sua conservação.",
+              "curated",
+              [
+                "redação editorial PT-PT v5"
+              ]
+            ],
+            [
+              "Aparelho que mantém alimentos e bebidas a baixa temperatura para os conservar.",
+              "curated",
+              []
+            ],
+            [
+              "frigorífico, geleira, matadouro, abatedouro, açougue — eletrodoméstico usado para manter alimentos frescos por refrigeração",
+              "PT",
+              [
+                "adaptação automática PT-PT por rever"
+              ],
+              {
+                "original": "geladeira, geleira, matadouro, abatedouro, açougue — eletrodoméstico usado para manter alimentos frescos por refrigeração",
+                "rules": [
+                  "geladeira"
+                ],
+                "reviewed": false
+              }
+            ],
+            [
+              "instalação industrial destinada ao abate, processamento e armazenamento de produtos de origem animal adj.",
+              "BR",
+              []
+            ],
+            [
+              "frigorífero",
+              "unmarked",
+              []
+            ]
+          ],
+          "(Brazil); (Portugal)"
+        ],
+        "shipped_senses": 5,
+        "source_senses": 3,
+        "curated_senses": 2
+      },
+      "automatic_adaptation_trace": [
+        {
+          "sense_index_one_based": 3,
+          "current_text": "frigorífico, geleira, matadouro, abatedouro, açougue — eletrodoméstico usado para manter alimentos frescos por refrigeração",
+          "original_text": "geladeira, geleira, matadouro, abatedouro, açougue — eletrodoméstico usado para manter alimentos frescos por refrigeração",
+          "rules": [
+            "geladeira"
+          ],
+          "effect": "A substituição insere o lema consultado no próprio texto. Não demonstra a causa de outros problemas já presentes no original."
+        }
+      ],
+      "preserve_and_expose": "Manter os dois textos curated e as três aceções da fonte. A futura primeira resposta usaria a redação existente uma vez, em camada separada.",
+      "limits_and_deferred_work": "A lista que junta geleira, matadouro, abatedouro e açougue não deve ser convertida numa lista de sinónimos do eletrodoméstico. O sentido industrial e o adjetivo ficam por delimitar na fonte, sem corrigir o texto histórico.",
+      "evidence_source_ids": [
+        "a-cib-fridge",
+        "a-pri-fridge"
+      ],
+      "supplementary_context_drafts": [],
+      "unresolved_evidence_questions": [
+        "Onde se separam, na fonte anterior à exportação, os sinónimos do eletrodoméstico, os termos de abate e a secção adjetival? Que evidência institucional delimita o uso industrial brasileiro?"
+      ]
+    },
+    {
+      "word": "sumo",
+      "status": "proposal_pending_user_evaluation",
+      "integration_approved": false,
+      "decision": "scope_initial_wording_to_drink",
+      "proposed_initial_text": "No contexto das bebidas, «sumo» designa o líquido obtido de frutos ou de outros vegetais.",
+      "initial_scope": "Seleciona o contexto de bebida e deixa o adjetivo para uma aceção distinta.",
+      "same_as_existing_curated": false,
+      "source": {
+        "path": "data/s.json",
+        "shard_sha256": "df08e8177776468acff97bb53964d0d1238233f3b209bf2a233ffc2d031d5d48",
+        "row_index_zero_based": 4452,
+        "row": [
+          "sumo",
+          "n.",
+          [
+            [
+              "Líquido extraído de frutos ou vegetais, frequentemente usado como bebida.",
+              "curated",
+              [
+                "redação editorial PT-PT v5"
+              ]
+            ],
+            [
+              "sumo adj.",
+              "unmarked",
+              [
+                "adaptação automática PT-PT por rever"
+              ],
+              {
+                "original": "suco adj.",
+                "rules": [
+                  "suco"
+                ],
+                "reviewed": false
+              }
+            ],
+            [
+              "(absolute, superlative) alto, que está no lugar mais elevado",
+              "unmarked",
+              []
+            ]
+          ],
+          ""
+        ],
+        "shipped_senses": 3,
+        "source_senses": 2,
+        "curated_senses": 1
+      },
+      "automatic_adaptation_trace": [
+        {
+          "sense_index_one_based": 2,
+          "current_text": "sumo adj.",
+          "original_text": "suco adj.",
+          "rules": [
+            "suco"
+          ],
+          "effect": "A substituição insere o lema consultado no próprio texto. Não demonstra a causa de outros problemas já presentes no original."
+        }
+      ],
+      "preserve_and_expose": "Preservar o texto curated, a remissão fonte e o adjetivo. Não substituir suco em frases fisiológicas como suco gástrico.",
+      "limits_and_deferred_work": "A adaptação é demonstrável; a associação do marcador adj. à remissão já existe no campo original e não pode ser atribuída apenas à regra suco→sumo.",
+      "evidence_source_ids": [
+        "a-cib-juice",
+        "a-pri-sumo"
+      ],
+      "supplementary_context_drafts": [
+        {
+          "context": "adjetivo de grau elevado",
+          "draft_text": "Como adjetivo, «sumo» pode significar muito elevado ou supremo.",
+          "status": "supplementary_editorial_draft_not_parser_behavior",
+          "evidence_source_ids": [
+            "a-pri-sumo"
+          ]
+        }
+      ],
+      "unresolved_evidence_questions": [
+        "O marcador adj. foi unido à remissão para suco durante a exportação? Onde se separam os sentidos de líquido e de grau máximo na fonte anterior?"
+      ]
+    },
+    {
+      "word": "aplicação",
+      "status": "proposal_pending_user_evaluation",
+      "integration_approved": false,
+      "decision": "scope_initial_wording_to_computing",
+      "proposed_initial_text": "Em informática, uma «aplicação» é um programa concebido para realizar determinadas tarefas.",
+      "initial_scope": "Seleciona o sentido informático sem o misturar com o ato de aplicar.",
+      "same_as_existing_curated": false,
+      "source": {
+        "path": "data/a.json",
+        "shard_sha256": "ec8ce9c37356c69c9bc3b7109f4be651ac890f2989fd8569a3fa3099c6e77a5b",
+        "row_index_zero_based": 6641,
+        "row": [
+          "aplicação",
+          "n.",
+          [
+            [
+              "Programa informático concebido para realizar determinadas tarefas; também significa ato de aplicar.",
+              "curated",
+              [
+                "redação editorial PT-PT v5"
+              ]
+            ],
+            [
+              "ato de aplicar",
+              "unmarked",
+              []
+            ],
+            [
+              "uso, emprego",
+              "unmarked",
+              []
+            ],
+            [
+              "ato de administrar um medicamento a um doente",
+              "unmarked",
+              []
+            ],
+            [
+              "dedicação",
+              "unmarked",
+              []
+            ],
+            [
+              "dinheiro que se investe",
+              "unmarked",
+              []
+            ],
+            [
+              "programa que roda num computador; aplicação, app",
+              "unmarked",
+              [
+                "adaptação automática PT-PT por rever"
+              ],
+              {
+                "original": "programa que roda num computador; aplicativo, app",
+                "rules": [
+                  "aplicativo"
+                ],
+                "reviewed": false
+              }
+            ]
+          ],
+          ""
+        ],
+        "shipped_senses": 7,
+        "source_senses": 6,
+        "curated_senses": 1
+      },
+      "automatic_adaptation_trace": [
+        {
+          "sense_index_one_based": 7,
+          "current_text": "programa que roda num computador; aplicação, app",
+          "original_text": "programa que roda num computador; aplicativo, app",
+          "rules": [
+            "aplicativo"
+          ],
+          "effect": "A substituição insere o lema consultado no próprio texto. Não demonstra a causa de outros problemas já presentes no original."
+        }
+      ],
+      "preserve_and_expose": "Manter as seis aceções fonte e o texto curated anterior. Uso, medicamento, dedicação e investimento continuam separados da explicação informática.",
+      "limits_and_deferred_work": "A definição da fonte diz programa que roda num computador e tem uma remissão adaptada para o próprio lema. A proposta inicial não reescreve essa aceção nem substitui todas as ocorrências de aplicativo.",
+      "evidence_source_ids": [
+        "c-app",
+        "four-priberam-aplicação"
+      ],
+      "supplementary_context_drafts": [],
+      "unresolved_evidence_questions": [
+        "Como se delimita o sentido informático no bloco original, e que redação adicional preservaria essa distinção sem a repetição criada pela regra aplicativo→aplicação?"
+      ]
+    },
+    {
+      "word": "utilizador",
+      "status": "proposal_pending_user_evaluation",
+      "integration_approved": false,
+      "decision": "retain_existing_wording_as_single_initial_response",
+      "proposed_initial_text": "Pessoa que utiliza um serviço, sistema, equipamento ou aplicação.",
+      "initial_scope": "Sentido geral de pessoa que utiliza algo; não estabelece exclusividade PT-PT.",
+      "same_as_existing_curated": true,
+      "source": {
+        "path": "data/u.json",
+        "shard_sha256": "705a3e1deff37c7dffee56976c8ecf9dd42c0e0854223cea747b3a7157f2fbf4",
+        "row_index_zero_based": 694,
+        "row": [
+          "utilizador",
+          "n.",
+          [
+            [
+              "Pessoa que utiliza um serviço, sistema, equipamento ou aplicação.",
+              "curated",
+              [
+                "redação editorial PT-PT v5"
+              ]
+            ],
+            [
+              "utilizador, utente — aquele que utiliza",
+              "unmarked",
+              [
+                "adaptação automática PT-PT por rever"
+              ],
+              {
+                "original": "usuário, utente — aquele que utiliza",
+                "rules": [
+                  "usuário"
+                ],
+                "reviewed": false
+              }
+            ]
+          ],
+          ""
+        ],
+        "shipped_senses": 2,
+        "source_senses": 1,
+        "curated_senses": 1
+      },
+      "automatic_adaptation_trace": [
+        {
+          "sense_index_one_based": 2,
+          "current_text": "utilizador, utente — aquele que utiliza",
+          "original_text": "usuário, utente — aquele que utiliza",
+          "rules": [
+            "usuário"
+          ],
+          "effect": "A substituição insere o lema consultado no próprio texto. Não demonstra a causa de outros problemas já presentes no original."
+        }
+      ],
+      "preserve_and_expose": "Preservar o texto curated e a única aceção fonte. Não equiparar automaticamente todos os contextos de usuário ao uso de computador.",
+      "limits_and_deferred_work": "A remissão original contém usuário e utente; a adaptação introduziu o próprio lema. Essa equivalência não permite apagar o sentido de direito de uso nem inventar uma aceção jurídica nova na entrada local.",
+      "evidence_source_ids": [
+        "c-utilizador",
+        "c-usuario",
+        "four-priberam-utilizador"
+      ],
+      "supplementary_context_drafts": [],
+      "unresolved_evidence_questions": [
+        "Como se apresentava a remissão para usuário antes da adaptação, e que distinção de sentidos permite evitar circularidade sem apagar a remissão original?"
+      ]
+    }
+  ]
+}

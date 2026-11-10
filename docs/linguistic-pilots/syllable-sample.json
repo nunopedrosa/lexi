@@ -1,0 +1,636 @@
+{
+  "schema": 1,
+  "language": "pt-PT",
+  "reviewed_on": "2026-11-08",
+  "production_approved": false,
+  "review_method": "Codex: targeted source consultation and factual annotation; not professional linguistic certification; user review pending",
+  "selection": "Purposive diagnostic sample, not random or representative; controls, disagreements, variants, inflections, compound and missing coverage. Not a gold-standard accuracy benchmark.",
+  "cases": [
+    {
+      "id": "syl-01",
+      "word": "saúde",
+      "profile": "dictionary_display",
+      "phenomenon": "vowel_sequence",
+      "status": "source_checked",
+      "references": [
+        "priberam-saúde"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "sa",
+            "ú",
+            "de"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "Separação gráfica exibida pelo dicionário; não é transcrição fonética nem validação de todas as pronúncias.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-02",
+      "word": "saída",
+      "profile": "dictionary_display",
+      "phenomenon": "vowel_sequence",
+      "status": "source_checked",
+      "references": [
+        "priberam-saída"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "sa",
+            "í",
+            "da"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "Separação gráfica exibida pelo dicionário; não é transcrição fonética nem validação de todas as pronúncias.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-03",
+      "word": "reunião",
+      "profile": "dictionary_display",
+      "phenomenon": "vowel_sequence",
+      "status": "source_checked",
+      "references": [
+        "priberam-reunião"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "re",
+            "u",
+            "ni",
+            "ão"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "Separação gráfica exibida pelo dicionário; não é transcrição fonética nem validação de todas as pronúncias.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-04",
+      "word": "feudal",
+      "profile": "dictionary_display",
+      "phenomenon": "control",
+      "status": "source_checked",
+      "references": [
+        "priberam-feudal"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "feu",
+            "dal"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "Separação gráfica exibida pelo dicionário; não é transcrição fonética nem validação de todas as pronúncias.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-05",
+      "word": "casa",
+      "profile": "dictionary_display",
+      "phenomenon": "control",
+      "status": "source_checked",
+      "references": [
+        "priberam-casa"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "ca",
+            "sa"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "Separação gráfica exibida pelo dicionário; não é transcrição fonética nem validação de todas as pronúncias.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-06",
+      "word": "cadeira",
+      "profile": "dictionary_display",
+      "phenomenon": "control",
+      "status": "source_checked",
+      "references": [
+        "priberam-cadeira"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "ca",
+            "dei",
+            "ra"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "Separação gráfica exibida pelo dicionário; não é transcrição fonética nem validação de todas as pronúncias.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-07",
+      "word": "país",
+      "profile": "explicit_syllabification",
+      "phenomenon": "accent_or_diphthong",
+      "status": "source_checked",
+      "references": [
+        "cib-pais"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "pa",
+            "ís"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-08",
+      "word": "pais",
+      "profile": "explicit_syllabification",
+      "phenomenon": "accent_or_diphthong",
+      "status": "source_checked",
+      "references": [
+        "cib-pais"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "pais"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-09",
+      "word": "pai",
+      "profile": "explicit_syllabification",
+      "phenomenon": "accent_or_diphthong",
+      "status": "source_checked",
+      "references": [
+        "cib-pais"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "pai"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-10",
+      "word": "degraus",
+      "profile": "explicit_syllabification",
+      "phenomenon": "accent_or_diphthong",
+      "status": "source_checked",
+      "references": [
+        "cib-pais"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "de",
+            "graus"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-11",
+      "word": "maior",
+      "profile": "explicit_syllabification",
+      "phenomenon": "vowel_sequence",
+      "status": "source_checked",
+      "references": [
+        "cib-maior"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "mai",
+            "or"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-12",
+      "word": "lua",
+      "profile": "explicit_syllabification",
+      "phenomenon": "hiatus_or_diphthong",
+      "status": "source_checked",
+      "references": [
+        "cib-diphthongs"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "lu",
+            "a"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-13",
+      "word": "quando",
+      "profile": "explicit_syllabification",
+      "phenomenon": "hiatus_or_diphthong",
+      "status": "source_checked",
+      "references": [
+        "cib-diphthongs"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "quan",
+            "do"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-14",
+      "word": "guarda",
+      "profile": "explicit_syllabification",
+      "phenomenon": "hiatus_or_diphthong",
+      "status": "source_checked",
+      "references": [
+        "cib-diphthongs"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "guar",
+            "da"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-15",
+      "word": "rainha",
+      "profile": "spelling_based_reference",
+      "phenomenon": "nh_or_vowels_or_inflection",
+      "status": "source_checked",
+      "references": [
+        "cib-sequences"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "ra",
+            "i",
+            "nha"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "Representação expressa na resposta, baseada em soletração; não generalizar a todas as realizações orais.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-16",
+      "word": "planícies",
+      "profile": "spelling_based_reference",
+      "phenomenon": "nh_or_vowels_or_inflection",
+      "status": "source_checked",
+      "references": [
+        "cib-sequences"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "pla",
+            "ní",
+            "ci",
+            "es"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "Representação expressa na resposta, baseada em soletração; não generalizar a todas as realizações orais.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-17",
+      "word": "dormiam",
+      "profile": "spelling_based_reference",
+      "phenomenon": "nh_or_vowels_or_inflection",
+      "status": "source_checked",
+      "references": [
+        "cib-sequences"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "dor",
+            "mi",
+            "am"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "Representação expressa na resposta, baseada em soletração; não generalizar a todas as realizações orais.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-18",
+      "word": "pneu",
+      "profile": "spelling_based_reference",
+      "phenomenon": "consonant_cluster",
+      "status": "source_checked",
+      "references": [
+        "cib-clusters"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "pneu"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "A fonte discute divisão pela soletração e o AO; não é uma transcrição fonética individual.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-19",
+      "word": "psicologia",
+      "profile": "spelling_based_reference",
+      "phenomenon": "consonant_cluster",
+      "status": "source_checked",
+      "references": [
+        "cib-clusters"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "psi",
+            "co",
+            "lo",
+            "gi",
+            "a"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "A fonte discute divisão pela soletração e o AO; não é uma transcrição fonética individual.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-20",
+      "word": "abstrato",
+      "profile": "spelling_based_reference",
+      "phenomenon": "consonant_cluster",
+      "status": "source_checked",
+      "references": [
+        "cib-clusters"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "abs",
+            "tra",
+            "to"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "A fonte discute divisão pela soletração e o AO; não é uma transcrição fonética individual.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-21",
+      "word": "carro",
+      "profile": "phonological_awareness",
+      "phenomenon": "digraph",
+      "status": "source_checked",
+      "references": [
+        "cib-digraphs"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "ca",
+            "rro"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "Dígrafos mantidos como representação de um som. A translineação tem outro critério; uma divergência não torna inválida a translineação atual.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-22",
+      "word": "massa",
+      "profile": "phonological_awareness",
+      "phenomenon": "digraph",
+      "status": "source_checked",
+      "references": [
+        "cib-digraphs"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "ma",
+            "ssa"
+          ],
+          "condition": "representação na fonte indicada"
+        }
+      ],
+      "review_note": "Dígrafos mantidos como representação de um som. A translineação tem outro critério; uma divergência não torna inválida a translineação atual.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-23",
+      "word": "água",
+      "profile": "model_or_pronunciation_variant",
+      "phenomenon": "rising_diphthong",
+      "status": "documented_variants",
+      "references": [
+        "cib-water",
+        "cib-water-2011"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "á",
+            "gua"
+          ],
+          "condition": "representação na fonte indicada"
+        },
+        {
+          "segments": [
+            "á",
+            "gu",
+            "a"
+          ],
+          "condition": "análise tradicional descrita na fonte de 2003"
+        }
+      ],
+      "review_note": "A referência de 2011 apresenta duas sílabas; a de 2003 documenta também a análise tradicional. Não somar estas análises como se fossem uma única convenção.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-24",
+      "word": "aquário",
+      "profile": "model_or_pronunciation_variant",
+      "phenomenon": "rising_diphthong",
+      "status": "documented_variants",
+      "references": [
+        "cib-water"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "a",
+            "quá",
+            "rio"
+          ],
+          "condition": "representação na fonte indicada"
+        },
+        {
+          "segments": [
+            "a",
+            "qu",
+            "á",
+            "ri",
+            "o"
+          ],
+          "condition": "análise tradicional descrita na fonte de 2003"
+        }
+      ],
+      "review_note": "Conservar a distinção entre análise tradicional e análise com ditongos crescentes.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-25",
+      "word": "habitual",
+      "profile": "model_or_pronunciation_variant",
+      "phenomenon": "speech_rate",
+      "status": "documented_variants",
+      "references": [
+        "cib-diphthongs"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "ha",
+            "bi",
+            "tu",
+            "al"
+          ],
+          "condition": "representação na fonte indicada"
+        },
+        {
+          "segments": [
+            "ha",
+            "bi",
+            "tual"
+          ],
+          "condition": "pronúncia rápida; ditongo"
+        }
+      ],
+      "review_note": "A fonte distingue pronúncia pausada e rápida.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-26",
+      "word": "antiguidade",
+      "profile": "model_or_pronunciation_variant",
+      "phenomenon": "regional_pronunciation",
+      "status": "documented_variants",
+      "references": [
+        "cib-antiguidade"
+      ],
+      "analyses": [
+        {
+          "segments": [
+            "an",
+            "ti",
+            "gui",
+            "da",
+            "de"
+          ],
+          "condition": "representação na fonte indicada"
+        },
+        {
+          "segments": [
+            "an",
+            "ti",
+            "gu",
+            "i",
+            "da",
+            "de"
+          ],
+          "condition": "variante regional documentada na fonte"
+        }
+      ],
+      "review_note": "A fonte discute variação em Portugal; não reduzir PT-PT à pronúncia de Lisboa.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-27",
+      "word": "guarda-chuva",
+      "profile": "compound_pending",
+      "phenomenon": "hyphenated_compound",
+      "status": "pending",
+      "references": [
+        "cib-diphthongs"
+      ],
+      "analyses": [],
+      "review_note": "A fonte citada discute guarda e mostra translineação do composto; não fornece aqui uma referência completa independente para pontuar o composto.",
+      "human_review": "pending"
+    },
+    {
+      "id": "syl-28",
+      "word": "profª",
+      "profile": "coverage_control",
+      "phenomenon": "abbreviation",
+      "status": "not_applicable",
+      "references": [
+        "internal-audit"
+      ],
+      "analyses": [],
+      "review_note": "Caso sem cobertura atual no relatório; abreviatura fora do âmbito silábico. Não atribuir uma divisão de palavra plena.",
+      "human_review": "pending"
+    }
+  ]
+}

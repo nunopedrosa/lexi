@@ -1,0 +1,224 @@
+{
+  "schema": 1,
+  "status": "proposal_for_evaluation_only",
+  "language": "pt-PT",
+  "prepared_on": "2026-11-08",
+  "integration_approved": false,
+  "publication_approved": false,
+  "scope": "Terceiro lote de três primeiras respostas editoriais. Não carregado pela PWA. Exemplos contextuais são notas de avaliação, não funcionalidades de interpretação. As seis respostas aprovadas dos lotes anteriores permanecem ativas e inalteradas.",
+  "preservation": "Nenhuma aceção, etiqueta, texto original ou entrada curated é alterada ou removida. A preservação refere-se a todos os sentidos exportados na Lexi, não à cobertura integral dos dicionários externos.",
+  "reuse": "Redação editorial própria, ligações e anotações factuais pontuais. Nenhuma base, artigo ou verbete externo foi importado. A consulta não concede licença de redistribuição dos recursos.",
+  "cases": [
+    {
+      "word": "bicha",
+      "human_review": "pending",
+      "integration_approved": false,
+      "initial_text": "Em Portugal, no uso informal, «bicha» pode designar uma fila de pessoas à espera da sua vez.",
+      "risk": "A aceção de fila tem Portugal e Rio Grande do Sul apenas no texto; o campo regional está unmarked. A entrada local tem seis aceções e não inclui o sentido depreciativo relativo a um homem homossexual, registado nas referências externas.",
+      "limits": "Não afirmar que fila é um sentido exclusivo de Portugal, nem que o sentido depreciativo só existe no Brasil. Não classificar pessoas pela palavra fora de contexto. A fonte local não cobre todos os sentidos documentados externamente; este lote preserva-a, não a completa por importação.",
+      "brazil_context_note": "Num contexto brasileiro em que «bicha» é dirigido a um homem homossexual, pode ser um termo depreciativo. As referências portuguesas também registam esse uso sem o restringir ao Brasil. Não é uma equivalência neutra nem universal.",
+      "source": {
+        "path": "data/b.json",
+        "shard_sha256": "2a3b1a7ccf412632b2ec4067410bb3c739103cebb33882a9b80deb52bea3d4f2",
+        "row": [
+          "bicha",
+          "n.",
+          [
+            [
+              "nome comum dos vermes e dos répteis com corpo comprido e sem pernas",
+              "unmarked",
+              []
+            ],
+            [
+              "(popular) sanguessuga",
+              "unmarked",
+              []
+            ],
+            [
+              "(popular) lombriga",
+              "unmarked",
+              []
+            ],
+            [
+              "víbora",
+              "unmarked",
+              []
+            ],
+            [
+              "(Portugal, Rio Grande do Sul) fila — fila, fileira de pessoas colocadas umas atrás das outras",
+              "unmarked",
+              []
+            ],
+            [
+              "pessoa de mau gênio, irritável",
+              "unmarked",
+              []
+            ]
+          ],
+          "(Portugal, Rio Grande do Sul)"
+        ],
+        "shipped_senses": 6,
+        "source_senses": 6
+      },
+      "references": [
+        {
+          "publisher": "Priberam",
+          "url": "https://dicionario.priberam.org/bicha",
+          "locator": "Aceção nominal 3: Portugal, informal, fila; aceção 10: informal, depreciativo, sem restrição regional ao Brasil.",
+          "checked_on": "2026-11-08",
+          "reuse": "reference_only"
+        },
+        {
+          "publisher": "Porto Editora / Infopédia",
+          "url": "https://www.infopedia.pt/dicionarios/lingua-portuguesa/bicha",
+          "locator": "Aceção nominal 4: fila; secção adjetivo/nome: calão, pejorativo, sem marca Brasil.",
+          "checked_on": "2026-11-08",
+          "reuse": "reference_only"
+        },
+        {
+          "publisher": "Dicio / 7Graus",
+          "url": "https://www.dicio.com.br/bicha/",
+          "locator": "Secção Significado de Bicha: fila com marca Portugal; uso pejorativo relativo a homem homossexual; exemplos brasileiros. Não demonstra exclusividade regional.",
+          "checked_on": "2026-11-08",
+          "reuse": "reference_only"
+        }
+      ]
+    },
+    {
+      "word": "trem",
+      "human_review": "pending",
+      "integration_approved": false,
+      "initial_text": "Em Portugal, «trem» pode designar um conjunto de utensílios destinados a uma atividade, como em «trem de cozinha».",
+      "risk": "A primeira resposta atual é uma redação curated que apresenta comboio no Brasil. A fonte também contém bateria de cozinha, mobília, bagagem e outros sentidos. A marca Brazil/Galicia surge no texto, não no campo regional.",
+      "limits": "A proposta escolhe uma aceção utilizável em Portugal, sem declarar exclusividade nem frequência. Não substituir trem por comboio dentro de trem de cozinha ou trem de aterragem. A redação curated anterior e as seis aceções da fonte permanecem intactas.",
+      "brazil_context_note": "No contexto ferroviário brasileiro, «trem» corresponde a «comboio» em Portugal. Em outros contextos, essa equivalência pode não servir; há também usos brasileiros informais para uma coisa ou objeto.",
+      "source": {
+        "path": "data/t.json",
+        "shard_sha256": "00283ab7e5514f1107b6a45639f3dd28caf7880e74c6e93c8ebf29f6d64f0b08",
+        "row": [
+          "trem",
+          "n.",
+          [
+            [
+              "No português do Brasil, comboio: transporte ferroviário.",
+              "curated",
+              []
+            ],
+            [
+              "(Brazil, Galicia) comboio, xitimela — meio de transporte ferroviário",
+              "unmarked",
+              []
+            ],
+            [
+              "mobília; conjunto dos móveis de uma casa",
+              "unmarked",
+              []
+            ],
+            [
+              "bagagem",
+              "unmarked",
+              []
+            ],
+            [
+              "bateria de cozinha",
+              "unmarked",
+              []
+            ],
+            [
+              "comitiva; conjunto de objetos ou pessoas enfileiradas; comboio",
+              "unmarked",
+              []
+            ],
+            [
+              "peça de vestuário",
+              "unmarked",
+              []
+            ]
+          ],
+          "(Brazil, Galicia)"
+        ],
+        "shipped_senses": 7,
+        "source_senses": 6
+      },
+      "references": [
+        {
+          "publisher": "Priberam",
+          "url": "https://dicionario.priberam.org/trem",
+          "locator": "Aceções 5 e 7: utensílios; aceção 9: Brasil, ferroviário, equivalente comboio em Portugal; aceção 8: Brasil, informal; locução trem de aterragem: Portugal.",
+          "checked_on": "2026-11-08",
+          "reuse": "reference_only"
+        },
+        {
+          "publisher": "Porto Editora / Infopédia",
+          "url": "https://www.infopedia.pt/dicionarios/lingua-portuguesa/trem",
+          "locator": "Aceções 1–2: utensílios; aceção 8: Brasil, comboio; aceção 10: Brasil, regionalismo, coisa; locução trem de aterragem.",
+          "checked_on": "2026-11-08",
+          "reuse": "reference_only"
+        }
+      ]
+    },
+    {
+      "word": "banheiro",
+      "human_review": "pending",
+      "integration_approved": false,
+      "initial_text": "Na aceção portuguesa ligada à praia, «banheiro» pode designar um nadador-salvador.",
+      "risk": "A fonte distingue três aceções PT relativas a pessoas e duas BR relativas a instalações sanitárias; a primeira aceção brasileira contém sintina e uma descrição de compartimento. Não corrigir esse texto silenciosamente.",
+      "limits": "Seleciona apenas uma aceção portuguesa atestada, não uma descrição de todas as funções de um banheiro. Preservar dono de estabelecimento balnear e quem prepara ou acompanha banhos. Não inferir que o termo tem hoje a mesma frequência que nadador-salvador, nem fazer equivalências de títulos profissionais ou qualificações legais.",
+      "brazil_context_note": "Numa frase brasileira como «Onde fica o banheiro?», a palavra designa uma casa de banho, não uma pessoa que dá assistência na praia.",
+      "source": {
+        "path": "data/b.json",
+        "shard_sha256": "2a3b1a7ccf412632b2ec4067410bb3c739103cebb33882a9b80deb52bea3d4f2",
+        "row": [
+          "banheiro",
+          "n.",
+          [
+            [
+              "o que prepara o banho",
+              "PT",
+              []
+            ],
+            [
+              "homem que, na praia, tem estabelecimento de banhos (balneários)",
+              "PT",
+              []
+            ],
+            [
+              "o que entra na água para resgatar quem corre perigo ao tomar banho; salva-vidas",
+              "PT",
+              []
+            ],
+            [
+              "sintina — cômodo com instalações sanitárias para a higiene pessoal, quarto de banho",
+              "BR",
+              []
+            ],
+            [
+              "privada; latrina",
+              "BR",
+              []
+            ]
+          ],
+          "(Brazil); (Portugal)"
+        ],
+        "shipped_senses": 5,
+        "source_senses": 5
+      },
+      "references": [
+        {
+          "publisher": "Priberam",
+          "url": "https://dicionario.priberam.org/banheiro",
+          "locator": "Aceções 1–3: pessoas ligadas aos banhos, incluindo Portugal/nadador-salvador; aceções 5–6: Brasil, instalações sanitárias.",
+          "checked_on": "2026-11-08",
+          "reuse": "reference_only"
+        },
+        {
+          "publisher": "Porto Editora / Infopédia",
+          "url": "https://www.infopedia.pt/dicionarios/lingua-portuguesa/banheiro",
+          "locator": "Aceções 1–4: pessoas ligadas à praia e aos banhos; aceção 6: Brasil, casa de banho.",
+          "checked_on": "2026-11-08",
+          "reuse": "reference_only"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1933 @@
+{
+  "version": 1,
+  "generated": "2026-11-08",
+  "scope": "Read-only source overlap and VOP gate audit. No dictionary shards were modified.",
+  "sources": {
+    "current_corpus": "Lexi data/*.json (Wiktionary-derived, 81,068 headwords, 133,763 senses in shards; meta.source_senses is 133,646 because it excludes 117 curated senses)",
+    "dicionario_aberto": {
+      "name": "Dicionário Aberto",
+      "basis": "Novo Diccionário da Língua Portuguesa, Cândido de Figueiredo, 1913",
+      "license": "CC BY-SA 2.5 Portugal",
+      "dump": "https://github.com/ambs/Dicionario-Aberto (SQL/data-20151213.sql.xz)",
+      "entries": 128520,
+      "senses": 152395,
+      "note": "Historical PT-PT dictionary, not a modern PT-PT source."
+    },
+    "vop": {
+      "name": "Vocabulário Ortográfico do Português",
+      "publisher": "ILTEC / Portal da Língua Portuguesa",
+      "url": "https://www.portaldalinguaportuguesa.org/",
+      "access": "Public exact search and lemma pages; queries made one form at a time.",
+      "note": "Spelling/morphological vocabulary. Regional labels appear on some lemmas (Brasil/Portugal); most lexical items are unmarked."
+    }
+  },
+  "current_corpus": {
+    "headwords": 81068,
+    "senses": 133763,
+    "unmarked_senses": 130343,
+    "br_senses": 2648,
+    "pt_senses": 655,
+    "curated_senses": 117,
+    "meta_source_senses": 133646
+  },
+  "dicionario_aberto": {
+    "entries": 128520,
+    "senses": 152395,
+    "entries_with_sense": 128520,
+    "avg_senses_per_entry": 1.19,
+    "basis_year": 1913,
+    "license": "CC BY-SA 2.5 Portugal",
+    "entries_metadata": 128521
+  },
+  "headword_overlap": {
+    "current_headwords": 81068,
+    "current_unique_exact": 79711,
+    "da_entries": 128520,
+    "da_unique_exact": 125277,
+    "categories": {
+      "symbol": 35,
+      "other": 52,
+      "multiword": 9819,
+      "affix": 499,
+      "acronym": 1050,
+      "single_word": 69613
+    },
+    "raw_coverage": {
+      "exact": {
+        "covered": 35821,
+        "total": 81068,
+        "pct": 44.2
+      },
+      "accent": {
+        "covered": 37671,
+        "total": 81068,
+        "pct": 46.5
+      },
+      "loose": {
+        "covered": 38525,
+        "total": 81068,
+        "pct": 47.5
+      }
+    },
+    "category_coverage": {
+      "symbol": {
+        "exact": {
+          "covered": 0,
+          "total": 35,
+          "pct": 0.0
+        },
+        "accent": {
+          "covered": 0,
+          "total": 35,
+          "pct": 0.0
+        },
+        "loose": {
+          "covered": 0,
+          "total": 35,
+          "pct": 0.0
+        }
+      },
+      "other": {
+        "exact": {
+          "covered": 4,
+          "total": 52,
+          "pct": 7.7
+        },
+        "accent": {
+          "covered": 4,
+          "total": 52,
+          "pct": 7.7
+        },
+        "loose": {
+          "covered": 17,
+          "total": 52,
+          "pct": 32.7
+        }
+      },
+      "multiword": {
+        "exact": {
+          "covered": 0,
+          "total": 9819,
+          "pct": 0.0
+        },
+        "accent": {
+          "covered": 0,
+          "total": 9819,
+          "pct": 0.0
+        },
+        "loose": {
+          "covered": 117,
+          "total": 9819,
+          "pct": 1.2
+        }
+      },
+      "affix": {
+        "exact": {
+          "covered": 0,
+          "total": 499,
+          "pct": 0.0
+        },
+        "accent": {
+          "covered": 0,
+          "total": 499,
+          "pct": 0.0
+        },
+        "loose": {
+          "covered": 280,
+          "total": 499,
+          "pct": 56.1
+        }
+      },
+      "acronym": {
+        "exact": {
+          "covered": 36,
+          "total": 1050,
+          "pct": 3.4
+        },
+        "accent": {
+          "covered": 55,
+          "total": 1050,
+          "pct": 5.2
+        },
+        "loose": {
+          "covered": 89,
+          "total": 1050,
+          "pct": 8.5
+        }
+      },
+      "single_word": {
+        "exact": {
+          "covered": 35781,
+          "total": 69613,
+          "pct": 51.4
+        },
+        "accent": {
+          "covered": 37612,
+          "total": 69613,
+          "pct": 54.0
+        },
+        "loose": {
+          "covered": 38022,
+          "total": 69613,
+          "pct": 54.6
+        }
+      }
+    },
+    "da_only": {
+      "accent_raw": 89908,
+      "accent_unique": 88754,
+      "with_old_markers": 22123,
+      "sample": [
+        "abacamartado",
+        "abaloso",
+        "abarregamento",
+        "abarticular",
+        "abelhina",
+        "abelhuar-se",
+        "abesoiro",
+        "abesouro",
+        "abetumador",
+        "abodegação",
+        "aboiadinho",
+        "aboiado",
+        "abomba",
+        "abrachiocephalia",
+        "abrachiocéphalo",
+        "abraquiocefalia",
+        "abraquiocéfalo",
+        "abrasoar",
+        "abronceiro",
+        "abrunhar",
+        "abúlico",
+        "abusamento",
+        "acadar",
+        "acafanhar",
+        "acaparrar",
+        "acapelar",
+        "acapnia",
+        "açarçalhar",
+        "acardíaco",
+        "acarlinga",
+        "abotoado",
+        "abricoqueiro",
+        "abutre-fusco",
+        "acácia-bastarda",
+        "acácia-dos-alemães",
+        "acidificável",
+        "acochichar",
+        "açofaifa",
+        "acrolínio",
+        "actinólitho"
+      ]
+    }
+  },
+  "vop_gate": {
+    "method": "Exact VOP search for each form, then the lemma page region label. PASS = replacement is PT/UNMARKED and original is BR/NOT_FOUND. AMBIGUOUS = both forms are PT/UNMARKED. VOP does not measure usage frequency or preferred lexical choice.",
+    "orthographic": [
+      {
+        "id": "genero",
+        "type": "orthographic",
+        "pattern": "\\bgêneros?\\b",
+        "repl": "género(s)",
+        "orig": "gênero",
+        "new": "género",
+        "orig_region": "BR",
+        "new_region": "PT",
+        "gate": "PASS",
+        "occurrences_raw": 662,
+        "senses_raw": 642,
+        "occurrences_unquoted": 662,
+        "senses_unquoted": 642,
+        "examples": [
+          {
+            "word": "-e",
+            "text": "sufixo formador de palavras em gênero neutro a partir de substantivos ou adjetivos terminados em -a ou -o"
+          },
+          {
+            "word": "-o",
+            "text": "indicador de gênero masculino em substantivos e adjetivos"
+          },
+          {
+            "word": "-o(a)",
+            "text": "usado em adjetivos e substantivos para indicar que podem ser de qualquer gênero, masculino ou feminino"
+          }
+        ]
+      },
+      {
+        "id": "fenomeno",
+        "type": "orthographic",
+        "pattern": "\\bfenômenos?\\b",
+        "repl": "fenómeno(s)",
+        "orig": "fenômeno",
+        "new": "fenómeno",
+        "orig_region": "BR",
+        "new_region": "PT",
+        "gate": "PASS",
+        "occurrences_raw": 176,
+        "senses_raw": 173,
+        "occurrences_unquoted": 176,
+        "senses_unquoted": 173,
+        "examples": [
+          {
+            "word": "acústica",
+            "text": "conjunto de fenômenos de reflexão e absorção sonoras que, num dado lugar, favorecem ou prejudicam a boa audição"
+          },
+          {
+            "word": "advérbio",
+            "text": "palavra que modifica um verbo, um adjetivo, um outro advérbio ou uma oração inteira, com função de expressar circunstância de acréscimo, afirmação, argumento, assunto, causa, compa"
+          },
+          {
+            "word": "aeroluminescência",
+            "text": "fenômeno ótico da atmosfera terrestre que ocorre entre 80 e 300 km de altitude, consistindo na emissão da radiação eletromagnética pelos constituintes atmosféricos em decorrência d"
+          }
+        ]
+      },
+      {
+        "id": "economico",
+        "type": "orthographic",
+        "pattern": "\\beconômic(?:o|a|os|as)\\b",
+        "repl": "económic-",
+        "orig": "econômico",
+        "new": "económico",
+        "orig_region": "BR",
+        "new_region": "PT",
+        "gate": "PASS",
+        "occurrences_raw": 132,
+        "senses_raw": 130,
+        "occurrences_unquoted": 132,
+        "senses_unquoted": 130,
+        "examples": [
+          {
+            "word": "Amazônia Azul",
+            "text": "território marítimo brasileiro, cuja área corresponde a aproximadamente 3,6 milhões de quilômetros quadrados e que constitui-se incluindo a zona econômica exclusiva do Brasil de ac"
+          },
+          {
+            "word": "agromineração",
+            "text": "aplicação agrícola da fitomineração, em que o cultivo de plantas serve como fonte de minerais de interesse econômico"
+          },
+          {
+            "word": "agronegócio",
+            "text": "ramo de atividade econômica que envolve a produção, processamento e comercialização de produtos agrícolas, pecuários, florestais e pesqueiros"
+          }
+        ]
+      },
+      {
+        "id": "homonimo",
+        "type": "orthographic",
+        "pattern": "\\bhomônim(?:o|a|os|as)\\b",
+        "repl": "homónim-",
+        "orig": "homônimo",
+        "new": "homónimo",
+        "orig_region": "BR",
+        "new_region": "PT",
+        "gate": "PASS",
+        "occurrences_raw": 73,
+        "senses_raw": 73,
+        "occurrences_unquoted": 73,
+        "senses_unquoted": 73,
+        "examples": [
+          {
+            "word": "aari",
+            "text": "idioma omótico falado no Sul da Etiópia pelo povo homônimo"
+          },
+          {
+            "word": "ateneu",
+            "text": "natural ou habitante de Atenas (antiga cidade, homônima da Atenas ática)"
+          },
+          {
+            "word": "BMW",
+            "text": "carro desenvolvido por empresa homônima e que carrega tal marca de procedência"
+          }
+        ]
+      },
+      {
+        "id": "tonico",
+        "type": "orthographic",
+        "pattern": "\\btônic(?:o|a|os|as)\\b",
+        "repl": "tónic-",
+        "orig": "tônico",
+        "new": "tónico",
+        "orig_region": "BR",
+        "new_region": "PT",
+        "gate": "PASS",
+        "occurrences_raw": 32,
+        "senses_raw": 31,
+        "occurrences_unquoted": 32,
+        "senses_unquoted": 31,
+        "examples": [
+          {
+            "word": "acento secundário",
+            "text": "sílaba subtônica — acento ou ênfase (menor altura) da voz na sílaba subtônica de um vocábulo, em relação ao acento tônico"
+          },
+          {
+            "word": "acorde aumentado",
+            "text": "acorde formado de tônica, terça maior e quinta aumentada"
+          },
+          {
+            "word": "acorde diminuto",
+            "text": "acorde formado de tônica, terça menor, quinta diminuta, e algumas vezes sétima diminuta"
+          }
+        ]
+      },
+      {
+        "id": "sinonimo",
+        "type": "orthographic",
+        "pattern": "\\bsinônim(?:o|a|os|as)\\b",
+        "repl": "sinónim-",
+        "orig": "sinônimo",
+        "new": "sinónimo",
+        "orig_region": "BR",
+        "new_region": "PT",
+        "gate": "PASS",
+        "occurrences_raw": 18,
+        "senses_raw": 18,
+        "occurrences_unquoted": 18,
+        "senses_unquoted": 18,
+        "examples": [
+          {
+            "word": "amendoeira",
+            "text": "amendoeira-da-índia, amendoeira-da-praia, anoz, castanheira, chapéu-de-sol, sete-copas — planta da família das rosáceas que produz um fruto oleaginoso quando seco (amêndoa) comestí"
+          },
+          {
+            "word": "bicho",
+            "text": "sinônimo de animal"
+          },
+          {
+            "word": "caixa de correio",
+            "text": "sinônimo de caixa postal"
+          }
+        ]
+      },
+      {
+        "id": "antonimo",
+        "type": "orthographic",
+        "pattern": "\\bantônim(?:o|a|os|as)\\b",
+        "repl": "antónim-",
+        "orig": "antônimo",
+        "new": "antónimo",
+        "orig_region": "BR",
+        "new_region": "PT",
+        "gate": "PASS",
+        "occurrences_raw": 5,
+        "senses_raw": 5,
+        "occurrences_unquoted": 5,
+        "senses_unquoted": 5,
+        "examples": [
+          {
+            "word": "antagônimo",
+            "text": "uma palavra antagônima, com dois significados antônimos"
+          },
+          {
+            "word": "antônimo",
+            "text": "palavra antônima"
+          },
+          {
+            "word": "fim",
+            "text": "lugar ou tempo em que algo termina, final, antônimo de início"
+          }
+        ]
+      },
+      {
+        "id": "comico",
+        "type": "orthographic",
+        "pattern": "\\bcômic(?:o|a|os|as)\\b",
+        "repl": "cómic-",
+        "orig": "cômico",
+        "new": "cómico",
+        "orig_region": "BR",
+        "new_region": "PT",
+        "gate": "PASS",
+        "occurrences_raw": 13,
+        "senses_raw": 13,
+        "occurrences_unquoted": 13,
+        "senses_unquoted": 13,
+        "examples": [
+          {
+            "word": "burlesco",
+            "text": "que recorre à sátira, ao ridículo e/ou ao cómico/cômico para caricaturar alguém ou alguma situação"
+          },
+          {
+            "word": "caricatura",
+            "text": "desenho de uma pessoa, de um animal, de uma coisa ou de um fato, que exagera alguns aspectos com intenção cômica ou crítica"
+          },
+          {
+            "word": "comicidade",
+            "text": "qualidade do que é cômico"
+          }
+        ]
+      },
+      {
+        "id": "eletronico",
+        "type": "orthographic",
+        "pattern": "\\beletrônic(?:o|a|os|as)\\b",
+        "repl": "eletrónic-",
+        "orig": "eletrônico",
+        "new": "eletrónico",
+        "orig_region": "BR",
+        "new_region": "PT",
+        "gate": "PASS",
+        "occurrences_raw": 0,
+        "senses_raw": 0,
+        "occurrences_unquoted": 0,
+        "senses_unquoted": 0,
+        "examples": []
+      },
+      {
+        "id": "contato",
+        "type": "orthographic",
+        "pattern": "\\bcontatos?\\b",
+        "repl": "contacto(s)",
+        "orig": "contato",
+        "new": "contacto",
+        "orig_region": "BR",
+        "new_region": "UNMARKED",
+        "gate": "PASS",
+        "occurrences_raw": 114,
+        "senses_raw": 109,
+        "occurrences_unquoted": 114,
+        "senses_unquoted": 109,
+        "examples": [
+          {
+            "word": "abá-baxé-de-xangô",
+            "text": "cerimônia de iniciação do candomblé, quando o orixá, no caso xangô, faz contato com a \"cabeça\" do neófito"
+          },
+          {
+            "word": "acionar",
+            "text": "entrar em contato com alguém de um serviço público de modo que algum agente do mesmo haja, tome providência acerca de um incidente comunicado"
+          },
+          {
+            "word": "aculturação",
+            "text": "alteração na cultura de um grupo quando colocado em contato com outro"
+          }
+        ]
+      },
+      {
+        "id": "planejamento",
+        "type": "orthographic",
+        "pattern": "\\bplanejamentos?\\b",
+        "repl": "planeamento(s)",
+        "orig": "planejamento",
+        "new": "planeamento",
+        "orig_region": "BR",
+        "new_region": "UNMARKED",
+        "gate": "PASS",
+        "occurrences_raw": 13,
+        "senses_raw": 13,
+        "occurrences_unquoted": 13,
+        "senses_unquoted": 13,
+        "examples": [
+          {
+            "word": "aeromodelismo",
+            "text": "passatempo que envolve planejamento, construção e pilotagem de miniaturas de avião"
+          },
+          {
+            "word": "agência de publicidade",
+            "text": "empresa responsável pela criação, planejamento, produção e veiculação de campanhas publicitárias"
+          },
+          {
+            "word": "biblioteconomia",
+            "text": "ciência que estuda e trata do planejamento, implementação, administração e organização da informação em unidades de informação (das quais podem ser citadas as bibliotecas, os centr"
+          }
+        ]
+      },
+      {
+        "id": "planejar",
+        "type": "orthographic",
+        "pattern": "\\bplanejar\\b",
+        "repl": "planear",
+        "orig": "planejar",
+        "new": "planear",
+        "orig_region": "BR",
+        "new_region": "UNMARKED",
+        "gate": "PASS",
+        "occurrences_raw": 21,
+        "senses_raw": 20,
+        "occurrences_unquoted": 21,
+        "senses_unquoted": 20,
+        "examples": [
+          {
+            "word": "a vingança se come fria",
+            "text": "a vingança é um prato que se come frio — para se vingar plenamente de alguém que nos fez mal, revidar de imediato pode não surtir efeito, temos que planejar e aguardar momento prop"
+          },
+          {
+            "word": "a vingança é um prato que se come frio",
+            "text": "a vingança se come fria — para se vingar plenamente de alguém que nos fez mal, revidar de imediato pode não surtir efeito, temos que planejar e aguardar momento propício para que a"
+          },
+          {
+            "word": "argalhar",
+            "text": "(Galicia) tramar, conspirar, planejar, armar, discorrer cousas que para outros não são de valor"
+          }
+        ]
+      }
+    ],
+    "orthographic_ambiguous": [
+      {
+        "id": "forma_mold",
+        "type": "orthographic_ambiguous",
+        "pattern": "\\bfôrmas?\\b",
+        "repl": "forma(s)",
+        "orig": "fôrma",
+        "new": "forma",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 1,
+        "senses_raw": 1,
+        "occurrences_unquoted": 1,
+        "senses_unquoted": 1,
+        "examples": [
+          {
+            "word": "enformar",
+            "text": "pôr na fôrma"
+          }
+        ]
+      },
+      {
+        "id": "registro",
+        "type": "orthographic_ambiguous",
+        "pattern": "\\bregistros?\\b",
+        "repl": "registo(s)",
+        "orig": "registro",
+        "new": "registo",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 85,
+        "senses_raw": 82,
+        "occurrences_unquoted": 85,
+        "senses_unquoted": 82,
+        "examples": [
+          {
+            "word": "agenda",
+            "text": "registro diário dessas anotações"
+          },
+          {
+            "word": "anais",
+            "text": "registros escritos dos fatos importantes da vida de um povo, ou de uma instituição artística, literária ou científica, ano a ano"
+          },
+          {
+            "word": "anotação",
+            "text": "nota, registro; pequeno escrito referente a algo"
+          }
+        ]
+      },
+      {
+        "id": "planejado",
+        "type": "orthographic_ambiguous",
+        "pattern": "\\bplanejados?\\b",
+        "repl": "planeado(s)",
+        "orig": "planejado",
+        "new": "planeado",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 0,
+        "senses_raw": 0,
+        "occurrences_unquoted": 0,
+        "senses_unquoted": 0,
+        "examples": []
+      }
+    ],
+    "lexical": [
+      {
+        "id": "onibus",
+        "type": "lexical",
+        "pattern": "\\bônibus\\b",
+        "repl": "autocarro",
+        "orig": "ônibus",
+        "new": "autocarro",
+        "orig_region": "BR",
+        "new_region": "UNMARKED",
+        "gate": "PASS",
+        "occurrences_raw": 0,
+        "senses_raw": 0,
+        "occurrences_unquoted": 0,
+        "senses_unquoted": 0,
+        "examples": []
+      },
+      {
+        "id": "caminhao",
+        "type": "lexical",
+        "pattern": "\\bcaminh(?:ão|ões)\\b",
+        "repl": "camião/camiões",
+        "orig": "caminhão",
+        "new": "camião",
+        "orig_region": "BR",
+        "new_region": "UNMARKED",
+        "gate": "PASS",
+        "occurrences_raw": 16,
+        "senses_raw": 13,
+        "occurrences_unquoted": 16,
+        "senses_unquoted": 13,
+        "examples": [
+          {
+            "word": "arrasto",
+            "text": "caminhão"
+          },
+          {
+            "word": "bruto",
+            "text": "(informal) caminhão de carga pesada"
+          },
+          {
+            "word": "cabina",
+            "text": "compartimento no qual localizam-se os controles de direção de caminhão e que é destinado a ocupação daquele que faz a guiagem"
+          }
+        ]
+      },
+      {
+        "id": "tenis",
+        "type": "lexical",
+        "pattern": "\\btênis\\b",
+        "repl": "sapatilhas",
+        "orig": "tênis",
+        "new": "sapatilhas",
+        "orig_region": "BR",
+        "new_region": "UNMARKED",
+        "gate": "PASS",
+        "occurrences_raw": 11,
+        "senses_raw": 11,
+        "occurrences_unquoted": 11,
+        "senses_unquoted": 11,
+        "examples": [
+          {
+            "word": "corte de ténis",
+            "text": "quadra de tênis — área de superfície retangular cruzada ao meio por uma rede baixa, que serve de local para se jogar ténis"
+          },
+          {
+            "word": "pingue-pongue",
+            "text": "pim-pom, ténis de mesa, tênis de mesa"
+          },
+          {
+            "word": "pisante",
+            "text": "sapato, tênis"
+          }
+        ]
+      },
+      {
+        "id": "carona",
+        "type": "lexical",
+        "pattern": "\\bcaronas?\\b",
+        "repl": "boleia(s)",
+        "orig": "carona",
+        "new": "boleia",
+        "orig_region": "BR",
+        "new_region": "UNMARKED",
+        "gate": "PASS",
+        "occurrences_raw": 5,
+        "senses_raw": 5,
+        "occurrences_unquoted": 5,
+        "senses_unquoted": 5,
+        "examples": [
+          {
+            "word": "bigu",
+            "text": "(Pernambuco) carona — viagem clandestina ou de favor em qualquer veículo"
+          },
+          {
+            "word": "combe",
+            "text": "veículo automotor manufaturado pela Volkswagen, fechado de duas portas laterais para acesso aos dois bancos dianteiros, o do motorista e o do carona ao seu lado, de porta lateral p"
+          },
+          {
+            "word": "ligário",
+            "text": "(Southern-Brazil) carona feita de couro de bezerro"
+          }
+        ]
+      },
+      {
+        "id": "mamadeira",
+        "type": "lexical",
+        "pattern": "\\bmamadeiras?\\b",
+        "repl": "biberão/biberões",
+        "orig": "mamadeira",
+        "new": "biberão",
+        "orig_region": "BR",
+        "new_region": "UNMARKED",
+        "gate": "PASS",
+        "occurrences_raw": 1,
+        "senses_raw": 1,
+        "occurrences_unquoted": 1,
+        "senses_unquoted": 1,
+        "examples": [
+          {
+            "word": "biberão",
+            "text": "mamadeira — frasco com uma tetina/bico de borracha, utilizado para dar leite (ou outros líquidos) a crianças"
+          }
+        ]
+      },
+      {
+        "id": "usuario",
+        "type": "lexical",
+        "pattern": "\\busuários?\\b",
+        "repl": "utilizador(es)",
+        "orig": "usuário",
+        "new": "utilizador",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 0,
+        "senses_raw": 0,
+        "occurrences_unquoted": 0,
+        "senses_unquoted": 0,
+        "examples": []
+      },
+      {
+        "id": "aplicativo",
+        "type": "lexical",
+        "pattern": "\\baplicativos?\\b",
+        "repl": "aplicação(ões)",
+        "orig": "aplicativo",
+        "new": "aplicação",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 0,
+        "senses_raw": 0,
+        "occurrences_unquoted": 0,
+        "senses_unquoted": 0,
+        "examples": []
+      },
+      {
+        "id": "suco",
+        "type": "lexical",
+        "pattern": "\\bsucos?\\b",
+        "repl": "sumo(s)",
+        "orig": "suco",
+        "new": "sumo",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 0,
+        "senses_raw": 0,
+        "occurrences_unquoted": 0,
+        "senses_unquoted": 0,
+        "examples": []
+      },
+      {
+        "id": "tela",
+        "type": "lexical",
+        "pattern": "\\btelas?\\b",
+        "repl": "ecrã(s)",
+        "orig": "tela",
+        "new": "ecrã",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 56,
+        "senses_raw": 53,
+        "occurrences_unquoted": 56,
+        "senses_unquoted": 53,
+        "examples": [
+          {
+            "word": "16:9",
+            "text": "que é de rácio de aspecto de visualização de imagem visível em tela de 16 unidades na horizontal por 9 unidades na vertical"
+          },
+          {
+            "word": "aramado",
+            "text": "rede ou qualquer tela feita com entrelaçamento de arame adj."
+          },
+          {
+            "word": "área de trabalho",
+            "text": "a soma visual dos elementos em tela exibidos conjuntamente que compõe a interface inicial utilizável para múltiplas propostas com a qual o utilizador se depara após o carregamento "
+          }
+        ]
+      },
+      {
+        "id": "banheiro",
+        "type": "lexical",
+        "pattern": "\\bbanheiros?\\b",
+        "repl": "casa de banho",
+        "orig": "banheiro",
+        "new": "casa de banho",
+        "orig_region": "UNMARKED",
+        "new_region": "NOT_FOUND",
+        "gate": "MULTIWORD_NOT_IN_VOP",
+        "occurrences_raw": 0,
+        "senses_raw": 0,
+        "occurrences_unquoted": 0,
+        "senses_unquoted": 0,
+        "examples": []
+      },
+      {
+        "id": "xicara",
+        "type": "lexical",
+        "pattern": "\\bxícaras?\\b",
+        "repl": "chávena(s)",
+        "orig": "xícara",
+        "new": "chávena",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 0,
+        "senses_raw": 0,
+        "occurrences_unquoted": 0,
+        "senses_unquoted": 0,
+        "examples": []
+      },
+      {
+        "id": "celular",
+        "type": "lexical",
+        "pattern": "\\bcelular(?:es)?\\b",
+        "repl": "telemóvel/telemóveis",
+        "orig": "celular",
+        "new": "telemóvel",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 63,
+        "senses_raw": 61,
+        "occurrences_unquoted": 63,
+        "senses_unquoted": 61,
+        "examples": [
+          {
+            "word": "Apple",
+            "text": "empresa americana do ramo dos computadores, celulares, etc."
+          },
+          {
+            "word": "agonista",
+            "text": "diz-se da droga que atua em receptores e elicita uma resposta que pode ser um aumento ou uma diminuição em uma manifestação particular da atividade celular ou de células às quais o"
+          },
+          {
+            "word": "apoptose",
+            "text": "rápida morte celular"
+          }
+        ]
+      },
+      {
+        "id": "geladeira",
+        "type": "lexical",
+        "pattern": "\\bgeladeiras?\\b",
+        "repl": "frigorífico(s)",
+        "orig": "geladeira",
+        "new": "frigorífico",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 0,
+        "senses_raw": 0,
+        "occurrences_unquoted": 0,
+        "senses_unquoted": 0,
+        "examples": []
+      },
+      {
+        "id": "time",
+        "type": "lexical",
+        "pattern": "\\btimes?\\b",
+        "repl": "equipa(s)",
+        "orig": "time",
+        "new": "equipa",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 37,
+        "senses_raw": 36,
+        "occurrences_unquoted": 37,
+        "senses_unquoted": 36,
+        "examples": [
+          {
+            "word": "aliado",
+            "text": "entidade (pessoa, time, estado, etc) que se aliou a outra entidade"
+          },
+          {
+            "word": "alvinegro",
+            "text": "um clube, torcedor ou jogador cujas cores de time são o branco e o preto adj."
+          },
+          {
+            "word": "alvirrubro",
+            "text": "um clube, torcedor ou jogador cujas cores de time são o branco e o vermelho adj."
+          }
+        ]
+      },
+      {
+        "id": "torcida",
+        "type": "lexical",
+        "pattern": "\\btorcidas?\\b",
+        "repl": "claque(s)",
+        "orig": "torcida",
+        "new": "claque",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 8,
+        "senses_raw": 8,
+        "occurrences_unquoted": 8,
+        "senses_unquoted": 8,
+        "examples": [
+          {
+            "word": "costrão",
+            "text": "(Galicia) biorto — vara torcida, flexível, que serve para atar feixes"
+          },
+          {
+            "word": "costrão",
+            "text": "(Galicia) vara de carvalho torcida, usada antigamente para sustentar as boias de cortiça na rede de pesca"
+          },
+          {
+            "word": "isqueiro",
+            "text": "utensílio com torcida humedecida de gasolina ou saída de gás, que se inflama pelo atrito de uma roda dentada sobre uma pedra abrasiva apropriada ou por um inflamador elétrico adequ"
+          }
+        ]
+      },
+      {
+        "id": "camisa",
+        "type": "lexical",
+        "pattern": "\\bcamisas?\\b",
+        "repl": "camisola(s) [contexto desportivo]",
+        "orig": "camisa",
+        "new": "camisola",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 26,
+        "senses_raw": 26,
+        "occurrences_unquoted": 26,
+        "senses_unquoted": 26,
+        "examples": [
+          {
+            "word": "10",
+            "text": "pessoa que tem habilidade destacada, que classicamente atua centralizado fazendo parte do ataque e veste a camisa com numeração 10 adj."
+          },
+          {
+            "word": "abadá",
+            "text": "(Bahia, Brazil) camisa usada para identificar os convidados de uma festa"
+          },
+          {
+            "word": "amarelinha",
+            "text": "camisa de Seleção Brasileira"
+          }
+        ]
+      },
+      {
+        "id": "abacaxi",
+        "type": "lexical",
+        "pattern": "\\babacaxis?\\b",
+        "repl": "ananás",
+        "orig": "abacaxi",
+        "new": "ananás",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 8,
+        "senses_raw": 8,
+        "occurrences_unquoted": 8,
+        "senses_unquoted": 8,
+        "examples": [
+          {
+            "word": "abacaxi-branco",
+            "text": "nome popular do abacaxi (Ananas comosus), planta da família das Bromeliáceas, nativa da América do Sul mas cultivada atualmente em quase todas as regiões tropicais e subtropicais"
+          },
+          {
+            "word": "abacaxi-de-tingir",
+            "text": "abacaxi-silvestre, gravatá-branco, gravatá-da-árvore — planta bromeliácea de cuja raiz se extrai uma tinta amarela (Aechmea tinctoria); desenvolve-se em solos pedregosos e também s"
+          },
+          {
+            "word": "abacaxi-silvestre",
+            "text": "mesmo que abacaxi-de-tingir"
+          }
+        ]
+      },
+      {
+        "id": "biscoito",
+        "type": "lexical",
+        "pattern": "\\bbiscoitos?\\b",
+        "repl": "bolacha(s)",
+        "orig": "biscoito",
+        "new": "bolacha",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 21,
+        "senses_raw": 21,
+        "occurrences_unquoted": 21,
+        "senses_unquoted": 21,
+        "examples": [
+          {
+            "word": "abiscoitar",
+            "text": "abiscoutar — cozer como biscoito"
+          },
+          {
+            "word": "beiju",
+            "text": "(Minas Gerais) espécie de biscoito doce muito leve e quebradiço, enrolado como canudo, geralmente anunciado nas ruas pelo som de matraca (instrumento de percussão); obs.: confira t"
+          },
+          {
+            "word": "beiju",
+            "text": "(Ceará) biscoito feito de massa da mandioca pressada sem a goma, torrado no forno e depois de seco servido com café"
+          }
+        ]
+      },
+      {
+        "id": "sorvete",
+        "type": "lexical",
+        "pattern": "\\bsorvetes?\\b",
+        "repl": "gelado(s)",
+        "orig": "sorvete",
+        "new": "gelado",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 12,
+        "senses_raw": 12,
+        "occurrences_unquoted": 12,
+        "senses_unquoted": 12,
+        "examples": [
+          {
+            "word": "baleizão",
+            "text": "(Angola) sorvete"
+          },
+          {
+            "word": "banana-real",
+            "text": "banana split — sobremesa que consiste em bananas longitudinalmente fatiadas recheadas com bolas de sorvete, nozes, caldas, frutas etc."
+          },
+          {
+            "word": "gelado",
+            "text": "sorvete adj."
+          }
+        ]
+      },
+      {
+        "id": "grampeador",
+        "type": "lexical",
+        "pattern": "\\bgrampeador(?:es)?\\b",
+        "repl": "agrafador(es)",
+        "orig": "grampeador",
+        "new": "agrafador",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 0,
+        "senses_raw": 0,
+        "occurrences_unquoted": 0,
+        "senses_unquoted": 0,
+        "examples": []
+      },
+      {
+        "id": "acougue",
+        "type": "lexical",
+        "pattern": "\\baçougues?\\b",
+        "repl": "talho(s)",
+        "orig": "açougue",
+        "new": "talho",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 6,
+        "senses_raw": 6,
+        "occurrences_unquoted": 6,
+        "senses_unquoted": 6,
+        "examples": [
+          {
+            "word": "abatedouro",
+            "text": "açougue, matadouro — o mesmo que matadouro"
+          },
+          {
+            "word": "açougueiro",
+            "text": "proprietário de açougue; carniceiro; o mesmo que talhante"
+          },
+          {
+            "word": "colchete",
+            "text": "gancho duplo com o qual se penduram carnes, em açougues e frigoríficos"
+          }
+        ]
+      },
+      {
+        "id": "arquivo",
+        "type": "lexical",
+        "pattern": "\\barquivos?\\b",
+        "repl": "ficheiro(s)",
+        "orig": "arquivo",
+        "new": "ficheiro",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 57,
+        "senses_raw": 51,
+        "occurrences_unquoted": 57,
+        "senses_unquoted": 51,
+        "examples": [
+          {
+            "word": "-teca",
+            "text": "arquivo"
+          },
+          {
+            "word": "-ório",
+            "text": "arquivo, lugar de"
+          },
+          {
+            "word": "ANTT",
+            "text": "Arquivo Nacional da Torre do Tombo"
+          }
+        ]
+      },
+      {
+        "id": "fato",
+        "type": "lexical",
+        "pattern": "\\bfatos?\\b",
+        "repl": "facto(s) [sentido de acontecimento]",
+        "orig": "fato",
+        "new": "facto",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 303,
+        "senses_raw": 288,
+        "occurrences_unquoted": 302,
+        "senses_unquoted": 287,
+        "examples": [
+          {
+            "word": "Abidjan",
+            "text": "capital de fato e maior cidade da Costa do Marfim"
+          },
+          {
+            "word": "a fome é o melhor tempero",
+            "text": "o fato de a pessoa ter fome faz com que ela fique menos exigente quanto ao sabor dos alimentos"
+          },
+          {
+            "word": "a verdade é reta",
+            "text": "a factualidade dos fatos para quem não mente não muda conforme a conveniência, não é falsiável"
+          }
+        ]
+      },
+      {
+        "id": "trem",
+        "type": "lexical",
+        "pattern": "\\btrem(?:ns)?\\b",
+        "repl": "comboio(s) [sentido ferroviário]",
+        "orig": "trem",
+        "new": "comboio",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "occurrences_raw": 22,
+        "senses_raw": 22,
+        "occurrences_unquoted": 22,
+        "senses_unquoted": 22,
+        "examples": [
+          {
+            "word": "apeiragem",
+            "text": "trem de lavoira"
+          },
+          {
+            "word": "apeiro",
+            "text": "trem de lavoura"
+          },
+          {
+            "word": "apeiro",
+            "text": "trem completo de caça"
+          }
+        ]
+      },
+      {
+        "id": "cafe_manha",
+        "type": "lexical",
+        "pattern": "\\bcafé da manhã\\b",
+        "repl": "pequeno-almoço",
+        "orig": "café da manhã",
+        "new": "pequeno-almoço",
+        "orig_region": "NOT_FOUND",
+        "new_region": "UNMARKED",
+        "gate": "PASS",
+        "occurrences_raw": 8,
+        "senses_raw": 8,
+        "occurrences_unquoted": 8,
+        "senses_unquoted": 8,
+        "examples": [
+          {
+            "word": "café",
+            "text": "cafeeiro, cafezeiro, cafeteria, café da manhã — fruto gerado pelo cafeeiro"
+          },
+          {
+            "word": "cereal matinal",
+            "text": "cereal que se come no café da manhã/desjejum"
+          },
+          {
+            "word": "desjejum",
+            "text": "dejejum, pequeno almoço, café da manhã, quebra-torto, mata-bicho — primeira refeição do dia"
+          }
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "id": "voce",
+        "type": "grammar",
+        "pattern": "\\bvocês?\\b",
+        "repl": "tu / o senhor / a senhora",
+        "orig": "você",
+        "new": "tu",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED",
+        "gate": "NOT_GATED",
+        "occurrences_raw": 26,
+        "senses_raw": 25,
+        "occurrences_unquoted": 25,
+        "senses_unquoted": 24,
+        "examples": [
+          {
+            "word": "abó",
+            "text": "tu, você — usado como a segunda pessoa do singular"
+          },
+          {
+            "word": "aqui se faz, aqui se paga",
+            "text": "(colloquial) o mundo dá voltas, quem semeia ventos colhe tempestades, tudo que vai volta, vai ter volta, você colhe o que planta — a ação com más intenções de uma pessoa, tem conse"
+          },
+          {
+            "word": "bricolage",
+            "text": "arranjos domésticos do tipo \"faça você mesmo\""
+          }
+        ]
+      },
+      {
+        "id": "a_gente",
+        "type": "grammar",
+        "pattern": "\\ba gente\\b",
+        "repl": "nós / as pessoas",
+        "orig": "a gente",
+        "new": "nós",
+        "orig_region": "NOT_FOUND",
+        "new_region": "UNMARKED",
+        "gate": "NOT_GATED",
+        "occurrences_raw": 3,
+        "senses_raw": 3,
+        "occurrences_unquoted": 3,
+        "senses_unquoted": 3,
+        "examples": [
+          {
+            "word": "bisnaga",
+            "text": "tubo de folha de chumbo, cheio de água aromática, e que, comprimido, borrifa a gente, em folganças de Carnaval"
+          },
+          {
+            "word": "nós",
+            "text": "a gente — um grupo de pessoas, incluindo a si mesmo"
+          },
+          {
+            "word": "quem quer",
+            "text": "toda a gente"
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "orthographic": {
+        "rules": 12,
+        "senses_unquoted": 1227,
+        "occurrences_unquoted": 1259,
+        "pass": 12,
+        "ambiguous": 0,
+        "fail": 0
+      },
+      "orthographic_ambiguous": {
+        "rules": 3,
+        "senses_unquoted": 83,
+        "occurrences_unquoted": 86,
+        "pass": 0,
+        "ambiguous": 3,
+        "fail": 0
+      },
+      "lexical": {
+        "rules": 25,
+        "senses_unquoted": 629,
+        "occurrences_unquoted": 659,
+        "pass": 6,
+        "ambiguous": 18,
+        "fail": 0
+      },
+      "grammar": {
+        "rules": 2,
+        "senses_unquoted": 27,
+        "occurrences_unquoted": 28,
+        "pass": 0,
+        "ambiguous": 0,
+        "fail": 0
+      },
+      "regional": {
+        "terms": 57,
+        "pass_form_exists": 49,
+        "out_of_scope_multiword": 8,
+        "fail": 0
+      },
+      "v7": {
+        "total": 339,
+        "vop_safe": 155,
+        "ambiguous": 174,
+        "other": 10
+      }
+    }
+  },
+  "regional_table": {
+    "terms": [
+      {
+        "key": "onibus",
+        "sense": "transporte coletivo rodoviário",
+        "pt": "autocarro",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "trem",
+        "sense": "transporte ferroviário",
+        "pt": "comboio",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "celular",
+        "sense": "telefone portátil",
+        "pt": "telemóvel",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "geladeira",
+        "sense": "eletrodoméstico para conservar alimentos",
+        "pt": "frigorífico",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "suco",
+        "sense": "bebida extraída de frutos",
+        "pt": "sumo",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "sorvete",
+        "sense": "sobremesa gelada",
+        "pt": "gelado",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "acougue",
+        "sense": "estabelecimento que vende carne",
+        "pt": "talho",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "banheiro",
+        "sense": "divisão com instalações sanitárias",
+        "pt": "casa de banho",
+        "br": null,
+        "pt_region": "NOT_FOUND",
+        "gate": "OUT_OF_SCOPE_MULTIWORD"
+      },
+      {
+        "key": "xicara",
+        "sense": "recipiente para bebidas",
+        "pt": "chávena",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "mamadeira",
+        "sense": "recipiente para alimentar bebés",
+        "pt": "biberão",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "grampeador",
+        "sense": "utensílio de escritório",
+        "pt": "agrafador",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "bonde",
+        "sense": "veículo urbano sobre carris",
+        "pt": "elétrico",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "ponto de onibus",
+        "sense": "local de paragem de transporte coletivo",
+        "pt": "paragem de autocarro",
+        "br": null,
+        "pt_region": "NOT_FOUND",
+        "gate": "OUT_OF_SCOPE_MULTIWORD"
+      },
+      {
+        "key": "cafe da manha",
+        "sense": "primeira refeição do dia",
+        "pt": "pequeno-almoço",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "tenis",
+        "sense": "calçado desportivo",
+        "pt": "sapatilhas",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "mouse",
+        "sense": "periférico de computador",
+        "pt": "rato",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "tela",
+        "sense": "superfície de visualização eletrónica",
+        "pt": "ecrã",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "calcada",
+        "sense": "zona destinada a peões junto à via",
+        "pt": "passeio",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "garota",
+        "sense": "pessoa jovem do sexo feminino",
+        "pt": "rapariga",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "pipoca",
+        "sense": "milho rebentado para consumo",
+        "pt": "pipocas",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "xerox",
+        "sense": "cópia de documento",
+        "pt": "fotocópia",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "onibus escolar",
+        "sense": "transporte escolar",
+        "pt": "autocarro escolar",
+        "br": null,
+        "pt_region": "NOT_FOUND",
+        "gate": "OUT_OF_SCOPE_MULTIWORD"
+      },
+      {
+        "key": "usuario",
+        "sense": "pessoa que utiliza um serviço ou sistema",
+        "pt": "utilizador",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "aplicativo",
+        "sense": "programa informático",
+        "pt": "aplicação",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "arquivo",
+        "sense": "conjunto de dados informáticos",
+        "pt": "ficheiro",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "fato",
+        "sense": "acontecimento ou realidade; não no sentido de vestuário",
+        "pt": "facto",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "terno",
+        "sense": "conjunto de vestuário formal masculino",
+        "pt": "fato",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "abacaxi",
+        "sense": "fruto tropical; nomes e variedades podem diferir",
+        "pt": "ananás",
+        "br": null,
+        "pt_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "onibus de turismo",
+        "sense": "transporte turístico",
+        "pt": "autocarro de turismo",
+        "br": null,
+        "pt_region": "NOT_FOUND",
+        "gate": "OUT_OF_SCOPE_MULTIWORD"
+      },
+      {
+        "key": "autocarro",
+        "sense": "transporte coletivo rodoviário",
+        "pt": null,
+        "br": "ônibus",
+        "br_region": "BR",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "comboio",
+        "sense": "transporte ferroviário",
+        "pt": null,
+        "br": "trem",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "telemovel",
+        "sense": "telefone portátil",
+        "pt": null,
+        "br": "celular",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "frigorifico",
+        "sense": "eletrodoméstico para conservar alimentos",
+        "pt": null,
+        "br": "geladeira",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "sumo",
+        "sense": "bebida extraída de frutos",
+        "pt": null,
+        "br": "suco",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "gelado",
+        "sense": "sobremesa gelada",
+        "pt": null,
+        "br": "sorvete",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "talho",
+        "sense": "estabelecimento que vende carne",
+        "pt": null,
+        "br": "açougue",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "casa de banho",
+        "sense": "divisão com instalações sanitárias",
+        "pt": null,
+        "br": "banheiro",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "chavena",
+        "sense": "recipiente para bebidas",
+        "pt": null,
+        "br": "xícara",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "biberao",
+        "sense": "recipiente para alimentar bebés",
+        "pt": null,
+        "br": "mamadeira",
+        "br_region": "BR",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "agrafador",
+        "sense": "utensílio de escritório",
+        "pt": null,
+        "br": "grampeador",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "eletrico",
+        "sense": "veículo urbano sobre carris",
+        "pt": null,
+        "br": "bonde",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "paragem de autocarro",
+        "sense": "local de paragem de transporte coletivo",
+        "pt": null,
+        "br": "ponto de ônibus",
+        "br_region": "NOT_FOUND",
+        "gate": "OUT_OF_SCOPE_MULTIWORD"
+      },
+      {
+        "key": "pequeno-almoco",
+        "sense": "primeira refeição do dia",
+        "pt": null,
+        "br": "café da manhã",
+        "br_region": "NOT_FOUND",
+        "gate": "OUT_OF_SCOPE_MULTIWORD"
+      },
+      {
+        "key": "sapatilhas",
+        "sense": "calçado desportivo",
+        "pt": null,
+        "br": "tênis",
+        "br_region": "BR",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "rato",
+        "sense": "periférico de computador",
+        "pt": null,
+        "br": "mouse",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "ecra",
+        "sense": "superfície de visualização eletrónica",
+        "pt": null,
+        "br": "tela",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "passeio",
+        "sense": "zona destinada a peões junto à via",
+        "pt": null,
+        "br": "calçada",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "rapariga",
+        "sense": "pessoa jovem do sexo feminino",
+        "pt": null,
+        "br": "garota",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "pipocas",
+        "sense": "milho rebentado para consumo",
+        "pt": null,
+        "br": "pipoca",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "fotocopia",
+        "sense": "cópia de documento",
+        "pt": null,
+        "br": "xerox",
+        "br_region": "BR",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "autocarro escolar",
+        "sense": "transporte escolar",
+        "pt": null,
+        "br": "ônibus escolar",
+        "br_region": "NOT_FOUND",
+        "gate": "OUT_OF_SCOPE_MULTIWORD"
+      },
+      {
+        "key": "utilizador",
+        "sense": "pessoa que utiliza um serviço ou sistema",
+        "pt": null,
+        "br": "usuário",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "aplicacao",
+        "sense": "programa informático",
+        "pt": null,
+        "br": "aplicativo",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "ficheiro",
+        "sense": "conjunto de dados informáticos",
+        "pt": null,
+        "br": "arquivo",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "facto",
+        "sense": "acontecimento ou realidade; não no sentido de vestuário",
+        "pt": null,
+        "br": "fato",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "ananas",
+        "sense": "fruto tropical; nomes e variedades podem diferir",
+        "pt": null,
+        "br": "abacaxi",
+        "br_region": "UNMARKED",
+        "gate": "PASS_FORM_EXISTS"
+      },
+      {
+        "key": "autocarro de turismo",
+        "sense": "transporte turístico",
+        "pt": null,
+        "br": "ônibus de turismo",
+        "br_region": "NOT_FOUND",
+        "gate": "OUT_OF_SCOPE_MULTIWORD"
+      }
+    ],
+    "summary": {
+      "terms": 57,
+      "pass_form_exists": 49,
+      "out_of_scope_multiword": 8,
+      "fail": 0
+    }
+  },
+  "v7_audit": {
+    "rows": [
+      {
+        "v7_rule": "eletrônico",
+        "count": 121,
+        "rule_id": "eletronico",
+        "gate": "PASS",
+        "orig_region": "BR",
+        "new_region": "PT"
+      },
+      {
+        "v7_rule": "aplicativo",
+        "count": 20,
+        "rule_id": "aplicativo",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED"
+      },
+      {
+        "v7_rule": "usuário",
+        "count": 50,
+        "rule_id": "usuario",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED"
+      },
+      {
+        "v7_rule": "suco",
+        "count": 46,
+        "rule_id": "suco",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED"
+      },
+      {
+        "v7_rule": "tela informática",
+        "count": 24,
+        "rule_id": "tela",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED"
+      },
+      {
+        "v7_rule": "ônibus",
+        "count": 34,
+        "rule_id": "onibus",
+        "gate": "PASS",
+        "orig_region": "BR",
+        "new_region": "UNMARKED"
+      },
+      {
+        "v7_rule": "banheiro",
+        "count": 10,
+        "rule_id": "banheiro",
+        "gate": "MULTIWORD_NOT_IN_VOP",
+        "orig_region": "UNMARKED",
+        "new_region": "NOT_FOUND"
+      },
+      {
+        "v7_rule": "xícara",
+        "count": 5,
+        "rule_id": "xicara",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED"
+      },
+      {
+        "v7_rule": "planejado",
+        "count": 17,
+        "rule_id": "planejado",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED"
+      },
+      {
+        "v7_rule": "telefone celular",
+        "count": 9,
+        "rule_id": "celular",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED"
+      },
+      {
+        "v7_rule": "geladeira",
+        "count": 3,
+        "rule_id": "geladeira",
+        "gate": "AMBIGUOUS_ORIGINAL_ALSO_VALID",
+        "orig_region": "UNMARKED",
+        "new_region": "UNMARKED"
+      }
+    ],
+    "summary": {
+      "total": 339,
+      "vop_safe": 155,
+      "ambiguous": 174,
+      "other": 10
+    }
+  },
+  "recommendations": [
+    "Apply only the 12 VOP-confirmed orthographic rules as suggestions, preserving the original text and marking them unreviewed. They cover 1,227 unmarked senses (1,259 occurrences) after quoted text is excluded.",
+    "Do not auto-apply the ambiguous orthographic rules (registro, fôrma, planejado: 83 senses). VOP has both forms as valid and the choice is semantic/usage-dependent.",
+    "Do not treat the lexical VOP results as validation. VOP leaves suco, geladeira, celular, tela, banheiro, xícara, sorvete, abacaxi, biscoito, camisa, torcida, arquivo, time and trem unmarked. Lexical conversion needs sense-level context rules or editorial review.",
+    "Add Dicionário Aberto only as a separate, clearly labelled historical PT-PT layer. It overlaps 37,671 current headwords (46.5% raw; 54.0% of single-word headwords) but is a 1913 dictionary and cannot replace modern definitions.",
+    "Do not merge the 88,754 Dicionário Aberto-only forms wholesale. 22,123 (24.6%) contain old-orthography markers; the rest include rare/archaic variants and proper names.",
+    "Keep the 57-term regional table. 49 PT forms exist in VOP; the 8 multiword forms (casa de banho, paragem de autocarro, etc.) are outside VOP scope, not invalid.",
+    "For modern PT-PT definitions at scale, license a modern dictionary (DLPC, Priberam, Infopédia) or expand the curated editorial layer. No open drop-in PT-PT dictionary replacement was found."
+  ],
+  "limits": [
+    "Headword comparison is case- and accent-insensitive; it does not align senses or meanings.",
+    "Dicionário Aberto is a 1913 work with historical orthography and semantics.",
+    "VOP is a spelling vocabulary, not a frequency or usage corpus. An unmarked form may be valid in Portugal and Brazil, or simply listed without a regional label.",
+    "Candidate counts are occurrences in unmarked senses, not reviewed conversions. Quoted text was excluded from the quoted counts but proper nouns and examples were not separately removed.",
+    "No app runtime, data shards, service worker or version were changed by this audit."
+  ]
+}

@@ -1,0 +1,317 @@
+{
+  "schema": 1,
+  "language": "pt-PT",
+  "reviewed_on": "2026-11-08",
+  "production_approved": false,
+  "review_method": "Codex: source-level lexical and contextual review; not professional linguistic certification; all user approvals pending",
+  "source": {
+    "id": "ontopt",
+    "version": "0.6",
+    "license": "CC-BY-3.0",
+    "attribution": "Universidade de Coimbra; Hugo Gonçalo Oliveira e Paulo Gomes",
+    "url": "https://ontopt.dei.uc.pt/index.php?sec=downloads",
+    "artifact_sha256": "f89e7486b883c1a95166bb24874b18a581efc1c0187e88619659f4ff6b61f5a3"
+  },
+  "selection": "Small purposive subset of lexical pairs with exact source IDs. No full synset is approved, no definitions are imported and no automatic alignment to Lexi senses is claimed.",
+  "cases": [
+    {
+      "id": "sem-01",
+      "left": "feliz",
+      "right": "contente",
+      "relation": "synonym",
+      "pos": "adjective",
+      "decision": "retain_in_pilot",
+      "review_level": "source_checked",
+      "human_review": "pending",
+      "production_approved": false,
+      "lexi_sense_alignment": null,
+      "scope": "Estado emocional positivo de uma pessoa.",
+      "excluded_uses": [
+        "feliz no sentido de oportuno",
+        "feliz no sentido de afortunado",
+        "contente como forma verbal"
+      ],
+      "references": [
+        "ontopt",
+        "priberam-feliz",
+        "priberam-contente"
+      ],
+      "source_locator": "feliz: adjetivo, aceção 1; contente: adjetivo, aceção 1",
+      "review_note": "Equivalência conferida apenas para o contexto emocional; os outros membros do synset não são validados por esta decisão.",
+      "ontopt_evidence": {
+        "subject_synset": "http://ontopt.dei.uc.pt/OntoPT.owl#1636",
+        "object_synset": "http://ontopt.dei.uc.pt/OntoPT.owl#1636",
+        "predicate": "same_synset",
+        "relation_present": true
+      }
+    },
+    {
+      "id": "sem-02",
+      "left": "veloz",
+      "right": "rápido",
+      "relation": "synonym",
+      "pos": "adjective",
+      "decision": "retain_in_pilot",
+      "review_level": "source_checked",
+      "human_review": "pending",
+      "production_approved": false,
+      "lexi_sense_alignment": null,
+      "scope": "Velocidade de deslocação.",
+      "excluded_uses": [
+        "rápido como nome de transporte",
+        "rápido como ordem ou advérbio",
+        "rapidez de conclusão sem deslocação"
+      ],
+      "references": [
+        "ontopt",
+        "priberam-veloz"
+      ],
+      "source_locator": "veloz: adjetivo; remissão para rápido",
+      "review_note": "Conferida a relação adjetival; não usar o synset nominal que também reúne estas grafias.",
+      "ontopt_evidence": {
+        "subject_synset": "http://ontopt.dei.uc.pt/OntoPT.owl#1563",
+        "object_synset": "http://ontopt.dei.uc.pt/OntoPT.owl#1563",
+        "predicate": "same_synset",
+        "relation_present": true
+      }
+    },
+    {
+      "id": "sem-03",
+      "left": "quente",
+      "right": "frio",
+      "relation": "antonym",
+      "pos": "adjective",
+      "decision": "retain_in_pilot",
+      "review_level": "source_checked",
+      "human_review": "pending",
+      "production_approved": false,
+      "lexi_sense_alignment": null,
+      "scope": "Temperatura física.",
+      "excluded_uses": [
+        "frio como traço emocional",
+        "quente no sentido de picante",
+        "frio como nome"
+      ],
+      "references": [
+        "ontopt",
+        "priberam-frio"
+      ],
+      "source_locator": "frio: adjetivo, aceções 1 e 2, indicação de oposição a quente",
+      "review_note": "Conferida a oposição escalar neste domínio; não converter antonímia em negação lógica ou sinonímia.",
+      "ontopt_evidence": {
+        "subject_synset": "http://ontopt.dei.uc.pt/OntoPT.owl#1554",
+        "object_synset": "http://ontopt.dei.uc.pt/OntoPT.owl#1340",
+        "predicate": "http://ontopt.dei.uc.pt/OntoPT.owl#antonimoAdjDe",
+        "relation_present": true
+      }
+    },
+    {
+      "id": "sem-04",
+      "left": "abrir",
+      "right": "fechar",
+      "relation": "antonym",
+      "pos": "verb",
+      "decision": "retain_in_pilot",
+      "review_level": "source_checked",
+      "human_review": "pending",
+      "production_approved": false,
+      "lexi_sense_alignment": null,
+      "scope": "Ação física sobre porta, janela ou abertura equivalente.",
+      "excluded_uses": [
+        "abrir no sentido de iniciar evento",
+        "abrir no sentido de escavar",
+        "abrir-se no sentido de revelar sentimentos"
+      ],
+      "references": [
+        "ontopt",
+        "priberam-abrir"
+      ],
+      "source_locator": "abrir: verbo transitivo, aceção 1, oposição a fechar",
+      "review_note": "Conferido o par lexical no contexto físico; o synset de origem mistura outros usos e não é aprovado em bloco.",
+      "ontopt_evidence": {
+        "subject_synset": "http://ontopt.dei.uc.pt/OntoPT.owl#89298",
+        "object_synset": "http://ontopt.dei.uc.pt/OntoPT.owl#89423",
+        "predicate": "http://ontopt.dei.uc.pt/OntoPT.owl#antonimoVDe",
+        "relation_present": true
+      }
+    },
+    {
+      "id": "sem-05",
+      "left": "rosa",
+      "right": "flor",
+      "relation": "hyponym",
+      "pos": "noun",
+      "decision": "retain_in_pilot",
+      "review_level": "source_checked",
+      "human_review": "pending",
+      "production_approved": false,
+      "lexi_sense_alignment": null,
+      "scope": "Rosa enquanto flor da roseira.",
+      "excluded_uses": [
+        "rosa como cor",
+        "rosa como adjetivo",
+        "rosa enquanto arbusto",
+        "relação inversa como se toda a flor fosse rosa"
+      ],
+      "references": [
+        "ontopt",
+        "priberam-rosa"
+      ],
+      "source_locator": "rosa: nome feminino, aceção botânica 1",
+      "review_note": "A direção é rosa → flor. A origem reúne também outras grafias/sentidos; a decisão só retém este par botânico.",
+      "ontopt_evidence": {
+        "subject_synset": "http://ontopt.dei.uc.pt/OntoPT.owl#26831",
+        "object_synset": "http://ontopt.dei.uc.pt/OntoPT.owl#24900",
+        "predicate": "http://ontopt.dei.uc.pt/OntoPT.owl#hiponimoDe",
+        "relation_present": true
+      }
+    },
+    {
+      "id": "sem-06",
+      "left": "banco",
+      "right": "assento",
+      "relation": "hyponym",
+      "pos": "noun",
+      "decision": "retain_in_pilot",
+      "review_level": "source_checked",
+      "human_review": "pending",
+      "production_approved": false,
+      "lexi_sense_alignment": null,
+      "scope": "Banco enquanto objeto para sentar.",
+      "excluded_uses": [
+        "banco financeiro",
+        "banco de dados",
+        "banco de areia",
+        "assento → banco como hiponímia"
+      ],
+      "references": [
+        "ontopt",
+        "priberam-banco"
+      ],
+      "source_locator": "banco: nome masculino, aceções 1 e 2",
+      "review_note": "Retida apenas a hiponímia direta; o arco servePara também existente não é renomeado nem confundido com hiponímia.",
+      "ontopt_evidence": {
+        "subject_synset": "http://ontopt.dei.uc.pt/OntoPT.owl#21631",
+        "object_synset": "http://ontopt.dei.uc.pt/OntoPT.owl#24966",
+        "predicate": "http://ontopt.dei.uc.pt/OntoPT.owl#hiponimoDe",
+        "relation_present": true
+      }
+    },
+    {
+      "id": "sem-07",
+      "left": "autocarro",
+      "right": "possível",
+      "relation": "synonym",
+      "pos": "noun",
+      "decision": "reject_for_pilot",
+      "review_level": "source_checked",
+      "human_review": "pending",
+      "production_approved": false,
+      "lexi_sense_alignment": null,
+      "scope": "Transporte rodoviário coletivo.",
+      "excluded_uses": [
+        "apresentação de todos os membros do synset como sinónimos PT-PT"
+      ],
+      "references": [
+        "ontopt",
+        "priberam-autocarro",
+        "priberam-possível"
+      ],
+      "source_locator": "autocarro: nome masculino, aceção Portugal 1; possível: entrada separada",
+      "review_note": "A pertença ao mesmo synset não basta. As referências consultadas não sustentam esta equivalência no contexto de transporte.",
+      "ontopt_evidence": {
+        "subject_synset": "http://ontopt.dei.uc.pt/OntoPT.owl#26593",
+        "object_synset": "http://ontopt.dei.uc.pt/OntoPT.owl#26593",
+        "predicate": "same_synset",
+        "relation_present": true
+      }
+    },
+    {
+      "id": "sem-08",
+      "left": "banco",
+      "right": "assento",
+      "relation": "synonym",
+      "pos": "noun",
+      "decision": "reject_for_pilot",
+      "review_level": "source_checked",
+      "human_review": "pending",
+      "production_approved": false,
+      "lexi_sense_alignment": null,
+      "scope": "Objeto para sentar, distinguindo relação de tipo de equivalência.",
+      "excluded_uses": [
+        "substituição automática em todas as frases"
+      ],
+      "references": [
+        "ontopt",
+        "priberam-banco"
+      ],
+      "source_locator": "banco: nome masculino, aceções 1 e 2",
+      "review_note": "A fonte contém hiponímia, não pertença ao mesmo synset. Não promover uma relação de tipo a sinonímia irrestrita.",
+      "ontopt_evidence": {
+        "subject_synset": "http://ontopt.dei.uc.pt/OntoPT.owl#21631",
+        "object_synset": "http://ontopt.dei.uc.pt/OntoPT.owl#24966",
+        "predicate": "http://ontopt.dei.uc.pt/OntoPT.owl#hiponimoDe",
+        "relation_present": true
+      }
+    },
+    {
+      "id": "sem-09",
+      "left": "cão",
+      "right": "animal",
+      "relation": "hyponym",
+      "pos": "noun",
+      "decision": "defer_no_direct_edge",
+      "review_level": "source_checked",
+      "human_review": "pending",
+      "production_approved": false,
+      "lexi_sense_alignment": null,
+      "scope": "Cão no domínio zoológico.",
+      "excluded_uses": [
+        "apresentar um arco inferido como diretamente extraído"
+      ],
+      "references": [
+        "ontopt",
+        "priberam-cão",
+        "priberam-animal"
+      ],
+      "source_locator": "cão: nome masculino, Zoologia; animal: nome, Biologia",
+      "review_note": "As referências lexicográficas permitem discutir a classificação biológica, mas não foi encontrado um arco Onto.PT direto entre synsets destas grafias. Não inferir transitividade neste piloto. Não se afirma que a relação linguística seja falsa.",
+      "ontopt_evidence": {
+        "subject_synset": null,
+        "object_synset": null,
+        "predicate": "http://ontopt.dei.uc.pt/OntoPT.owl#hiponimoDe",
+        "relation_present": false
+      }
+    },
+    {
+      "id": "sem-10",
+      "left": "roda",
+      "right": "bicicleta",
+      "relation": "synonym",
+      "pos": "noun",
+      "decision": "defer_sense_review",
+      "review_level": "source_checked",
+      "human_review": "pending",
+      "production_approved": false,
+      "lexi_sense_alignment": null,
+      "scope": "Roda mecânica e bicicleta enquanto veículo.",
+      "excluded_uses": [
+        "trocar a parte pelo todo sem contexto",
+        "afirmar ausência absoluta de usos metonímicos"
+      ],
+      "references": [
+        "ontopt",
+        "priberam-roda",
+        "priberam-bicicleta"
+      ],
+      "source_locator": "roda: nome feminino, aceção 1; bicicleta: nome feminino, aceção 1",
+      "review_note": "As referências distinguem a peça e o veículo. A pertença comum exige revisão de eventual metonímia/uso regional ou histórico; não autoriza equivalência mecânica geral.",
+      "ontopt_evidence": {
+        "subject_synset": "http://ontopt.dei.uc.pt/OntoPT.owl#24777",
+        "object_synset": "http://ontopt.dei.uc.pt/OntoPT.owl#24777",
+        "predicate": "same_synset",
+        "relation_present": true
+      }
+    }
+  ]
+}

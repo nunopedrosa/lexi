@@ -25,6 +25,7 @@ prebuilt dictionary corpus and no backend.
 - Keep Lexi static: no build step, framework, runtime CDN, backend/PHP, accounts,
   tracking, telemetry, analytics or uploads.
 - Entry points: `index.html`, `app.js` (UI, search and rendering),
+  `editorial.js` (36 approved first responses with PT-PT priority and source-sense projection),
   `conversation.js` (deterministic intent parser, also loaded by
   `test-conversation.cjs`), `i18n.js` (English and European Portuguese catalogues),
   `version.js` (single release identifier), `sw.js`, `manifest.webmanifest` and
@@ -135,8 +136,10 @@ prebuilt dictionary corpus and no backend.
 ## Verification
 
 - Run `node --check app.js`, `node --check conversation.js`, `node --check sw.js`,
-  `node --check i18n.js`, `node --check version.js` and `node test-conversation.cjs`.
-  The parser test currently passes 52 assertions, including English commands.
+  `node --check i18n.js`, `node --check version.js`, `node --check editorial.js`,
+  `node test-editorial.cjs` and `node test-conversation.cjs`.
+  The parser test currently passes 107 assertions, including English commands and
+  multiword lookups (the earlier count summed cases rather than all assertions).
 - Serve locally with `python3 -m http.server 8009` and exercise installation, offline
   shell, prepared dictionary, cancellation, service-worker update, Settings, backup
   export/import, narrow and short viewports, keyboard focus, and both languages.
@@ -180,5 +183,5 @@ verified on Safari 12, iOS or a physical device.
 | Visual controls | Partial | Shared-style SVG gear/send/close, 2 px control and 4 px panel radii, flat bubbles, 44 px standalone targets and shared spacing are in place. The controls are not yet vendored from `shared/controls/`, the shared narrow helper font asset is still unspecified, and inline word buttons remain text-level targets. |
 | Accessibility | Partial | Focus trap/return, labels, live status regions, reduced-motion CSS and overflow-safe text are present. Screen-reader and zoom testing remain. |
 | Robustness and bounds | Partial | Input, chat, result and shard caches are bounded and repeat operations are guarded. Broad searches still collect/sort the full match set before capping stored results; runtime caching is version-scoped but not size-capped. |
-| Tests | Partial | 52 parser assertions pass; headless Chromium checks covered language, Settings, search, backup, update, cancellation, the inline more-senses action and 320 px layout. No Safari 12/iOS/device test suite. |
+| Tests | Partial | 107 parser assertions pass; headless Chromium checks covered language, Settings, search, backup, update, cancellation, the inline more-senses action and 320 px layout. No Safari 12/iOS/device test suite. |
 | Documentation and deployment | Partial | README, AGENTS and deployment notes are updated; real host cache behaviour and production deployment remain unverified. |

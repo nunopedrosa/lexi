@@ -43,6 +43,7 @@ var cache=new Map();
 var formsCache=new Map();
 var syllCache=new Map();
 var lastWord='',lastQuery=null,lastEntry=null,lastSenseOffset=0;
+var lastSenseView='preferred';
 var questionBusy=false;
 var offlineBusy=false,offlineCancel=false;
 var pendingImport=null;
@@ -277,6 +278,7 @@ function applyLanguage(){
  setText('help-text','settings.helpText');
  setText('privacy-text','settings.privacyText');
  setText('sources-text','settings.sources');
+ setText('editorial-link','settings.editorialReview');
  setText('external-label','settings.external');
  setText('restore-prefs-label','settings.restorePreferences');
  setText('exportBackup','settings.export');
@@ -566,18 +568,9 @@ async function find(word){
  return null;
 }
 
-function senseList(row){
- var senses=(row[2]||[]).map(function(raw,index){
-  var extra=raw[3]||{};
-  return {
-   index:index+1,
-   text:raw[0]||'',
-   region:raw[1]||'unmarked',
-   flags:raw[2]||[],
-   suggestion:extra.ptpt_suggestion||null,
-   curated:raw[1]==='curated'
-  };
- });
+function senseList(row,original){
+ var senses=LexiEditorial.sourceSenses(row,original);
+ if(original)return senses;
  var info=regionInfo(row[0]);
  var isBrazilTerm=!!(info&&info.pt);
  function rank(s){
@@ -597,7 +590,16 @@ function displaySenses(offset){
  offset=offset||0;
  if(!lastEntry)return;
  var row=lastEntry;
- var all=senseList(row);
+ var approved=LexiEditorial.get(row[0]);
+ var heading='«'+row[0]+'»'+(row[1]?' ('+row[1]+')':'')+'\n';
+ if(lastSenseView==='preferred'&&approved){
+  lastSenseView='source';
+  lastSenseOffset=0;
+  addDefinitionText(heading+approved,row[0],(row[2]||[]).length>0);
+  return;
+ }
+ var original=lastSenseView==='original';
+ var all=senseList(row,original);
  var page=all.slice(offset,offset+3);
  if(!page.length){
   add(t('message.noMoreSenses',{word:row[0]}));
@@ -606,15 +608,16 @@ function displaySenses(offset){
  var lines=page.map(function(s){
   var tag=s.curated?t('message.tagCurated'):s.region==='BR'?t('message.tagBrazil'):s.region==='PT'?t('message.tagPortugal'):'';
   var warning='';
-  for(var i=0;i<s.flags.length;i++){
+  for(var i=0;!original&&i<s.flags.length;i++){
    if(/adaptação automática/i.test(s.flags[i])){warning=t('message.tagAuto');break;}
   }
   return s.index+'. '+s.text+tag+warning;
  });
- var regional=offset===0?regionExplanation(row[0]):null;
+ var regional=offset===0&&!original?regionExplanation(row[0]):null;
  if(regional)lines.push(regional);
  var hasMore=offset+3<all.length;
- addDefinitionText('«'+row[0]+'»'+(row[1]?' ('+row[1]+')':'')+'\n'+lines.join('\n'),row[0],hasMore);
+ var introduction=original?t('message.originalSenses'):approved?t('message.sourceSenses'):'';
+ addDefinitionText(heading+introduction+lines.join('\n'),row[0],hasMore);
  lastSenseOffset=offset+page.length;
 }
 
@@ -673,6 +676,7 @@ async function definition(word){
   lastWord=available[0][0];
   lastEntry=available[0];
   lastSenseOffset=0;
+  lastSenseView='preferred';
   add(t('message.formAlias',{word:word,entry:lastWord}));
   displaySenses(0);
   return;
@@ -680,6 +684,7 @@ async function definition(word){
  lastWord=row[0];
  lastEntry=row;
  lastSenseOffset=0;
+ lastSenseView='preferred';
  displaySenses(0);
 }
 
@@ -779,6 +784,7 @@ async function handleQuestion(q){
    lastEntry=null;
    lastQuery=null;
    lastSenseOffset=0;
+   lastSenseView='preferred';
    add(t('message.resetReply'));
    return;
   case 'clarify':
@@ -790,11 +796,10 @@ async function handleQuestion(q){
    return;
   case 'original':
    if(lastEntry){
-    var original=(lastEntry[2]||[]).filter(function(x){return x[1]!=='curated';}).slice(0,3).map(function(x){
-     var extra=x[3]||{};
-     return extra.original||x[0];
-    });
-    add(original.length?original.join('\n'):t('message.noOriginal'));
+    if(senseList(lastEntry,true).length){
+     lastSenseView='original';
+     displaySenses(0);
+    }else add(t('message.noOriginal'));
    }else add(t('message.needWord'));
    return;
   case 'more_results':
@@ -816,8 +821,16 @@ async function handleQuestion(q){
    await searchWithParams(intent.params);
    return;
   case 'definition':
-   await definition(intent.word);
+   var literalEntry=intent.literal?await find(intent.literal):null;
+   await definition(literalEntry?literalEntry[0]:intent.word);
    return;
+  case 'lookup_phrase':{
+   // Bare phrases are lookup candidates, not assumed dictionary entries.
+   var phraseEntry=await find(intent.word);
+   if(phraseEntry)await definition(phraseEntry[0]);
+   else add(t(intent.fallback==='clarify_search'?'message.clarifySearch':'message.defaultReply'));
+   return;
+  }
   case 'ask_word':
    add(t('message.askWord'));
    return;

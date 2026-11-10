@@ -1,0 +1,223 @@
+{
+  "schema": 1,
+  "references": {
+    "cib-diphthongs": {
+      "title": "Os ditongos, a divisão silábica e a translineação",
+      "url": "https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/os-ditongos-a-divisao-silabica-e-a-translineacao/30468",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Carlos Rocha",
+      "published_on": "2011-11-29"
+    },
+    "cib-water": {
+      "title": "Divisão silábica e translineação de aquário e de água",
+      "url": "https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/divisao-silabica-e-translineacao-de-aquario-e-de-agua/11730",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Maria Regina Rocha",
+      "published_on": "2003-11-21"
+    },
+    "cib-water-2011": {
+      "title": "As sílabas de água",
+      "url": "https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/as-silabas-de-agua/30503",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Eunice Marta",
+      "published_on": "2011-12-05"
+    },
+    "cib-sequences": {
+      "title": "As sílabas das sequências de vogais: rainha, planícies e dormiam",
+      "url": "https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/as-silabas-das-sequencias-de-vogais-rainha-planicies-e-dormiam/31358",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Eunice Marta",
+      "published_on": "2012-05-24"
+    },
+    "cib-clusters": {
+      "title": "A divisão silábica com o AO 90",
+      "url": "https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/a-divisao-silabica-com-o-ao-90/30881",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Eunice Marta",
+      "published_on": "2012-02-06"
+    },
+    "cib-digraphs": {
+      "title": "Sobre a divisão silábica ensinada às crianças",
+      "url": "https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/sobre-a-divisao-silabica-ensinada-as-criancas/25844",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Carlos Rocha",
+      "published_on": "2009-03-02"
+    },
+    "cib-pais": {
+      "title": "As sílabas de degraus e de pais",
+      "url": "https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/as-silabas-de-degraus-e-de-pais/31840",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Eunice Marta",
+      "published_on": "2012-12-05"
+    },
+    "cib-maior": {
+      "title": "Divisão silábica de maior e de pais, outra vez",
+      "url": "https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/divisao-silabica-de-maior-e-de-pais-outra-vez/21096",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "F. V. Peixoto da Fonseca",
+      "published_on": "2007-06-27"
+    },
+    "cib-antiguidade": {
+      "title": "Pronúncia de antiguidade",
+      "url": "https://ciberduvidas.iscte-iul.pt/consultorio/perguntas/pronuncia-de-antiguidade/10229",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Susana Cabeleira",
+      "published_on": "2003-01-27"
+    },
+    "priberam-saúde": {
+      "title": "Priberam: saúde",
+      "url": "https://dicionario.priberam.org/sa%C3%BAde",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "priberam-saída": {
+      "title": "Priberam: saída",
+      "url": "https://dicionario.priberam.org/sa%C3%ADda",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "priberam-reunião": {
+      "title": "Priberam: reunião",
+      "url": "https://dicionario.priberam.org/reuni%C3%A3o",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "priberam-feudal": {
+      "title": "Priberam: feudal",
+      "url": "https://dicionario.priberam.org/feudal",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "priberam-casa": {
+      "title": "Priberam: casa",
+      "url": "https://dicionario.priberam.org/casa",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "priberam-cadeira": {
+      "title": "Priberam: cadeira",
+      "url": "https://dicionario.priberam.org/cadeira",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "priberam-feliz": {
+      "title": "Priberam: feliz",
+      "url": "https://dicionario.priberam.org/feliz",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "priberam-contente": {
+      "title": "Priberam: contente",
+      "url": "https://dicionario.priberam.org/contente",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "priberam-veloz": {
+      "title": "Priberam: veloz",
+      "url": "https://dicionario.priberam.org/veloz",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "priberam-frio": {
+      "title": "Priberam: frio",
+      "url": "https://dicionario.priberam.org/frio",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "priberam-abrir": {
+      "title": "Priberam: abrir",
+      "url": "https://dicionario.priberam.org/abrir",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "priberam-rosa": {
+      "title": "Priberam: rosa",
+      "url": "https://dicionario.priberam.org/rosa",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "priberam-banco": {
+      "title": "Priberam: banco",
+      "url": "https://dicionario.priberam.org/banco",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "priberam-cão": {
+      "title": "Priberam: cão",
+      "url": "https://dicionario.priberam.org/c%C3%A3o",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "priberam-animal": {
+      "title": "Priberam: animal",
+      "url": "https://dicionario.priberam.org/animal",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "priberam-roda": {
+      "title": "Priberam: roda",
+      "url": "https://dicionario.priberam.org/roda",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "priberam-bicicleta": {
+      "title": "Priberam: bicicleta",
+      "url": "https://dicionario.priberam.org/bicicleta",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "priberam-possível": {
+      "title": "Priberam: possível",
+      "url": "https://dicionario.priberam.org/poss%C3%ADvel",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "priberam-autocarro": {
+      "title": "Priberam: autocarro",
+      "url": "https://dicionario.priberam.org/autocarro",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Dicionário Priberam da Língua Portuguesa"
+    },
+    "ontopt": {
+      "title": "Onto.PT v0.6: distribuição e licença",
+      "url": "https://ontopt.dei.uc.pt/index.php?sec=downloads",
+      "checked_on": "2026-11-08",
+      "use": "reference_only; factual annotations and links, no entry/article text reproduced",
+      "author": "Universidade de Coimbra; Hugo Gonçalo Oliveira e Paulo Gomes"
+    },
+    "internal-audit": {
+      "title": "Auditoria local: comparação LX v1.1",
+      "path": "docs/linguistic-results/lx-v1.1-comparison.json",
+      "checked_on": "2026-11-08",
+      "use": "structural coverage only; not linguistic evidence"
+    }
+  }
+}

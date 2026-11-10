@@ -233,6 +233,7 @@ input#question{
 }
 .version{font-size:.75rem;color:#5c737d;margin-top:var(--space-7)}
 .sources a{color:var(--accent-ink)}
+.sources #editorial-link{display:inline-flex;align-items:center;min-height:44px;padding:var(--space-2) 0}
 @media (max-width:420px){
  .brand-mark{width:34px;height:34px}
  .brand small{display:none}

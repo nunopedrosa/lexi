@@ -11,9 +11,39 @@ python3 -m http.server 8009
 
 Abrir `http://localhost:8009/`. O service worker funciona em localhost ou HTTPS. Em Definições, usar **Preparar dicionário para uso offline** para colocar as definições, formas e sílabas na cache (cerca de 26 MB). A permanência da cache depende do browser e do espaço disponível.
 
+## Preparação de recursos linguísticos
+
+A [avaliação de LX-Syllabifier, Onto.PT e VOP/VOC](docs/linguistic-resources.md)
+regista licenças, hashes, resultados reproduzíveis e o plano de integração.
+Esta avaliação não substitui os dados atuais nem ativa novas respostas na
+conversa. As ferramentas Python em `scripts/audit-syllables.py` e
+`scripts/inspect-ontopt.py` são apenas de desenvolvimento; não entram na
+publicação nem são dependências da PWA. Testes da comparação:
+`python3 test-syllables-audit.py`.
+
+A [amostra silábica e o piloto semântico](docs/linguistic-pilots/README.md)
+estão separados dos dados da aplicação para avaliação: 28 casos silábicos e
+dez casos semânticos, com referências e decisões documentadas. Não são uma
+certificação lexicográfica nem estão ativados na conversa. Verificação dos
+pilotos: `python3 test-linguistic-pilots.py`.
+
+A [auditoria dirigida de 30 entradas](docs/linguistic-pilots/README.md)
+agrupa problemas de contexto regional, adaptações automáticas e segmentação
+da fonte, com prioridade a evidência institucional. O
+[registo JSON](docs/linguistic-pilots/directed-audit.json) conserva referências,
+limites e hashes; o relatório conserva o estado auditado. As 30 primeiras respostas foram entretanto
+aprovadas e integradas localmente, sem alterar o corpus nem publicar.
+
 ## Implementado
 
-- Definições por palavra, com preferência para 114 entradas editoriais PT-PT (117 aceções).
+O [plano de redação e comparação do corpus](docs/corpus-review/README.md)
+organiza as 81 068 entradas em 406 lotes de até 200. Os lotes 0001–0007 (1 400
+entradas, 1 712 aceções) foram tratados e comparados em
+`docs/corpus-review/batches/`; os restantes 399 não foram executados. O registo
+está separado da aplicação e não altera as respostas atuais.
+
+- Definições por palavra ou expressão composta, com preferência para 114 entradas editoriais PT-PT (117 aceções).
+- Camada de apresentação separada com 36 primeiras respostas aprovadas, com prioridade PT-PT e usos regionais contextualizados, incluindo «açougue». As contagens acima referem-se ao corpus, que não foi alterado.
 - Listagens por letra inicial, final, número de letras e combinações.
 - Continuação «mais» e manutenção parcial do contexto.
 - Link opcional para Priberam.
@@ -24,24 +54,25 @@ Abrir `http://localhost:8009/`. O service worker funciona em localhost ou HTTPS.
 ## Limitações conhecidas
 
 - A segmentação de sentidos e identificação regional é heurística; as definições não foram todas revistas.
+- Os lotes 0001–0007 da revisão do corpus são calibrações atípicas (sufixos, símbolos, siglas, números, nomes próprios e expressões fixas), comparadas pelo mesmo modelo; não representam a qualidade média das 81 068 entradas nem constituem revisão independente.
 - As 57 equivalências regionais são associações dependentes do sentido, não equivalências universais; 7 remetem para formas que não têm entrada própria no dicionário.
 - As substituições automáticas PT-PT não ajustam concordância nem distinguem todos os contextos. Exemplos por rever: «no casa de banho», «na ecrã», «sumo gástrico», «auto-autocarro» e «aplicação, aplicação». O texto original é preservado e a interface assinala estas adaptações.
 - A camada editorial tem 117 aceções para 114 entradas, incluindo aceções duplicadas para «ecrã», «frigorífico» e «gelado» e variantes de maiúscula com o mesmo texto.
-- As 9 819 entradas com várias palavras (por exemplo, «casa de banho») não são alcançáveis pela pesquisa conversacional atual, que interpreta uma palavra por vez.
+- A consulta aceita expressões como «casa de banho», isoladas ou em perguntas de definição. As listagens por letras/sílabas continuam a excluir expressões compostas; entradas com números ou pontuação além de hífen e apóstrofo não são abrangidas pela nova sintaxe de consulta.
 - Algumas entradas usam a coluna gramatical para exemplos entre aspas, incluindo o artefacto de conversão «Títulos não suportados/reticências entre colchetes».
 - Os dados silábicos cobrem 67 527 das 81 068 entradas (83,3%); a pesquisa por sílabas só encontra formas cobertas.
 - 2 598 grafias normalizadas agrupam mais de uma entrada por diferenças de maiúsculas ou acentos; a aplicação prefere agora a correspondência exata.
 - `meta.curated` (14) e `meta.preferences` (25) estão desatualizados face aos dados reais; a aplicação usa as entradas e `regional.json`.
 - Divisão silábica, sinónimos, antónimos e categorias semânticas ainda não estão validados.
 - As formas flexionadas vêm de `pt-pt.syn` (`data/forms/`); a cobertura e a desambiguação continuam limitadas.
-- A pesquisa por palavra é feita por lema e não corrige automaticamente flexões.
+- A consulta procura primeiro o lema; se não existir, tenta o índice de formas flexionadas e pede esclarecimento quando encontra vários lemas. Não infere conjugações nem corrige grafias automaticamente.
 - Para produção: testar iPhone 6 / Safari 12 em dispositivo real, validar acessibilidade com leitor de ecrã e rever a cache/preparação offline. A compatibilidade de sintaxe, o substituto de `<dialog>` e os ícones PNG já foram tratados, mas não há verificação em dispositivo neste repositório.
 
 ## PT-PT filtering — v2
 
 A apresentação de definições agora privilegia sentidos editoriais PT-PT, depois sentidos não marcados como Brasil sem alertas lexicais, depois sentidos com alertas, e finalmente sentidos exclusivamente marcados como Brasil. A camada de alertas assinala um conjunto limitado de expressões brasileiras inequívocas em certos contextos; **não traduz nem corrige** definições automaticamente. As entradas não revistas são identificadas como tal. A ausência de alerta **não garante** português europeu. A seleção considera apenas os sentidos presentes nos blocos exportados (até 4 ou 5 por entrada).
 
-O relatório `ptpt_filter_audit.json`, distribuído separadamente, contém contagens e exemplos dos indicadores detetados. O filtro deve ser expandido apenas com revisão contextual, para não trocar significados de palavras polissémicas.
+O relatório `ptpt_filter_audit.json` é referido como distribuído separadamente e não está neste repositório; antes de o citar, confirmar a localização. O filtro deve ser expandido apenas com revisão contextual, para não trocar significados de palavras polissémicas.
 
 
 ## PT-PT v3: correções conservadoras
@@ -65,7 +96,7 @@ Added/revised 89 editorial PT-PT headword definitions. Original dictionary sense
 
 ## v7: source reconstruction and PT-PT adaptation
 
-Rebuilt 133646 source senses for 81068 headwords from the uploaded StarDict-derived SQLite extraction. Applied 339 targeted automatic substitutions. Each changed sense preserves the exact original in the data and audit. These substitutions are not independently verified. See `ptpt-v7-audit.json`.
+Rebuilt 133646 source senses for 81068 headwords from the uploaded StarDict-derived SQLite extraction. Applied 339 targeted automatic substitutions at v7. The current shards retain 323 rule applications across 312 senses with `original`; the difference has not been reconciled. Each changed sense preserves the exact original in the data and audit. These substitutions are not independently verified. See `ptpt-v7-audit.json`.
 
 
 ## v8 — regional awareness
@@ -85,7 +116,7 @@ bash scripts/deploy.sh --verify "$HOME/lexi.basecentral.link"
 O destino predefinido é `~/lexi.basecentral.link`, pelo que o argumento pode ser omitido. O script usa o motor comum BaseCentral (`scripts/deploy-core.sh`) e a lista de publicação em `scripts/deploy-profile.sh`:
 
 - exige um checkout limpo, num ramo com upstream, e faz `git pull --ff-only`;
-- publica apenas a lista revista de 105 ficheiros (HTML, scripts, manifest, ícones, `data/`, auditorias, licenças);
+- publica apenas a lista revista de 107 ficheiros (HTML, scripts, manifest, ícones, `data/`, auditorias, licenças);
 - não publica `README.md`, `AGENTS.md` nem testes, não corre builds, não apaga ficheiros alheios e não publica nada implicitamente;
 - publica `sw.js` depois dos restantes ficheiros.
 
@@ -136,7 +167,7 @@ As palavras nas definições são botões que abrem a respetiva entrada sem rees
 - A cópia de segurança é um JSON `lexi-backup` (schema 1) com as preferências de idioma e da ligação ao Priberam. A Lexi não guarda registos pessoais. A importação valida o ficheiro, mostra uma pré-visualização e permite cancelar.
 - **Preparar dicionário para uso offline** transfere definições, formas e sílabas (cerca de 26 MB), verifica a escrita na cache, permite cancelar e distingue o shell offline do dicionário preparado.
 - O `<dialog>` foi substituído por um painel compatível, foram removidos `?.`, `??` e `||=`, e foram adicionados ícones PNG, `apple-touch-icon` e fallbacks CSS para o alvo iPhone 6 / Safari 12.
-- Continua a faltar validação em iPhone 6/Safari 12 e revisão de acessibilidade em dispositivo. `node test-conversation.cjs` cobre agora 52 asserções no interpretador, incluindo comandos em inglês.
+- Continua a faltar validação em iPhone 6/Safari 12 e revisão de acessibilidade em dispositivo. `node test-conversation.cjs` cobre 107 asserções no interpretador, incluindo comandos em inglês; a contagem anterior de 52 asserções foi corrigida.
 
 
 ## v10 — identidade visual
@@ -146,3 +177,39 @@ As palavras nas definições são botões que abrem a respetiva entrada sem rees
 - `icons/icon-180.png` (apple-touch-icon) passou a ser de sangria total: o iOS aplica a sua própria máscara e os cantos transparentes apareciam a preto.
 - Versão atualizada para `2026.11.08.1` porque a arte e o cabeçalho são ficheiros em cache.
 
+## Consultas compostas — 2026.11.08.2
+
+- «O que é casa de banho?», «Define fim de semana» e «What does casa de banho mean?» consultam a expressão completa, sem a reduzir à primeira palavra.
+- Expressões isoladas, com ou sem aspas, só abrem uma definição se houver correspondência no corpus existente. Frases sem entrada mantêm a resposta de orientação, sem inventar significados.
+- Os comandos de ajuda, pesquisa, continuação e equivalências regionais mantêm prioridade. Nas perguntas de definição, a consulta preserva artigos que façam parte de uma entrada, como «a priori», antes de tentar a forma sem artigo.
+- Não foram alterados os dados nem integrados recursos externos. O interpretador mantém-se independente e utilizável em Node.
+- `node test-conversation.cjs` verifica agora 107 asserções (a contagem anterior somava casos, não todas as asserções). Verificação adicional em Chromium a 320 px: consultas compostas, frases sem entrada, comandos, PT/EN, cancelamento e recarregamento com dicionário preparado offline. Safari 12/iPhone 6 continuam por verificar.
+- A versão da cache avança para `lexi-2026.11.08.2`; a publicação continua a ser uma ação separada.
+
+## Respostas editoriais PT-PT — 2026.11.08.3
+
+- «legal», «apelido» e «propina» apresentam primeiro os três textos aprovados pelo utilizador, em `editorial.js`. Esta é uma camada de apresentação, não uma regeneração do corpus ou certificação lexicográfica independente.
+- As primeiras respostas não misturam os sentidos regionais. «Outros significados» percorre todas as aceções já exportadas, com uma indicação de que a fonte pode conter usos regionais por rever. Nenhuma aceção foi apagada ou reclassificada automaticamente.
+- «Texto original» mostra os textos não editoriais, usando `original` quando presente; «outros significados» continua essa mesma sequência. Deixa de estar limitado às primeiras três aceções, incluindo em entradas sem a nova camada.
+- Os textos do dicionário permanecem no idioma da fonte, mesmo com a interface em inglês. Os novos títulos/avisos estão localizados em PT-PT e inglês.
+- Definições → Revisão editorial PT-PT abre `editorial-audit.json`, com textos aprovados, referências, contagens e hashes dos shards originais. Fontes e licenças ficam fora das primeiras respostas conversacionais.
+- `editorial.js` e a auditoria estão na pré-cache e no inventário público. A versão é `2026.11.08.3` para manter a separação entre caches. Esta preparação não autoriza publicação.
+- Verificação adicional: `node --check editorial.js` e `node test-editorial.cjs`. Os testes anteriores mantêm-se aplicáveis.
+
+
+## Segundo lote editorial PT-PT — 2026.11.08.4
+
+- Integra os três textos iniciais aprovados para «fato», «camisola» e «rapariga», mantendo os três anteriores. A camada `editorial.js` passa a ter seis respostas.
+- O corpus não foi regenerado: todas as aceções, etiquetas, textos `original` e redações `curated` permanecem intactos. Em «camisola», «outros significados» inclui a redação editorial anterior e todas as seis aceções da fonte; «texto original» percorre as seis aceções não editoriais.
+- `editorial-audit.json` e Definições refletem os seis casos, com referências, limites e hashes. O [registo do lote](docs/linguistic-pilots/regional-batch-2.json) assinala a aprovação limitada aos textos iniciais; os exemplos brasileiros não foram integrados como interpretador de contexto.
+- Versão local `2026.11.08.4`, com cache separada e atualização explícita. Inventário público inalterado; nada publicado. Os testes editoriais passam a abranger os seis casos.
+- Verificado em Chromium: seis primeiras respostas, paginação de todas as aceções e textos originais, PT/EN, Definições a 320 px, recarregamento com dicionário preparado offline e atualização explícita de `.3` para `.4`, com remoção da cache anterior só após ativação. Testes Node/Python e verificações de sintaxe passaram; os 86 ficheiros do corpus mantêm os hashes anteriores. Safari 12/iPhone 6 continuam por verificar em dispositivo.
+
+## Integração das 30 definições — 2026.11.08.5
+
+- Integra os 30 textos aprovados de `docs/linguistic-pilots/editorial-drafts-30.json`, incluindo «açougue» identificado como uso brasileiro e «talho» como equivalente PT-PT nesse sentido. Mantém as seis respostas anteriormente aprovadas: 36 no total.
+- O módulo `editorial.js` contém os textos estáticos e mantém a mesma projeção das aceções. Não há novos pedidos externos, dependências, interpretador de contexto ou formato de dados.
+- «Outros significados» conserva todas as aceções e redações editoriais exportadas; «texto original» percorre as aceções não editoriais, usando o campo `original` quando existe. Não se corrigiram nem ocultaram os problemas conhecidos da fonte.
+- A auditoria pública, as notas de Definições e as atribuições refletem o lote. A auditoria dirigida e os pilotos anteriores conservam os seus estados históricos; a aprovação atual cobre os 30 textos iniciais, não todos os ramos de contexto ou uma revisão integral do corpus.
+- Versão local `2026.11.08.5`, para manter caches separadas. Inventário público inalterado (107 ficheiros). Sem publicação.
+- Verificado em Chromium: 36 primeiras respostas, ação clicável de outros significados, paginação de todas as aceções exportadas e textos originais, correção de «açougue», consultas compostas/acentuadas, PT/EN, Definições a 320 px, dicionário preparado offline e atualização explícita de `.4` para `.5`. A cache anterior só foi removida após ativação. Os testes Node/Python passaram e os hashes dos 86 ficheiros do corpus não mudaram. Safari 12/iPhone 6 continuam por verificar em dispositivo.

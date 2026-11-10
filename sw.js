@@ -7,6 +7,8 @@ const CORE=[
  './style.css',
  './app.js',
  './conversation.js',
+ './editorial.js',
+ './editorial-audit.json',
  './i18n.js',
  './version.js',
  './manifest.webmanifest',

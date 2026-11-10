@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lexi.basecentral.link/docs/corpus-review/batch.schema.json",
+  "title": "Lexi corpus review batch",
+  "description": "Registo de propostas PT-PT e comparação com as aceções existentes. Não altera o corpus nem autoriza integração.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "batch_id",
+    "prepared_on",
+    "status",
+    "scope",
+    "corpus",
+    "entries",
+    "counts"
+  ],
+  "properties": {
+    "schema": { "const": 1 },
+    "batch_id": { "type": "string", "pattern": "^[0-9]{4}$" },
+    "prepared_on": { "type": "string", "format": "date" },
+    "status": {
+      "enum": ["not_started", "in_progress", "compared", "reviewed"],
+      "description": "compared = entradas tratadas e comparadas; reviewed = sujeita a revisão independente. Nenhum estado autoriza integração."
+    },
+    "scope": { "type": "string", "minLength": 1 },
+    "corpus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entry_count", "source_senses", "shards"],
+      "properties": {
+        "entry_count": { "type": "integer", "minimum": 0 },
+        "source_senses": { "type": "integer", "minimum": 0 },
+        "shards": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "sha256", "start_zero_based", "end_exclusive"],
+            "properties": {
+              "path": { "type": "string" },
+              "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+              "start_zero_based": { "type": "integer", "minimum": 0 },
+              "end_exclusive": { "type": "integer", "minimum": 1 }
+            }
+          }
+        }
+      }
+    },
+    "entries": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/entry" }
+    },
+    "counts": { "$ref": "#/$defs/counts" }
+  },
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "shard",
+        "row",
+        "headword",
+        "pos",
+        "proposal",
+        "status",
+        "comparison",
+        "doubts",
+        "source_senses"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{4}$" },
+        "shard": { "type": "string" },
+        "row": { "type": "integer", "minimum": 0 },
+        "headword": { "type": "string" },
+        "pos": { "type": "string" },
+        "proposal": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/proposal" }
+          ]
+        },
+        "status": {
+          "enum": ["proposta", "sem_proposta", "requer_fonte"],
+          "description": "proposta = há texto proposto; sem_proposta = tratada sem proposta; requer_fonte = tratada, mas precisa de fonte externa."
+        },
+        "comparison": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/comparison" }
+        },
+        "doubts": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "source_senses": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/$defs/source_sense" }
+        }
+      }
+    },
+    "proposal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "scope", "confidence"],
+      "properties": {
+        "text": { "type": "string", "minLength": 1 },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Sentido ou âmbito abrangido; não é uma certificação de todos os usos."
+        },
+        "confidence": { "enum": ["alta", "media", "baixa"] }
+      }
+    },
+    "comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sense_index", "relation", "note"],
+      "properties": {
+        "sense_index": { "type": "integer", "minimum": 1 },
+        "relation": {
+          "enum": [
+            "equivalente",
+            "parcial",
+            "divergente",
+            "omissao_fonte",
+            "acrescimo_proposta",
+            "erro_fonte",
+            "redacao",
+            "regional",
+            "gramatical",
+            "ortografico",
+            "nao_aplicavel"
+          ]
+        },
+        "note": { "type": "string", "minLength": 1 }
+      }
+    },
+    "source_sense": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["index", "text", "region", "flags", "original"],
+      "properties": {
+        "index": { "type": "integer", "minimum": 1 },
+        "text": { "type": "string" },
+        "region": { "type": "string" },
+        "flags": { "type": "array", "items": { "type": "string" } },
+        "original": { "type": ["string", "null"] },
+        "rules": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entries_total",
+        "entries_treated",
+        "proposals",
+        "sem_proposta",
+        "requer_fonte",
+        "source_senses",
+        "comparisons",
+        "relation_counts"
+      ],
+      "properties": {
+        "entries_total": { "type": "integer", "minimum": 0 },
+        "entries_treated": { "type": "integer", "minimum": 0 },
+        "proposals": { "type": "integer", "minimum": 0 },
+        "sem_proposta": { "type": "integer", "minimum": 0 },
+        "requer_fonte": { "type": "integer", "minimum": 0 },
+        "source_senses": { "type": "integer", "minimum": 0 },
+        "comparisons": { "type": "integer", "minimum": 0 },
+        "relation_counts": {
+          "type": "object",
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}

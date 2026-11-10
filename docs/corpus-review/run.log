@@ -1,0 +1,157 @@
+2026-11-08T21:10:39 batch=0008 status=run entries=200
+2026-11-08T21:10:39 batch=0008 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0008 --format
+2026-11-08T21:18:37 batch=0008 status=agent_exit code=0 duration=477.7s log=docs/corpus-review/.work/logs/0008.jsonl
+2026-11-08T21:18:37 batch=0008 status=ok entries=200 senses=322 proposals=200 sem_proposta=0 requer_fonte=0
+2026-11-08T21:18:42 fim selected=1
+2026-11-08T21:33:42 batch=0008 status=skip reason=valid
+2026-11-08T21:33:42 batch=0009 status=run entries=200
+2026-11-08T21:33:42 batch=0009 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0009 --format
+2026-11-08T21:43:50 batch=0009 status=agent_exit code=0 duration=607.7s log=docs/corpus-review/.work/logs/0009.jsonl
+2026-11-08T21:43:50 batch=0009 status=ok entries=200 senses=390 proposals=199 sem_proposta=0 requer_fonte=1
+2026-11-08T21:43:55 batch=0010 status=run entries=200
+2026-11-08T21:43:55 batch=0010 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0010 --format
+2026-11-08T21:48:45 batch=0010 status=agent_exit code=0 duration=289.9s log=docs/corpus-review/.work/logs/0010.jsonl
+2026-11-08T21:48:45 batch=0010 status=ok entries=200 senses=321 proposals=199 sem_proposta=0 requer_fonte=1
+2026-11-08T21:48:50 batch=0011 status=run entries=200
+2026-11-08T21:48:50 batch=0011 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0011 --format
+2026-11-08T21:53:27 batch=0011 status=agent_exit code=0 duration=277.4s log=docs/corpus-review/.work/logs/0011.jsonl
+2026-11-08T21:53:27 batch=0011 status=ok entries=200 senses=359 proposals=199 sem_proposta=0 requer_fonte=1
+2026-11-08T21:53:32 batch=0012 status=run entries=200
+2026-11-08T21:53:32 batch=0012 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0012 --format
+2026-11-08T21:58:53 batch=0012 status=agent_exit code=0 duration=320.9s log=docs/corpus-review/.work/logs/0012.jsonl
+2026-11-08T21:58:53 batch=0012 status=ok entries=200 senses=337 proposals=199 sem_proposta=0 requer_fonte=1
+2026-11-08T21:58:58 batch=0013 status=run entries=200
+2026-11-08T21:58:58 batch=0013 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0013 --format
+2026-11-08T22:04:03 batch=0013 status=agent_exit code=0 duration=304.9s log=docs/corpus-review/.work/logs/0013.jsonl
+2026-11-08T22:04:03 batch=0013 status=ok entries=200 senses=359 proposals=200 sem_proposta=0 requer_fonte=0
+2026-11-08T22:04:08 batch=0014 status=run entries=200
+2026-11-08T22:04:08 batch=0014 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0014 --format
+2026-11-08T22:09:51 batch=0014 status=agent_exit code=0 duration=342.3s log=docs/corpus-review/.work/logs/0014.jsonl
+2026-11-08T22:09:51 batch=0014 status=ok entries=200 senses=420 proposals=198 sem_proposta=0 requer_fonte=2
+2026-11-08T22:09:56 batch=0015 status=run entries=200
+2026-11-08T22:09:56 batch=0015 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0015 --format
+2026-11-08T22:15:47 batch=0015 status=agent_exit code=0 duration=351.8s log=docs/corpus-review/.work/logs/0015.jsonl
+2026-11-08T22:15:47 batch=0015 status=ok entries=200 senses=304 proposals=199 sem_proposta=0 requer_fonte=1
+2026-11-08T22:15:52 batch=0016 status=run entries=200
+2026-11-08T22:15:52 batch=0016 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0016 --format
+2026-11-08T22:19:31 batch=0016 status=agent_exit code=0 duration=219.0s log=docs/corpus-review/.work/logs/0016.jsonl
+2026-11-08T22:19:31 batch=0016 status=ok entries=200 senses=389 proposals=199 sem_proposta=0 requer_fonte=1
+2026-11-08T22:19:36 batch=0017 status=run entries=200
+2026-11-08T22:19:36 batch=0017 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0017 --format
+2026-11-08T22:24:12 batch=0017 status=agent_exit code=0 duration=275.5s log=docs/corpus-review/.work/logs/0017.jsonl
+2026-11-08T22:24:12 batch=0017 status=ok entries=200 senses=360 proposals=200 sem_proposta=0 requer_fonte=0
+2026-11-08T22:24:17 batch=0018 status=run entries=200
+2026-11-08T22:24:17 batch=0018 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0018 --format
+2026-11-08T22:33:25 batch=0018 status=agent_exit code=0 duration=548.1s log=docs/corpus-review/.work/logs/0018.jsonl
+2026-11-08T22:33:25 batch=0018 status=ok entries=200 senses=394 proposals=197 sem_proposta=0 requer_fonte=3
+2026-11-08T22:33:30 batch=0019 status=run entries=200
+2026-11-08T22:33:30 batch=0019 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0019 --format
+2026-11-08T22:39:23 batch=0019 status=agent_exit code=0 duration=352.4s log=docs/corpus-review/.work/logs/0019.jsonl
+2026-11-08T22:39:23 batch=0019 status=ok entries=200 senses=381 proposals=198 sem_proposta=0 requer_fonte=2
+2026-11-08T22:39:28 batch=0020 status=run entries=200
+2026-11-08T22:39:28 batch=0020 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0020 --format
+2026-11-08T22:45:57 batch=0020 status=agent_exit code=0 duration=389.5s log=docs/corpus-review/.work/logs/0020.jsonl
+2026-11-08T22:45:57 batch=0020 status=ok entries=200 senses=325 proposals=199 sem_proposta=0 requer_fonte=1
+2026-11-08T22:46:02 batch=0021 status=run entries=200
+2026-11-08T22:46:02 batch=0021 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0021 --format
+2026-11-08T22:54:40 batch=0021 status=agent_exit code=0 duration=517.4s log=docs/corpus-review/.work/logs/0021.jsonl
+2026-11-08T22:54:40 batch=0021 status=ok entries=200 senses=349 proposals=199 sem_proposta=0 requer_fonte=1
+2026-11-08T22:54:45 batch=0022 status=run entries=200
+2026-11-08T22:54:45 batch=0022 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0022 --format
+2026-11-08T23:04:45 batch=0022 status=agent_exit code=0 duration=600.3s log=docs/corpus-review/.work/logs/0022.jsonl
+2026-11-08T23:04:45 batch=0022 status=ok entries=200 senses=344 proposals=197 sem_proposta=0 requer_fonte=3
+2026-11-08T23:04:50 batch=0023 status=run entries=200
+2026-11-08T23:04:50 batch=0023 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0023 --format
+2026-11-08T23:15:38 batch=0023 status=agent_exit code=1 duration=648.3s log=docs/corpus-review/.work/logs/0023.jsonl
+2026-11-08T23:15:38 batch=0023 status=ok entries=200 senses=301 proposals=199 sem_proposta=0 requer_fonte=1
+2026-11-08T23:15:43 batch=0024 status=run entries=200
+2026-11-08T23:15:43 batch=0024 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0024 --format
+2026-11-08T23:19:43 batch=0024 status=agent_exit code=0 duration=239.6s log=docs/corpus-review/.work/logs/0024.jsonl
+2026-11-08T23:19:43 batch=0024 status=ok entries=200 senses=373 proposals=199 sem_proposta=0 requer_fonte=1
+2026-11-08T23:19:48 batch=0025 status=run entries=200
+2026-11-08T23:19:48 batch=0025 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0025 --format
+2026-11-08T23:24:39 batch=0025 status=agent_exit code=0 duration=291.1s log=docs/corpus-review/.work/logs/0025.jsonl
+2026-11-08T23:24:39 batch=0025 status=ok entries=200 senses=310 proposals=199 sem_proposta=0 requer_fonte=1
+2026-11-08T23:24:44 batch=0026 status=run entries=200
+2026-11-08T23:24:44 batch=0026 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0026 --format
+2026-11-08T23:28:31 batch=0026 status=agent_exit code=0 duration=226.2s log=docs/corpus-review/.work/logs/0026.jsonl
+2026-11-08T23:28:31 batch=0026 status=ok entries=200 senses=405 proposals=199 sem_proposta=0 requer_fonte=1
+2026-11-08T23:28:36 batch=0027 status=run entries=200
+2026-11-08T23:28:36 batch=0027 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0027 --format
+2026-11-08T23:34:39 batch=0027 status=agent_exit code=0 duration=363.5s log=docs/corpus-review/.work/logs/0027.jsonl
+2026-11-08T23:34:39 batch=0027 status=ok entries=200 senses=341 proposals=200 sem_proposta=0 requer_fonte=0
+2026-11-08T23:34:44 batch=0028 status=run entries=200
+2026-11-08T23:34:44 batch=0028 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0028 --format
+2026-11-08T23:37:52 batch=0028 status=agent_exit code=0 duration=188.0s log=docs/corpus-review/.work/logs/0028.jsonl
+2026-11-08T23:37:52 batch=0028 status=ok entries=200 senses=355 proposals=200 sem_proposta=0 requer_fonte=0
+2026-11-08T23:37:57 batch=0029 status=run entries=200
+2026-11-08T23:37:57 batch=0029 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0029 --format
+2026-11-08T23:45:07 batch=0029 status=agent_exit code=0 duration=429.6s log=docs/corpus-review/.work/logs/0029.jsonl
+2026-11-08T23:45:07 batch=0029 status=ok entries=200 senses=316 proposals=200 sem_proposta=0 requer_fonte=0
+2026-11-08T23:45:12 batch=0030 status=run entries=200
+2026-11-08T23:45:12 batch=0030 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0030 --format
+2026-11-08T23:50:19 batch=0030 status=agent_exit code=0 duration=306.9s log=docs/corpus-review/.work/logs/0030.jsonl
+2026-11-08T23:50:19 batch=0030 status=ok entries=200 senses=291 proposals=197 sem_proposta=0 requer_fonte=3
+2026-11-08T23:50:24 batch=0031 status=run entries=200
+2026-11-08T23:50:24 batch=0031 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0031 --format
+2026-11-08T23:53:42 batch=0031 status=agent_exit code=0 duration=198.1s log=docs/corpus-review/.work/logs/0031.jsonl
+2026-11-08T23:53:42 batch=0031 status=ok entries=200 senses=302 proposals=200 sem_proposta=0 requer_fonte=0
+2026-11-08T23:53:47 batch=0032 status=run entries=200
+2026-11-08T23:53:47 batch=0032 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0032 --format
+2026-11-08T23:58:01 batch=0032 status=agent_exit code=0 duration=253.8s log=docs/corpus-review/.work/logs/0032.jsonl
+2026-11-08T23:58:01 batch=0032 status=ok entries=200 senses=288 proposals=200 sem_proposta=0 requer_fonte=0
+2026-11-08T23:58:06 batch=0033 status=run entries=200
+2026-11-08T23:58:06 batch=0033 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0033 --format
+2026-11-09T00:03:48 batch=0033 status=agent_exit code=0 duration=342.5s log=docs/corpus-review/.work/logs/0033.jsonl
+2026-11-09T00:03:48 batch=0033 status=ok entries=200 senses=289 proposals=197 sem_proposta=0 requer_fonte=3
+2026-11-09T00:03:53 batch=0034 status=run entries=200
+2026-11-09T00:03:53 batch=0034 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0034 --format
+2026-11-09T00:07:38 batch=0034 status=agent_exit code=0 duration=224.4s log=docs/corpus-review/.work/logs/0034.jsonl
+2026-11-09T00:07:38 batch=0034 status=invalid errors=aceção 1 alterada; aceção 1 alterada; aceção 1 alterada; aceção 1 alterada; aceção 2 alterada
+2026-11-09T00:07:38 batch=0034 status=retry attempt=1
+2026-11-09T00:07:38 batch=0034 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0034 --format
+2026-11-09T00:10:13 batch=0034 status=agent_exit code=0 duration=155.2s log=docs/corpus-review/.work/logs/0034.jsonl
+2026-11-09T00:10:13 batch=0034 status=ok entries=200 senses=384 proposals=198 sem_proposta=0 requer_fonte=2
+2026-11-09T00:10:18 batch=0035 status=run entries=200
+2026-11-09T00:10:18 batch=0035 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0035 --format
+2026-11-09T00:13:51 batch=0035 status=agent_exit code=0 duration=212.6s log=docs/corpus-review/.work/logs/0035.jsonl
+2026-11-09T00:13:51 batch=0035 status=ok entries=200 senses=400 proposals=200 sem_proposta=0 requer_fonte=0
+2026-11-09T00:13:56 batch=0036 status=run entries=200
+2026-11-09T00:13:56 batch=0036 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0036 --format
+2026-11-09T00:18:35 batch=0036 status=agent_exit code=0 duration=279.0s log=docs/corpus-review/.work/logs/0036.jsonl
+2026-11-09T00:18:35 batch=0036 status=ok entries=200 senses=360 proposals=200 sem_proposta=0 requer_fonte=0
+2026-11-09T00:18:40 batch=0037 status=run entries=200
+2026-11-09T00:18:40 batch=0037 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0037 --format
+2026-11-09T00:21:31 batch=0037 status=agent_exit code=0 duration=171.1s log=docs/corpus-review/.work/logs/0037.jsonl
+2026-11-09T00:21:31 batch=0037 status=ok entries=200 senses=300 proposals=199 sem_proposta=0 requer_fonte=1
+2026-11-09T00:21:36 batch=0038 status=run entries=200
+2026-11-09T00:21:36 batch=0038 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0038 --format
+2026-11-09T00:24:49 batch=0038 status=agent_exit code=0 duration=193.6s log=docs/corpus-review/.work/logs/0038.jsonl
+2026-11-09T00:24:49 batch=0038 status=ok entries=200 senses=339 proposals=199 sem_proposta=0 requer_fonte=1
+2026-11-09T00:24:54 batch=0039 status=run entries=200
+2026-11-09T00:24:54 batch=0039 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0039 --format
+2026-11-09T00:29:31 batch=0039 status=agent_exit code=0 duration=276.3s log=docs/corpus-review/.work/logs/0039.jsonl
+2026-11-09T00:29:31 batch=0039 status=ok entries=200 senses=316 proposals=197 sem_proposta=0 requer_fonte=3
+2026-11-09T00:29:36 batch=0040 status=run entries=200
+2026-11-09T00:29:36 batch=0040 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0040 --format
+2026-11-09T00:33:12 batch=0040 status=agent_exit code=0 duration=216.4s log=docs/corpus-review/.work/logs/0040.jsonl
+2026-11-09T00:33:12 batch=0040 status=ok entries=200 senses=440 proposals=200 sem_proposta=0 requer_fonte=0
+2026-11-09T00:33:17 batch=0041 status=run entries=200
+2026-11-09T00:33:17 batch=0041 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0041 --format
+2026-11-09T00:35:39 batch=0041 status=agent_exit code=0 duration=141.7s log=docs/corpus-review/.work/logs/0041.jsonl
+2026-11-09T00:35:39 batch=0041 status=invalid errors=aceção 1 alterada; aceção 2 alterada; aceção 3 alterada; aceção 4 alterada; aceção 5 alterada
+2026-11-09T00:35:39 batch=0041 status=retry attempt=1
+2026-11-09T00:35:39 batch=0041 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0041 --format
+2026-11-09T00:37:34 batch=0041 status=agent_exit code=0 duration=115.3s log=docs/corpus-review/.work/logs/0041.jsonl
+2026-11-09T00:37:34 batch=0041 status=invalid errors=aceção 1 alterada; aceção 2 alterada; aceção 3 alterada; aceção 4 alterada; aceção 5 alterada
+2026-11-09T00:37:34 batch=0041 status=failed
+2026-11-09T00:37:34 batch=0042 status=run entries=200
+2026-11-09T00:37:34 batch=0042 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0042 --format
+2026-11-09T00:40:12 batch=0042 status=agent_exit code=0 duration=157.7s log=docs/corpus-review/.work/logs/0042.jsonl
+2026-11-09T00:40:12 batch=0042 status=invalid errors=aceção 1 alterada; aceção 1 alterada; aceção 1 alterada; aceção 1 alterada; aceção 1 alterada
+2026-11-09T00:40:12 batch=0042 status=retry attempt=1
+2026-11-09T00:40:12 batch=0042 status=start cmd=opencode run --agent corpus-review --auto --title corpus-review-0042 --format
+2026-11-09T00:43:04 batch=0042 status=agent_exit code=0 duration=172.1s log=docs/corpus-review/.work/logs/0042.jsonl
+2026-11-09T00:43:04 batch=0042 status=invalid errors=aceção 1 alterada; aceção 1 alterada; aceção 1 alterada; aceção 1 alterada; aceção 1 alterada
+2026-11-09T00:43:04 batch=0042 status=failed
+2026-11-09T00:43:04 paragem após 2 falhas

@@ -7,6 +7,7 @@
  const continuationStart=/^(agora|e |so |apenas |mas |com |now|and |only |just |but |with )/;
  const tidy=s=>(s||'').replace(/\s+/g,' ').trim().replace(/[.!?;,…]+$/,'').trim();
  const unquote=s=>tidy(s).replace(/^[«“"']|[»”"']$/g,'').trim();
+ const termPattern=/^[\p{L}\p{M}]+(?:[-’'][\p{L}\p{M}]+)*(?: [\p{L}\p{M}]+(?:[-’'][\p{L}\p{M}]+)*)*$/u;
  function parse(text,context={}){
   const q=tidy(text),n=norm(q);if(!q)return {type:'empty'};
   const greeting=/^(ol[áa]|oi|bom dia|boa tarde|boa noite|boas|viva|hello|hi|hey|good morning|good afternoon|good evening)(?![\p{L}\p{N}_])[,.!;:…\s]*/iu.exec(q);
@@ -18,7 +19,7 @@
     return word.type==='definition'?{type:'greeting'}:word;
    }
    const inner=parse(rest,context);
-   return inner.type==='unknown'?{type:'greeting'}:inner;
+   return inner.type==='unknown'||inner.type==='lookup_phrase'?{type:'greeting'}:inner;
   }
   if(/^(obrigad[oa]|muito obrigad[oa]|agradecid[oa]|thanks|thank you|many thanks)\b/.test(n))return {type:'thanks'};
   if(/^(ajuda|socorro|o que sabes fazer|como funcionas|exemplos de perguntas|help|what can you do|how do you work|example questions)$/.test(n))return {type:'help'};
@@ -52,13 +53,26 @@
     if(!p.start&&!p.end&&!p.length&&!p.syll)return {type:'clarify_search'};
     return {type:'search',params:p};
    }
-   if(/\bpalavras?\b/.test(n)||/\bwords?\b/.test(n))return {type:'clarify_search'};
   }
   if(/^(e (?:essa|esta|isso)|o que (?:quer(?:em)? dizer|significa(?:m)?|e|sao)|explica melhor|diz-me o significado|and (?:that|this)|what does (?:that|it) mean|explain better|tell me the meaning)$/.test(n))return context.lastWord?{type:'definition',word:context.lastWord}:{type:'ask_word'};
-  const def=q.match(/(?:o que (?:é|e|s[ãa]o|significa(?:m)?|quer(?:em)? dizer)|qual (?:é|e) o significado (?:de|da|do)|significa(?:m)?|significado (?:de|da|do)|define|defini[cç][aã]o (?:de|da|do)|explica(?:-me)?(?: o significado de)?|quem (?:é|e|s[ãa]o)|what (?:is|are) the meaning of|what (?:does|do)|what (?:is|are)|meaning of|define|explain|who (?:is|are))\s+(?:as palavras\s+|os termos\s+|a palavra\s+|o termo\s+|umas\s+|uns\s+|um\s+|uma\s+|as\s+|os\s+|a\s+|o\s+|the word\s+|the term\s+|a\s+|an\s+|the\s+)?[«“"']?([\p{L}-]+)(?:\s+mean)?/iu);
-  if(def)return {type:'definition',word:unquote(def[1])};
+  const def=q.match(/^(?:o que (?:é|e|s[ãa]o|significa(?:m)?|quer(?:em)? dizer)|qual (?:é|e) o significado (?:de|da|do)|significa(?:m)?|significado (?:de|da|do)|define|defini[cç][aã]o (?:de|da|do)|explica(?:-me)?(?: o significado de)?|quem (?:é|e|s[ãa]o)|what (?:is|are) the meaning of|what (?:does|do)|what (?:is|are)|meaning of|define|explain|who (?:is|are))\s+(as palavras\s+|os termos\s+|a palavra\s+|o termo\s+|umas\s+|uns\s+|um\s+|uma\s+|as\s+|os\s+|a\s+|o\s+|the word\s+|the term\s+|a\s+|an\s+|the\s+)?(.+)$/iu);
+  if(def){
+   const word=unquote(/^what (?:does|do)\b/i.test(q)?def[2].replace(/\s+mean$/i,''):def[2]);
+   if(!termPattern.test(word))return {type:'unknown'};
+   const intent={type:'definition',word:word};
+   // A leading article can be part of the headword, e.g. «a priori».
+   if(def[1])intent.literal=def[1].trim()+' '+word;
+   return intent;
+  }
   const bare=q.match(/^[«“"']?([\p{L}-]+)[»”"']?$/u);
   if(bare)return {type:'definition',word:bare[1]};
+  const phrase=unquote(q);
+  if(phrase.indexOf(' ')>=0&&termPattern.test(phrase)){
+   const intent={type:'lookup_phrase',word:phrase};
+   if(/\bpalavras?\b/.test(n)||/\bwords?\b/.test(n))intent.fallback='clarify_search';
+   return intent;
+  }
+  if(/\bpalavras?\b/.test(n)||/\bwords?\b/.test(n))return {type:'clarify_search'};
   return {type:'unknown'};
  }
  return {parse,norm};
