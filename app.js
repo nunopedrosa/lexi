@@ -748,10 +748,16 @@ function showIllustration(lemma,anchor){
   var record=manifest.map[lemma];
   if(!record)return;
   var figure=buildIllustration(record);
-  if(anchor&&anchor.parentNode===chat)chat.insertBefore(figure,anchor.nextSibling);
-  else chat.appendChild(figure);
+  if(anchor&&anchor.parentNode===chat){
+   chat.insertBefore(figure,anchor.nextSibling);
+   // The figure changes the scrollable height, so re-anchor on the entry:
+   // the newly consulted meaning should stay at the top of the screen.
+   revealNode(anchor);
+  }else{
+   chat.appendChild(figure);
+   revealNode(figure);
+  }
   trimChat();
-  scrollChat();
  }).catch(function(){});
 }
 
@@ -782,8 +788,30 @@ function regionExplanation(word){
  return null;
 }
 
+function scrollContainer(){
+ // The chat scrolls inside #main when it has a bounded height; otherwise the
+ // document is the scroller. Scroll whichever is actually scrollable.
+ if(main&&main.scrollHeight>main.clientHeight+1)return main;
+ return document.scrollingElement||document.documentElement;
+}
+
 function scrollChat(){
- if(main)main.scrollTop=main.scrollHeight;
+ var scroller=scrollContainer();
+ scroller.scrollTop=scroller.scrollHeight;
+}
+
+function revealNode(node){
+ if(!node)return;
+ var scroller=scrollContainer();
+ var offset=8;
+ if(scroller===main){
+  main.scrollTop=Math.max(0,
+   main.scrollTop+node.getBoundingClientRect().top-main.getBoundingClientRect().top-offset);
+  return;
+ }
+ var top=node.getBoundingClientRect().top+(window.pageYOffset||scroller.scrollTop||0)-offset;
+ if(typeof window.scrollTo==='function')window.scrollTo(0,Math.max(0,top));
+ else scroller.scrollTop=Math.max(0,top);
 }
 
 function trimChat(){
@@ -927,7 +955,6 @@ function showPersonalDefinition(word,anchor){
  else chat.appendChild(node);
  registerUserDefNode(word,node);
  trimChat();
- scrollChat();
  return node;
 }
 
@@ -1229,7 +1256,7 @@ function displaySenses(offset){
  if(row[0])appendPriberam(d,row[0]);
  chat.appendChild(d);
  trimChat();
- scrollChat();
+ revealNode(d);
  lastSenseOffset=offset+page.length;
  return d;
 }
