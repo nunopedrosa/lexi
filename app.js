@@ -28,20 +28,49 @@ var importPreview=byId('import-preview');
 var restorePrefs=byId('restorePrefs');
 var applyImportButton=byId('applyImport');
 var cancelImportButton=byId('cancelImport');
+var editor=byId('editor');
+var editorTitle=byId('editor-title');
+var editorWord=byId('editor-word');
+var editorNote=byId('editor-note');
+var editorLabel=byId('editor-label');
+var editorText=byId('editor-text');
+var editorStatus=byId('editor-status');
+var editorSaveButton=byId('editor-save');
+var editorCancelButton=byId('editor-cancel');
+var editorRemoveButton=byId('editor-remove');
+var editorCloseButton=byId('editor-close');
+var tagPanel=byId('tag-panel');
+var tagTitle=byId('tag-title');
+var tagWord=byId('tag-word');
+var tagNoteIntro=byId('tag-note-intro');
+var tagActionLabel=byId('tag-action-label');
+var tagAction=byId('tag-action');
+var tagNoteLabel=byId('tag-note-label');
+var tagNoteText=byId('tag-note-text');
+var tagUrlLabel=byId('tag-url-label');
+var tagUrl=byId('tag-url');
+var tagUrlHint=byId('tag-url-hint');
+var tagStatus=byId('tag-status');
+var tagSaveButton=byId('tag-save');
+var tagCancelButton=byId('tag-cancel');
+var tagRemoveButton=byId('tag-remove');
+var tagCloseButton=byId('tag-close');
 
 var t=LexiI18n.t;
 var conversation=LexiConversation;
 var APP_VERSION=(typeof self!=='undefined'&&self.LEXI_VERSION)?self.LEXI_VERSION:'dev';
-var CACHE_NAME='lexi-'+APP_VERSION;
+var CACHE_NAME='lexi2-'+APP_VERSION;
 var MAX_RESULTS=1000;
 var MAX_CHAT_MESSAGES=300;
 
 var meta=null,metaPromise=null;
 var regionalData=null,regionalPromise=null;
 var formsManifest=null,formsManifestPromise=null;
+var missingManifest=null,missingManifestPromise=null;
+var imagesManifest=null,imagesManifestPromise=null;
 var cache=new Map();
 var formsCache=new Map();
-var syllCache=new Map();
+var missingCache=new Map();
 var lastWord='',lastQuery=null,lastEntry=null,lastSenseOffset=0;
 var lastSenseView='preferred';
 var questionBusy=false;
@@ -58,6 +87,20 @@ var updateState='idle';
 var reloadAfterUpdate=false;
 var lastUpdateCheck=0;
 var backupMeta={at:null,signature:null};
+var USER_DEF_KEY='lexi2.userDefinitions';
+var USER_DEF_MAX=600;
+var USER_DEF_LIMIT=2000;
+var IMAGE_TAG_KEY='lexi2.imageTags';
+var IMAGE_TAG_LIMIT=200;
+var IMAGE_TAG_ACTIONS={wrong:true,better:true,remove:true};
+var userDefinitions={};
+var userDefViews={};
+var imageTags={};
+var tagState=null;
+var tagLastFocus=null;
+var editorState=null;
+var editorLastFocus=null;
+var offlineSizeMb=45;
 
 function remember(map,key,value,max){
  if(map.has(key))map.delete(key);
@@ -103,7 +146,7 @@ function readPrefs(){
  var result={priberam:false,language:null};
  var hasPriberam=false;
  try{
-  var raw=localStorage.getItem('lexi.prefs');
+  var raw=localStorage.getItem('lexi2.prefs')||localStorage.getItem('lexi.prefs');
   if(raw){
    var parsed=JSON.parse(raw);
    if(parsed&&typeof parsed==='object'){
@@ -114,15 +157,15 @@ function readPrefs(){
     result.language=LexiI18n.normalise(parsed.language);
    }
   }
-  if(!result.language)result.language=LexiI18n.normalise(localStorage.getItem('lexi.lang'));
-  if(!hasPriberam)result.priberam=localStorage.getItem('priberam')==='1';
+  if(!result.language)result.language=LexiI18n.normalise(localStorage.getItem('lexi2.lang'))||LexiI18n.normalise(localStorage.getItem('lexi.lang'));
+  if(!hasPriberam)result.priberam=localStorage.getItem('lexi2.priberam')==='1'||localStorage.getItem('priberam')==='1';
  }catch(e){}
  return result;
 }
 
 function persistPrefs(){
  try{
-  localStorage.setItem('lexi.prefs',JSON.stringify({
+  localStorage.setItem('lexi2.prefs',JSON.stringify({
    priberam:!!prefs.priberam,
    language:languageExplicit?currentLanguage:null
   }));
@@ -132,9 +175,233 @@ function persistPrefs(){
  }
 }
 
+function safeWordKey(word){
+ return typeof word==='string'&&word.length>0&&word.length<=200&&
+  word!=='__proto__'&&word!=='prototype'&&word!=='constructor';
+}
+
+function cleanDefinitionText(text){
+ if(typeof text!=='string')return '';
+ var value=text.replace(/^\s+|\s+$/g,'');
+ if(value.length>USER_DEF_MAX)value=value.slice(0,USER_DEF_MAX);
+ return value;
+}
+
+function readUserDefinitions(){
+ var result={};
+ try{
+  var raw=localStorage.getItem(USER_DEF_KEY);
+  if(!raw)return result;
+  var parsed=JSON.parse(raw);
+  var source=null;
+  if(parsed&&typeof parsed==='object'){
+   source=(parsed.definitions&&typeof parsed.definitions==='object')?parsed.definitions:parsed;
+  }
+  if(!source||typeof source!=='object'||Array.isArray(source))return result;
+  var count=0;
+  for(var word in source){
+   if(!Object.prototype.hasOwnProperty.call(source,word))continue;
+   if(!safeWordKey(word))continue;
+   var item=source[word];
+   var text=item&&typeof item==='object'?item.text:item;
+   text=cleanDefinitionText(text);
+   if(!text)continue;
+   var updated=(item&&typeof item==='object'&&typeof item.updated==='string')?item.updated:'';
+   result[word]={text:text,updated:updated};
+   count++;
+   if(count>=USER_DEF_LIMIT)break;
+  }
+ }catch(e){}
+ return result;
+}
+
+function persistUserDefinitions(){
+ try{
+  localStorage.setItem(USER_DEF_KEY,JSON.stringify({schema:1,definitions:userDefinitions}));
+  return true;
+ }catch(e){
+  return false;
+ }
+}
+
+function getUserDefinition(word){
+ if(!safeWordKey(word))return null;
+ if(!Object.prototype.hasOwnProperty.call(userDefinitions,word))return null;
+ return userDefinitions[word];
+}
+
+function readImageTags(){
+ var result={};
+ try{
+  var raw=localStorage.getItem(IMAGE_TAG_KEY);
+  if(!raw)return result;
+  var parsed=JSON.parse(raw);
+  var source=(parsed&&parsed.tags&&typeof parsed.tags==='object')?parsed.tags:null;
+  if(!source||Array.isArray(source))return result;
+  var count=0;
+  for(var lemma in source){
+   if(!Object.prototype.hasOwnProperty.call(source,lemma))continue;
+   if(!safeWordKey(lemma))continue;
+   var item=source[lemma];
+   if(!item||typeof item!=='object')continue;
+   var action=(item.action&&IMAGE_TAG_ACTIONS[item.action])?item.action:'wrong';
+   var note=(typeof item.note==='string')?item.note.slice(0,300):'';
+   var url=(typeof item.url==='string')?item.url.slice(0,300):'';
+   var tagged=(typeof item.tagged==='string')?item.tagged:'';
+   result[lemma]={file:(typeof item.file==='string')?item.file:'',action:action,note:note,url:url,tagged:tagged};
+   count++;
+   if(count>=IMAGE_TAG_LIMIT)break;
+  }
+ }catch(e){}
+ return result;
+}
+
+function persistImageTags(){
+ try{
+  localStorage.setItem(IMAGE_TAG_KEY,JSON.stringify({schema:1,tags:imageTags}));
+  return true;
+ }catch(e){
+  return false;
+ }
+}
+
+function getImageTag(lemma){
+ if(!safeWordKey(lemma))return null;
+ if(!Object.prototype.hasOwnProperty.call(imageTags,lemma))return null;
+ return imageTags[lemma];
+}
+
+function setImageTag(lemma,file,action,note,url){
+ if(!safeWordKey(lemma))return false;
+ if(!IMAGE_TAG_ACTIONS[action])return false;
+ var previous=Object.prototype.hasOwnProperty.call(imageTags,lemma)?imageTags[lemma]:null;
+ imageTags[lemma]={file:file||'',action:action,note:note||'',url:url||'',tagged:new Date().toISOString()};
+ if(!persistImageTags()){
+  if(previous)imageTags[lemma]=previous;
+  else delete imageTags[lemma];
+  return false;
+ }
+ return true;
+}
+
+function clearImageTag(lemma){
+ if(!safeWordKey(lemma))return false;
+ if(!Object.prototype.hasOwnProperty.call(imageTags,lemma))return false;
+ delete imageTags[lemma];
+ return persistImageTags();
+}
+
+function imageTagsForExport(){
+ var list=[];
+ for(var lemma in imageTags){
+  if(!Object.prototype.hasOwnProperty.call(imageTags,lemma))continue;
+  var item=imageTags[lemma];
+  list.push({
+   lemma:lemma,
+   file:item.file||'',
+   action:item.action,
+   note:item.note||'',
+   url:item.url||'',
+   tagged:item.tagged||''
+  });
+ }
+ list.sort(function(a,b){return a.lemma<b.lemma?-1:(a.lemma>b.lemma?1:0);});
+ return list;
+}
+
+function readImportedImageTags(list){
+ if(!Array.isArray(list))return [];
+ var result=[];
+ for(var i=0;i<list.length;i++){
+  var item=list[i];
+  if(!item||typeof item!=='object')continue;
+  if(!safeWordKey(item.lemma))continue;
+  if(!item.action||!IMAGE_TAG_ACTIONS[item.action])continue;
+  result.push({
+   lemma:item.lemma,
+   file:(typeof item.file==='string')?item.file:'',
+   action:item.action,
+   note:(typeof item.note==='string')?item.note.slice(0,300):'',
+   url:(typeof item.url==='string')?item.url.slice(0,300):'',
+   tagged:(typeof item.tagged==='string')?item.tagged:''
+  });
+  if(result.length>=IMAGE_TAG_LIMIT)break;
+ }
+ return result;
+}
+
+function mergeImageTags(list){
+ if(!list||!list.length)return 0;
+ var merged=0;
+ for(var i=0;i<list.length;i++){
+  var item=list[i];
+  var existing=getImageTag(item.lemma);
+  if(existing&&(existing.tagged||'')>=(item.tagged||''))continue;
+  imageTags[item.lemma]={file:item.file||'',action:item.action,note:item.note||'',url:item.url||'',tagged:item.tagged||''};
+  merged++;
+ }
+ if(merged)persistImageTags();
+ return merged;
+}
+
+function setUserDefinition(word,text){
+ if(!safeWordKey(word))return false;
+ var value=cleanDefinitionText(text);
+ if(!value)return false;
+ var previous=Object.prototype.hasOwnProperty.call(userDefinitions,word)?userDefinitions[word]:null;
+ userDefinitions[word]={text:value,updated:new Date().toISOString()};
+ if(!persistUserDefinitions()){
+  if(previous)userDefinitions[word]=previous;
+  else delete userDefinitions[word];
+  return false;
+ }
+ return true;
+}
+
+function deleteUserDefinition(word){
+ if(!safeWordKey(word))return false;
+ if(!Object.prototype.hasOwnProperty.call(userDefinitions,word))return true;
+ var previous=userDefinitions[word];
+ delete userDefinitions[word];
+ if(!persistUserDefinitions()){
+  userDefinitions[word]=previous;
+  return false;
+ }
+ return true;
+}
+
+function definitionCount(){
+ var count=0;
+ for(var word in userDefinitions){
+  if(Object.prototype.hasOwnProperty.call(userDefinitions,word))count++;
+ }
+ return count;
+}
+
+function renderDefinitionsCount(){
+ var node=byId('definitions-count');
+ if(!node)return;
+ var count=definitionCount();
+ if(!count)node.textContent=t('settings.personalDefinitionsNone');
+ else if(count===1)node.textContent=t('settings.personalDefinitionsOne');
+ else node.textContent=t('settings.personalDefinitionsCount',{count:String(count)});
+}
+
+function definitionsSignature(){
+ var latest='';
+ var count=0;
+ for(var word in userDefinitions){
+  if(!Object.prototype.hasOwnProperty.call(userDefinitions,word))continue;
+  count++;
+  var updated=userDefinitions[word].updated||'';
+  if(updated>latest)latest=updated;
+ }
+ return count+':'+latest;
+}
+
 function readBackupMeta(){
  try{
-  var raw=localStorage.getItem('lexi.backup');
+  var raw=localStorage.getItem('lexi2.backup')||localStorage.getItem('lexi.backup');
   if(!raw)return;
   var parsed=JSON.parse(raw);
   if(parsed&&parsed.at)backupMeta={at:parsed.at,signature:parsed.signature||null};
@@ -143,7 +410,7 @@ function readBackupMeta(){
 
 function saveBackupMeta(){
  try{
-  localStorage.setItem('lexi.backup',JSON.stringify(backupMeta));
+  localStorage.setItem('lexi2.backup',JSON.stringify(backupMeta));
   return true;
  }catch(e){
   return false;
@@ -151,7 +418,11 @@ function saveBackupMeta(){
 }
 
 function prefsSignature(){
- return JSON.stringify({language:currentLanguage,priberam:!!prefs.priberam});
+ return JSON.stringify({
+  language:currentLanguage,
+  priberam:!!prefs.priberam,
+  definitions:definitionsSignature()
+ });
 }
 
 function renderBackupStatus(){
@@ -246,7 +517,8 @@ function renderImportPreview(){
  importPreview.textContent=t('settings.importPreview',{
   date:formatDate(pendingImport.exportedAt),
   language:languageName,
-  priberam:pendingImport.priberam?t('common.yes'):t('common.no')
+  priberam:pendingImport.priberam?t('common.yes'):t('common.no'),
+  definitions:String((pendingImport.definitions||[]).length)
  });
 }
 
@@ -272,13 +544,14 @@ function applyLanguage(){
  setText('updates-title','settings.updatesTitle');
  setText('help-title','settings.helpTitle');
  setText('data-description','settings.dataDescription');
- setText('offline-intro','settings.offlineIntro');
+ renderDefinitionsCount();
+ renderOfflineIntro();
  setText('storage-note','settings.storageNote');
  setText('definitions-note','settings.definitionsNote');
  setText('help-text','settings.helpText');
  setText('privacy-text','settings.privacyText');
  setText('sources-text','settings.sources');
- setText('editorial-link','settings.editorialReview');
+ setText('missing-link','settings.missingList');
  setText('external-label','settings.external');
  setText('restore-prefs-label','settings.restorePreferences');
  setText('exportBackup','settings.export');
@@ -290,7 +563,29 @@ function applyLanguage(){
  setText('offlineCancel','settings.offlineCancel');
  setText('checkUpdates','settings.check');
  setText('updateApp','settings.update');
+ setText('editor-save','editor.save');
+ setText('editor-cancel','editor.cancel');
+ setText('editor-remove','editor.remove');
+ setText('editor-label','editor.label');
+ setAria('editor-close','editor.close');
+ if(editorNote)editorNote.textContent=t('editor.note');
+ if(editorText)editorText.setAttribute('placeholder',t('editor.placeholder'));
+ if(editor&&!editor.hidden&&editorState){
+  var hasStored=!!getUserDefinition(editorState.word);
+  if(editorTitle)editorTitle.textContent=t(hasStored?'editor.titleEdit':'editor.titleAdd');
+  if(editorWord)editorWord.textContent=t('editor.word',{word:editorState.word});
+  if(editorStatus)editorStatus.textContent='';
+  if(editorRemoveButton)editorRemoveButton.hidden=!hasStored;
+ }
+ renderTagPanelText();
+ if(tagPanel&&!tagPanel.hidden&&tagState){
+  var tagStored=getImageTag(tagState.lemma);
+  if(tagWord)tagWord.textContent=t('imagetag.word',{word:tagState.lemma});
+  if(tagRemoveButton)tagRemoveButton.hidden=!tagStored;
+  if(tagStatus)tagStatus.textContent='';
+ }
  setText('attribution-link','settings.attribution');
+ setText('credits-link','settings.imageCredits');
  setText('license-link','settings.license');
  setAria('settings','settings.title');
  setAria('close','settings.close');
@@ -365,6 +660,114 @@ async function getFormsMeta(){
  return formsManifestPromise;
 }
 
+async function getImagesManifest(){
+ if(imagesManifest)return imagesManifest;
+ if(!imagesManifestPromise){
+  imagesManifestPromise=fetch('images/manifest.json').then(function(response){
+   if(!response.ok)throw Error('images/manifest.json');
+   return response.json();
+  }).then(function(data){
+   var map={};
+   var list=(data&&data.images)||[];
+   for(var i=0;i<list.length;i++){
+    var record=list[i];
+    if(record&&record.lemma&&record.file)map[record.lemma]=record;
+   }
+   imagesManifest={data:data,map:map};
+   return imagesManifest;
+  }).catch(function(error){
+   imagesManifestPromise=null;
+   throw error;
+  });
+ }
+ return imagesManifestPromise;
+}
+
+function imageText(record,field){
+ var value=record[field]||{};
+ return value[currentLanguage]||value['pt-PT']||'';
+}
+
+function buildIllustration(record){
+ var figure=document.createElement('figure');
+ figure.className='entry-figure';
+ var img=document.createElement('img');
+ img.src='images/'+record.file;
+ img.width=record.width;
+ img.height=record.height;
+ img.loading='lazy';
+ img.decoding='async';
+ img.alt=imageText(record,'alt')||record.lemma;
+ img.addEventListener('error',function(){
+  if(figure.parentNode)figure.parentNode.removeChild(figure);
+ });
+ figure.appendChild(img);
+ var caption=document.createElement('figcaption');
+ caption.setAttribute('data-lemma',record.lemma);
+ var text=document.createElement('span');
+ text.className='figure-caption';
+ text.textContent=imageText(record,'caption');
+ caption.appendChild(text);
+ var credit=document.createElement('span');
+ credit.className='figure-credit';
+ credit.appendChild(document.createTextNode(t('message.imageCredit',{author:record.author})+' · '));
+ if(record.licence_url){
+  var licence=document.createElement('a');
+  licence.href=record.licence_url;
+  licence.target='_blank';
+  licence.rel='noopener noreferrer';
+  licence.textContent=record.licence;
+  credit.appendChild(licence);
+ }else{
+  credit.appendChild(document.createTextNode(record.licence||''));
+ }
+ credit.appendChild(document.createTextNode(' · '));
+ var source=document.createElement('a');
+ source.href=record.source;
+ source.target='_blank';
+ source.rel='noopener noreferrer';
+ source.textContent=t('message.imageSource');
+ credit.appendChild(source);
+ caption.appendChild(credit);
+ var tagButton=document.createElement('button');
+ tagButton.type='button';
+ var tagStored=getImageTag(record.lemma);
+ tagButton.className=tagStored?'figure-tag tagged':'figure-tag';
+ tagButton.textContent=t(tagStored?'imagetag.openTagged':'imagetag.open');
+ tagButton.addEventListener('click',function(){
+  openImageTagPanel(record,tagButton);
+ });
+ caption.appendChild(tagButton);
+ figure.appendChild(caption);
+ return figure;
+}
+
+function showIllustration(lemma,anchor){
+ if(!lemma)return;
+ getImagesManifest().then(function(manifest){
+  var record=manifest.map[lemma];
+  if(!record)return;
+  var figure=buildIllustration(record);
+  if(anchor&&anchor.parentNode===chat)chat.insertBefore(figure,anchor.nextSibling);
+  else chat.appendChild(figure);
+  trimChat();
+  scrollChat();
+ }).catch(function(){});
+}
+
+function refreshOfflineSize(){
+ return Promise.all([getMeta(),getFormsMeta(),getMissingMeta(),getImagesManifest()]).then(function(values){
+  var bytes=(values[0].bytes||0)+(values[1].bytes||0)+(values[2].bytes||0)+(values[3].data.bytes||0);
+  if(bytes>0)offlineSizeMb=Math.max(1,Math.round(bytes/1048576));
+  renderOfflineIntro();
+ }).catch(function(){});
+}
+
+function renderOfflineIntro(){
+ var node=byId('offline-intro');
+ if(node)node.textContent=t('settings.offlineIntro',{size:String(offlineSizeMb)});
+}
+
 function regionInfo(word){
  if(!regionalData||!regionalData.terms)return null;
  return regionalData.terms[norm(word)]||null;
@@ -411,6 +814,136 @@ function add(message,who,word){
  chat.appendChild(d);
  trimChat();
  scrollChat();
+ return d;
+}
+
+function isAttached(node){
+ return !!(node&&node.parentNode&&document.body&&document.body.contains(node));
+}
+
+function userDefView(word){
+ if(!userDefViews[word])userDefViews[word]={nodes:[],buttons:[]};
+ return userDefViews[word];
+}
+
+function registerUserDefButton(word,button){
+ var view=userDefView(word);
+ button._personalWord=word;
+ view.buttons.push(button);
+ updateUserDefButton(button,!!getUserDefinition(word));
+}
+
+function updateUserDefButton(button,hasDefinition){
+ button.textContent=t(hasDefinition?'message.personalDefinitionEditEntry':'message.personalDefinitionAdd');
+ button.setAttribute('aria-label',t(hasDefinition?'message.personalDefinitionEditAria':'message.personalDefinitionAddAria',{word:button._personalWord||''}));
+}
+
+function registerUserDefNode(word,node){
+ userDefView(word).nodes.push(node);
+ node._personalWord=word;
+}
+
+function refreshUserDefinitions(word){
+ var view=userDefViews[word];
+ if(!view)return;
+ var stored=getUserDefinition(word);
+ var i;
+ for(i=0;i<view.buttons.length;i++){
+  var button=view.buttons[i];
+  if(!isAttached(button))continue;
+  updateUserDefButton(button,!!stored);
+ }
+ var keep=[];
+ for(i=0;i<view.nodes.length;i++){
+  var node=view.nodes[i];
+  if(!isAttached(node))continue;
+  if(!stored){
+   node.parentNode.removeChild(node);
+   continue;
+  }
+  if(node._personalText&&node._personalText.textContent!==stored.text){
+   node._personalText.textContent=stored.text;
+  }
+  keep.push(node);
+ }
+ view.nodes=keep;
+ var live=[];
+ for(i=0;i<view.buttons.length;i++){
+  if(isAttached(view.buttons[i]))live.push(view.buttons[i]);
+ }
+ view.buttons=live;
+}
+
+function refreshAllUserDefinitions(){
+ for(var word in userDefViews){
+  if(Object.prototype.hasOwnProperty.call(userDefViews,word))refreshUserDefinitions(word);
+ }
+}
+
+function buildUserDefinitionBubble(word,record){
+ var d=document.createElement('div');
+ d.className='bubble bot user-definition';
+ var label=document.createElement('p');
+ label.className='user-definition-label';
+ label.textContent=t('message.personalDefinitionLabel');
+ d.appendChild(label);
+ var text=document.createElement('p');
+ text.className='user-definition-text';
+ text.textContent=record.text;
+ d.appendChild(text);
+ var note=document.createElement('p');
+ note.className='user-definition-note';
+ note.textContent=t('message.personalDefinitionNote');
+ d.appendChild(note);
+ var row=document.createElement('div');
+ row.className='links';
+ var edit=document.createElement('button');
+ edit.type='button';
+ edit.className='inline-action';
+ edit.textContent=t('message.personalDefinitionEdit');
+ edit.setAttribute('aria-label',t('message.personalDefinitionEditAria',{word:word}));
+ edit.addEventListener('click',function(){openDefinitionEditor(word,d);});
+ row.appendChild(edit);
+ var remove=document.createElement('button');
+ remove.type='button';
+ remove.className='inline-action';
+ remove.textContent=t('message.personalDefinitionRemove');
+ remove.addEventListener('click',function(){confirmRemovePersonalDefinition(word);});
+ row.appendChild(remove);
+ d.appendChild(row);
+ d._personalText=text;
+ return d;
+}
+
+function showPersonalDefinition(word,anchor){
+ var stored=getUserDefinition(word);
+ if(!stored)return null;
+ var node=buildUserDefinitionBubble(word,stored);
+ var target=anchor;
+ if(target&&target.nextSibling&&target.nextSibling.classList&&target.nextSibling.classList.contains('entry-figure')){
+  target=target.nextSibling;
+ }
+ if(target&&target.parentNode===chat)chat.insertBefore(node,target.nextSibling);
+ else chat.appendChild(node);
+ registerUserDefNode(word,node);
+ trimChat();
+ scrollChat();
+ return node;
+}
+
+function appendPersonalDefinitionAction(parent,word){
+ var row=document.createElement('div');
+ row.className='links';
+ var button=document.createElement('button');
+ button.type='button';
+ button.className='inline-action';
+ button.textContent=t('message.personalDefinitionAdd');
+ button.setAttribute('aria-label',t('message.personalDefinitionAddAria',{word:word}));
+ button.addEventListener('click',function(){openDefinitionEditor(word,parent);});
+ row.appendChild(button);
+ parent.appendChild(row);
+ registerUserDefButton(word,button);
+ return button;
 }
 
 async function openLinkedWord(word){
@@ -569,56 +1102,136 @@ async function find(word){
 }
 
 function senseList(row,original){
- var senses=LexiEditorial.sourceSenses(row,original);
- if(original)return senses;
- var info=regionInfo(row[0]);
- var isBrazilTerm=!!(info&&info.pt);
+ var senses=row[2]||[];
+ var list=senses.map(function(s,index){
+  return {
+   index:index+1,
+   text:s[0],
+   region:s[1]||'',
+   flags:s[2]||[],
+   modernized:s[3]||'',
+   source:s[4]||row[0]
+  };
+ });
+ if(original)return list;
  function rank(s){
-  if(s.curated)return 0;
-  if(s.region==='BR')return isBrazilTerm?1:3;
-  for(var i=0;i<s.flags.length;i++){
-   if(/possível PT-BR|planejad|usuário|ônibus|aplicativo/i.test(s.flags[i]))return 2;
-  }
-  return 1;
+  if(s.region==='BR')return 3;
+  if(s.flags.indexOf('arch')>=0)return 2;
+  if(s.flags.indexOf('reg')>=0)return 1;
+  return 0;
  }
- return senses.sort(function(a,b){
+ return list.sort(function(a,b){
   return rank(a)-rank(b)||a.index-b.index;
  });
+}
+
+function senseTags(s,modernizedView){
+ var tags=[];
+ if(s.region==='BR')tags.push(t('message.tagBrazil'));
+ var map={
+  arch:'message.tagArchaic',
+  reg:'message.tagRegional',
+  tech:'message.tagTechnical',
+  pop:'message.tagPopular',
+  poet:'message.tagPoetic',
+  neo:'message.tagNeologism',
+  old:'message.tagOldSpelling',
+  mod:'message.tagModernization',
+  cit:'message.tagCitation',
+  rev:'message.tagReview',
+  editorial:'message.tagEditorial',
+  wikt:'message.tagWiktionary'
+ };
+ for(var i=0;i<s.flags.length;i++){
+  var flag=s.flags[i];
+  if(modernizedView&&(flag==='old'||flag==='mod'))continue;
+  var key=map[flag];
+  if(key){
+   var text=t(key);
+   if(tags.indexOf(text)<0)tags.push(text);
+  }
+ }
+ return tags.join('');
+}
+
+function appendModernizedHint(parent){
+ var row=document.createElement('div');
+ row.className='links';
+ var b=document.createElement('button');
+ b.type='button';
+ b.className='inline-action';
+ b.textContent=t('message.modernizedCommand');
+ b.setAttribute('aria-label',t('message.modernizedAria'));
+ b.addEventListener('click',function(){
+  add(t('message.modernizedCommand'),'user');
+  lastSenseView='modernized';
+  lastSenseOffset=0;
+  displaySenses(0);
+ });
+ row.appendChild(b);
+ parent.appendChild(row);
 }
 
 function displaySenses(offset){
  offset=offset||0;
  if(!lastEntry)return;
  var row=lastEntry;
- var approved=LexiEditorial.get(row[0]);
- var heading='«'+row[0]+'»'+(row[1]?' ('+row[1]+')':'')+'\n';
- if(lastSenseView==='preferred'&&approved){
-  lastSenseView='source';
-  lastSenseOffset=0;
-  addDefinitionText(heading+approved,row[0],(row[2]||[]).length>0);
-  return;
- }
  var original=lastSenseView==='original';
- var all=senseList(row,original);
+ var modernized=lastSenseView==='modernized';
+ var all=senseList(row,original||modernized);
+ if(modernized)all=all.filter(function(s){return s.modernized;});
  var page=all.slice(offset,offset+3);
  if(!page.length){
-  add(t('message.noMoreSenses',{word:row[0]}));
+  add(t(modernized?'message.noModernized':'message.noMoreSenses',{word:row[0]}));
   return;
  }
+ var heading='«'+row[0]+'»'+(row[1]?' ('+row[1]+')':'')+'\n';
+ if(row[3]==='br')heading+=t('message.entryBrazil');
+ else if(row[3]==='historical')heading+=t('message.entryHistorical');
+ var sources=[];
+ for(var q=0;q<page.length;q++){
+  if(page[q].source&&sources.indexOf(page[q].source)<0)sources.push(page[q].source);
+ }
+ if(sources.length===1&&sources[0]!==row[0]){
+  heading+=t('message.sourceHeadwordLine',{headword:sources[0]});
+ }
  var lines=page.map(function(s){
-  var tag=s.curated?t('message.tagCurated'):s.region==='BR'?t('message.tagBrazil'):s.region==='PT'?t('message.tagPortugal'):'';
-  var warning='';
-  for(var i=0;!original&&i<s.flags.length;i++){
-   if(/adaptação automática/i.test(s.flags[i])){warning=t('message.tagAuto');break;}
-  }
-  return s.index+'. '+s.text+tag+warning;
+  var text=modernized?s.modernized:s.text;
+  var tags=senseTags(s,modernized);
+  var source=(sources.length>1&&s.source&&s.source!==row[0])
+   ?t('message.sourceHeadword',{headword:s.source})
+   :'';
+  return s.index+'. '+text+tags+source;
  });
- var regional=offset===0&&!original?regionExplanation(row[0]):null;
- if(regional)lines.push(regional);
+ if(offset===0&&!modernized){
+  var regional=regionExplanation(row[0]);
+  if(regional)lines.push(regional);
+ }
  var hasMore=offset+3<all.length;
- var introduction=original?t('message.originalSenses'):approved?t('message.sourceSenses'):'';
- addDefinitionText(heading+introduction+lines.join('\n'),row[0],hasMore);
+ var hasEditorial=page.some(function(s){return s.flags.indexOf('editorial')>=0;});
+ var hasWikt=page.some(function(s){return s.flags.indexOf('wikt')>=0;});
+ var introduction=modernized
+  ?t('message.modernizedSenses')
+  :original
+   ?t('message.originalSenses')
+   :hasEditorial
+    ?t('message.editorialSenses')
+    :hasWikt
+     ?t('message.wiktSenses')
+     :t('message.sourceSenses');
+ var hasMod=!modernized&&!original&&(row[2]||[]).some(function(s){return s[3];});
+ var d=document.createElement('div');
+ d.className='bubble bot';
+ appendLinkedText(d,heading+introduction+lines.join('\n'));
+ if(hasMore)appendMoreSensesHint(d);
+ if(hasMod)appendModernizedHint(d);
+ if(offset===0&&row[0])appendPersonalDefinitionAction(d,row[0]);
+ if(row[0])appendPriberam(d,row[0]);
+ chat.appendChild(d);
+ trimChat();
+ scrollChat();
  lastSenseOffset=offset+page.length;
+ return d;
 }
 
 async function formShard(k){
@@ -631,6 +1244,42 @@ async function formShard(k){
  return remember(formsCache,k,rows,4);
 }
 
+async function getMissingMeta(){
+ if(missingManifest)return missingManifest;
+ if(!missingManifestPromise){
+  missingManifestPromise=fetch('data/missing-meta.json').then(function(response){
+   if(!response.ok)throw Error('missing-meta.json');
+   return response.json();
+  }).then(function(data){
+   missingManifest=data;
+   return data;
+  }).catch(function(error){
+   missingManifestPromise=null;
+   throw error;
+  });
+ }
+ return missingManifestPromise;
+}
+
+async function missingShard(k){
+ if(missingCache.has(k))return missingCache.get(k);
+ var manifest=await getMissingMeta();
+ if(manifest.shards.indexOf(k)<0)return [];
+ var response=await fetch('data/missing/'+k+'.json');
+ if(!response.ok)throw Error('missing/'+k+'.json');
+ var rows=await response.json();
+ return remember(missingCache,k,rows,4);
+}
+
+async function findMissing(word){
+ var rows=await missingShard(keyOf(word));
+ var target=norm(word);
+ for(var i=0;i<rows.length;i++){
+  if(norm(rows[i][0])===target)return rows[i];
+ }
+ return null;
+}
+
 async function resolveForm(word){
  var rows=await formShard(keyOf(word));
  var target=norm(word);
@@ -638,15 +1287,41 @@ async function resolveForm(word){
  var seen={};
  for(var i=0;i<rows.length;i++){
   if(norm(rows[i][0])!==target)continue;
-  var list=rows[i][1]||[];
+  var payload=rows[i][1];
+  var list=Array.isArray(payload)?payload:[payload];
   for(var j=0;j<list.length;j++){
-   if(!seen[list[j]]){
+   if(list[j]&&!seen[list[j]]){
     seen[list[j]]=true;
     headwords.push(list[j]);
    }
   }
  }
  return headwords;
+}
+
+function addMissingListLink(){
+ var d=document.createElement('div');
+ d.className='bubble bot';
+ var row=document.createElement('div');
+ row.className='links';
+ var link=document.createElement('a');
+ link.href='missing.html';
+ link.textContent=t('message.openMissingList');
+ row.appendChild(link);
+ d.appendChild(row);
+ chat.appendChild(d);
+ trimChat();
+ scrollChat();
+}
+
+function showMissing(missing){
+ var bubble=add(t('message.missing',{word:missing[0],pos:missing[1]||''}));
+ if(bubble)appendPersonalDefinitionAction(bubble,missing[0]);
+ showPersonalDefinition(missing[0],bubble);
+ var regional=regionExplanation(missing[0]);
+ if(regional)add(regional);
+ if(missing[3])add(t('message.missingNear',{word:missing[0],headword:missing[3]}));
+ addMissingListLink();
 }
 
 async function definition(word){
@@ -656,6 +1331,11 @@ async function definition(word){
  if(!row){
   var heads=await resolveForm(word);
   if(!heads.length){
+   var missing=await findMissing(word);
+   if(missing){
+    showMissing(missing);
+    return;
+   }
    add(t('message.notFound',{word:word}));
    return;
   }
@@ -665,6 +1345,13 @@ async function definition(word){
    if(entry)available.push(entry);
   }
   if(!available.length){
+   for(var h=0;h<heads.length;h++){
+    var resolvedMissing=await findMissing(heads[h]);
+    if(resolvedMissing){
+     showMissing(resolvedMissing);
+     return;
+    }
+   }
    add(t('message.formNoEntry',{word:word}));
    return;
   }
@@ -678,30 +1365,29 @@ async function definition(word){
   lastSenseOffset=0;
   lastSenseView='preferred';
   add(t('message.formAlias',{word:word,entry:lastWord}));
-  displaySenses(0);
+  var aliasView=displaySenses(0);
+  showPersonalDefinition(lastWord,aliasView);
+  showIllustration(lastWord,aliasView);
   return;
  }
  lastWord=row[0];
  lastEntry=row;
  lastSenseOffset=0;
  lastSenseView='preferred';
- displaySenses(0);
-}
-
-async function syllShard(k){
- if(syllCache.has(k))return syllCache.get(k);
- var response=await fetch('data/syllables/'+k+'.json');
- if(!response.ok)throw Error('Dados silábicos indisponíveis');
- var data=await response.json();
- return remember(syllCache,k,data,4);
+ var entryView=displaySenses(0);
+ showPersonalDefinition(lastWord,entryView);
+ showIllustration(lastWord,entryView);
 }
 
 async function searchWithParams(p){
+ if(p.syll){
+  add(t('message.syllablesUnavailable'));
+  return;
+ }
  lastQuery={
   start:p.start||null,
   end:p.end||null,
   length:p.length||null,
-  syll:p.syll||null,
   amount:p.amount||10
  };
  var m=await getMeta();
@@ -709,12 +1395,6 @@ async function searchWithParams(p){
  var matches=[];
  for(var i=0;i<keys.length;i++){
   var k=keys[i];
-  var syl=null;
-  if(lastQuery.syll){
-   var syllRows=await syllShard(k);
-   syl=new Map();
-   for(var s=0;s<syllRows.length;s++)syl.set(syllRows[s][0],syllRows[s][1]);
-  }
   var rows=await shard(k);
   for(var r=0;r<rows.length;r++){
    var row=rows[r];
@@ -723,10 +1403,6 @@ async function searchWithParams(p){
    if(lastQuery.start&&word.indexOf(lastQuery.start)!==0)continue;
    if(lastQuery.end&&word.slice(-lastQuery.end.length)!==lastQuery.end)continue;
    if(lastQuery.length&&Array.from(word).length!==lastQuery.length)continue;
-   if(lastQuery.syll){
-    var syllables=syl?syl.get(row[0]):null;
-    if(!syllables||syllables.length!==lastQuery.syll)continue;
-   }
    matches.push(row[0]);
   }
  }
@@ -744,7 +1420,6 @@ async function searchWithParams(p){
  var prefix=lastQuery._truncated
   ?t('message.foundTruncated',{count:total,shown:shown})
   :t('message.found',{count:total,shown:shown});
- if(lastQuery.syll)prefix=t('message.experimental')+prefix;
  addWordResults(prefix,stored.slice(0,shown),stored.length>shown);
  lastQuery._offset=shown;
 }
@@ -802,6 +1477,12 @@ async function handleQuestion(q){
     }else add(t('message.noOriginal'));
    }else add(t('message.needWord'));
    return;
+  case 'modernized':
+   if(lastEntry){
+    lastSenseView='modernized';
+    displaySenses(0);
+   }else add(t('message.needWord'));
+   return;
   case 'more_results':
    loadMoreResults(intent.amount);
    return;
@@ -853,6 +1534,7 @@ function openSettings(){
  document.body.classList.add('panel-open');
  document.addEventListener('keydown',onPanelKey);
  if(closeButton)closeButton.focus();
+ refreshOfflineSize();
 }
 
 function closeSettings(){
@@ -871,8 +1553,12 @@ function onPanelKey(event){
   closeSettings();
   return;
  }
- if(event.key!=='Tab')return;
- var nodes=options.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+ trapFocus(options,event);
+}
+
+function trapFocus(panel,event){
+ if(event.key!=='Tab'||!panel)return;
+ var nodes=panel.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
  var visible=[];
  for(var i=0;i<nodes.length;i++){
   if(!nodes[i].disabled&&nodes[i].getClientRects().length)visible.push(nodes[i]);
@@ -887,6 +1573,223 @@ function onPanelKey(event){
   event.preventDefault();
   first.focus();
  }
+}
+
+function openDefinitionEditor(word,anchor){
+ if(!editor||!safeWordKey(word))return;
+ var stored=getUserDefinition(word);
+ editorState={word:word,anchor:anchor||null};
+ editorLastFocus=document.activeElement;
+ if(editorTitle)editorTitle.textContent=t(stored?'editor.titleEdit':'editor.titleAdd');
+ if(editorWord)editorWord.textContent=t('editor.word',{word:word});
+ if(editorNote)editorNote.textContent=t('editor.note');
+ if(editorLabel)editorLabel.textContent=t('editor.label');
+ if(editorText){
+  editorText.value=stored?stored.text:'';
+  editorText.setAttribute('placeholder',t('editor.placeholder'));
+  editorText.setAttribute('aria-label',t('editor.label'));
+ }
+ if(editorSaveButton)editorSaveButton.textContent=t('editor.save');
+ if(editorCancelButton)editorCancelButton.textContent=t('editor.cancel');
+ if(editorRemoveButton){
+  editorRemoveButton.textContent=t('editor.remove');
+  editorRemoveButton.hidden=!stored;
+ }
+ if(editorStatus)editorStatus.textContent='';
+ editor.hidden=false;
+ document.body.classList.add('panel-open');
+ document.addEventListener('keydown',onEditorKey);
+ try{editorText.focus();}catch(e){}
+}
+
+function closeDefinitionEditor(){
+ if(!editor||editor.hidden)return;
+ editor.hidden=true;
+ document.removeEventListener('keydown',onEditorKey);
+ if(!options||options.hidden)document.body.classList.remove('panel-open');
+ if(editorText)editorText.value='';
+ if(editorStatus)editorStatus.textContent='';
+ var focus=editorLastFocus;
+ editorLastFocus=null;
+ editorState=null;
+ if(focus&&typeof focus.focus==='function'){
+  try{focus.focus();}catch(e){}
+ }
+}
+
+function renderTagPanelText(){
+ if(tagTitle)tagTitle.textContent=t('imagetag.title');
+ if(tagNoteIntro)tagNoteIntro.textContent=t('imagetag.noteIntro');
+ if(tagActionLabel)tagActionLabel.textContent=t('imagetag.actionLabel');
+ if(tagAction){
+  var options=tagAction.options;
+  if(options&&options.length>=3){
+   options[0].textContent=t('imagetag.actionWrong');
+   options[1].textContent=t('imagetag.actionBetter');
+   options[2].textContent=t('imagetag.actionRemove');
+  }
+ }
+ if(tagNoteLabel)tagNoteLabel.textContent=t('imagetag.noteLabel');
+ if(tagNoteText)tagNoteText.setAttribute('placeholder',t('imagetag.notePlaceholder'));
+ if(tagUrlLabel)tagUrlLabel.textContent=t('imagetag.urlLabel');
+ if(tagUrlHint)tagUrlHint.textContent=t('imagetag.urlHint');
+ if(tagSaveButton)tagSaveButton.textContent=t('imagetag.save');
+ if(tagCancelButton)tagCancelButton.textContent=t('imagetag.cancel');
+ if(tagRemoveButton)tagRemoveButton.textContent=t('editor.remove');
+ setAria('tag-close','editor.close');
+ if(tagUrl)tagUrl.setAttribute('placeholder','https://commons.wikimedia.org/wiki/File:…');
+}
+
+function openImageTagPanel(record,anchorButton){
+ if(!tagPanel||!record||!safeWordKey(record.lemma))return;
+ var stored=getImageTag(record.lemma);
+ tagState={lemma:record.lemma,file:record.file||'',button:anchorButton||null};
+ tagLastFocus=document.activeElement;
+ renderTagPanelText();
+ if(tagWord)tagWord.textContent=t('imagetag.word',{word:record.lemma});
+ if(tagAction)tagAction.value=stored?stored.action:'wrong';
+ if(tagNoteText)tagNoteText.value=stored?stored.note:'';
+ if(tagUrl)tagUrl.value=stored?stored.url:'';
+ if(tagRemoveButton)tagRemoveButton.hidden=!stored;
+ if(tagStatus)tagStatus.textContent='';
+ tagPanel.hidden=false;
+ document.body.classList.add('panel-open');
+ document.addEventListener('keydown',onTagPanelKey);
+ try{if(tagAction)tagAction.focus();}catch(e){}
+}
+
+function closeImageTagPanel(){
+ if(!tagPanel||tagPanel.hidden)return;
+ tagPanel.hidden=true;
+ document.removeEventListener('keydown',onTagPanelKey);
+ if(!options||options.hidden)document.body.classList.remove('panel-open');
+ if(tagNoteText)tagNoteText.value='';
+ if(tagUrl)tagUrl.value='';
+ if(tagStatus)tagStatus.textContent='';
+ var focus=tagLastFocus;
+ tagLastFocus=null;
+ tagState=null;
+ if(focus&&typeof focus.focus==='function'){
+  try{focus.focus();}catch(e){}
+ }
+}
+
+function onTagPanelKey(event){
+ if(event.key==='Escape'){
+  event.preventDefault();
+  closeImageTagPanel();
+ }
+}
+
+function saveImageTag(){
+ if(!tagState)return;
+ var action=tagAction?tagAction.value:'wrong';
+ if(!IMAGE_TAG_ACTIONS[action])action='wrong';
+ var note=tagNoteText?tagNoteText.value:'';
+ var url=tagUrl?tagUrl.value:'';
+ url=url.replace(/^\s+|\s+$/g,'');
+ if(url&&!/^https:\/\/commons\.wikimedia\.org\/wiki\/File:[^/]+/i.test(url)){
+  if(tagStatus)tagStatus.textContent=t('imagetag.invalidUrl');
+  return;
+ }
+ if(note)note=note.replace(/\s+/g,' ').slice(0,300);
+ if(setImageTag(tagState.lemma,tagState.file,action,note,url)){
+  if(tagState.button){
+   tagState.button.textContent=t('imagetag.openTagged');
+   tagState.button.className='figure-tag tagged';
+  }
+  if(tagStatus)tagStatus.textContent=t('imagetag.saved');
+  window.setTimeout(closeImageTagPanel,450);
+ }else if(tagStatus){
+  tagStatus.textContent=t('settings.exportFailed');
+ }
+}
+
+function removeImageTag(){
+ if(!tagState)return;
+ var lemma=tagState.lemma;
+ var button=tagState.button;
+ if(clearImageTag(lemma)){
+  if(button){
+   button.textContent=t('imagetag.open');
+   button.className='figure-tag';
+  }
+  if(tagStatus)tagStatus.textContent=t('imagetag.removed');
+  window.setTimeout(closeImageTagPanel,450);
+ }
+}
+
+function refreshTagButtonStates(){
+ var buttons=document.querySelectorAll('figure.entry-figure .figure-tag');
+ for(var i=0;i<buttons.length;i++){
+  var button=buttons[i];
+  var figure=button.parentNode;
+  var captionText=figure&&figure.querySelector('.figure-caption');
+  if(!captionText)continue;
+  var lemma=captionText.getAttribute('data-lemma')||'';
+  var stored=getImageTag(lemma);
+  button.textContent=t(stored?'imagetag.openTagged':'imagetag.open');
+  button.className=stored?'figure-tag tagged':'figure-tag';
+ }
+}
+
+function ensurePersonalDefinitionView(word,anchor){
+ var view=userDefViews[word];
+ var has=false;
+ if(view){
+  for(var i=0;i<view.nodes.length;i++){
+   if(isAttached(view.nodes[i])){has=true;break;}
+  }
+ }
+ if(!has)showPersonalDefinition(word,anchor);
+ refreshUserDefinitions(word);
+}
+
+function saveDefinitionEditor(){
+ if(!editorState||!editorText)return;
+ var word=editorState.word;
+ var anchor=editorState.anchor;
+ var text=cleanDefinitionText(editorText.value);
+ if(!text){
+  if(editorStatus)editorStatus.textContent=t('editor.empty');
+  try{editorText.focus();}catch(e){}
+  return;
+ }
+ if(!getUserDefinition(word)&&definitionCount()>=USER_DEF_LIMIT){
+  if(editorStatus)editorStatus.textContent=t('editor.limit');
+  return;
+ }
+ if(!setUserDefinition(word,text)){
+  if(editorStatus)editorStatus.textContent=t('message.personalDefinitionSaveFailed');
+  return;
+ }
+ ensurePersonalDefinitionView(word,anchor);
+ renderDefinitionsCount();
+ renderBackupStatus();
+ closeDefinitionEditor();
+}
+
+function confirmRemovePersonalDefinition(word){
+ if(!getUserDefinition(word))return false;
+ if(!window.confirm(t('message.personalDefinitionRemoveConfirm',{word:word})))return false;
+ if(!deleteUserDefinition(word)){
+  add(t('message.personalDefinitionSaveFailed'));
+  return false;
+ }
+ refreshUserDefinitions(word);
+ renderDefinitionsCount();
+ renderBackupStatus();
+ if(editorState&&editorState.word===word)closeDefinitionEditor();
+ return true;
+}
+
+function onEditorKey(event){
+ if(event.key==='Escape'){
+  event.preventDefault();
+  closeDefinitionEditor();
+  return;
+ }
+ trapFocus(editor,event);
 }
 
 function changeLanguage(value){
@@ -924,6 +1827,29 @@ function resetImport(){
  if(importFile)importFile.value='';
 }
 
+function readImportedDefinitions(list){
+ var result=[];
+ var seen={};
+ if(!Array.isArray(list))return result;
+ for(var i=0;i<list.length;i++){
+  var item=list[i];
+  if(!item||typeof item!=='object')continue;
+  var word=typeof item.word==='string'?item.word.replace(/^\s+|\s+$/g,''):'';
+  if(!safeWordKey(word))continue;
+  var text=cleanDefinitionText(item.text);
+  if(!text)continue;
+  if(Object.prototype.hasOwnProperty.call(seen,word))continue;
+  seen[word]=true;
+  result.push({
+   word:word,
+   text:text,
+   updated:typeof item.updated==='string'?item.updated:''
+  });
+  if(result.length>=USER_DEF_LIMIT)break;
+ }
+ return result;
+}
+
 function startImport(file){
  if(!file)return;
  if(file.size>1048576){
@@ -935,14 +1861,16 @@ function startImport(file){
  reader.onload=function(){
   try{
    var data=JSON.parse(String(reader.result));
-   if(!data||data.format!=='lexi-backup'||data.schema!==1||!data.preferences||typeof data.preferences!=='object'||Array.isArray(data.preferences)){
+   if(!data||(data.format!=='lexi2-backup'&&data.format!=='lexi-backup')||(data.schema!==1&&data.schema!==2)||!data.preferences||typeof data.preferences!=='object'||Array.isArray(data.preferences)){
     throw Error('invalid');
    }
    var language=LexiI18n.normalise(data.preferences.language)||currentLanguage;
    pendingImport={
     language:language,
     priberam:data.preferences.priberam===true,
-    exportedAt:data.exportedAt||''
+    exportedAt:data.exportedAt||'',
+    definitions:readImportedDefinitions(data.personalDefinitions),
+    tags:readImportedImageTags(data.imageTags)
    };
    if(restorePrefs)restorePrefs.checked=true;
    if(importPanel)importPanel.hidden=false;
@@ -976,28 +1904,62 @@ function applyPendingImport(){
  external.checked=prefs.priberam;
  document.documentElement.lang=currentLanguage;
  var saved=persistPrefs();
+ var restored=0;
+ if(item.definitions&&item.definitions.length){
+  var total=definitionCount();
+  for(var i=0;i<item.definitions.length;i++){
+   var entry=item.definitions[i];
+   if(!safeWordKey(entry.word))continue;
+   var isNew=!Object.prototype.hasOwnProperty.call(userDefinitions,entry.word);
+   if(isNew&&total>=USER_DEF_LIMIT)continue;
+   if(isNew)total++;
+   userDefinitions[entry.word]={
+    text:entry.text,
+    updated:entry.updated||new Date().toISOString()
+   };
+   restored++;
+  }
+  if(restored)saved=persistUserDefinitions()&&saved;
+  refreshAllUserDefinitions();
+  renderDefinitionsCount();
+ }
+ if(item.tags&&item.tags.length){
+  if(mergeImageTags(item.tags))saved=true;
+ }
  applyLanguage();
- showStatus('data-status',saved?'settings.importDone':'settings.prefSaveFailed');
+ renderBackupStatus();
+ showStatus('data-status',saved?'settings.importDone':'settings.importSaveFailed');
 }
 
 function exportBackup(){
  try{
+  var personal=[];
+  for(var word in userDefinitions){
+   if(!Object.prototype.hasOwnProperty.call(userDefinitions,word))continue;
+   personal.push({
+    word:word,
+    text:userDefinitions[word].text,
+    updated:userDefinitions[word].updated||''
+   });
+  }
   var data={
-   format:'lexi-backup',
-   schema:1,
+   format:'lexi2-backup',
+   schema:2,
    app:'lexi',
    version:APP_VERSION,
    exportedAt:new Date().toISOString(),
    preferences:{
     language:currentLanguage,
     priberam:!!external.checked
-   }
+   },
+   personalDefinitions:personal,
+   imageTags:imageTagsForExport()
   };
   var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
   var url=URL.createObjectURL(blob);
   var link=document.createElement('a');
   link.href=url;
-  link.download='lexi-backup-'+new Date().toISOString().slice(0,10)+'.json';
+  link.download='lexi2-backup-'+new Date().toISOString().slice(0,10)+'.json';
   document.body.appendChild(link);
   if('download' in link)link.click();
   else window.open(url,'_blank');
@@ -1026,10 +1988,13 @@ async function prepareOffline(){
   await withTimeout(navigator.serviceWorker.ready,15000);
   var m=await getMeta();
   var fm=await getFormsMeta();
-  var urls=[];
+  var mm=await getMissingMeta();
+  var im=await getImagesManifest();
+  var urls=['data/regional.json','images/manifest.json'];
+  for(var g=0;g<im.data.images.length;g++)urls.push('images/'+im.data.images[g].file);
   for(var i=0;i<m.keys.length;i++)urls.push('data/'+m.keys[i]+'.json');
   for(var f=0;f<fm.shards.length;f++)if(fm.shards[f]!=='')urls.push('data/forms/'+fm.shards[f]+'.json');
-  for(var s=0;s<m.keys.length;s++)urls.push('data/syllables/'+m.keys[s]+'.json');
+  for(var x=0;x<mm.shards.length;x++)if(mm.shards[x]!=='')urls.push('data/missing/'+mm.shards[x]+'.json');
   var total=urls.length;
   var done=0;
   var storage=await caches.open(CACHE_NAME);
@@ -1246,6 +2211,28 @@ function setupSettings(){
   resetImport();
   showStatus('data-status','');
  });
+ if(editorSaveButton)editorSaveButton.addEventListener('click',saveDefinitionEditor);
+ if(editorCancelButton)editorCancelButton.addEventListener('click',closeDefinitionEditor);
+ if(editorRemoveButton)editorRemoveButton.addEventListener('click',function(){
+  if(editorState)confirmRemovePersonalDefinition(editorState.word);
+ });
+ if(editorCloseButton)editorCloseButton.addEventListener('click',closeDefinitionEditor);
+ if(editor)editor.addEventListener('click',function(event){
+  if(event.target===editor)closeDefinitionEditor();
+ });
+ if(editorText)editorText.addEventListener('keydown',function(event){
+  if((event.ctrlKey||event.metaKey)&&event.key==='Enter'){
+   event.preventDefault();
+   saveDefinitionEditor();
+  }
+ });
+ if(tagSaveButton)tagSaveButton.addEventListener('click',saveImageTag);
+ if(tagCancelButton)tagCancelButton.addEventListener('click',closeImageTagPanel);
+ if(tagRemoveButton)tagRemoveButton.addEventListener('click',removeImageTag);
+ if(tagCloseButton)tagCloseButton.addEventListener('click',closeImageTagPanel);
+ if(tagPanel)tagPanel.addEventListener('click',function(event){
+  if(event.target===tagPanel)closeImageTagPanel();
+ });
  if(offlineButton)offlineButton.addEventListener('click',prepareOffline);
  if(offlineCancelButton)offlineCancelButton.addEventListener('click',function(){
   offlineCancel=true;
@@ -1255,7 +2242,7 @@ function setupSettings(){
  if(checkUpdatesButton)checkUpdatesButton.addEventListener('click',checkForUpdates);
  if(updateAppButton)updateAppButton.addEventListener('click',applyUpdate);
  window.addEventListener('storage',function(event){
-  if(event.key==='lexi.prefs'){
+  if(event.key==='lexi2.prefs'){
    var next=readPrefs();
    var nextLanguage=next.language||currentLanguage;
    prefs=next;
@@ -1264,9 +2251,16 @@ function setupSettings(){
    if(external)external.checked=prefs.priberam;
    applyLanguage();
    renderBackupStatus();
-  }else if(event.key==='lexi.backup'){
+  }else if(event.key==='lexi2.backup'){
    readBackupMeta();
    renderBackupStatus();
+  }else if(event.key===USER_DEF_KEY){
+   userDefinitions=readUserDefinitions();
+   refreshAllUserDefinitions();
+   renderDefinitionsCount();
+   renderBackupStatus();
+  }else if(event.key===IMAGE_TAG_KEY){
+   imageTags=readImageTags();
   }
  });
 }
@@ -1298,6 +2292,8 @@ form.addEventListener('submit',async function(event){
 
 function init(){
  prefs=readPrefs();
+ userDefinitions=readUserDefinitions();
+ imageTags=readImageTags();
  languageExplicit=!!prefs.language;
  currentLanguage=LexiI18n.setLanguage(prefs.language||detectLanguage());
  prefs.language=currentLanguage;

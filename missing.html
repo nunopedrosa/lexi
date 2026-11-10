@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#153d52">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
+<link rel="stylesheet" href="style.css">
+<title>Lexi — Lemas em falta</title>
+</head>
+<body class="missing-page">
+<header>
+ <div class="brand">
+  <img class="brand-mark" src="icons/mark.svg" alt="" width="40" height="40">
+  <div class="brand-text">
+   <strong>Lexi</strong>
+   <small id="missing-subtitle">Lemas em falta</small>
+  </div>
+ </div>
+ <div class="header-actions">
+  <a id="back-link" class="back-link" href="./">Voltar à Lexi</a>
+  <select id="language" aria-label="Idioma: Português europeu">
+   <option value="en">🇬🇧</option>
+   <option value="pt-PT">🇵🇹</option>
+  </select>
+ </div>
+</header>
+
+<main>
+ <h1 id="page-title">Lemas em falta</h1>
+ <p id="page-intro" class="helper"></p>
+
+ <div class="filters">
+  <div class="filter">
+   <label for="search" id="search-label">Pesquisar lemas</label>
+   <input id="search" type="search" autocomplete="off" placeholder="Escreve parte de um lema…">
+  </div>
+  <div class="filter">
+   <label for="priority" id="priority-label">Prioridade</label>
+   <select id="priority">
+    <option value="">Todas</option>
+    <option value="1">M1</option>
+    <option value="2">M2</option>
+    <option value="3">M3</option>
+   </select>
+  </div>
+  <div class="filter">
+   <label for="pos" id="pos-label">Classe</label>
+   <select id="pos"><option value="">Todas</option></select>
+  </div>
+  <div class="filter">
+   <label for="source" id="source-label">Fonte</label>
+   <select id="source">
+    <option value="">Todas</option>
+    <option value="hunspell">PT-PT</option>
+    <option value="curated">Curado</option>
+   </select>
+  </div>
+ </div>
+
+ <p id="count" class="helper" role="status" aria-live="polite"></p>
+ <div id="list" class="missing-list"></div>
+ <div class="button-row"><button id="more" type="button" hidden>Mostrar mais</button></div>
+ <p id="status" class="helper" role="status" aria-live="polite"></p>
+ <p class="helper">
+  <a id="csv-link" href="docs/missing-lemmas.csv">Descarregar CSV</a> ·
+  <a id="json-link" href="docs/missing-lemmas.json">Descarregar JSON</a>
+ </p>
+</main>
+
+<script src="i18n.js" defer></script>
+<script src="missing.js" defer></script>
+</body>
+</html>

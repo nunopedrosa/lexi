@@ -1,0 +1,348 @@
+{
+ "version": 1,
+ "source": "Tabela editorial curada do projeto Lexi; correspondências dependentes do sentido, não traduções globais.",
+ "terms": {
+  "onibus": {
+   "pt": "autocarro",
+   "sense": "transporte coletivo rodoviário",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "trem": {
+   "pt": "comboio",
+   "sense": "transporte ferroviário",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "celular": {
+   "pt": "telemóvel",
+   "sense": "telefone portátil",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "geladeira": {
+   "pt": "frigorífico",
+   "sense": "eletrodoméstico para conservar alimentos",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "suco": {
+   "pt": "sumo",
+   "sense": "bebida extraída de frutos",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "sorvete": {
+   "pt": "gelado",
+   "sense": "sobremesa gelada",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "acougue": {
+   "pt": "talho",
+   "sense": "estabelecimento que vende carne",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "banheiro": {
+   "pt": "casa de banho",
+   "sense": "divisão com instalações sanitárias",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "xicara": {
+   "pt": "chávena",
+   "sense": "recipiente para bebidas",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "mamadeira": {
+   "pt": "biberão",
+   "sense": "recipiente para alimentar bebés",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "grampeador": {
+   "pt": "agrafador",
+   "sense": "utensílio de escritório",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "bonde": {
+   "pt": "elétrico",
+   "sense": "veículo urbano sobre carris",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "ponto de onibus": {
+   "pt": "paragem de autocarro",
+   "sense": "local de paragem de transporte coletivo",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "cafe da manha": {
+   "pt": "pequeno-almoço",
+   "sense": "primeira refeição do dia",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "tenis": {
+   "pt": "sapatilhas",
+   "sense": "calçado desportivo",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "mouse": {
+   "pt": "rato",
+   "sense": "periférico de computador",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "tela": {
+   "pt": "ecrã",
+   "sense": "superfície de visualização eletrónica",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "calcada": {
+   "pt": "passeio",
+   "sense": "zona destinada a peões junto à via",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "garota": {
+   "pt": "rapariga",
+   "sense": "pessoa jovem do sexo feminino",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "pipoca": {
+   "pt": "pipocas",
+   "sense": "milho rebentado para consumo",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "xerox": {
+   "pt": "fotocópia",
+   "sense": "cópia de documento",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "onibus escolar": {
+   "pt": "autocarro escolar",
+   "sense": "transporte escolar",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "usuario": {
+   "pt": "utilizador",
+   "sense": "pessoa que utiliza um serviço ou sistema",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "aplicativo": {
+   "pt": "aplicação",
+   "sense": "programa informático",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "arquivo": {
+   "pt": "ficheiro",
+   "sense": "conjunto de dados informáticos",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "fato": {
+   "pt": "facto",
+   "sense": "acontecimento ou realidade; não no sentido de vestuário",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "terno": {
+   "pt": "fato",
+   "sense": "conjunto de vestuário formal masculino",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "abacaxi": {
+   "pt": "ananás",
+   "sense": "fruto tropical; nomes e variedades podem diferir",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "onibus de turismo": {
+   "pt": "autocarro de turismo",
+   "sense": "transporte turístico",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "autocarro": {
+   "br": "ônibus",
+   "sense": "transporte coletivo rodoviário",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "comboio": {
+   "br": "trem",
+   "sense": "transporte ferroviário",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "telemovel": {
+   "br": "celular",
+   "sense": "telefone portátil",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "frigorifico": {
+   "br": "geladeira",
+   "sense": "eletrodoméstico para conservar alimentos",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "sumo": {
+   "br": "suco",
+   "sense": "bebida extraída de frutos",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "gelado": {
+   "br": "sorvete",
+   "sense": "sobremesa gelada",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "talho": {
+   "br": "açougue",
+   "sense": "estabelecimento que vende carne",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "casa de banho": {
+   "br": "banheiro",
+   "sense": "divisão com instalações sanitárias",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "chavena": {
+   "br": "xícara",
+   "sense": "recipiente para bebidas",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "biberao": {
+   "br": "mamadeira",
+   "sense": "recipiente para alimentar bebés",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "agrafador": {
+   "br": "grampeador",
+   "sense": "utensílio de escritório",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "eletrico": {
+   "br": "bonde",
+   "sense": "veículo urbano sobre carris",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "paragem de autocarro": {
+   "br": "ponto de ônibus",
+   "sense": "local de paragem de transporte coletivo",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "pequeno-almoco": {
+   "br": "café da manhã",
+   "sense": "primeira refeição do dia",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "sapatilhas": {
+   "br": "tênis",
+   "sense": "calçado desportivo",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "rato": {
+   "br": "mouse",
+   "sense": "periférico de computador",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "ecra": {
+   "br": "tela",
+   "sense": "superfície de visualização eletrónica",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "passeio": {
+   "br": "calçada",
+   "sense": "zona destinada a peões junto à via",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "rapariga": {
+   "br": "garota",
+   "sense": "pessoa jovem do sexo feminino",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "pipocas": {
+   "br": "pipoca",
+   "sense": "milho rebentado para consumo",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "fotocopia": {
+   "br": "xerox",
+   "sense": "cópia de documento",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "autocarro escolar": {
+   "br": "ônibus escolar",
+   "sense": "transporte escolar",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "utilizador": {
+   "br": "usuário",
+   "sense": "pessoa que utiliza um serviço ou sistema",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "aplicacao": {
+   "br": "aplicativo",
+   "sense": "programa informático",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "ficheiro": {
+   "br": "arquivo",
+   "sense": "conjunto de dados informáticos",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "facto": {
+   "br": "fato",
+   "sense": "acontecimento ou realidade; não no sentido de vestuário",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "ananas": {
+   "br": "abacaxi",
+   "sense": "fruto tropical; nomes e variedades podem diferir",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  },
+  "autocarro de turismo": {
+   "br": "ônibus de turismo",
+   "sense": "transporte turístico",
+   "confidence": "curated",
+   "note": "Equivalência apenas no sentido indicado; não substitui outros significados."
+  }
+ }
+}

@@ -27,6 +27,7 @@
   if(/^(nao|errado|nao era isso|nao percebeste|nao e isso|wrong|that['’]?s not it|that is not it|you did not understand|not that)$/.test(n))return {type:'clarify'};
   if(/^(outros? significados?|mais significados?|outras? ace[cç][oõ]es|sentidos? seguintes?|e outros? significados?|other meanings?|more meanings?|other senses?|next senses?|and other meanings?)$/i.test(q))return {type:'more_senses'};
   if(/^(significado original|texto original|fonte original|original text|original meaning|source text)$/i.test(q))return {type:'original'};
+  if(/^(texto modernizado|grafia moderna|modernizado|modernized text|modern spelling|modernized)$/i.test(q))return {type:'modernized'};
   if(/^(mais|mostra(?:-me)? mais|continua|mais palavras|more|show(?: me)? more|continue|more words)(?:\s+(\d+))?$/i.test(q)){
    const amountMatch=q.match(/\d+/);
    return {type:'more_results',amount:amountMatch?Number(amountMatch[0]):null};

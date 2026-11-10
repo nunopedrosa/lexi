@@ -12,7 +12,7 @@
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
 <link rel="stylesheet" href="style.css">
-<title>Lexi — Dicionário Conversacional</title>
+<title>Lexi — Dicionário de português europeu</title>
 </head>
 <body>
 <header>
@@ -36,7 +36,7 @@
 
 <main id="main">
  <section id="chat" role="log" aria-live="polite" aria-relevant="additions text">
-  <div class="bubble bot" id="intro">Olá! Podes perguntar-me o significado de uma palavra ou pedir, por exemplo, «Diz-me palavras começadas por C».</div>
+  <div class="bubble bot" id="intro">Olá! Podes perguntar-me o significado de uma palavra. Uso o Dicionário Aberto (1913), com etiquetas de uso e sugestões de grafia moderna.</div>
  </section>
 </main>
 
@@ -66,7 +66,8 @@
 
   <section>
    <h3 id="data-title">Dados e cópias de segurança</h3>
-   <p id="data-description" class="helper">A Lexi guarda apenas preferências neste dispositivo; não guarda registos pessoais.</p>
+   <p id="data-description" class="helper">A Lexi guarda neste dispositivo o idioma, a preferência da ligação ao Priberam e as definições pessoais que escreveres. Nada é enviado. A cópia de segurança inclui os três.</p>
+   <p id="definitions-count" class="helper" role="status" aria-live="polite"></p>
    <p id="backup-status" class="helper" role="status" aria-live="polite"></p>
    <div class="button-row">
     <button id="exportBackup" type="button">Exportar cópia de segurança</button>
@@ -75,7 +76,7 @@
    </div>
    <div id="import-panel" hidden>
     <p id="import-preview" class="helper"></p>
-    <label class="check"><input type="checkbox" id="restorePrefs" checked> <span id="restore-prefs-label">Restaurar preferências</span></label>
+    <label class="check"><input type="checkbox" id="restorePrefs" checked> <span id="restore-prefs-label">Restaurar preferências e definições pessoais</span></label>
     <div class="button-row">
      <button id="applyImport" type="button">Aplicar importação</button>
      <button id="cancelImport" type="button">Cancelar</button>
@@ -86,7 +87,7 @@
 
   <section>
    <h3 id="install-title">Instalação e utilização offline</h3>
-   <p id="offline-intro" class="helper">Prepara o dicionário (cerca de 26 MB) para utilização offline.</p>
+   <p id="offline-intro" class="helper">Prepara o dicionário e as ilustrações (cerca de 45 MB) para utilização offline. Pode demorar e ocupa armazenamento neste dispositivo.</p>
    <p id="storage-note" class="helper">O idioma, as preferências e a cache offline pertencem a este dispositivo, browser e endereço.</p>
    <div class="button-row">
     <button id="install" type="button" hidden>Instalar</button>
@@ -110,20 +111,71 @@
 
   <section>
    <h3 id="help-title">Ajuda e privacidade</h3>
-   <p id="definitions-note" class="helper">As definições provêm de um dicionário aberto baseado no Wiktionary.</p>
-   <p id="help-text" class="helper">Podes pedir o significado de uma palavra e pesquisar palavras por letras ou sílabas.</p>
+   <p id="definitions-note" class="helper">As definições provêm do Dicionário Aberto (1913), com etiquetas e sugestões automáticas por rever.</p>
+   <p id="help-text" class="helper">Podes pedir o significado de uma palavra e pesquisar palavras por letras ou número de letras.</p>
    <p id="privacy-text" class="helper">A Lexi funciona localmente, sem contas, análises ou envios de dados.</p>
    <label class="check"><input type="checkbox" id="external"> <span id="external-label">Mostrar ligação para o Priberam</span></label>
    <p id="preference-status" class="helper" role="status" aria-live="polite"></p>
   </section>
 
   <section class="sources">
-   <p id="sources-text" class="helper">As definições provêm do dicionário português KOReader / Wiktionary (CC BY-SA 4.0).</p>
-   <p class="helper"><a id="attribution-link" href="ATTRIBUTION" target="_blank" rel="noopener noreferrer">Atribuições</a> · <a id="license-link" href="LICENSE" target="_blank" rel="noopener noreferrer">Licença</a></p>
-   <p class="helper"><a id="editorial-link" href="editorial-audit.json" target="_blank" rel="noopener noreferrer">Revisão editorial PT-PT</a></p>
+   <p id="sources-text" class="helper">As definições provêm do Dicionário Aberto (CC BY-SA 2.5 PT), baseado no dicionário de Cândido de Figueiredo de 1913.</p>
+   <p class="helper"><a id="attribution-link" href="ATTRIBUTION.md" target="_blank" rel="noopener noreferrer">Atribuições</a> · <a id="license-link" href="LICENSE" target="_blank" rel="noopener noreferrer">Licença</a></p>
+   <p class="helper"><a id="missing-link" href="missing.html">Lemas em falta</a> · <a id="credits-link" href="credits.html">Créditos das ilustrações</a></p>
   </section>
 
   <p id="version-footer" class="version">Versão instalada: …</p>
+ </div>
+</div>
+
+<div id="editor" class="panel" role="dialog" aria-modal="true" aria-labelledby="editor-title" hidden>
+ <div class="panel-card editor-card">
+  <div class="panel-head">
+   <h2 id="editor-title">Adicionar uma definição</h2>
+   <button id="editor-close" class="icon-button" type="button" aria-label="Fechar">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg>
+   </button>
+  </div>
+  <p id="editor-word" class="editor-word"></p>
+  <p id="editor-note" class="helper">A tua definição fica guardada neste dispositivo e é mostrada com a definição do dicionário. Não é enviada, revista nem faz parte do dicionário.</p>
+  <p id="editor-label" class="editor-label">Definição</p>
+  <textarea id="editor-text" rows="5" maxlength="600" aria-labelledby="editor-label" placeholder="Escreve uma definição pelas tuas palavras…"></textarea>
+  <p id="editor-status" class="helper" role="status" aria-live="polite"></p>
+  <div class="button-row">
+   <button id="editor-save" type="button">Guardar</button>
+   <button id="editor-cancel" type="button">Cancelar</button>
+   <button id="editor-remove" type="button" class="button-quiet" hidden>Apagar</button>
+  </div>
+ </div>
+</div>
+
+<div id="tag-panel" class="panel" role="dialog" aria-modal="true" aria-labelledby="tag-title" hidden>
+ <div class="panel-card editor-card">
+  <div class="panel-head">
+   <h2 id="tag-title">Marcar imagem para substituição</h2>
+   <button id="tag-close" class="icon-button" type="button" aria-label="Fechar">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12"/></svg>
+   </button>
+  </div>
+  <p id="tag-word" class="editor-word"></p>
+  <p id="tag-note-intro" class="helper"></p>
+  <label id="tag-action-label" class="editor-label" for="tag-action"></label>
+  <select id="tag-action">
+   <option value="wrong"></option>
+   <option value="better"></option>
+   <option value="remove"></option>
+  </select>
+  <label id="tag-note-label" class="editor-label" for="tag-note-text"></label>
+  <textarea id="tag-note-text" rows="3" maxlength="300" aria-labelledby="tag-note-label"></textarea>
+  <label id="tag-url-label" class="editor-label" for="tag-url"></label>
+  <input id="tag-url" type="url" inputmode="url" autocomplete="off" spellcheck="false" aria-labelledby="tag-url-label">
+  <p id="tag-url-hint" class="helper"></p>
+  <p id="tag-status" class="helper" role="status" aria-live="polite"></p>
+  <div class="button-row">
+   <button id="tag-save" type="button"></button>
+   <button id="tag-cancel" type="button"></button>
+   <button id="tag-remove" type="button" class="button-quiet" hidden></button>
+  </div>
  </div>
 </div>
 

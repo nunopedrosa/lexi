@@ -1,7 +1,7 @@
 {
- "name": "Lexi — Dicionário Conversacional",
+ "name": "Lexi — Dicionário de português europeu",
  "short_name": "Lexi",
- "description": "Dicionário conversacional de português europeu, local e offline.",
+ "description": "Dicionário de português europeu, local e offline, baseado no Dicionário Aberto.",
  "lang": "pt-PT",
  "start_url": "./",
  "scope": "./",

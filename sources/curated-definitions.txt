@@ -1,0 +1,47 @@
+# Approved Lexi2 editorial definitions for curated missing lemmas.
+# Format: lemma|part-of-speech|definition
+# These are original editorial wording approved by the project owner. They are
+# not quotations and are not independent lexicographic certification. The app
+# labels them as approved editorial definitions, separate from Dicionário Aberto.
+app|n.|Aplicação informática para dispositivo móvel ou computador.
+base de dados|n.|Conjunto organizado de dados, geralmente estruturado para consulta e atualização.
+bitcoin|n.|Criptomoeda descentralizada criada em 2009; também designa a respetiva rede.
+casa de banho|n.|Divisão de uma habitação ou edifício destinada a instalações sanitárias.
+correio eletrónico|n.|Serviço e mensagem enviados por meio de uma rede informática.
+criptomoeda|n.|Moeda digital que utiliza criptografia e registos distribuídos.
+cópia de segurança|n.|Cópia de dados guardada para permitir a sua recuperação.
+firewall|n.|Barreira de segurança que controla o tráfego entre redes.
+influenciador|n.|Pessoa que influencia opiniões ou comportamentos de uma audiência, especialmente em linha.
+malware|n.|Programa informático concebido para causar danos ou obter acesso não autorizado.
+motor de busca|n.|Serviço informático que procura e indexa informação, especialmente na internet.
+netiqueta|n.|Conjunto de regras de comportamento e convivência em linha.
+palavra-passe|n.|Código secreto usado para autenticar o acesso a um serviço ou dispositivo.
+phishing|n.|Fraude que tenta obter dados pessoais ou credenciais, geralmente por mensagem ou site falso.
+podcast|n.|Programa de áudio ou vídeo disponibilizado em episódios para descarga ou transmissão.
+ransomware|n.|Programa malicioso que bloqueia ou cifra dados e exige um resgate.
+smartphone|n.|Telefone móvel com funções avançadas de computação e ligação à internet.
+streaming|n.|Transmissão contínua de conteúdos áudio ou vídeo pela internet.
+tablet|n.|Computador portátil com ecrã tátil, geralmente maior do que um telemóvel.
+utilizador|n.|Pessoa que utiliza um serviço, sistema ou dispositivo.
+website|n.|Conjunto de páginas e conteúdos acessíveis na internet através de um endereço.
+youtuber|n.|Criador de conteúdos que publica vídeos na plataforma YouTube.
+# Near-only M1 lemmas, approved 2026-11-09.
+atol|n.|Ilha de coral, geralmente em forma de anel, que rodeia uma laguna.
+autocópia|n.|Cópia de um texto ou documento feita pelo próprio autor ou pelo próprio interessado. (A cópia obtida por máquina chama-se «fotocópia».)
+berbérico|adj.|Relativo aos berberes ou à língua berbere.
+contentor|n.|Recipiente de grandes dimensões, geralmente metálico e normalizado, usado para o transporte de mercadorias. (No Brasil, «contêiner».)
+contracto|adj.|Que se contraiu; apertado, encolhido. Diz-se também da palavra ou forma resultante de contração. (Grafia pré-AO; a forma moderna é «contrato», homónima do substantivo.)
+cêntrico|adj.|Relativo ao centro; que está ou se situa no centro.
+descente|adj.|Que desce ou vai de cima para baixo; descendente.
+discar|v.|Marcar os algarismos de um número num telefone para estabelecer uma chamada. (Em Portugal, «marcar» é mais frequente.)
+díptico|n./adj.|Obra formada por dois painéis ou duas partes; quadro, escultura ou texto em dois painéis.
+focagem|n.|Ato ou efeito de focar; ajuste da nitidez de uma imagem ou de um feixe. (No Brasil, «focalização» é mais frequente.)
+incultura|n.|Falta de cultura ou de instrução; ausência de desenvolvimento cultural.
+leptão|n.|Partícula elementar da família dos leptões, como o eletrão e o neutrino. (Não confundir com «letão», natural da Letónia.)
+livresco|adj.|Relativo a livros ou à erudição obtida apenas pela leitura; teórico, pouco prático.
+micro|n.|Designação corrente de microfone ou de microcomputador, conforme o contexto. (Abreviatura ambígua.)
+mito|n.|Narrativa tradicional sobre deuses, heróis ou fenómenos; ideia muito difundida mas não demonstrada.
+optante|adj./n.|Que ou quem opta; pessoa que faz uma opção, especialmente em concurso ou regime legal.
+vovó|n.|Forma familiar de «avó». (Uso familiar e regional; «avó» é a forma geral.)
+vovô|n.|Forma familiar de «avô». (Uso familiar e regional; «avô» é a forma geral.)
+óscar|n.|Prémio anual atribuído pela Academia de Artes e Ciências Cinematográficas dos Estados Unidos; estatueta correspondente. (Também é nome próprio masculino; esta entrada é o prémio.)

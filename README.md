@@ -1,215 +1,220 @@
-# Lexi — protótipo PWA
+# Lexi2
 
-Dicionário conversacional PT-PT, sem backend e sem dependências JavaScript. Usa dados de KOReader/Wiktionary, com camada editorial limitada. Licenças em `LICENSE` e `ATTRIBUTION`.
+A local-first European Portuguese dictionary PWA. Lexi2 is a new corpus built by
+crossing the **words-pt** form inventory with **Dicionário Aberto**, with a
+lemma-first data model, an explicit missing-lemma report and review flags for
+historical definitions.
 
-## Executar
+The project is currently in the **data-pipeline** phase. The PWA shell and
+runtime data shards are not built yet.
+
+## Source strategy
+
+- **words-pt** supplies the Portuguese form inventory and its GPL-3.0 licensing.
+- **Dicionário Aberto** supplies the historical definitions (1913, CC BY-SA 2.5
+  PT) and their regional/usage labels.
+- **Hunspell pt_PT** supplies the modern lemma layer, explicit form-to-lemma
+  links and `PREAO90` spelling metadata, so the comparison is lemma-based rather
+  than a naive form-to-form match.
+
+The pipeline does not silently rewrite Dicionário Aberto. It preserves the
+original text, produces a separately flagged automatic modernisation suggestion,
+and records review flags. The missing-word deliverable is a **lemma-only list**,
+not a raw dump of every inflected form. Missing lemmas that exist in the pinned
+sibling Lexi snapshot (Wiktionary via kaikki.org) additionally carry a labelled,
+unreviewed Wiktionary bridge definition; see "Wiktionary bridge layer" below.
+
+## Build the corpus
+
+Requirements: Python 3.9 or newer. No runtime dependencies.
 
 ```sh
-cd lexi
+python3 scripts/fetch_sources.py
+python3 scripts/build_corpus.py
+python3 scripts/build_pwa_data.py
+```
+
+The full corpus build uses the build-time `hunspell` command for the
+form-to-lemma index. Use `python3 scripts/build_corpus.py --no-forms` only for a
+reduced diagnostic build; the PWA needs `build/forms.json`.
+
+`fetch_sources.py` downloads the pinned snapshots into `.work/sources/`, verifies
+their SHA-256 hashes and extracts them. `build_corpus.py` writes:
+
+- `build/da-entries.jsonl` — Dicionário Aberto entries and senses with flags;
+- `build/lemmas.jsonl` — the modern lemma universe and its match status;
+- `build/forms.json` and `build/forms-meta.json` — the Hunspell-generated
+  form-to-lemma index (requires the `hunspell` command; use `--no-forms` to skip);
+- `build/words-pt-coverage.json` — how much of words-pt the form/lemma indexes
+  cover;
+- `build/audit.json` — counts, distributions and pipeline checks;
+- `docs/missing-lemmas.csv` and `docs/missing-lemmas.json` — the lemma-only
+  missing list (the primary deliverable);
+- `docs/CORPUS.md` — the generated human-readable report;
+- `data/` — the sharded PWA dictionary, form index and missing index (about
+  44 MB uncompressed).
+
+`build/` is an intermediate directory and is not committed. The missing list,
+the report, the source documentation and the generated `data/` shards are the
+reviewable outputs.
+
+## Run the PWA locally
+
+```sh
 python3 -m http.server 8009
 ```
 
-Abrir `http://localhost:8009/`. O service worker funciona em localhost ou HTTPS. Em Definições, usar **Preparar dicionário para uso offline** para colocar as definições, formas e sílabas na cache (cerca de 26 MB). A permanência da cache depende do browser e do espaço disponível.
+Open `http://localhost:8009/`. The service worker works on localhost or HTTPS.
+The app currently presents the Dicionário Aberto source text with usage labels,
+PT-PT-first ordering, a separately flagged automatic spelling suggestion and
+the missing-lemma response. Entries whose senses are all labelled Brazilian are
+marked, and DA headwords outside the modern PT-PT lexicon used for matching are
+marked historical. A small, sense-dependent PT-PT/PT-BR correspondence table
+provides an equivalent when the source or the missing list has no PT-PT form.
+A browsable missing-list page at `missing.html` supports search and
+priority/POS/source filters. It does not yet have syllable search.
 
-## Preparação de recursos linguísticos
+### Personal definitions
 
-A [avaliação de LX-Syllabifier, Onto.PT e VOP/VOC](docs/linguistic-resources.md)
-regista licenças, hashes, resultados reproduzíveis e o plano de integração.
-Esta avaliação não substitui os dados atuais nem ativa novas respostas na
-conversa. As ferramentas Python em `scripts/audit-syllables.py` e
-`scripts/inspect-ontopt.py` são apenas de desenvolvimento; não entram na
-publicação nem são dependências da PWA. Testes da comparação:
-`python3 test-syllables-audit.py`.
+Each entry offers **Add my definition** (or **Edit my definition** when one
+exists). The text is stored in `localStorage` under `lexi2.userDefinitions`,
+keyed by the resolved lemma, so a definition added through an inflected form or
+an old spelling appears under the lemma itself. It is shown as a separate,
+labelled bubble directly below the dictionary definition, or below the
+missing-lemma notice when the word has no entry at all. It is never merged into
+the source text and never presented as reviewed.
 
-A [amostra silábica e o piloto semântico](docs/linguistic-pilots/README.md)
-estão separados dos dados da aplicação para avaliação: 28 casos silábicos e
-dez casos semânticos, com referências e decisões documentadas. Não são uma
-certificação lexicográfica nem estão ativados na conversa. Verificação dos
-pilotos: `python3 test-linguistic-pilots.py`.
+The personal layer is local to the device and browser. It is included in the
+backup export (`schema: 2`, `personalDefinitions`); the import still accepts
+`schema: 1` files, which contain no definitions. Importing merges definitions by
+lemma and replaces a matching local entry. Each definition is limited to 600
+characters and the store to 2,000 entries; there is no sync between devices.
 
-A [auditoria dirigida de 30 entradas](docs/linguistic-pilots/README.md)
-agrupa problemas de contexto regional, adaptações automáticas e segmentação
-da fonte, com prioridade a evidência institucional. O
-[registo JSON](docs/linguistic-pilots/directed-audit.json) conserva referências,
-limites e hashes; o relatório conserva o estado auditado. As 30 primeiras respostas foram entretanto
-aprovadas e integradas localmente, sem alterar o corpus nem publicar.
+### Illustrations
 
-## Implementado
+A reviewed set of 55 illustrations is bundled in `images/` and shown as a
+captioned figure under the matching entry. The full lemma list with captions is
+in `docs/IMAGES.md`. The set is deliberately not exhaustive:
+only concrete words with a clear sense are illustrated, and an image never
+replaces or supports a definition.
 
-O [plano de redação e comparação do corpus](docs/corpus-review/README.md)
-organiza as 81 068 entradas em 406 lotes de até 200. Os lotes 0001–0007 (1 400
-entradas, 1 712 aceções) foram tratados e comparados em
-`docs/corpus-review/batches/`; os restantes 399 não foram executados. O registo
-está separado da aplicação e não altera as respostas atuais.
+Each file is a local copy (there is no hotlinking), resized to 640 px and
+re-encoded as JPEG; the set is about 4.7 MB. Sources are Wikimedia Commons and
+the Metropolitan Museum of Art Open Access collection; licences are public
+domain, CC0 or CC BY, never NC, ND or SA. `images/manifest.json` records the
+lemma, captions and alt text in both languages, author, licence, source page,
+retrieval date, SHA-256 and dimensions. `credits.html` lists every image and is
+linked from Settings.
 
-- Definições por palavra ou expressão composta, com preferência para 114 entradas editoriais PT-PT (117 aceções).
-- Camada de apresentação separada com 36 primeiras respostas aprovadas, com prioridade PT-PT e usos regionais contextualizados, incluindo «açougue». As contagens acima referem-se ao corpus, que não foi alterado.
-- Listagens por letra inicial, final, número de letras e combinações.
-- Continuação «mais» e manutenção parcial do contexto.
-- Link opcional para Priberam.
-- Interface em português europeu e inglês, com seletor de idioma no cabeçalho e em Definições.
-- Definições com seletor de idioma, cópia de segurança das preferências, instalação e verificação explícita de atualizações.
-- Sem API, sem servidor PHP e sem dependências de runtime.
+Run `python3 scripts/check_images.py` to verify hashes, sizes, dimensions,
+licences and that every illustrated lemma is a dictionary headword; `--write`
+regenerates `docs/IMAGES.md` and `credits.html` from the manifest. The images are
+included in the offline preparation.
 
-## Limitações conhecidas
+To grow the set without an LLM, `scripts/fetch_illustrations.py` automates
+candidate sourcing from Wikimedia Commons at a slow, resumable pace:
+`queue` builds a lemma queue from the dictionary head senses,
+`fetch` downloads and pre-verifies candidates (public domain, CC0 or CC BY
+only, 640 px JPEG, bounded per run with `--limit`), `report` writes a local
+review page at `.work/illustrations-auto/review.html` where a human approves
+images and writes the captions, and `integrate --selection-file` copies only
+the approved lemmas into `images/` and the manifest. Automation proposes; the
+selection file is the human decision that gates what is committed.
 
-- A segmentação de sentidos e identificação regional é heurística; as definições não foram todas revistas.
-- Os lotes 0001–0007 da revisão do corpus são calibrações atípicas (sufixos, símbolos, siglas, números, nomes próprios e expressões fixas), comparadas pelo mesmo modelo; não representam a qualidade média das 81 068 entradas nem constituem revisão independente.
-- As 57 equivalências regionais são associações dependentes do sentido, não equivalências universais; 7 remetem para formas que não têm entrada própria no dicionário.
-- As substituições automáticas PT-PT não ajustam concordância nem distinguem todos os contextos. Exemplos por rever: «no casa de banho», «na ecrã», «sumo gástrico», «auto-autocarro» e «aplicação, aplicação». O texto original é preservado e a interface assinala estas adaptações.
-- A camada editorial tem 117 aceções para 114 entradas, incluindo aceções duplicadas para «ecrã», «frigorífico» e «gelado» e variantes de maiúscula com o mesmo texto.
-- A consulta aceita expressões como «casa de banho», isoladas ou em perguntas de definição. As listagens por letras/sílabas continuam a excluir expressões compostas; entradas com números ou pontuação além de hífen e apóstrofo não são abrangidas pela nova sintaxe de consulta.
-- Algumas entradas usam a coluna gramatical para exemplos entre aspas, incluindo o artefacto de conversão «Títulos não suportados/reticências entre colchetes».
-- Os dados silábicos cobrem 67 527 das 81 068 entradas (83,3%); a pesquisa por sílabas só encontra formas cobertas.
-- 2 598 grafias normalizadas agrupam mais de uma entrada por diferenças de maiúsculas ou acentos; a aplicação prefere agora a correspondência exata.
-- `meta.curated` (14) e `meta.preferences` (25) estão desatualizados face aos dados reais; a aplicação usa as entradas e `regional.json`.
-- Divisão silábica, sinónimos, antónimos e categorias semânticas ainda não estão validados.
-- As formas flexionadas vêm de `pt-pt.syn` (`data/forms/`); a cobertura e a desambiguação continuam limitadas.
-- A consulta procura primeiro o lema; se não existir, tenta o índice de formas flexionadas e pede esclarecimento quando encontra vários lemas. Não infere conjugações nem corrige grafias automaticamente.
-- Para produção: testar iPhone 6 / Safari 12 em dispositivo real, validar acessibilidade com leitor de ecrã e rever a cache/preparação offline. A compatibilidade de sintaxe, o substituto de `<dialog>` e os ícones PNG já foram tratados, mas não há verificação em dispositivo neste repositório.
+Use `python3 scripts/fetch_sources.py --check` to verify existing snapshots
+without downloading, and `--force` to refresh them.
 
-## PT-PT filtering — v2
+## Current corpus status
 
-A apresentação de definições agora privilegia sentidos editoriais PT-PT, depois sentidos não marcados como Brasil sem alertas lexicais, depois sentidos com alertas, e finalmente sentidos exclusivamente marcados como Brasil. A camada de alertas assinala um conjunto limitado de expressões brasileiras inequívocas em certos contextos; **não traduz nem corrige** definições automaticamente. As entradas não revistas são identificadas como tal. A ausência de alerta **não garante** português europeu. A seleção considera apenas os sentidos presentes nos blocos exportados (até 4 ou 5 por entrada).
+- 128,520 Dicionário Aberto entries and 152,395 latest-revision senses.
+- 127,930 runtime headwords after merging modern lemmas and the Wiktionary
+  bridge layer.
+- 28,591 modern lemmas matched; 6,139 lemma-only missing entries, of which
+  2,564 carry a labelled, unreviewed Wiktionary bridge definition (2,549 on
+  the modern spelling, 15 through the pre-AO spelling); 41 approved editorial
+  definitions.
+- 908,678 form-index rows. 816,163 words-pt forms resolve to a matched lemma;
+  122,793 resolve only to a missing lemma; 59,474 remain unresolved.
+- M1 review queue: 274 lemmas after 149 reviewed pre-AO pairs and 41 approved
+  editorial definitions; 99 of them carry the Wiktionary bridge layer. M2:
+  5,865.
+- Coverage: 89.0% of Portuguese tokens in a two-PDF sample; 79.8% on the
+  12,036-word coverage list (many unknowns are OCR fragments and proper names).
+- About 48 MB of uncompressed runtime data, including the illustrations.
+- Not done yet: human review, semantic-drift verification, full offline/cache
+  testing, Safari 12 / iPhone 6 device verification and deployment.
 
-O relatório `ptpt_filter_audit.json` é referido como distribuído separadamente e não está neste repositório; antes de o citar, confirmar a localização. O filtro deve ser expandido apenas com revisão contextual, para não trocar significados de palavras polissémicas.
+### Wiktionary bridge layer
 
+Missing lemmas that also exist in the sibling Lexi snapshot (Portuguese and
+English Wiktionary via kaikki.org, CC BY-SA 4.0) are shipped with a labelled,
+unreviewed definition layer. The senses are flagged `wikt`, shown with an
+explicit unreviewed notice, and never merged into the Dicionário Aberto text.
+The snapshot's Brazilian labels are preserved, a conservative
+parenthetical-label scan marks further Brazilian senses, and entries whose
+senses are all Brazilian are marked `br`. Where the snapshot had applied its
+own unrevised automatic PT-PT adaptation, the original wording is restored and
+the adapted text is kept as a separately flagged suggestion. The layer is not
+human-reviewed; the source snapshot is pinned per file in `docs/SOURCES.md`.
 
-## PT-PT v3: correções conservadoras
+## PDF coverage check
 
-Algumas definições incluem propostas automáticas de adaptação lexical ao português europeu, apenas em contextos específicos. O texto original permanece nos ficheiros JSON. As propostas **não foram revistas manualmente** e são assinaladas na interface. As aceções marcadas BR não são reescritas, para manter a explicação da variante regional. Relatório: `ptpt-v3-audit.json`.
-
-
-## PT-PT v5
-
-Added/revised 89 editorial PT-PT headword definitions. Original dictionary senses are preserved. These editorial entries are not independent lexicographic certification. See `ptpt-v5-audit.json`.
-
-## PT-PT v6 — aceções e variantes
-
-- A interface apresenta as aceções editoriais primeiro, seguidas de aceções não marcadas, suspeitas e marcadas Brasil.
-- «Outros significados» percorre todas as aceções **incluídas na exportação**, sem apagar as variantes brasileiras.
-- «Texto original» mostra as aceções não editoriais, para comparação.
-- Rótulos distinguem redação editorial, uso de Portugal e uso do Brasil; ausência de rótulo não certifica PT-PT.
-- Não foram feitas novas conversões automáticas nem alegada revisão humana de entradas.
-- **Limite:** o exportador anterior conservou apenas parte das aceções originais por lema. Para cobertura integral é necessário reconstruir os blocos JSON a partir do StarDict.
-
-
-## v7: source reconstruction and PT-PT adaptation
-
-Rebuilt 133646 source senses for 81068 headwords from the uploaded StarDict-derived SQLite extraction. Applied 339 targeted automatic substitutions at v7. The current shards retain 323 rule applications across 312 senses with `original`; the difference has not been reconciled. Each changed sense preserves the exact original in the data and audit. These substitutions are not independently verified. See `ptpt-v7-audit.json`.
-
-
-## v8 — regional awareness
-
-`data/regional.json` contém equivalências editoriais **dependentes do sentido**, não traduções globais. A aplicação aceita perguntas como «Como se diz ônibus em Portugal?» e «Como se diz autocarro no Brasil?». Mostra equivalências apenas quando há uma entrada curada, mantém os sentidos originais e não altera automaticamente as definições. O conjunto é deliberadamente pequeno; não cobre todas as variantes.
-
-## Publicação DreamHost
-
-O site é estático. No host, a partir do checkout `~/lexi`, com o document root em `~/lexi.basecentral.link`:
+To measure how much of a Portuguese PDF the current dictionary covers:
 
 ```sh
-bash scripts/deploy.sh --dry-run "$HOME/lexi.basecentral.link"
-bash scripts/deploy.sh "$HOME/lexi.basecentral.link"
-bash scripts/deploy.sh --verify "$HOME/lexi.basecentral.link"
+python3 -m pip install --target .work/python pypdf
+python3 scripts/pdf_coverage.py /path/to/pdfs --max-pages 200
 ```
 
-O destino predefinido é `~/lexi.basecentral.link`, pelo que o argumento pode ser omitido. O script usa o motor comum BaseCentral (`scripts/deploy-core.sh`) e a lista de publicação em `scripts/deploy-profile.sh`:
+The tool reads PDFs in place, extracts text, classifies tokens against the
+dictionary, form index and missing list, and writes `docs/PDF-COVERAGE.md` and
+`build/pdf-coverage.json`. It does not copy the PDFs or add them to the
+dictionary. Scanned PDFs without an OCR text layer produce no useful text.
 
-- exige um checkout limpo, num ramo com upstream, e faz `git pull --ff-only`;
-- publica apenas a lista revista de 107 ficheiros (HTML, scripts, manifest, ícones, `data/`, auditorias, licenças);
-- não publica `README.md`, `AGENTS.md` nem testes, não corre builds, não apaga ficheiros alheios e não publica nada implicitamente;
-- publica `sw.js` depois dos restantes ficheiros.
+## Review queue
 
-Antes de correr no host, fazer commit e push. O destino tem de existir, ser gravável e não ser um symlink. HTTPS é obrigatório para o service worker. `--dry-run` não faz fetch nem escreve; `--no-http` desativa a verificação HTTP final. Se os ficheiros públicos mudarem, atualizar `scripts/deploy-profile.sh` e `version.js`.
+`docs/M1-MISSING.md` groups the 274 highest-priority missing lemmas, all of
+them pre-AO-only after the 19 near-only candidates were reviewed and none was
+safe to auto-link.
+`docs/CURATED-DEFINITIONS.md` records the 22 curated lemmas whose approved PT-PT
+definitions are integrated as a labelled editorial layer.
+`docs/NEAR-ONLY-DEFINITIONS.md` records the 19 approved definitions for the
+reviewed near-only lemmas.
+`docs/M1-PROPOSED-BATCH.md` holds proposed, unintegrated definitions for the 35
+highest-value pre-AO-only lemmas.
 
+## Deployment
 
-## v2: formas flexionadas
+The host-side deployment profile is `scripts/deploy-profile.sh`; its default
+destination is `~/lexi.basecentral.link` (override with `DEPLOY_SITE`), intended
+to replace the existing Lexi site. The common engine is the vendored BaseCentral
+deploy script. Deployment is a separate, explicit action: this repository has
+not been published. The deploy engine preserves unrelated files, so old
+Lexi-only assets may need manual cleanup after the replacement.
 
-O índice original `pt-pt.syn` foi associado às 81 068 entradas na ordem de `pt-pt.idx`, sem inferir conjugações. Os ficheiros `data/forms/*.json` permitem reconhecer formas como plurais e verbos conjugados. Se uma forma tiver vários lemas, Lexi pede que se escolha a entrada pretendida. O índice é descarregado por letra, conforme necessário. O botão de transferência offline carrega as definições e as formas flexionadas.
+## Licences
 
+The application code and generated dictionary database are released under
+**GPL-3.0**. Dicionário Aberto material remains under **CC BY-SA 2.5 PT**;
+words-pt and Hunspell pt_PT are under **GPL-3.0** and **GPL/LGPL/MPL**
+respectively. See `LICENSE` and `ATTRIBUTION.md`.
 
-## v3 — Pesquisa experimental por sílabas
+## Status and limits
 
-Foram pré-calculadas sugestões de divisão com os padrões de translineação `pt_PT` do Pyphen. **Translineação não equivale a divisão silábica**; por isso, resultados com número de sílabas são explicitamente assinalados como experimentais e não devem ser tratados como factos linguísticos verificados. A pesquisa aceita combinações de letra inicial, final, número de letras e número aproximado de sílabas. Os dados estão em `data/syllables/`. O projeto Pyphen e os padrões incluídos têm licenças próprias; confirmar a licença dos padrões antes de redistribuir publicamente.
-
-## v4 — motor de conversação
-
-O módulo `conversation.js` reconhece intenções de forma determinística e sem dependências: saudações, ajuda, definições, equivalências regionais, pesquisas combinadas, continuação de resultados, outros significados, texto original e reinício de contexto. Mantém filtros entre perguntas como «Agora com quatro sílabas». Aceita perguntas plurais («O que são batatas?»), artigos plurais («as», «os»), texto sem acentos («o que sao batatas») e uma saudação antes da pergunta («Olá, o que são batatas?»); se o resto da frase não for reconhecido, a saudação mantém-se como resposta.
-
-Teste rápido do interpretador: `node test-conversation.cjs`. O teste verifica o reconhecimento de intenções; não substitui testes completos de interface ou auditoria linguística. As limitações de definições e divisão silábica da v3 mantêm-se.
-
-## v5 — apresentação das definições
-
-A advertência sobre adaptações automáticas deixou de aparecer em cada resposta. A informação encontra-se nas Definições, e o comando «texto original» continua disponível. O cache do service worker foi atualizado para `lexi-v5`.
-
-
-## Correção v6
-- Pesquisa por inicial aceita «começadas por X» (e «pela letra X»), sem confundir «por» com a letra P.
-- Cache do Service Worker atualizada para lexi-v6.
-
-
-## Lexi v7
-- Os resultados de pesquisas por palavras são botões clicáveis que abrem a definição na conversa.
-- As pesquisas por palavras omitem entradas de uma só letra, entradas com pontuação, siglas em maiúsculas e abreviaturas identificadas na classe gramatical. As consultas diretas continuam a aceitar essas entradas.
-- O filtro é conservador: entradas com abreviaturas não assinaladas na fonte poderão ainda aparecer.
-
-
-## v8 — Explorar palavras na conversa
-
-As palavras nas definições são botões que abrem a respetiva entrada sem reescrever a pergunta. O texto da definição não é alterado. O convite «Podes pedir «mais»» contém agora um botão «mais» para continuar a pesquisa. O aviso de que existem mais aceções apresenta «outros significados» como uma única ação que abre a página seguinte, em vez de dividir a expressão em duas ligações de palavras.
-
-
-## v9 — idiomas, atualizações e compatibilidade
-
-- `version.js` é a fonte única da versão da aplicação e do service worker. A cache chama-se `lexi-<versão>`; incrementar a versão é obrigatório em cada release que altere ficheiros em cache, para não sobrepor a cache ativa.
-- O service worker já não ativa imediatamente uma versão nova. Em Definições, **Verificar atualizações** distingue a versão instalada de uma atualização pendente e **Atualizar aplicação** pede confirmação antes de recarregar.
-- A interface está em português europeu e inglês. O seletor nativo de idioma aparece depois das Definições no cabeçalho e também dentro das Definições; a escolha explícita é guardada.
-- A cópia de segurança é um JSON `lexi-backup` (schema 1) com as preferências de idioma e da ligação ao Priberam. A Lexi não guarda registos pessoais. A importação valida o ficheiro, mostra uma pré-visualização e permite cancelar.
-- **Preparar dicionário para uso offline** transfere definições, formas e sílabas (cerca de 26 MB), verifica a escrita na cache, permite cancelar e distingue o shell offline do dicionário preparado.
-- O `<dialog>` foi substituído por um painel compatível, foram removidos `?.`, `??` e `||=`, e foram adicionados ícones PNG, `apple-touch-icon` e fallbacks CSS para o alvo iPhone 6 / Safari 12.
-- Continua a faltar validação em iPhone 6/Safari 12 e revisão de acessibilidade em dispositivo. `node test-conversation.cjs` cobre 107 asserções no interpretador, incluindo comandos em inglês; a contagem anterior de 52 asserções foi corrigida.
-
-
-## v10 — identidade visual
-
-- Novo símbolo: um **L** branco (a lombada e a capa inferior do livro aberto) com três folhas em tons de turquesa a abrir a partir da lombada. Desenhado em `icons/icon.svg`, que continua a ser o ícone da aplicação, do manifest e do favicon.
-- `icons/mark.svg` é o mesmo desenho sem a placa de fundo, usado no cabeçalho à esquerda de «Lexi». Está na pré-cache do service worker e na lista de publicação.
-- `icons/icon-180.png` (apple-touch-icon) passou a ser de sangria total: o iOS aplica a sua própria máscara e os cantos transparentes apareciam a preto.
-- Versão atualizada para `2026.11.08.1` porque a arte e o cabeçalho são ficheiros em cache.
-
-## Consultas compostas — 2026.11.08.2
-
-- «O que é casa de banho?», «Define fim de semana» e «What does casa de banho mean?» consultam a expressão completa, sem a reduzir à primeira palavra.
-- Expressões isoladas, com ou sem aspas, só abrem uma definição se houver correspondência no corpus existente. Frases sem entrada mantêm a resposta de orientação, sem inventar significados.
-- Os comandos de ajuda, pesquisa, continuação e equivalências regionais mantêm prioridade. Nas perguntas de definição, a consulta preserva artigos que façam parte de uma entrada, como «a priori», antes de tentar a forma sem artigo.
-- Não foram alterados os dados nem integrados recursos externos. O interpretador mantém-se independente e utilizável em Node.
-- `node test-conversation.cjs` verifica agora 107 asserções (a contagem anterior somava casos, não todas as asserções). Verificação adicional em Chromium a 320 px: consultas compostas, frases sem entrada, comandos, PT/EN, cancelamento e recarregamento com dicionário preparado offline. Safari 12/iPhone 6 continuam por verificar.
-- A versão da cache avança para `lexi-2026.11.08.2`; a publicação continua a ser uma ação separada.
-
-## Respostas editoriais PT-PT — 2026.11.08.3
-
-- «legal», «apelido» e «propina» apresentam primeiro os três textos aprovados pelo utilizador, em `editorial.js`. Esta é uma camada de apresentação, não uma regeneração do corpus ou certificação lexicográfica independente.
-- As primeiras respostas não misturam os sentidos regionais. «Outros significados» percorre todas as aceções já exportadas, com uma indicação de que a fonte pode conter usos regionais por rever. Nenhuma aceção foi apagada ou reclassificada automaticamente.
-- «Texto original» mostra os textos não editoriais, usando `original` quando presente; «outros significados» continua essa mesma sequência. Deixa de estar limitado às primeiras três aceções, incluindo em entradas sem a nova camada.
-- Os textos do dicionário permanecem no idioma da fonte, mesmo com a interface em inglês. Os novos títulos/avisos estão localizados em PT-PT e inglês.
-- Definições → Revisão editorial PT-PT abre `editorial-audit.json`, com textos aprovados, referências, contagens e hashes dos shards originais. Fontes e licenças ficam fora das primeiras respostas conversacionais.
-- `editorial.js` e a auditoria estão na pré-cache e no inventário público. A versão é `2026.11.08.3` para manter a separação entre caches. Esta preparação não autoriza publicação.
-- Verificação adicional: `node --check editorial.js` e `node test-editorial.cjs`. Os testes anteriores mantêm-se aplicáveis.
-
-
-## Segundo lote editorial PT-PT — 2026.11.08.4
-
-- Integra os três textos iniciais aprovados para «fato», «camisola» e «rapariga», mantendo os três anteriores. A camada `editorial.js` passa a ter seis respostas.
-- O corpus não foi regenerado: todas as aceções, etiquetas, textos `original` e redações `curated` permanecem intactos. Em «camisola», «outros significados» inclui a redação editorial anterior e todas as seis aceções da fonte; «texto original» percorre as seis aceções não editoriais.
-- `editorial-audit.json` e Definições refletem os seis casos, com referências, limites e hashes. O [registo do lote](docs/linguistic-pilots/regional-batch-2.json) assinala a aprovação limitada aos textos iniciais; os exemplos brasileiros não foram integrados como interpretador de contexto.
-- Versão local `2026.11.08.4`, com cache separada e atualização explícita. Inventário público inalterado; nada publicado. Os testes editoriais passam a abranger os seis casos.
-- Verificado em Chromium: seis primeiras respostas, paginação de todas as aceções e textos originais, PT/EN, Definições a 320 px, recarregamento com dicionário preparado offline e atualização explícita de `.3` para `.4`, com remoção da cache anterior só após ativação. Testes Node/Python e verificações de sintaxe passaram; os 86 ficheiros do corpus mantêm os hashes anteriores. Safari 12/iPhone 6 continuam por verificar em dispositivo.
-
-## Integração das 30 definições — 2026.11.08.5
-
-- Integra os 30 textos aprovados de `docs/linguistic-pilots/editorial-drafts-30.json`, incluindo «açougue» identificado como uso brasileiro e «talho» como equivalente PT-PT nesse sentido. Mantém as seis respostas anteriormente aprovadas: 36 no total.
-- O módulo `editorial.js` contém os textos estáticos e mantém a mesma projeção das aceções. Não há novos pedidos externos, dependências, interpretador de contexto ou formato de dados.
-- «Outros significados» conserva todas as aceções e redações editoriais exportadas; «texto original» percorre as aceções não editoriais, usando o campo `original` quando existe. Não se corrigiram nem ocultaram os problemas conhecidos da fonte.
-- A auditoria pública, as notas de Definições e as atribuições refletem o lote. A auditoria dirigida e os pilotos anteriores conservam os seus estados históricos; a aprovação atual cobre os 30 textos iniciais, não todos os ramos de contexto ou uma revisão integral do corpus.
-- Versão local `2026.11.08.5`, para manter caches separadas. Inventário público inalterado (107 ficheiros). Sem publicação.
-- Verificado em Chromium: 36 primeiras respostas, ação clicável de outros significados, paginação de todas as aceções exportadas e textos originais, correção de «açougue», consultas compostas/acentuadas, PT/EN, Definições a 320 px, dicionário preparado offline e atualização explícita de `.4` para `.5`. A cache anterior só foi removida após ativação. Os testes Node/Python passaram e os hashes dos 86 ficheiros do corpus não mudaram. Safari 12/iPhone 6 continuam por verificar em dispositivo.
+- The corpus is historical. Definitions may be obsolete, archaic, regional or
+  wrong; they are not human-reviewed.
+- Automatic spelling modernisation is a suggestion, not verified lexicography.
+- The Wiktionary bridge layer is unreviewed third-party content (CC BY-SA 4.0,
+  Wiktionary via kaikki.org). Its Brazilian labels are preserved where present;
+  unmarked senses are not claimed to be European Portuguese.
+- European Portuguese is the default presentation, but Brazilian and regional
+  senses are preserved and labelled.
+- Missing lemmas are those absent from the current Dicionário Aberto snapshot
+  after conservative orthographic matching. They are not a claim that the word
+  is absent from Portuguese.
+- Personal definitions are the user's own wording. They are stored only on the
+  device, are not part of the corpus or of any generated data, and are not
+  reviewed or verified.
+- Illustrations are illustrative only. The set covers 55 concrete lemmas, is
+  not exhaustive and is not a substitute for a definition; each image keeps its
+  own licence and attribution.

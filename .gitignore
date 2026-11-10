@@ -1,8 +1,10 @@
-# Execução local dos lotes de revisão do corpus.
-docs/corpus-review/.work/
-docs/corpus-review/run.log
-docs/corpus-review/.run.lock
+# Downloaded source snapshots and generated intermediates
+.work/
+build/
 
-# Python cache
+# Python
 __pycache__/
 *.pyc
+
+# Local tooling
+.DS_Store

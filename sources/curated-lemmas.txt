@@ -1,0 +1,29 @@
+# Curated PT-PT lemma supplement.
+# Format: lemma|part-of-speech|review note
+# These are lemmas missing from the Hunspell pt_PT base list. The note is a
+# review hint, not a dictionary definition. The pipeline adds them to the
+# missing-lemma universe and never invents a definition.
+utilizador|n.|pessoa que utiliza um serviço ou sistema
+servidor|n.|computador ou programa que fornece serviços
+auscultador|n.|dispositivo para ouvir áudio
+casa de banho|n.|divisão com instalações sanitárias
+palavra-passe|n.|código de acesso
+base de dados|n.|coleção organizada de dados
+motor de busca|n.|serviço que procura informação na internet
+correio eletrónico|n.|mensagem enviada por rede informática
+cópia de segurança|n.|cópia de dados para recuperação
+website|n.|sítio na internet
+app|n.|aplicação informática
+tablet|n.|computador portátil com ecrã tátil
+smartphone|n.|telefone inteligente
+podcast|n.|programa de áudio ou vídeo para descarga
+streaming|n.|transmissão contínua de conteúdos
+influenciador|n.|pessoa que influencia audiências em linha
+youtuber|n.|criador de conteúdos no YouTube
+netiqueta|n.|regras de convivência em linha
+phishing|n.|fraude que tenta obter dados pessoais
+malware|n.|programa informático malicioso
+ransomware|n.|programa que bloqueia dados e pede resgate
+firewall|n.|barreira de segurança informática
+criptomoeda|n.|moeda digital
+bitcoin|n.|criptomoeda descentralizada
