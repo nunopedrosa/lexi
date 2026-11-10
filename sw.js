@@ -28,8 +28,38 @@ const CORE=[
  './ATTRIBUTION.md'
 ];
 
+// Precache every app-shell file with cache:'reload' so a release is never
+// assembled from a stale HTTP-cache copy. Installation is all-or-nothing: if a
+// file is missing or a cache write fails, the previous worker and its offline
+// data stay in charge. scripts/check_publish.py catches an incomplete
+// publication before deployment, and app.js reports the failed install.
+function precache(){
+ return caches.open(VERSION).then(function(cache){
+  return Promise.all(CORE.map(function(url){
+   var request;
+   try{
+    request=new Request(url,{cache:'reload'});
+   }catch(e){
+    // Older Safari builds may reject the cache option; a plain fetch is still
+    // better than a failed install.
+    request=url;
+   }
+   return fetch(request).then(function(response){
+    if(!response.ok)throw Error(url+' ('+response.status+')');
+    return cache.put(url,response);
+   });
+  }));
+ });
+}
+
 self.addEventListener('install',e=>{
- e.waitUntil(caches.open(VERSION).then(c=>c.addAll(CORE)));
+ e.waitUntil(precache().catch(function(error){
+  // Leave the previous worker and its cache untouched. A partial cache for a
+  // release that never installs is harmless and is removed when a later
+  // release activates.
+  console.error('Lexi2 precache failed: '+error.message);
+  throw error;
+ }));
 });
 
 self.addEventListener('activate',e=>{

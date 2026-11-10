@@ -5,8 +5,10 @@ crossing the **words-pt** form inventory with **Dicionário Aberto**, with a
 lemma-first data model, an explicit missing-lemma report and review flags for
 historical definitions.
 
-The project is currently in the **data-pipeline** phase. The PWA shell and
-runtime data shards are not built yet.
+The project has a working corpus pipeline, a static sharded PWA shell and a
+reviewed illustration set. It is still a data-and-review phase project: the
+dictionary is not human-reviewed lexicography, and device verification and
+deployment remain separate, explicit steps.
 
 ## Source strategy
 
@@ -92,14 +94,14 @@ characters and the store to 2,000 entries; there is no sync between devices.
 
 ### Illustrations
 
-A reviewed set of 55 illustrations is bundled in `images/` and shown as a
+A reviewed set of 525 illustrations is bundled in `images/` and shown as a
 captioned figure under the matching entry. The full lemma list with captions is
 in `docs/IMAGES.md`. The set is deliberately not exhaustive:
 only concrete words with a clear sense are illustrated, and an image never
 replaces or supports a definition.
 
 Each file is a local copy (there is no hotlinking), resized to 640 px and
-re-encoded as JPEG; the set is about 4.7 MB. Sources are Wikimedia Commons and
+re-encoded as JPEG; the set is about 50.4 MB. Sources are Wikimedia Commons and
 the Metropolitan Museum of Art Open Access collection; licences are public
 domain, CC0 or CC BY, never NC, ND or SA. `images/manifest.json` records the
 lemma, captions and alt text in both languages, author, licence, source page,
@@ -140,9 +142,10 @@ without downloading, and `--force` to refresh them.
   5,865.
 - Coverage: 89.0% of Portuguese tokens in a two-PDF sample; 79.8% on the
   12,036-word coverage list (many unknowns are OCR fragments and proper names).
-- About 48 MB of uncompressed runtime data, including the illustrations.
+- About 92 MiB of uncompressed runtime data, including the dictionary shards
+  (about 44 MiB) and the 50 MB illustration set.
 - Not done yet: human review, semantic-drift verification, full offline/cache
-  testing, Safari 12 / iPhone 6 device verification and deployment.
+  testing, Safari 12 / iPhone 6 device verification and a verified deployment.
 
 ### Wiktionary bridge layer
 
@@ -188,9 +191,16 @@ highest-value pre-AO-only lemmas.
 The host-side deployment profile is `scripts/deploy-profile.sh`; its default
 destination is `~/lexi.basecentral.link` (override with `DEPLOY_SITE`), intended
 to replace the existing Lexi site. The common engine is the vendored BaseCentral
-deploy script. Deployment is a separate, explicit action: this repository has
-not been published. The deploy engine preserves unrelated files, so old
-Lexi-only assets may need manual cleanup after the replacement.
+deploy script. Deployment is a separate, explicit action. The deploy engine
+preserves unrelated files, so old Lexi-only assets may need manual cleanup after
+the replacement.
+
+The profile publishes the app shell, the dictionary shards, `credits.html` and
+every file in `images/`. Run `python3 scripts/check_publish.py` before
+deploying: it fails if the service worker precaches an unpublished file or if
+the illustration manifest and `images/` disagree. The deploy profile runs the
+same check through `deploy_validate`, because a single missing precached file
+aborts the service-worker install and with it update detection.
 
 ## Licences
 
@@ -215,6 +225,6 @@ respectively. See `LICENSE` and `ATTRIBUTION.md`.
 - Personal definitions are the user's own wording. They are stored only on the
   device, are not part of the corpus or of any generated data, and are not
   reviewed or verified.
-- Illustrations are illustrative only. The set covers 55 concrete lemmas, is
+- Illustrations are illustrative only. The set covers 525 concrete lemmas, is
   not exhaustive and is not a substitute for a definition; each image keeps its
   own licence and attribution.

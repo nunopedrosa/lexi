@@ -80,7 +80,9 @@ Lexi. The dictionary is not human-reviewed lexicography.
     layer, and is empty otherwise.
   Do not silently change this contract without updating `app.js`, the service
   worker cache list and the report.
-- The PWA data is about 44 MB uncompressed. Offline preparation must download the
+- The dictionary runtime data is about 44 MiB uncompressed; the 525 local
+  illustrations add about 50 MB, so offline preparation is about 92 MiB.
+  Offline preparation must download the
   dictionary, form and missing shards, report the size, allow cancellation and
   verify cache writes before claiming readiness.
 
@@ -152,6 +154,9 @@ Lexi. The dictionary is not human-reviewed lexicography.
   `python3 scripts/build_corpus.py --check`.
 - Run `python3 scripts/check_images.py` to verify illustration hashes, sizes,
   dimensions, licences and lemma coverage.
+- Run `python3 scripts/check_publish.py` to verify that the deploy allowlist
+  covers every file the service worker precaches and every illustration, and
+  that no unreferenced image would be published.
 - The full build uses the build-time `hunspell` command to produce
   `build/forms.json`. Use `--no-forms` only for a reduced check; record that the
   form index was skipped.
@@ -162,7 +167,7 @@ Lexi. The dictionary is not human-reviewed lexicography.
 - Report what was actually verified. A successful build is not a linguistic
   review, and a modern browser test is not Safari 12 evidence.
 
-## Audit snapshot (2026-11-09)
+## Audit snapshot (2026-11-09, updated 2026-11-10)
 
 | Area | Status | Evidence |
 | --- | --- | --- |
@@ -175,7 +180,7 @@ Lexi. The dictionary is not human-reviewed lexicography.
 | Review flags | Partial | Brazilian, regional, archaic, technical, popular, poetic, neologism, old spelling, citation and unreviewed flags; review priority P1/P2/P3. No semantic-drift verification. |
 | PWA shell and languages | Partial | Headless Chromium checks at 320 px: search, form alias, missing response, regional note, modernized view, EN/pt-PT switch, Settings. No physical device or screen-reader test. |
 | Personal definitions | Partial | Local-only definitions in `lexi2.userDefinitions`, keyed by lemma, shown as a labelled bubble below the source definition or the missing-lemma notice, with add/edit/remove and no merge into the dictionary. Included in the `schema: 2` backup (`personalDefinitions`); the import accepts `schema: 1` and merges by lemma. Headless Chromium checks: add, edit, remove, reload persistence, form-alias keying, live language switch, 320 px editor, export payload and import preview/merge. No device test and no sync. |
-| Illustrations | Partial | 55 local JPEGs for concrete lemmas, sourced from Wikimedia Commons and the Met Open Access collection (public domain, CC0 and CC BY). `images/manifest.json` records author, licence, source, retrieval date, dimensions and SHA-256; `credits.html` and `docs/IMAGES.md` are generated. `scripts/fetch_illustrations.py` queues, fetches and pre-verifies candidates without an LLM; a human review page and selection file gate integration. Headless Chromium checks: figure and credit rendering at 320 px, sense-disambiguating captions, no figure for unlisted words or missing lemmas, EN/pt-PT captions, SW caching, and offline preparation requesting all files. No designer review and no device test. |
-| Offline and updates | Partial | Offline preparation was exercised in headless Chromium through the DevTools protocol: all dictionary, form and missing shards were fetched and the app reported the dictionary ready offline. Update activation, cache eviction and a true airplane-mode reload were not re-tested. |
+| Illustrations | Partial | 525 local JPEGs (about 50.4 MB) for concrete lemmas, sourced from Wikimedia Commons and the Met Open Access collection (public domain, CC0 and CC BY). `images/manifest.json` records author, licence, source, retrieval date, dimensions and SHA-256; `credits.html` and `docs/IMAGES.md` are generated. `scripts/fetch_illustrations.py` queues, fetches and pre-verifies candidates without an LLM; a human review page and selection file gate integration. Headless Chromium checks: figure and credit rendering at 320 px, sense-disambiguating captions, no figure for unlisted words or missing lemmas, EN/pt-PT captions, SW caching, and offline preparation requesting all files. No designer review and no device test. |
+| Offline and updates | Partial | Offline preparation was exercised in headless Chromium through the DevTools protocol: all dictionary, form and missing shards were fetched and the app reported the dictionary ready offline. The service worker now precaches with `cache:'reload'`, and "Check for updates" waits for the installing worker and reports a failed/redundant install instead of "latest version"; headless Chromium verified detection after a release bump, activation and reload, and a failed check that kept the previous shell when a precached file was missing. Cache eviction and a true airplane-mode reload were not re-tested. |
 | Safari 12 / iPhone 6 | Partial | Inherited compatibility work retained; no unsupported syntax intentionally added. Device verification is still missing. |
-| Deployment | Not performed | Host deployment profile prepared for `lexi.basecentral.link`, intended to replace the existing Lexi site; no production action taken. The deploy engine preserves unrelated files, so old Lexi-only assets may need manual cleanup. |
+| Deployment | Partial | `scripts/deploy-profile.sh` publishes the app shell, the dictionary shards, `credits.html` and all 525 images; `scripts/check_publish.py`, also run by `deploy_validate`, fails on an unpublished precached file or manifest/image drift. The live copy at `lexi.basecentral.link` predates that guard and is missing `credits.html` and `images/`, so its service worker cannot install. Deployment remains an explicit user action; no deployment was made during this review. |

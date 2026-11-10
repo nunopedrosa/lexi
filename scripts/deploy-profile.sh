@@ -14,6 +14,7 @@ editorial.js
 i18n.js
 missing.html
 missing.js
+credits.html
 version.js
 sw.js
 manifest.webmanifest
@@ -24,6 +25,7 @@ icons/icon-192.png
 icons/icon-512.png
 icons/icon.svg
 icons/mark.svg
+images/manifest.json
 data/meta.json
 data/regional.json
 data/forms-meta.json
@@ -115,3 +117,23 @@ docs/CORPUS.md
 docs/SOURCES.md
 PUBLIC_FILES
 )
+
+# Illustrations are enumerated from the checkout when the profile loads. A
+# release must publish every local file the manifest and the app reference:
+# leaving images/ out of the allowlist produced a site whose service worker
+# could not install and whose credits page returned 404. Adding a reviewed
+# image therefore needs no second allowlist edit, and the deploy engine still
+# rejects any file that is not tracked by Git.
+for illustration in "${DEPLOY_CHECKOUT:-}"/images/*.jpg; do
+ [[ -f "$illustration" ]] || continue
+ PUBLIC_FILES="$PUBLIC_FILES
+images/$(basename -- "$illustration")"
+done
+
+# Fail closed before staging: the service worker must only precache published
+# files, and every published path must exist.
+deploy_validate(){
+ local root=$1
+ command -v python3 >/dev/null || deploy_fail 'python3 is required for the publication check.'
+ printf '%s\n' "$PUBLIC_FILES" | python3 "$root/scripts/check_publish.py" "$root" --files - || deploy_fail 'Publication inventory check failed.'
+}

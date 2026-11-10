@@ -100,7 +100,7 @@ var tagState=null;
 var tagLastFocus=null;
 var editorState=null;
 var editorLastFocus=null;
-var offlineSizeMb=45;
+var offlineSizeMb=92;
 
 function remember(map,key,value,max){
  if(map.has(key))map.delete(key);
@@ -2023,16 +2023,43 @@ async function prepareOffline(){
 }
 
 function watchRegistration(reg){
- reg.addEventListener('updatefound',function(){
-  var worker=reg.installing;
-  if(!worker)return;
+ var watched=null;
+ function watch(worker){
+  if(!worker||worker===watched)return;
+  watched=worker;
   worker.addEventListener('statechange',function(){
-   if(worker.state==='installed'&&navigator.serviceWorker.controller){
-    setUpdateState('ready');
+   if(worker.state==='redundant'){
+    // A failed or displaced install must not be reported as "up to date".
+    // The old controller keeps serving the previous release.
+    if(navigator.serviceWorker.controller!==worker)setUpdateState('failed');
+    return;
    }
+   if(worker.state==='installed'&&navigator.serviceWorker.controller)setUpdateState('ready');
   });
- });
+ }
+ reg.addEventListener('updatefound',function(){watch(reg.installing);});
+ watch(reg.installing);
  if(reg.waiting&&navigator.serviceWorker.controller)setUpdateState('ready');
+}
+
+function waitForWorkerState(worker){
+ return new Promise(function(resolve){
+  if(worker.state==='installed'||worker.state==='activated'||worker.state==='redundant'){
+   resolve(worker.state);
+   return;
+  }
+  var settled=false;
+  var timer=window.setTimeout(function(){finish(worker.state);},15000);
+  function finish(state){
+   if(settled)return;
+   settled=true;
+   worker.removeEventListener('statechange',onState);
+   window.clearTimeout(timer);
+   resolve(state);
+  }
+  function onState(){finish(worker.state);}
+  worker.addEventListener('statechange',onState);
+ });
 }
 
 function backgroundUpdateCheck(){
@@ -2044,19 +2071,33 @@ function backgroundUpdateCheck(){
 }
 
 function doUpdateCheck(){
+ var reg=swRegistration;
+ if(!reg){
+  setUpdateState('unavailable');
+  return;
+ }
  lastUpdateCheck=Date.now();
  setUpdateState('checking');
- swRegistration.update().then(function(){
-  window.setTimeout(function(){
-   if(!swRegistration)return;
-   if(swRegistration.waiting&&navigator.serviceWorker.controller){
-    setUpdateState('ready');
-   }else if(swRegistration.installing&&navigator.serviceWorker.controller){
-    setUpdateState('installing');
-   }else{
-    setUpdateState('uptodate');
+ reg.update().then(function(){
+  if(reg.waiting&&navigator.serviceWorker.controller){
+   setUpdateState('ready');
+   return;
+  }
+  var worker=reg.installing;
+  if(!worker){
+   setUpdateState('uptodate');
+   return;
+  }
+  setUpdateState('installing');
+  return waitForWorkerState(worker).then(function(state){
+   if(state==='redundant'){
+    setUpdateState('failed');
+    return;
    }
-  },1200);
+   if(reg.waiting&&navigator.serviceWorker.controller)setUpdateState('ready');
+   else if(reg.installing)setUpdateState('installing');
+   else setUpdateState('uptodate');
+  });
  }).catch(function(){
   setUpdateState('failed');
  });
@@ -2100,6 +2141,15 @@ function applyUpdate(){
   setUpdateState('unavailable');
   return;
  }
+ if(!swRegistration){
+  setUpdateState('unavailable');
+  return;
+ }
+ if(questionBusy||offlineBusy){
+  var busyNote=byId('update-status');
+  if(busyNote)busyNote.textContent=t('settings.updateBusy');
+  return;
+ }
  if(!window.confirm(t('settings.updateConfirm')))return;
  setUpdateState('applying');
  var waiting=swRegistration&&swRegistration.waiting;
@@ -2109,8 +2159,25 @@ function applyUpdate(){
  }
  var installing=swRegistration&&swRegistration.installing;
  if(installing){
+  setUpdateState('installing');
+  var settled=false;
+  var timer=window.setTimeout(function(){
+   if(settled)return;
+   settled=true;
+   if(swRegistration&&swRegistration.waiting)requestUpdateActivation(swRegistration.waiting);
+   else setUpdateState('applyfailed');
+  },15000);
   installing.addEventListener('statechange',function handler(){
+   if(installing.state==='redundant'){
+    settled=true;
+    window.clearTimeout(timer);
+    installing.removeEventListener('statechange',handler);
+    setUpdateState('applyfailed');
+    return;
+   }
    if(installing.state!=='installed')return;
+   settled=true;
+   window.clearTimeout(timer);
    installing.removeEventListener('statechange',handler);
    if(swRegistration&&swRegistration.waiting){
     requestUpdateActivation(swRegistration.waiting);
@@ -2118,7 +2185,6 @@ function applyUpdate(){
     setUpdateState('applyfailed');
    }
   });
-  setUpdateState('installing');
   return;
  }
  setUpdateState('uptodate');
